@@ -30,13 +30,14 @@ brew install watchman # Watch files and take action when they change
 brew install mas # Automate Mac AppStore
 ```
 
-## Dropbox
+## Dropbox & Google Drive
 
 ```bash
 brew cask install dropbox
+brew cask install google-drive
 ```
 
-**Needed for syncing of succeeding apps. Wait for Dropbox to completely sync before next steps!!!**
+**!!! Wait for Dropbox to completely sync before next steps !!! Needed for syncing of succeeding apps.**
 
 ## Sync Home folder
 
