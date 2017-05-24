@@ -254,7 +254,56 @@ Preferences
 brew cask install alfred
 ```
 
-Preferences
+#### Workflows
+* [DenteAzul](https://www.google.cz/search?q=site%3Apackal.org+DenteAzul)
+* [Call or SMS contact](https://www.google.cz/search?q=site%3Apackal.org+Call+or+SMS+contact)
+* [RecentDownloads](https://www.google.cz/search?q=site%3Apackal.org+RecentDownloads)
+* [Airport Search](https://www.google.cz/search?q=site%3Apackal.org+Airport+Search)
+* [Reading List](https://www.google.cz/search?q=site%3Apackal.org+Reading+List)
+* [Resize Image](https://www.google.cz/search?q=site%3Apackal.org+Resize+Image)
+* [Restore Moom snapshot](https://www.google.cz/search?q=site%3Apackal.org+Restore+Moom+snapshot)
+* [Toggle Wifi](https://www.google.cz/search?q=site%3Apackal.org+Toggle+Wifi)
+* [pinboard](https://www.google.cz/search?q=site%3Apackal.org+pinboard)
+* [Faker](https://www.google.cz/search?q=site%3Apackal.org+Faker)
+* [Encode / Decode (v1.8)](https://www.google.cz/search?q=site%3Apackal.org+Encode+/+Decode+(v1.8))
+* [ToggleRetinaResolution](https://www.google.cz/search?q=site%3Apackal.org+ToggleRetinaResolution)
+* [GitHub](https://www.google.cz/search?q=site%3Apackal.org+GitHub)
+* [Homebrew & Cask for Alfred](https://www.google.cz/search?q=site%3Apackal.org+Homebrew+&+Cask+for+Alfred)
+* [NotePlan Workflow](https://www.google.cz/search?q=site%3Apackal.org+NotePlan+Workflow)
+* [NightShift](https://www.google.cz/search?q=site%3Apackal.org+NightShift)
+* [Datetime Format Converter](https://www.google.cz/search?q=site%3Apackal.org+Datetime+Format+Converter)
+* [FormatSize](https://www.google.cz/search?q=site%3Apackal.org+FormatSize)
+* [Top](https://www.google.cz/search?q=site%3Apackal.org+Top)
+* [TimeZones](https://www.google.cz/search?q=site%3Apackal.org+TimeZones)
+* [npms](https://www.google.cz/search?q=site%3Apackal.org+npms)
+* [LinkClean](https://www.google.cz/search?q=site%3Apackal.org+LinkClean)
+* [Amphetamine Switch](https://www.google.cz/search?q=site%3Apackal.org+Amphetamine+Switch)
+* [Numi](https://www.google.cz/search?q=site%3Apackal.org+Numi)
+* [GitLab](https://www.google.cz/search?q=site%3Apackal.org+GitLab)
+* [What's My IP](https://www.google.cz/search?q=site%3Apackal.org+What's+My+IP)
+* [Packal Updater](https://www.google.cz/search?q=site%3Apackal.org+Packal+Updater)
+* [NewFile](https://www.google.cz/search?q=site%3Apackal.org+NewFile)
+* [Install apps [1.11]](https://www.google.cz/search?q=site%3Apackal.org+Install+apps+[1.11])
+* [Kill Process](https://www.google.cz/search?q=site%3Apackal.org+Kill+Process)
+* [Flush DNS](https://www.google.cz/search?q=site%3Apackal.org+Flush+DNS)
+* [RespondQuickly](https://www.google.cz/search?q=site%3Apackal.org+RespondQuickly)
+* [Source Tree](https://www.google.cz/search?q=site%3Apackal.org+Source+Tree)
+* [Pocket for Alfred](https://www.google.cz/search?q=site%3Apackal.org+Pocket+for+Alfred)
+* [Relative Dates](https://www.google.cz/search?q=site%3Apackal.org+Relative+Dates)
+
+###### Script to get workflows
+```bash
+for f in ~/Dropbox\ \(Personal\)/Sync/apps/Alfred/Alfred.alfredpreferences/workflows/**/info.plist
+do
+	ff=${f%.*}
+	name=$(defaults read "$ff" name)
+	link="https://www.google.cz/search?q=site%3Apackal.org+${name// /+}"
+	echo "* [$name]($link)"
+done
+```
+
+
+#### Preferences
 
 ```bash
 Set keyboard shortcuts (not synced)
@@ -262,7 +311,9 @@ Advanced: Syncing from ~/Dropbox/Alfred
 Clipboard history persistent for 1 month
 ```
 
-[Snippets](https://gist.github.com/Strajk/f4cb72e318c531a3ee247ccc10681f8f)
+#### Snippets
+<https://gist.github.com/Strajk/f4cb72e318c531a3ee247ccc10681f8f>
+
 
 ### [AppCleaner](https://freemacsoft.net/appcleaner/)
 
