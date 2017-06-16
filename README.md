@@ -1,5 +1,10 @@
 # Setup
 
+## Meta
+```
+git clone git@github.com:strajk/setup $HOME/Code/setup
+```
+
 ## Package manager
 
 [Homebrew](http://brew.sh) for packages, [Homebrew-cask](https://caskroom.github.io/) for apps.
@@ -143,7 +148,7 @@ rm -rf "$HOME/.oh-my-zsh/custom" && ln -s "$HOME/Dropbox/Sync/zsh-custom" "$HOME
 Replace `.zshrc` with my synced from Dropbox:
 
 ```bash
-rm -f "$HOME/.zshrc" && ln -s "$HOME/Dropbox/Sync/home/.zshrc" $HOME
+rm -f "$HOME/.zshrc" && ln -s "$HOME/Code/setup/.zshrc" $HOME
 ```
 
 ## Node
