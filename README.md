@@ -28,6 +28,8 @@ brew install graphicsmagic
 brew install nvm # Node version manager
 brew install watchman # Watch files and take action when they change
 brew install mas # Automate Mac AppStore
+brew install python3
+brew install git-extras
 ```
 
 ## Dropbox & Google Drive
