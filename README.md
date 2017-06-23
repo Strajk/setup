@@ -398,13 +398,21 @@ Integration: Alfred, PopClip, TextMate
 brew cask install marked
 ```
 
-### Messaging: [Franz](http://meetfranz.com/)
+### Messaging: Facebook Messenger: [Caprine](https://github.com/sindresorhus/caprine)
 
-Slack, WhatsApp, Facebook Messenger, Google Hangouts, Skype in one app
+Elegant Facebook Messenger desktop app
 
 ```bash
-brew cask install franz
+brew cask install caprine
 ```
+
+### Messaging: [Slack](http://slack.com/)
+
+
+```bash
+brew cask install slack
+```
+
 
 ## Browsers
 
