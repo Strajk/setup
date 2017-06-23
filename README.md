@@ -174,9 +174,10 @@ nvm current
 Global packages
 
 ```bash
-npm install -g grunt-cli
-npm install -g node-inspector
-npm install -g browser-sync
+npm i -g grunt-cli
+npm i -g node-inspector
+npm i -g browser-sync
+npm i -g elm elm-format``
 ```
 
 Meteor
