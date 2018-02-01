@@ -1,0 +1,70 @@
+'.platform-darwin .editor':
+  'cmd-e': 'unset!'
+  'cmd-g': 'unset!'
+  'shift-cmd-P': 'unset!'
+  'ctrl-space': 'unset!'
+
+'.platform-darwin':
+  'cmd-§': 'tree-view:toggle-focus'
+  'cmd-o': 'fuzzy-finder:toggle-file-finder'
+  'cmd-e': 'fuzzy-finder:toggle-buffer-finder'
+  'shift-cmd-e': 'fuzzy-finder:toggle-git-status-finder'
+
+  # Open an empty pane and bring it to focus to do as you will. If there had to be only one way to split panes, this should have been it.
+  'cmd-k left':  'pane:split-left-creating-empty-pane'
+  'cmd-k right': 'pane:split-right-creating-empty-pane'
+  'cmd-k up':    'pane:split-up-creating-empty-pane'
+  'cmd-k down':  'pane:split-down-creating-empty-pane'
+
+  # Open a new pane and move the current editor tab to it.
+  'cmd-k m left':  'pane:split-left-moving-current-tab'
+  'cmd-k m right': 'pane:split-right-moving-current-tab'
+  'cmd-k m up':    'pane:split-up-moving-current-tab'
+  'cmd-k m down':  'pane:split-down-moving-current-tab'
+
+  # Atom's default behavior. "D" for duplicate the current tab.
+  # It's still there if you want it, I guess.
+  'cmd-k d left':  'pane:split-left'
+  'cmd-k d right': 'pane:split-right'
+  'cmd-k d up':    'pane:split-up'
+  'cmd-k d down':  'pane:split-down'
+
+'.platform-darwin, .platform-darwin .command-palette .editor':
+  'cmd-i': 'command-palette:toggle'
+  'cmd-g': 'go-to-line:toggle'
+
+'.editor':
+  'cmd-space': 'autocomplete:toggle'
+
+'atom-workspace':
+  'cmd-shift-T': 'atom-terminal:open'
+  'cmd-alt-shift-T': 'atom-terminal:open-project-root'
+  'cmd-alt-o': 'open-in:toggle'
+
+'atom-text-editor':
+  'cmd-alt-m': 'marked:open'
+
+'atom-text-editor[data-grammar="source gfm"]:not([mini])':
+  'tab':        'markdown-folding:cycle'
+
+".platform-darwin atom-text-editor:not([mini])":
+  "shift-cmd-K": "markdown-writer:insert-link"
+  "shift-cmd-I": "markdown-writer:insert-image"
+  "cmd-i":       "markdown-writer:toggle-italic-text"
+  "cmd-b":       "markdown-writer:toggle-bold-text"
+  "cmd-'":       "markdown-writer:toggle-code-text"
+  "cmd-k":       "markdown-writer:toggle-keystroke-text"
+  "cmd-h":       "markdown-writer:toggle-strikethrough-text"
+  'cmd->':       "markdown-writer:toggle-blockquote"
+  'cmd-"':       "markdown-writer:toggle-codeblock-text"
+  "ctrl-alt-1":  "markdown-writer:toggle-h1"
+  "ctrl-alt-2":  "markdown-writer:toggle-h2"
+  "ctrl-alt-3":  "markdown-writer:toggle-h3"
+  "ctrl-alt-4":  "markdown-writer:toggle-h4"
+  "ctrl-alt-5":  "markdown-writer:toggle-h5"
+  "shift-cmd-O": "markdown-writer:toggle-ol"
+  "shift-cmd-U": "markdown-writer:toggle-ul"
+  "cmd-j cmd-p": "markdown-writer:jump-to-previous-heading"
+  "cmd-j cmd-n": "markdown-writer:jump-to-next-heading"
+  "cmd-j cmd-d": "markdown-writer:jump-to-reference-definition"
+  "cmd-j cmd-t": "markdown-writer:jump-to-next-table-cell"

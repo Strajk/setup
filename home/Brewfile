@@ -1,0 +1,65 @@
+tap "homebrew/core"
+tap "homebrew/bundle"
+tap "caskroom/fonts"
+tap "caskroom/versions"
+tap "caskroom/cask"
+brew "git-extras"
+brew "hh"
+brew "imagemagick"
+brew "mas"
+brew "mongodb"
+brew "mtr"
+brew "nmap"
+brew "node"
+brew "nvm"
+brew "python3"
+brew "watchman"
+brew "wget"
+brew "wireshark", link: false
+brew "yarn"
+cask "1password"
+cask "adobe-creative-cloud"
+cask "alfred"
+cask "appcleaner"
+cask "atom"
+cask "caprine"
+cask "caption"
+cask "charles"
+cask "dropbox"
+cask "evernote"
+cask "firefox"
+cask "gitup"
+cask "google-chrome"
+cask "google-drive"
+cask "graphiql"
+cask "hyper"
+cask "hyperswitch"
+cask "keybase"
+cask "keyboard-maestro"
+cask "ngrok"
+cask "postgres"
+cask "pycharm"
+cask "sketch"
+cask "slack"
+cask "sourcetree"
+cask "transmission"
+cask "virtualbox"
+cask "vlc"
+cask "caskroom/fonts/font-open-sans"
+cask "caskroom/fonts/font-roboto"
+cask "caskroom/fonts/font-roboto-mono"
+cask "caskroom/fonts/font-source-code-pro"
+cask "caskroom/versions/dash3"
+cask "caskroom/versions/google-chrome-canary"
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Monosnap", id: 540348655
+mas "Moom", id: 419330170
+mas "Movist", id: 461788075
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "PopClip", id: 445189367
+mas "Table Tool", id: 1122008420
+mas "The Unarchiver", id: 425424353
+mas "Todoist", id: 585829637
+mas "Xcode", id: 497799835

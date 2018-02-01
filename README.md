@@ -1,8 +1,17 @@
 # Setup
 
+## Run regularly
+
+### Week
+```
+brew upgrade
+brew cleanup
+``` 
+
 ## Meta
 ```
 git clone git@github.com:strajk/setup $HOME/Code/setup
+ln -s $HOME/Code/setup/home/.* $HOME
 ```
 
 ## Package manager
@@ -11,37 +20,7 @@ git clone git@github.com:strajk/setup $HOME/Code/setup
 
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew tap caskroom/cask
-brew tap caskroom/versions
-brew tap caskroom/fonts
-brew install zsh-completions
-```
-
-- [Available packages via Homebrew](http://brewformulas.org/)
-- [Avalaible apps via Homebrew-cask](https://github.com/caskroom/homebrew-cask/tree/master/Casks)
-- [Avalaible apps via Homebrew-cask-versions](https://github.com/caskroom/homebrew-versions/tree/master/Casks)
-
-Basic packages
-
-```bash
-brew install hh # shell history browser / searcher
-brew install tree # print directory structure
-brew install mtr # network diagnostic
-brew install wget
-brew install imagemagick
-brew install graphicsmagic
-brew install nvm # Node version manager
-brew install watchman # Watch files and take action when they change
-brew install mas # Automate Mac AppStore
-brew install python3
-brew install git-extras
-```
-
-## Dropbox & Google Drive
-
-```bash
-brew cask install dropbox
-brew cask install google-drive
+brew bundle
 ```
 
 **!!! Wait for Dropbox to completely sync before next steps !!! Needed for syncing of succeeding apps.**
@@ -52,6 +31,7 @@ Dotfiles
 
 ```bash
 ln -s ~/Dropbox/Sync/home/.* $HOME
+chmod og-rw ~/.netrc
 ```
 
 _(Syncying `.zshrc` is covered later, after installing `oh-my-zsh`)_
@@ -177,7 +157,8 @@ Global packages
 npm i -g grunt-cli
 npm i -g node-inspector
 npm i -g browser-sync
-npm i -g elm elm-format``
+npm i -g elm elm-format
+npm i -g speed-test
 ```
 
 Meteor
@@ -227,6 +208,13 @@ brew cask install ngrok
 ```
 brew cask install keybase
 ```
+
+### [keycastr](https://github.com/sdeken/keycastr)
+
+```
+brew cask install keycastr
+```
+
 
 ### [1Password](https://agilebits.com/onepassword)
 

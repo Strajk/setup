@@ -1,27 +1,17 @@
-# TODO: Clean this whole mess one day
-
 export ZSH=$HOME/.oh-my-zsh
 
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-export NVM_DIR=~/.nvm
-
-export ZSH_THEME="theunraveler"
+export NVM_DIR=$HOME/.nvm
 
 # hstr
 # https://github.com/dvorka/hstr
 # ---
-export HISTFILE=~/.zsh_history
+export HISTFILE=$HOME/.zsh_history
 export HH_CONFIG=hicolor
 
 
 # Plugins
 # ---
-plugins=(git git-flow github brew osx work virtualenv virtualenvwrapper nvm ruby rbenv git-extras git-extra-commands)
-
-eval "$(pyenv init -)"
+plugins=(git git-flow github brew osx work ruby rbenv git-extras git-extra-commands)
 
 
 # Action!
@@ -50,4 +40,8 @@ cdf() {
 
 # Adjust PATH
 # ---
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/Users/strajk/bin:/usr/local/sbin:$PATH"
+
+source "/Users/strajk/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+
+export ZSH_THEME="spaceship"

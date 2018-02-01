@@ -1,0 +1,10 @@
+[user]
+	name = Strajk
+	email = strajk@me.com
+[core]
+	excludesfile = /Users/strajk/.gitignore_global
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
