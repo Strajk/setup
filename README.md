@@ -10,8 +10,9 @@ brew cleanup
 
 ## Meta
 ```
-git clone git@github.com:strajk/setup $HOME/Code/setup
-ln -s $HOME/Code/setup/home/.* $HOME
+git clone https://github.com/Strajk/setup.git $HOME/Code/setup
+# should prompt to install developer tools
+ln -s $HOME/Code/setup/home/* $HOME
 ```
 
 ## Package manager
@@ -20,7 +21,7 @@ ln -s $HOME/Code/setup/home/.* $HOME
 
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew bundle
+brew bundle # install everything from ~/Brewfile
 ```
 
 **!!! Wait for Dropbox to completely sync before next steps !!! Needed for syncing of succeeding apps.**
