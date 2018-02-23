@@ -1,14 +1,17 @@
 cask_args appdir: "/Applications"
 tap "homebrew/core"
 tap "homebrew/bundle"
+tap "homebrew/services"
 tap "caskroom/fonts"
 tap "caskroom/versions"
 tap "caskroom/cask"
+
 brew "git-extras"
 brew "hh"
 brew "imagemagick"
 brew "mas"
 brew "mongodb"
+brew "redis"
 brew "mtr"
 brew "nmap"
 brew "node"
@@ -18,19 +21,38 @@ brew "watchman"
 brew "wget"
 brew "wireshark", link: false
 brew "yarn"
+
+cask "setapp"
+# Then /usr/local/Caskroom/setapp/latest/Install Setapp.app
+
 cask "1password"
-cask "adobe-creative-cloud"
 cask "alfred"
 cask "appcleaner"
-cask "atom"
 cask "caprine"
+
 cask "caption"
+
 cask "charles"
 cask "dropbox"
 cask "evernote"
-cask "firefox"
+
+cask "atom"
 cask "gitup"
+
+cask "adapter"
+cask "imageoptim"
+
+# Browsers
 cask "google-chrome"
+cask "caskroom/versions/google-chrome-canary"
+cask "firefox"
+cask "opera"
+cask "opera-neon"
+cask "brave"
+cask "torbrowser"
+
+cask "aerial" 
+
 cask "google-backup-and-sync"
 cask "graphiql"
 cask "hyper"
@@ -40,18 +62,23 @@ cask "keyboard-maestro"
 cask "ngrok"
 cask "postgres"
 cask "pycharm"
+
+cask "adobe-creative-cloud"
 cask "sketch"
+cask "abstract"
+
 cask "slack"
 cask "sourcetree"
 cask "transmission"
 cask "virtualbox"
 cask "vlc"
+
 cask "caskroom/fonts/font-open-sans"
 cask "caskroom/fonts/font-roboto"
 cask "caskroom/fonts/font-roboto-mono"
 cask "caskroom/fonts/font-source-code-pro"
 cask "caskroom/versions/dash3"
-cask "caskroom/versions/google-chrome-canary"
+
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Monosnap", id: 540348655
@@ -64,3 +91,4 @@ mas "Table Tool", id: 1122008420
 mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
 mas "Xcode", id: 497799835
+mas "Amphetamine", id: 937984704
