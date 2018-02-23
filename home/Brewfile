@@ -15,12 +15,15 @@ brew "redis"
 brew "mtr"
 brew "nmap"
 brew "node"
+brew "node@8"
 brew "nvm"
 brew "python3"
 brew "watchman"
 brew "wget"
 brew "wireshark", link: false
 brew "yarn"
+brew "awscli"
+brew "vault"
 
 cask "setapp"
 # Then /usr/local/Caskroom/setapp/latest/Install Setapp.app
@@ -29,6 +32,13 @@ cask "1password"
 cask "alfred"
 cask "appcleaner"
 cask "caprine"
+cask "bitbar"
+cask "boxer"
+cask "docker"
+cask "kitematic"
+cask "skype"
+cask "visual-studio-code"
+cask "webstorm"
 
 cask "caption"
 
@@ -92,3 +102,4 @@ mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
 mas "Xcode", id: 497799835
 mas "Amphetamine", id: 937984704
+mas "NordVPN", id: 1116599239

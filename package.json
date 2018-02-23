@@ -1,0 +1,14 @@
+{
+  "name": "setup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Strajk/setup.git",
+  "author": "Strajk <strajk@me.com>",
+  "license": "MIT",
+  "scripts": {
+    "snippets": "yaml2json --save --pretty --watch snippets/*.yml"
+  },
+  "devDependencies": {
+    "yamljs": "^0.3.0"
+  }
+}

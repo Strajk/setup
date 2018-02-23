@@ -1,5 +1,11 @@
 # Setup
 
+## Inbox
+
+```
+ln -s $HOME/Code/setup/snippets "$HOME/Library/Application Support/Code/User/"
+```
+
 ## Run regularly
 
 ### Week
@@ -12,7 +18,7 @@ brew cleanup
 ```
 git clone https://github.com/Strajk/setup.git $HOME/Code/setup
 # should prompt to install developer tools
-ln -s $HOME/Code/setup/home/* $HOME
+ln -s $HOME/Code/setup/home/.* $HOME
 ```
 
 ## Package manager
@@ -22,6 +28,13 @@ ln -s $HOME/Code/setup/home/* $HOME
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew bundle # install everything from ~/Brewfile
+
+brew services start postgresql
+brew services start rabbitmq
+brew services start redis
+sudo brew services start dnsmasq
+
+brew services list
 ```
 
 **!!! Wait for Dropbox to completely sync before next steps !!! Needed for syncing of succeeding apps.**
@@ -104,12 +117,10 @@ defaults write com.apple.dashboard mcx-disabled -boolean true
 - Disable CapsLock
 - Tap to click
 
-## Fonts
+## All my repos
 
-```bash
-brew cask install font-source-code-pro
-brew cask install font-open-sans
-brew cask install font-roboto
+```
+curl -u strajk -s https://api.github.com/users/strajk/repos?per_page=200 | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each { |repo| %x[git clone #{repo["ssh_url"]} ]}'
 ```
 
 ## Oh-my-zsh
