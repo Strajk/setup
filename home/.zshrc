@@ -42,6 +42,6 @@ cdf() {
 # ---
 export PATH="/Users/strajk/bin:/usr/local/sbin:$PATH"
 
-source "/Users/strajk/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+source "/Users/strajk/.oh-my-zsh/custom/themes/strajk.zsh-theme"
 
-export ZSH_THEME="spaceship"
+export ZSH_THEME="strajk"
