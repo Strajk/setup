@@ -134,7 +134,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 Replace `custom` folder with synced from Dropbox:
 
 ```bash
-rm -rf "$HOME/.oh-my-zsh/custom" && ln -s "$HOME/Dropbox/Sync/zsh-custom" "$HOME/.oh-my-zsh/custom"
+rm -rf "$HOME/.oh-my-zsh/custom" && ln -s "$HOME/Code/setup/home/.oh-my-zsh/custom" "$HOME/.oh-my-zsh/custom"
 ```
 
 Replace `.zshrc` with my synced from Dropbox:
