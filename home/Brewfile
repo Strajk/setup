@@ -24,6 +24,7 @@ brew "wireshark", link: false
 brew "yarn"
 brew "awscli"
 brew "vault"
+cask "java"
 
 cask "setapp"
 # Then /usr/local/Caskroom/setapp/latest/Install Setapp.app
