@@ -1,3 +1,7 @@
+# Secrets
+# ---
+source $HOME/.secrets
+
 export ZSH=$HOME/.oh-my-zsh
 
 export NVM_DIR=$HOME/.nvm
