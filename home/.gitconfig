@@ -2,6 +2,9 @@
 	name = Strajk
 	email = strajk@me.com
 
+[core]
+	excludesfile = ~/.gitignore_global
+	
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
