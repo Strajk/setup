@@ -24,10 +24,23 @@ brew "wireshark", link: false
 brew "yarn"
 brew "awscli"
 brew "vault"
+
+# Quicklook plugins
+brew "qlcolorcode" # Source code with syntax highlighting
+brew "qlstephen" # Plain text without or with unknown file extension
+brew "qlmarkdown"
+brew "quicklook-json" 
+brew "qlimagesize"
+brew "webpquicklook"
+brew "suspicious-package" # Contents of a standard Apple installer package
+brew "quicklookase" # Adobe ASE Color Swatches
+brew "qlvideo"
+
 cask "java"
 
-cask "setapp"
-# Then /usr/local/Caskroom/setapp/latest/Install Setapp.app
+cask "santa"
+
+cask "betterzip"
 
 cask "1password"
 cask "alfred"
@@ -99,7 +112,6 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "PopClip", id: 445189367
 mas "Table Tool", id: 1122008420
-mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
 mas "Xcode", id: 497799835
 mas "Amphetamine", id: 937984704
