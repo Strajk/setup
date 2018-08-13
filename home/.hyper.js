@@ -20,7 +20,7 @@ module.exports = {
     'hyperterm-tabs',
     'hyperlinks',
     'hyper-search',
-    'hyper-snazzy'
+    'hyper-snazzy' // theme
   ],
 
   keymaps: {}
