@@ -15,7 +15,7 @@ export HH_CONFIG=hicolor
 
 # Plugins
 # ---
-plugins=(git git-flow github brew osx work ruby rbenv git-extras git-extra-commands)
+plugins=(git git-flow github brew osx work ruby rbenv git-extras git-extra-commands dotenv)
 
 
 # Action!

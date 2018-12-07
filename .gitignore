@@ -1,2 +1,5 @@
 .idea/
 node_modules/
+apps/Code/User/snippets
+apps/Code/User/workspaceStorage
+apps/Code/User/vsicons.settings.json

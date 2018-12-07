@@ -8,7 +8,7 @@ ln -s $HOME/Code/setup/snippets "$HOME/Library/Application Support/Code/User/"
 
 ## Run regularly
 
-### Week
+### Weekly
 ```
 brew upgrade
 brew cleanup
@@ -18,23 +18,10 @@ brew cleanup
 ```
 git clone https://github.com/Strajk/setup.git $HOME/Code/setup
 # should prompt to install developer tools
+
 ln -s $HOME/Code/setup/home/.* $HOME
-```
 
-## Package manager
-
-[Homebrew](http://brew.sh) for packages, [Homebrew-cask](https://caskroom.github.io/) for apps.
-
-```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew bundle # install everything from ~/Brewfile
-
-brew services start postgresql
-brew services start rabbitmq
-brew services start redis
-sudo brew services start dnsmasq
-
-brew services list
+./public_static_void_main.sh
 ```
 
 **!!! Wait for Dropbox to completely sync before next steps !!! Needed for syncing of succeeding apps.**
@@ -166,11 +153,10 @@ nvm current
 Global packages
 
 ```bash
-npm i -g grunt-cli
 npm i -g node-inspector
 npm i -g browser-sync
-npm i -g elm elm-format
 npm i -g speed-test
+npm i -g eslint
 ```
 
 Meteor
@@ -648,17 +634,11 @@ brew cask install webstorm-eap
 brew cask install pycharm
 ```
 
-### Versatile text editor: [Atom](https://atom.io)
+### Versatile text editor
+[Visual Studio Code](https://code.visualstudio.com/)
 
 ```bash
-brew cask install atom
-```
-
-Preferences
-
-```bash
-ln -s ~/Dropbox\ \(Personal\)/sync/apps/atom/config.cson ~/.atom/
-ln -s ~/Dropbox\ \(Personal\)/sync/apps/atom/keymap.cson ~/.atom/
+ln -s ~/Code/setup/apps/Code/User "$HOME/Library/Application Support/Code/"
 ```
 
 ### Database UI: [Navicat](https://www.navicat.com)

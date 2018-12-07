@@ -1,0 +1,26 @@
+#!/bin/bash
+
+type_exists() {
+    if [ $(type -P $1) ]; then
+      return 0
+    fi
+    return 1
+}
+
+# Logging
+# ===
+e_header() {
+    printf "\n$(tput setaf 7)%s$(tput sgr0)\n" "$@"
+}
+
+e_success() {
+    printf "$(tput setaf 64)✓ %s$(tput sgr0)\n" "$@"
+}
+
+e_error() {
+    printf "$(tput setaf 1)x %s$(tput sgr0)\n" "$@"
+}
+
+e_warning() {
+    printf "$(tput setaf 136)! %s$(tput sgr0)\n" "$@"
+}

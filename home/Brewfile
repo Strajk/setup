@@ -6,6 +6,20 @@ tap "caskroom/fonts"
 tap "caskroom/versions"
 tap "caskroom/cask"
 
+# TODO
+# ===
+# DaVinci Resolve
+# Final Cut Pro
+# LRTimelapse 5
+# Mouseposé
+# Notion
+# qbittorrent
+# Renamer
+# ScreenFlow
+# YubiKey Manager
+
+# Essentials
+# ===
 brew "git-extras"
 brew "hh"
 brew "imagemagick"
@@ -26,6 +40,7 @@ brew "awscli"
 brew "vault"
 
 # Quicklook plugins
+# ===
 brew "qlcolorcode" # Source code with syntax highlighting
 brew "qlstephen" # Plain text without or with unknown file extension
 brew "qlmarkdown"
@@ -36,37 +51,79 @@ brew "suspicious-package" # Contents of a standard Apple installer package
 brew "quicklookase" # Adobe ASE Color Swatches
 brew "qlvideo"
 
+cask "forticlient"
+# VPN for work
+
+cask "commandq"
+
+cask "4k-stogram"
+# Preferences: Manual
+
 cask "java"
-
-cask "santa"
-
-cask "betterzip"
+# Preferences:
 
 cask "1password"
+# Preferences: iCloud
+
 cask "alfred"
+# Preferences:
+
 cask "appcleaner"
+# Preferences:
+
 cask "caprine"
+# Preferences:
+
 cask "bitbar"
+# Preferences:
+
 cask "boxer"
+# Preferences:
+
 cask "docker"
+# Preferences:
+
 cask "kitematic"
+# Preferences:
+
 cask "skype"
+# Preferences:
+
 cask "visual-studio-code"
+# Preferences: Sync via Gist
+
 cask "webstorm"
+# Preferences:
 
-cask "caption"
-
-cask "charles"
-cask "dropbox"
-cask "evernote"
+cask "datagrip"
+# Preferences:
 
 cask "atom"
+# Preferences:
+
 cask "gitup"
+# Preferences:
+
+cask "caption"
+# Preferences:
+
+cask "charles"
+# Preferences:
+
+cask "dropbox"
+# Preferences:
+
+cask "evernote"
+# Preferences:
 
 cask "adapter"
+# Preferences: Defaults
+
 cask "imageoptim"
+# Preferences: 
 
 # Browsers
+# ===
 cask "google-chrome"
 cask "caskroom/versions/google-chrome-canary"
 cask "firefox"
@@ -90,6 +147,7 @@ cask "pycharm"
 cask "adobe-creative-cloud"
 cask "sketch"
 cask "abstract"
+cask "astropad"
 
 cask "slack"
 cask "sourcetree"
@@ -104,15 +162,33 @@ cask "caskroom/fonts/font-source-code-pro"
 cask "caskroom/versions/dash3"
 
 mas "iMovie", id: 408981434
+
 mas "Keynote", id: 409183694
+
 mas "Monosnap", id: 540348655
+
 mas "Moom", id: 419330170
+
 mas "Movist", id: 461788075
+
 mas "Numbers", id: 409203825
+
 mas "Pages", id: 409201541
+
 mas "PopClip", id: 445189367
+
 mas "Table Tool", id: 1122008420
+
 mas "Todoist", id: 585829637
+
 mas "Xcode", id: 497799835
+
 mas "Amphetamine", id: 937984704
+# Preferences: Cannot find plist file :(
+# Menu Bar Image Click: Primary: Start/end session | Secondary: Show menu
+# Launch Amphetamine at login: yes
+# Appearance: Menu Bar image: Coffee Carafe
+# Appearance: Lower icon opacity when there is no active session
+
+
 mas "NordVPN", id: 1116599239
