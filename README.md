@@ -697,6 +697,23 @@ brew cask install caption
 
 --------------------------------------------------------------------------------
 
+## Default apps
+```bash
+# https://superuser.com/a/1092184
+duti -s $(osascript -e 'id of app "Preview"') .pdf all
+duti -s $(osascript -e 'id of app "Movist"') .mp3 all
+duti -s $(osascript -e 'id of app "Movist"') .m4b all
+duti -s $(osascript -e 'id of app "Movist"') .flac all
+duti -s $(osascript -e 'id of app "Movist"') .mp4 all
+duti -s $(osascript -e 'id of app "Movist"') .mkv all
+duti -s $(osascript -e 'id of app "Movist"') .avi all
+duti -s $(osascript -e 'id of app "Visual Studio Code"') .json all
+duti -s $(osascript -e 'id of app "Visual Studio Code"') .md all
+duti -s $(osascript -e 'id of app "Visual Studio Code"') .nfo all
+duti -s $(osascript -e 'id of app "Visual Studio Code"') .txt all
+duti -s $(osascript -e 'id of app "Visual Studio Code"') .srt all
+```
+
 ## Customize Dock
 
 ```bash

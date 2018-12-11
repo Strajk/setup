@@ -39,6 +39,7 @@ brew "wireshark", link: false
 brew "yarn"
 brew "awscli"
 brew "vault"
+brew "duti"
 
 # Quicklook plugins
 # ===
