@@ -17,6 +17,7 @@ tap "caskroom/cask"
 # Renamer
 # ScreenFlow
 # YubiKey Manager
+cask "postman"
 
 # Essentials
 # ===
@@ -44,12 +45,13 @@ brew "vault"
 brew "qlcolorcode" # Source code with syntax highlighting
 brew "qlstephen" # Plain text without or with unknown file extension
 brew "qlmarkdown"
-brew "quicklook-json" 
+brew "quicklook-json"
 brew "qlimagesize"
 brew "webpquicklook"
 brew "suspicious-package" # Contents of a standard Apple installer package
 brew "quicklookase" # Adobe ASE Color Swatches
 brew "qlvideo"
+# TODO: https://github.com/jaketmp/ePub-quicklook
 
 cask "forticlient"
 # VPN for work
@@ -92,11 +94,12 @@ cask "skype"
 cask "visual-studio-code"
 # Preferences: Sync via Gist
 
-cask "webstorm"
-# Preferences:
-
-cask "datagrip"
-# Preferences:
+cask "jetbrains-toolbox"
+# Install webstorm, pycharm and datagrip from toolbox
+# cask "webstorm"
+# cask "pycharm"
+# cask "datagrip"
+# Preferences: TODO
 
 cask "atom"
 # Preferences:
@@ -120,7 +123,7 @@ cask "adapter"
 # Preferences: Defaults
 
 cask "imageoptim"
-# Preferences: 
+# Preferences:
 
 # Browsers
 # ===
@@ -132,7 +135,7 @@ cask "opera-neon"
 cask "brave"
 cask "torbrowser"
 
-cask "aerial" 
+cask "aerial"
 
 cask "google-backup-and-sync"
 cask "graphiql"
@@ -142,7 +145,6 @@ cask "keybase"
 cask "keyboard-maestro"
 cask "ngrok"
 cask "postgres"
-cask "pycharm"
 
 cask "adobe-creative-cloud"
 cask "sketch"
