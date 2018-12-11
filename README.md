@@ -157,6 +157,8 @@ npm i -g node-inspector
 npm i -g browser-sync
 npm i -g speed-test
 npm i -g eslint
+npm i -g @vue/cli
+npm i -g jest
 ```
 
 Meteor
