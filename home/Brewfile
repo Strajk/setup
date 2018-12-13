@@ -95,11 +95,10 @@ cask "skype"
 cask "visual-studio-code"
 # Preferences: Sync via Gist
 
-cask "jetbrains-toolbox"
-# Install webstorm, pycharm and datagrip from toolbox
-# cask "webstorm"
-# cask "pycharm"
-# cask "datagrip"
+# cask "jetbrains-toolbox" # nope nope nope, lost patience with this piece of crap
+cask "webstorm"
+cask "pycharm"
+cask "datagrip"
 # Preferences: TODO
 
 cask "atom"
