@@ -9,6 +9,6 @@
     "snippets": "yaml2json --save --pretty --watch snippets/*.yml"
   },
   "devDependencies": {
-    "yamljs": "^0.3.0"
+    "yamljs": "0.3.0"
   }
 }
