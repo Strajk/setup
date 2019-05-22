@@ -1,0 +1,12 @@
+repository:
+  # name: repo-name
+  # description: description of repo
+  # homepage: https://example.github.io/
+
+  has_wiki: false
+
+  default_branch: master
+
+  allow_merge_commit: false
+  allow_squash_merge: false
+  allow_rebase_merge: true
