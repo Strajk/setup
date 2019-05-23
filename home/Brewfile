@@ -159,6 +159,7 @@ cask "vlc"
 
 cask "caskroom/fonts/font-open-sans"
 cask "caskroom/fonts/font-roboto"
+cask "caskroom/fonts/font-hack"
 cask "caskroom/fonts/font-roboto-mono"
 cask "caskroom/fonts/font-source-code-pro"
 cask "caskroom/versions/dash3"
