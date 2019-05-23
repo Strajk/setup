@@ -26,12 +26,24 @@ source $(brew --prefix nvm)/nvm.sh
 
 # Aliases
 # ---
+alias ~="cd ~"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
 alias venv="source venv/bin/activate"
-alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+alias brewup="brew update; brew upgrade; brew prune; brew cleanup; brew doctor"
+
+alias ws="webstorm ."
 
 
 # Commands
 # ---
+function md() {
+    mkdir $1 && cd $1;
+}
+
 cdf() {
     target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
     if [ "$target" != "" ]; then
