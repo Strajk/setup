@@ -10,8 +10,7 @@ ln -s $HOME/Code/setup/snippets "$HOME/Library/Application Support/Code/User/"
 
 ### Weekly
 ```
-brew upgrade
-brew cleanup
+brewup
 ``` 
 
 ## Meta
