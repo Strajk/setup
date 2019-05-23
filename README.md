@@ -714,6 +714,7 @@ duti -s $(osascript -e 'id of app "Visual Studio Code"') .md all
 duti -s $(osascript -e 'id of app "Visual Studio Code"') .nfo all
 duti -s $(osascript -e 'id of app "Visual Studio Code"') .txt all
 duti -s $(osascript -e 'id of app "Visual Studio Code"') .srt all
+duti -s $(osascript -e 'id of app "Table Tool"') .csv all
 ```
 
 ## Customize Dock
