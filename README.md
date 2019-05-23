@@ -751,36 +751,3 @@ done
 
 killall Dock
 ```
-
----
----
----
-
-# Offline setup
-
-## Longboard
-
-* [Restless Fishbowl 38](https://www.restlessboards.com/shop/longboards/fishbowl-38-beast-longboard/)
-* Trucks: Paris
-* Divine 72/78A
-
-## Bike
-
-* [Specialized Carve Expert 29](https://www.specialized.com/se/en/bike-archive/2013/carve/carveexpert/37829)
-	* FRAME: Specialized M4SL Aluminum, 29er frame w/ XC geometry
-	* FORK: RockShox Reba RL 29", 100mm travel
-	* HEADSET: Integrated 1-1/8" upper and 1-1/2" lower threadless, Campy-style, full cartridge bearings
-	* STEM: Specialized 3D forged 6061 alloy, 4 bolt clamp, 7º rise, 31.8mm
-	* HANDLEBARS: Flat bar, 6061 double butted alloy, 700mm wide, 10º backsweep, 4º upsweep, 31.8mm
-	* GRIPS: Specialized Body Geometry XCT, Kraton rubber w/ gel, closed end, 132mm, lock-on
-	* FRONT BRAKE: Avid Elixir 3R, hydraulic disc, G2 CleanSweep 180mm rotor
-	* REAR BRAKE: Avid Elixir 3R, hydraulic disc, G2 CleanSweep 160mm rotor
-	* BRAKE LEVERS: Avid Elixir 3R, hydraulic lever, tool-less reach adjust
-	* FRONT DERAILLEUR: SRAM X7, 10-speed 2X10, 34.9mm clamp
-	* REAR DERAILLEUR: Shimano Deore XT Shadow, 10-Speed, GS cage
-	* SHIFT LEVERS: Shimano Deore, 10-speed Rapidfire plus, SL type
-	* CASSETTE: SRAM PG 1030, 10-speed cassette, 11-36
-	* CHAIN: KMC X-10, 10-speed w/ reusable Missing Link
-	* BOTTOM BRACKET: SRAM GXP BB for 2pc, 73mm shell
-	* PEDALS: Alloy 1pc. body and cage, w/ reflectors, 9/16"
-	* RIMS: Carve SL Disc, 29", alloy double-wall, sleeve joint, 26mm, 32h
