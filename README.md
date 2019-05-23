@@ -159,6 +159,8 @@ npm i -g speed-test
 npm i -g eslint
 npm i -g @vue/cli
 npm i -g jest
+npm i -g yo
+npm i -g generator-express
 ```
 
 Meteor
