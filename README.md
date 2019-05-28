@@ -1,6 +1,8 @@
-# Setup
+<center>
+<h1>Setup</h1>
+</center>
 
-# Fonts
+## Fonts
 
 #### Sans-serif
 
