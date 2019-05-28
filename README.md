@@ -1,5 +1,31 @@
 # Setup
 
+# Fonts
+
+#### Sans-serif
+
+- [Open Sans](https://fonts.google.com/specimen/Open+Sans)
+- [Roboto](https://fonts.google.com/specimen/Roboto)
+
+#### Monospace
+
+- [Hack](https://sourcefoundry.org/hack/)
+- [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono)
+- [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)
+
+<details><summary>Installation</summary>
+
+```bash <!-- >home/Brewfile#fonts -->
+cask "caskroom/fonts/font-open-sans"
+cask "caskroom/fonts/font-roboto"
+
+cask "caskroom/fonts/font-hack"
+cask "caskroom/fonts/font-roboto-mono"
+cask "caskroom/fonts/font-source-code-pro"
+```
+
+</details>
+
 ## Inbox
 
 ```
