@@ -275,57 +275,71 @@ Preferences
 
 ### [Alfred](https://www.alfredapp.com/)
 
-```
+<details><summary>Installation</summary>
+
+```bash <!-- >home/Brewfile#apps -->
 brew cask install alfred
 ```
 
-#### Workflows
-* [DenteAzul](https://www.google.cz/search?q=site%3Apackal.org+DenteAzul)
-* [Call or SMS contact](https://www.google.cz/search?q=site%3Apackal.org+Call+or+SMS+contact)
-* [RecentDownloads](https://www.google.cz/search?q=site%3Apackal.org+RecentDownloads)
-* [Airport Search](https://www.google.cz/search?q=site%3Apackal.org+Airport+Search)
-* [Reading List](https://www.google.cz/search?q=site%3Apackal.org+Reading+List)
-* [Resize Image](https://www.google.cz/search?q=site%3Apackal.org+Resize+Image)
-* [Restore Moom snapshot](https://www.google.cz/search?q=site%3Apackal.org+Restore+Moom+snapshot)
-* [Toggle Wifi](https://www.google.cz/search?q=site%3Apackal.org+Toggle+Wifi)
-* [pinboard](https://www.google.cz/search?q=site%3Apackal.org+pinboard)
-* [Faker](https://www.google.cz/search?q=site%3Apackal.org+Faker)
-* [Encode / Decode (v1.8)](https://www.google.cz/search?q=site%3Apackal.org+Encode+/+Decode+(v1.8))
-* [ToggleRetinaResolution](https://www.google.cz/search?q=site%3Apackal.org+ToggleRetinaResolution)
-* [GitHub](https://www.google.cz/search?q=site%3Apackal.org+GitHub)
-* [Homebrew & Cask for Alfred](https://www.google.cz/search?q=site%3Apackal.org+Homebrew+&+Cask+for+Alfred)
-* [NotePlan Workflow](https://www.google.cz/search?q=site%3Apackal.org+NotePlan+Workflow)
-* [NightShift](https://www.google.cz/search?q=site%3Apackal.org+NightShift)
-* [Datetime Format Converter](https://www.google.cz/search?q=site%3Apackal.org+Datetime+Format+Converter)
-* [FormatSize](https://www.google.cz/search?q=site%3Apackal.org+FormatSize)
-* [Top](https://www.google.cz/search?q=site%3Apackal.org+Top)
-* [TimeZones](https://www.google.cz/search?q=site%3Apackal.org+TimeZones)
-* [npms](https://www.google.cz/search?q=site%3Apackal.org+npms)
-* [LinkClean](https://www.google.cz/search?q=site%3Apackal.org+LinkClean)
-* [Amphetamine Switch](https://www.google.cz/search?q=site%3Apackal.org+Amphetamine+Switch)
-* [Numi](https://www.google.cz/search?q=site%3Apackal.org+Numi)
-* [GitLab](https://www.google.cz/search?q=site%3Apackal.org+GitLab)
-* [What's My IP](https://www.google.cz/search?q=site%3Apackal.org+What's+My+IP)
-* [Packal Updater](https://www.google.cz/search?q=site%3Apackal.org+Packal+Updater)
-* [NewFile](https://www.google.cz/search?q=site%3Apackal.org+NewFile)
-* [Install apps [1.11]](https://www.google.cz/search?q=site%3Apackal.org+Install+apps+[1.11])
-* [Kill Process](https://www.google.cz/search?q=site%3Apackal.org+Kill+Process)
-* [Flush DNS](https://www.google.cz/search?q=site%3Apackal.org+Flush+DNS)
-* [RespondQuickly](https://www.google.cz/search?q=site%3Apackal.org+RespondQuickly)
-* [Source Tree](https://www.google.cz/search?q=site%3Apackal.org+Source+Tree)
-* [Pocket for Alfred](https://www.google.cz/search?q=site%3Apackal.org+Pocket+for+Alfred)
-* [Relative Dates](https://www.google.cz/search?q=site%3Apackal.org+Relative+Dates)
+</details>
 
-###### Script to get workflows
+#### Workflows
+
+* [Airport Search](http://www.packal.org/workflow/airport-search), [repo](https://github.com/jeeftor/alfredAirports)
+* Alfred Maestro, [repo](https://github.com/iansinnott/alfred-maestro) – Run Keyboard Maestro macros
+* [Audio Switch](http://www.packal.org/workflow/audio-switch), [repo](https://github.com/sampayo/Alfred-WorkFlows/tree/master/Audio%20Switch) – Switch between audio inputs & outputs
+* Bit.ly Link - Generate Bit.ly shortlinks, auth supported
+* [Call or SMS contact](http://www.packal.org/workflow/call-or-sms-contact), [repo](https://github.com/amoose136/call_or_sms_contact)
+* [Colors](http://www.packal.org/workflow/colors), [repo](https://github.com/TylerEich/Alfred-Extras/tree/master/Workflows) – Color tools
+* [Datetime Format Converter](http://www.packal.org/workflow/datetime-format-converter)
+* [Encode / Decode](https://www.google.cz/search?q=site%3Apackal.org+Encode+/+Decode+(v1.8))
+* [Faker](http://www.packal.org/workflow/alfred-faker)
+* [Flush DNS](http://www.packal.org/workflow/flush-dns)
+* [GitHub](http://www.packal.org/workflow/github), [repo](https://github.com/gharlan/alfred-github-workflow)
+* [GitLab](http://www.packal.org/workflow/gitlab), [repo](https://github.com/lukewaite/alfred-gitlab)
+* [Homebrew & Cask for Alfred](http://www.packal.org/workflow/homebrew-and-cask-alfred), [repo](https://github.com/fniephaus/alfred-homebrew)
+* [HTTP Status Code](http://www.packal.org/workflow/http-status-codes), [repo](https://github.com/ma3574/alfred-http-status-codes)
+* [Install apps](http://www.packal.org/workflow/install-app)
+* [Kill Process](http://www.packal.org/workflow/kill-process), [repo](https://github.com/ngreenstein/alfred-process-killer)
+* [Look up Lyrics of Current Song on Rap Genius](http://www.packal.org/workflow/find-lyrics-current-song-rap-genius)
+* [Lorem Ipsum](http://www.packal.org/workflow/lorem-ipsum)
+* [newdoc](http://www.packal.org/workflow/newdoc)
+* [NewFile](http://www.packal.org/workflow/newfile)
+* [NightShift](http://www.packal.org/workflow/nightshift)
+* [Open in Chrome](http://www.packal.org/workflow/alfred-chrome)
+* [Package Managers](http://www.packal.org/workflow/package-managers)
+* [Packal Updater](http://www.packal.org/workflow/packal-updater)
+* [Pocket for Alfred](http://www.packal.org/workflow/pocket-alfred)
+* [portkiller](http://www.packal.org/workflow/portkiller)
+* Recent Items
+* [RecentDownloads](http://www.packal.org/workflow/recentdownloads)
+* [Relative Dates](http://www.packal.org/workflow/relative-dates)
+* [Resize Image](http://www.packal.org/workflow/resize-image)
+* [Restore Moom snapshot](http://www.packal.org/workflow/restore-moom-snapshot)
+* [Things](http://www.packal.org/workflow/things)
+* [Toggle Wifi](http://www.packal.org/workflow/toggle-wifi)
+* ToggleRetinaResolution
+* [Urban Dictionary](http://www.packal.org/workflow/urban-dictionary)
+* [What's My IP](http://www.packal.org/workflow/whats-my-ip)
+
+#### Workflows wanted
+
+* [SearchLink](https://brettterpstra.com/projects/searchlink/)
+
+
+<details><summary>Script to get workflows</summary>
+
 ```bash
-for f in ~/Dropbox\ \(Personal\)/Sync/apps/Alfred/Alfred.alfredpreferences/workflows/**/info.plist
+for f in ~/Dropbox/Sync/apps/Alfred/Alfred.alfredpreferences/workflows/**/info.plist
 do
 	ff=${f%.*}
 	name=$(defaults read "$ff" name)
 	link="https://www.google.cz/search?q=site%3Apackal.org+${name// /+}"
-	echo "* [$name]($link)"
+	echo "– [$name]($link)"
 done
 ```
+
+</details>
 
 
 #### Preferences

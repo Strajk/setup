@@ -61,3 +61,7 @@ export PATH="/Users/strajk/bin:/usr/local/sbin:$PATH"
 source "/Users/strajk/.oh-my-zsh/custom/themes/strajk.zsh-theme"
 
 export ZSH_THEME="strajk"
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
