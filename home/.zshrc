@@ -15,7 +15,7 @@ export HH_CONFIG=hicolor
 
 # Plugins
 # ---
-plugins=(git git-flow github brew osx ruby rbenv git-extras dotenv)
+plugins=(git git-flow github brew osx ruby rbenv git-extras)
 
 
 # Action!
@@ -60,5 +60,7 @@ export PATH="/Users/strajk/bin:/usr/local/sbin:$PATH"
 
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
+
+eval "$(direnv hook zsh)"
 
 prompt spaceship

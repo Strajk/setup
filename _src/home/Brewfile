@@ -39,6 +39,7 @@ brew "yarn"
 brew "awscli"
 brew "vault"
 brew "duti"
+brew "direnv"
 
 # Quicklook plugins
 # ===
