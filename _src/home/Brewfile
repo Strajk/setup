@@ -57,7 +57,9 @@ brew "qlvideo"
 cask "forticlient"
 # VPN for work
 
-cask "commandq"
+cask "karabiner-elements"
+# Preferences: CapsLock -> f19
+# Preferences: Quit application by pressing command-q twice
 
 cask "4k-stogram"
 # Preferences: Manual
