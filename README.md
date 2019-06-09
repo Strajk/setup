@@ -188,6 +188,7 @@ npm i -g @vue/cli
 npm i -g jest
 npm i -g yo
 npm i -g generator-express
+npm i -g spaceship-prompt
 ```
 
 Meteor
@@ -278,7 +279,7 @@ Preferences
 <details><summary>Installation</summary>
 
 ```bash <!-- >home/Brewfile#apps -->
-brew cask install alfred
+cask "alfred"
 ```
 
 </details>
@@ -536,6 +537,19 @@ brew cask install firefox
 ```bash
 mas install `mas search things | awk '{ print $1 }'`
 ```
+
+### Notion
+
+Primary notes app
+
+<details><summary>Installation</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "notion"
+```
+
+</details>
+
 
 ### Evernote
 

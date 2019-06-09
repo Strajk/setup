@@ -15,7 +15,7 @@ export HH_CONFIG=hicolor
 
 # Plugins
 # ---
-plugins=(git git-flow github brew osx work ruby rbenv git-extras git-extra-commands dotenv)
+plugins=(git git-flow github brew osx ruby rbenv git-extras dotenv)
 
 
 # Action!
@@ -58,10 +58,7 @@ cdf() {
 # ---
 export PATH="/Users/strajk/bin:/usr/local/sbin:$PATH"
 
-source "/Users/strajk/.oh-my-zsh/custom/themes/strajk.zsh-theme"
-
-export ZSH_THEME="strajk"
-
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
+
 prompt spaceship

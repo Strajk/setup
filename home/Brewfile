@@ -156,6 +156,9 @@ cask "transmission"
 cask "virtualbox"
 cask "vlc"
 
+cask "alfred"
+cask "notion"
+
 cask "caskroom/fonts/font-open-sans"
 cask "caskroom/fonts/font-roboto"
 
