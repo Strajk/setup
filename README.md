@@ -5,13 +5,19 @@
 </details>
 
 ## Meta
-```
-git clone https://github.com/Strajk/setup.git $HOME/Code/setup
-# should prompt to install developer tools
 
+```
+# clone this repo
+git clone https://github.com/Strajk/setup.git $HOME/Code/setup
+
+# link dotfiles
 ln -s $HOME/Code/setup/home/.* $HOME
 
-./public_static_void_main.sh
+# install Homebrew
+ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+
+# install everything from ~/Brewfile
+brew bundle 
 ```
 
 **!!! Wait for Dropbox to completely sync before next steps !!! Needed for syncing of succeeding apps.**
