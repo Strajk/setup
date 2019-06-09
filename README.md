@@ -143,17 +143,6 @@ curl -u strajk -s https://api.github.com/users/strajk/repos?per_page=200 | ruby 
 
 ```bash
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
-
-Replace `custom` folder with synced from Dropbox:
-
-```bash
-rm -rf "$HOME/.oh-my-zsh/custom" && ln -s "$HOME/Code/setup/home/.oh-my-zsh/custom" "$HOME/.oh-my-zsh/custom"
-```
-
-Replace `.zshrc` with my synced from Dropbox:
-
-```bash
 rm -f "$HOME/.zshrc" && ln -s "$HOME/Code/setup/.zshrc" $HOME
 ```
 
