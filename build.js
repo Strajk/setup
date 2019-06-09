@@ -22,7 +22,7 @@ codeblocks.forEach(codeblock => {
   _.update(
     COLLECTION,
     [file, section],
-    val => (val || "") + codeblock.text,
+    val => (val || "") + codeblock.text + "\n",
   )
 })
 
@@ -34,7 +34,7 @@ _.forEach(COLLECTION, (sections, file) => {
       const results = replace.sync({
         files: file,
         from: new RegExp(`{{{ ${section} }}}`),
-        to: content,
+        to: content.trim(),
       })
       console.log("Replacement results:", results)
     } catch (err) {
