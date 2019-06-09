@@ -2,7 +2,7 @@ module.exports = {
   config: {
     updateChannel: 'stable',
     fontSize: 12,
-    fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: 'Hack, Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     cursorShape: 'BEAM',
     cursorBlink: true,
