@@ -4,13 +4,6 @@
 
 </details>
 
-## Run regularly
-
-### Weekly
-```
-brewup
-``` 
-
 ## Meta
 ```
 git clone https://github.com/Strajk/setup.git $HOME/Code/setup
@@ -793,3 +786,10 @@ defaults write com.apple.dashboard mcx-disabled -boolean true
 ```
 ln -s $HOME/Code/setup/snippets "$HOME/Library/Application Support/Code/User/"
 ```
+
+# Run regularly
+
+### Weekly
+```
+brewup
+``` 
