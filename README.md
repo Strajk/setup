@@ -2,22 +2,20 @@
 <h1>Setup</h1>
 </center>
 
-</details>
-
 ## Meta
 
 ```
-# clone this repo
+# Clone this repo
 git clone https://github.com/Strajk/setup.git $HOME/Code/setup
 
-# link dotfiles
-ln -s $HOME/Code/setup/home/.* $HOME
+# Link dotfiles
+ln -s $HOME/Code/setup/home/* $HOME
 
-# install Homebrew
-ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+# Install Homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# install everything from ~/Brewfile
-brew bundle 
+# Install everything from ~/Brewfile
+brew bundle
 ```
 
 **!!! Wait for Dropbox to completely sync before next steps !!! Needed for syncing of succeeding apps.**

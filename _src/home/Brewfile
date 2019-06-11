@@ -12,11 +12,12 @@ tap "caskroom/cask"
 # Final Cut Pro
 # LRTimelapse 5
 # Mouseposé
-# qbittorrent
-# Renamer
 # ScreenFlow
 # YubiKey Manager
+# Folding text
+# ShortcutDetective
 cask "postman"
+
 
 # Essentials
 # ===
@@ -54,15 +55,24 @@ brew "quicklookase" # Adobe ASE Color Swatches
 brew "qlvideo"
 # TODO: https://github.com/jaketmp/ePub-quicklook
 
+# Utils
+# ===
+
+# HandBrake
+# Vill Q
+# TeamViewer
+# Paparazzi!
+# Notion
+# zoom.us
+# Marked 2
+# Clear
+# Insomnia
+
 cask "forticlient"
-# VPN for work
 
 cask "karabiner-elements"
 # Preferences: CapsLock -> f19
 # Preferences: Quit application by pressing command-q twice
-
-cask "4k-stogram"
-# Preferences: Manual
 
 cask "java"
 # Preferences:
@@ -77,9 +87,6 @@ cask "appcleaner"
 # Preferences:
 
 cask "caprine"
-# Preferences:
-
-cask "bitbar"
 # Preferences:
 
 cask "boxer"
@@ -148,7 +155,6 @@ cask "keyboard-maestro"
 cask "ngrok"
 cask "postgres"
 
-cask "adobe-creative-cloud"
 cask "sketch"
 cask "abstract"
 cask "astropad"
@@ -183,9 +189,9 @@ mas "PopClip", id: 445189367
 
 mas "Table Tool", id: 1122008420
 
-mas "Todoist", id: 585829637
-
 mas "Xcode", id: 497799835
+
+mas "Apple Configurator 2", id: 1037126344
 
 mas "Amphetamine", id: 937984704
 # Preferences: Cannot find plist file :(
