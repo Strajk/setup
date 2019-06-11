@@ -2,71 +2,69 @@
 <h1>Setup</h1>
 </center>
 
-## Meta
+## Preparation
 
-```
-# Clone this repo
-git clone https://github.com/Strajk/setup.git $HOME/Code/setup
+#### Clone this repo
 
-# Link dotfiles
-ln -s $HOME/Code/setup/home/* $HOME
+`git clone https://github.com/Strajk/setup.git $HOME/Code/setup`
 
-# Install Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#### Link dotfiles
 
-# Install everything from ~/Brewfile
-brew bundle
-```
+`ln -s $HOME/Code/setup/home/* $HOME`
 
-**!!! Wait for Dropbox to completely sync before next steps !!! Needed for syncing of succeeding apps.**
+#### Install Homebrew
 
-## Sync Home folder
+`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
-Dotfiles
+#### Install everything from [`~/Brewfile`](home/Brewfile)
+
+`brew bundle` **Just wait & enter password when prompted.**
+
+
+#### Launch 1Password
+
+Select iCloud as Sync option.
+
+#### Launch Amphetamine
+
+Enable it to prevent Mac from sleeping during syncing Dropbox in the next step.
+
+#### Launch Dropbox
+
+Let it sync completely before continuing to the next steps.
+
+#### Sync Home folder
+
+`ln -s ~/Dropbox/Sync/home/.* $HOME`
+
+#### Repair permission
 
 ```bash
-ln -s ~/Dropbox/Sync/home/.* $HOME
-chmod og-rw ~/.netrc
-```
-
-_(Syncying `.zshrc` is covered later, after installing `oh-my-zsh`)_
-
-Repair `.ssh` permissions
-
-```bash
-sudo chmod 0600 ~/.ssh/*
+sudo chmod og-rw ~/.netrc
+sudo chmod 0400 ~/.ssh/*
 sudo chmod 0644 ~/.ssh/*.pub
 ```
 
-## All my repos
+#### Accept XCode License
 
-```
-curl -u strajk -s https://api.github.com/users/strajk/repos?per_page=200 | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each { |repo| %x[git clone #{repo["ssh_url"]} ]}'
-```
+`sudo xcodebuild -license accept`
 
-## Oh-my-zsh
+<center>
+  <hr />
+  <strong>Continue with setting up apps, one by one</strong>
+  <hr />
+</center>
 
-[ohmyz.sh](http://ohmyz.sh)
+## Dev environment
 
-```bash
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-rm -f "$HOME/.zshrc" && ln -s "$HOME/Code/setup/.zshrc" $HOME
-```
-
-## Node
-
-node
+### Node
 
 ```bash
 # List latest version of Node
 nvm ls-remote | tail
 
-# Install it
-nvm install v5.7.0
-
-# Use it and set it as default
-nvm use v5.7.0
-nvm alias default v5.7.0
+# Install it (it should use it & set as default automatically)
+nvm install v12.4.0
 
 # Make sure
 nvm list
@@ -87,8 +85,7 @@ npm i -g generator-express
 npm i -g spaceship-prompt
 ```
 
-
-## Ruby
+### Ruby
 
 ! Do not install rbenv via **homebrew**, didn't work for me and already spent more than a lot time debugging.
 
@@ -106,97 +103,197 @@ rbenv global 2.4.0
 
 if `BUILD FAILED` error occurs, run `xcode-select --install` - installs XCode Command line tools to `/Library/Developer/CommandLineTools/`
 
-## Fonts
+## General utilities
 
-#### Sans-serif
+### [Hyper](https://hyper.is/)
 
-- [Open Sans](https://fonts.google.com/specimen/Open+Sans)
-- [Roboto](https://fonts.google.com/specimen/Roboto)
+ℹ️ Electron-based terminal, easy configuration in one file, plugins in JavaScript.
 
-#### Monospace
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
 
-- [Hack](https://sourcefoundry.org/hack/)
-- [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono)
-- [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)
-
-<details><summary>Installation</summary>
-
-```bash <!-- >home/Brewfile#fonts -->
-cask "caskroom/fonts/font-open-sans"
-cask "caskroom/fonts/font-roboto"
-
-cask "caskroom/fonts/font-hack"
-cask "caskroom/fonts/font-roboto-mono"
-cask "caskroom/fonts/font-source-code-pro"
+```bash <!-- >home/Brewfile#apps -->
+cask "hyper"
 ```
 
+</details>
 
-# Apps
+⚙️ Preferences: [`~/.hyper.js`](`./home/.hyper.js`)
+
+
+### [Oh-my-zsh](http://ohmyz.sh)
+
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+rm -f "$HOME/.zshrc" && ln -s "$HOME/Code/setup/home/.zshrc" $HOME && source $HOME/.zshrc 
+```
 
 ## Utilities
 
-### [Keyboard maestro](http://www.keyboardmaestro.com/)
+### [Dropbox](https://www.dropbox.com/)
 
-```bash
-brew cask install keyboard-maestro
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "dropbox"
 ```
 
-Enable sync, from `~/Dropbox (Personal)/Sync/apps/Keyboard Maestro Macros.kmsync`
+</details>
+
+<details><summary> ⚙️ Preferences: manual</summary>
+
+* Do not link work account
+* Disable Screenshots
+* Disable Photos
+
+</details>
+
+### [Keyboard maestro](http://www.keyboardmaestro.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "keyboard-maestro"
+```
+
+</details>
+
+<details><summary> ⚙️ Preferences: `~/Dropbox/Sync/apps/Keyboard Maestro Macros.kmsync`</summary>
+
+* Enable Launch at login
+* Enable "Include Conflict Palette in Touch Bar" 
+
+</details>
+
+TODO: Share some generally useful macros
+
+### [Docker](https://www.docker.com/products/docker-desktop)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "docker"
+```
+
+</details>
 
 ### [Ngrok](https://ngrok.com/)
 
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "ngrok"
 ```
-brew cask install ngrok
-```
+
+</details>
 
 ### [Keybase](https://keybase.io/)
 
-```
-brew cask install keybase
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "keybase"
 ```
 
-### [keycastr](https://github.com/sdeken/keycastr)
+</details>
 
-```
-brew cask install keycastr
-```
+<details><summary> ⚙️ Preferences: Manual</summary>
 
+- Enable Keybase in Finder
+
+</details>
 
 ### [1Password](https://agilebits.com/onepassword)
 
-```
-brew cask install 1password
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "1password"
 ```
 
-```bash
-**Pref:** Security: Disable all auto-locking {>> I believe in OS security :) <<}
-**Pref:** Security: Enable automatic unlock
-**Pref:** Browsers: Install Browsers Extensions (Safari, Chrome, Firefox)
-**Pref:** Logins: Disable automatically submitting after filling
-**Pref:** Set keyboard shortcut for Showing 1Password mini
-**Pref:** Set keyboard shortcut for Filling login
+</details>
+
+<details><summary> ⚙️ Preferences</summary>
+
+- Security: Disable all auto-locking {>> I believe in OS security :) <<}
+- Security: Enable automatic unlock
+- Browsers: Install Browsers Extensions (Safari, Chrome, Firefox)
+- Logins: Disable automatically submitting after filling
+- Set keyboard shortcut for Showing 1Password mini
+- Set keyboard shortcut for Filling login
+
+</details>
+
+### [Karabiner](https://pqrs.org/osx/karabiner/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "karabiner-elements"
 ```
+
+</details>
+
+<details><summary> ⚙️ Preferences: manual</summary>
+
+- CapsLock -> f19
+- Quit application by pressing command-q twice
+
+</details>
+
+### [NordVPN](https://nordvpn.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "NordVPN", id: 1116599239
+```
+
+</details>
+
+### [FortiClient](https://www.forticlient.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "forticlient"
+```
+
+</details>
 
 ### [HyperSwitch](https://bahoom.com/hyperswitch)
 
-```bash
-brew cask install hyperswitch
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "hyperswitch"
 ```
 
-Preferences
+</details>
 
-```bash
-[x] Run HyperSwitch in the background
-[x] Use shift to cycle backwards
-```
+<details><summary> ⚙️ Preferences</summary>
+
+- Run HyperSwitch in the background
+- Use Include windows from other spaces
+- Use Include windows from other screens
+- Use shift to cycle backwards
+
+</details> 
 
 ### [Alfred](https://www.alfredapp.com/)
 
-<details><summary>Installation</summary>
+<details><summary> 💾 Installation</summary>
 
 ```bash <!-- >home/Brewfile#apps -->
 cask "alfred"
 ```
+
+</details>
+
+<details><summary> ⚙️ Preferences</summary>
+
+- Set preferences syncing to `~/Dropbox/Sync/apps/Alfred`
+- Set main keyboard shortcut to F19 (not synced)
+- Set Clipboard history persistence (not synced)
 
 </details>
 
@@ -259,77 +356,100 @@ done
 </details>
 
 
-#### Preferences
-
-```bash
-Set keyboard shortcuts (not synced)
-Advanced: Syncing from ~/Dropbox/Alfred
-Clipboard history persistent for 1 month
-```
-
 #### Snippets
 <https://gist.github.com/Strajk/f4cb72e318c531a3ee247ccc10681f8f>
 
-
 ### [AppCleaner](https://freemacsoft.net/appcleaner/)
 
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "appcleaner"
 ```
-brew cask install appcleaner
-```
+
+</details>
+
+<details><summary> ⚙️ Preferences</summary>
+
+* Enable SmartDelete
+
+</details>
 
 ### [Moom](https://manytricks.com/moom/)
 
 **Do not install from cask, cannot transfer license**
 
-```bash
-mas install `mas search moom | awk '{ print $1 }'`
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "Moom", id: 419330170
 ```
 
-Preferences
+</details>
+
+<details><summary> ⚙️ Preferences</summary>
 
 ```bash
 ln -s ~/Dropbox/Sync/apps/moom/com.manytricks.Moom.plist ~/Library/Preferences/com.manytricks.Moom.plist
 ```
 
+</details>
+
 ### [PopClip](https://pilotmoon.com/popclip/)
 
-```
-mas install `mas search popclip | awk '{ print $1 }'`
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "PopClip", id: 445189367
 ```
 
-Preferences
+</details>
 
-```bash
-**Pref:** Disable Cut & Copy & Paste Extensions
-```
+<details><summary> ⚙️ Preferences</summary>
+
+- Enable Start at Login
+- Disable Cut & Copy & Paste Extensions
+
+</details>
 
 Extensions
 
 ```bash
-curl -O "http://pilotmoon.com/popclip/extensions/ext/{Say,Reminders,GoogleTranslate,Alfred,Dash}.popclipextz"
+curl -O "http://pilotmoon.com/popclip/extensions/ext/{Reminders,GoogleTranslate,Alfred}.popclipextz"
 ```
 
-TODO: Open & Install extensions after downloading
+TODO: Fix! Open & Install extensions after downloading
 
 ### [Monosnap](https://monosnap.com)
 
-```bash
-mas install `mas search monosnap | awk '{ print $1 }'`
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "Monosnap", id: 540348655
 ```
 
-### RecordIt
+</details>
 
-```bash
-brew cask install recordit
-```
+<details><summary> ⚙️ Preferences</summary>
+
+- Enable `General: Launch at login`
+- Enable `Advanced: Autosave to "Pictures" folder`
+- Enable `Advanced: Shrink Retina snaps`
+- Disable `Interface: Capture area: Add shadow to window`
+- Sey `Hotkeys: Capture area` to `control + m`
+- Sey `Hotkeys: Record video` to `control + alt + m`
+- Sey `Hotkeys: Capture previous area` to `control + shift + m`
+- Login to Monosnap account  
+
+</details>
 
 ### [Dash](https://kapeli.com/dash)
 
 ```bash
-brew cask install dash3
+cask dash3
 ```
 
-Preferences - **TODO: Automate**
+<details><summary> ⚙️ Preferences</summary>
 
 ```bash
 General: Launch Dash at login
@@ -340,35 +460,190 @@ Docsets
 Integration: Alfred, PopClip, TextMate
 ```
 
-### Markdown preview: [Marked](http://marked2app.com/)
+</details>
 
-```bash
-brew cask install marked
+### [Marked](http://marked2app.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "Marked"
 ```
 
-### Messaging: Facebook Messenger: [Caprine](https://github.com/sindresorhus/caprine)
+</details>
+
+### [Apple Configurator](https://support.apple.com/apple-configurator)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "Apple Configurator 2", id: 1037126344
+```
+
+</details>
+
+### [Amphetamine](https://itunes.apple.com/app/amphetamine/id937984704?mt=12)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "Amphetamine", id: 937984704
+```
+
+</details>
+
+<details><summary> ⚙️ Preferences</summary>
+
+- Menu Bar Image Click: Primary: Start/end session | Secondary: Show menu
+- Launch Amphetamine at login: yes
+- Appearance: Menu Bar image: Coffee Carafe
+- Appearance: Lower icon opacity when there is no active session
+
+</details>
+
+### [Transmission](https://transmissionbt.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "transmission"
+```
+
+</details>
+
+### [ImageOptim](https://imageoptim.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "imageoptim"
+```
+
+</details>
+
+### [Handbrake](https://handbrake.fr/)
+
+Open source video transcoder
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+brew "handbrake"
+```
+
+</details>
+
+### [Postman](https://www.getpostman.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "postman"
+```
+
+</details>
+
+### [Aerial](https://github.com/JohnCoates/Aerial)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "aerial"
+```
+
+</details>
+
+### [Google Drive Sync](https://www.google.com/drive/download/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "google-backup-and-sync"
+```
+
+</details>
+
+### [keycastr](https://github.com/sdeken/keycastr)
+
+<details><summary>💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "keycastr"
+```
+
+</details>
+
+### [Mouseposé](https://boinx.com/mousepose/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "mousepose"
+```
+
+</details>
+
+### [Shortcut Detective](http://www.irradiatedsoftware.com/labs/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "shortcutdetective"
+```
+
+</details>
+
+### [ScreenFlow](http://www.telestream.net/screenflow/overview.htm)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "screenflow"
+```
+
+</details>
+
+### Other
+
+```bash
+brew install heroku-toolbelt && heroku login
+```
+
+## Communication
+
+### [Slack](http://slack.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask slack
+```
+
+</details>
+
+### [Caprine](https://github.com/sindresorhus/caprine)
 
 Elegant Facebook Messenger desktop app
 
-```bash
-brew cask install caprine
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "caprine"
 ```
 
-### Messaging: [Slack](http://slack.com/)
-
-
-```bash
-brew cask install slack
-```
-
+</details>
 
 ## Browsers
 
-### Google Chrome
+### [Google Chrome](https://www.google.com/chrome/)
 
-```bash
-brew cask install google-chrome
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "google-chrome"
 ```
+
+</details>
 
 #### Extensions
 
@@ -395,7 +670,6 @@ brew cask install google-chrome
 * [Pesticide for Chrome](https://chrome.google.com/webstore/detail/bblbgcheenepgnnajgfpiicnbbdmmooh)
 * [Pinboard Plus](https://chrome.google.com/webstore/detail/mphdppdgoagghpmmhodmfajjlloijnbd)
 * [Postman Interceptor](https://chrome.google.com/webstore/detail/aicmkgpgakddgnaphhhpliifpcfhicfo)
-* [Postman](https://chrome.google.com/webstore/detail/fhbjgbiflinjbdggehcddcbncdddomop)
 * [Project Naptha](https://chrome.google.com/webstore/detail/molncoemjfmpgdkbdlbjmhlcgniigdnf) - OCR
 * [React Developer Tools](https://chrome.google.com/webstore/detail/fmkadmapgofadopljbjfkapdkoienihi)
 * [React Perf](https://chrome.google.com/webstore/detail/hacmcodfllhbnekmghgdlplbdnahmhmm)
@@ -412,9 +686,9 @@ brew cask install google-chrome
 * [Youtube Playback Speed Control](https://chrome.google.com/webstore/detail/hdannnflhlmdablckfkjpleikpphncik)
 
 
-#### Script to get list of extensions
+<details><summary>Script to get extensions</summary>
 
-```
+```bash
 # run at chrome://extensions
 output = []
 document.querySelectorAll(".extension-details").forEach(el => {
@@ -426,12 +700,17 @@ document.querySelectorAll(".extension-details").forEach(el => {
 copy(output.join("\n"))
 ```
 
+</details>
 
-### Google Chrome Canary
+### [Google Chrome Canary](https://www.google.com/chrome/canary/)
 
-```bash
-brew cask install caskroom/versions/google-chrome-canary
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "caskroom/versions/google-chrome-canary"
 ```
+
+</details>
 
 **Enable Developer Tools experiments:**
 
@@ -440,25 +719,53 @@ brew cask install caskroom/versions/google-chrome-canary
 * Open DevTools, go to Experiments tab and check Support for Sass
 ```
 
-### Firefox
+### [Firefox](https://www.mozilla.org/en-US/firefox/)
 
-```bash
-brew cask install firefox
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "firefox"
 ```
+
+</details>
+
+### [Opera](https://www.opera.com)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "opera"
+```
+
+</details>
+
+### [Brave](https://brave.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "brave"
+```
+
+</details>
+
+### [Tor browser](https://www.torproject.org/download/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "torbrowser"
+```
+
+</details>
 
 ## Productivity
 
-### Things
-
-```bash
-mas install `mas search things | awk '{ print $1 }'`
-```
-
-### Notion
+### [Notion](https://www.notion.so/)
 
 Primary notes app
 
-<details><summary>Installation</summary>
+<details><summary> 💾 Installation</summary>
 
 ```bash <!-- >home/Brewfile#apps -->
 cask "notion"
@@ -466,167 +773,160 @@ cask "notion"
 
 </details>
 
+### [FoldingText](https://www.foldingtext.com/)
 
-### Evernote
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
 
-```bash
-brew cask install evernote
+```bash <!-- >home/Brewfile#apps -->
+cask "foldingtext"
 ```
 
-Preferences
+</details>
 
-```bash
-**Pref:** General: Keep Evernote Helper running
-**Pref:** General: Show Elephant in Menubar
-**Pref:** General: Start the Evernote Helper when I log in to my computer
-**Pref:** Remove all keyboard shotcuts (colliding)
+### [Skype](https://www.skype.com/)
+
+<details><summary>💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "skype"
 ```
 
-### Skype
+</details>
 
-```
-brew cask install skype
+<details><summary> ⚙️ Preferences</summary>
+
+* Disable show in menu bar
+
+</details>
+
+### [Table tool](https://github.com/jakob/TableTool)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "Table Tool", id: 1122008420
 ```
 
-```bash
-Disable show in menu bar
+</details>
+
+### [Keynote](https://www.apple.com/keynote/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "Keynote", id: 409183694
 ```
+
+</details>
 
 ## Create
 
-### Versatile design app: Sketch
+### [Sketch](https://www.sketch.com/)
 
-```bash
-brew cask install sketch
+Versatile design app
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "sketch"
 ```
 
-### Adobe Creative Cloud: [Photoshop](https://www.adobe.com/products/photoshop.html), [Illustrator](https://www.adobe.com/products/illustrator.html), [Lightroom](https://www.adobe.com/products/photoshop-lightroom.html)
+</details>
 
-```bash
-brew cask install adobe-creative-cloud
-/usr/local/Caskroom/adobe-creative-cloud/latest/Creative Cloud Installer.app
+### [SourceTree](https://www.sourcetreeapp.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "sourcetree"
 ```
 
-Sync settings of Illustrator
+</details>
 
-```bash
-rm -rf "$HOME/Library/Preferences/Adobe Illustrator CS6 Settings/en_US/Workspaces"
-ln -s "$HOME/Dropbox/Sync/Illustrator/Workspaces" "$HOME/Library/Preferences/Adobe Illustrator CS6 Settings/en_US/"
+### [GitUp](http://gitup.co/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "gitup"
 ```
 
-Sync settings for Photoshop
+</details>
 
-```bash
-rm -rf "$HOME/Library/Preferences/Adobe Photoshop CC 2014 Settings/WorkSpaces"
-ln -s "$HOME/Dropbox/Sync/Photoshop/WorkSpaces" !:2
-rm -rf "$HOME/Library/Application Support/Adobe/Adobe Photoshop CS6/Presets"
-ln -s "$HOME/Dropbox/Sync/Photoshop/Presets" !:2
+### [Webstorm](https://www.jetbrains.com/webstorm/), [Pycharm](https://jetbrains.com/pycharm/), [DataGrip](https://jetbrains.com/datagrip/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+# cask "jetbrains-toolbox" # nope nope nope, lost patience with this piece of crap
+cask "webstorm"
+cask "pycharm"
+cask "datagrip"
 ```
 
-Plugins for Illustrator <http://astutegraphics.com>
+</details>
 
-Customize Photoshop
+### [Visual Studio Code](https://code.visualstudio.com/)
 
-```bash
-`⌘ + k` to open Preferences
-Turn off Animated zoom
-Turn off Enable Flick Panning
-Maximize PSD and PSB Files: Never
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "visual-studio-code"
 ```
 
-Plugins for Photoshop:
+</details> 
 
-- <http://guideguide.me>
-- <http://imagenomic.com/pt.aspx>
-- <http://www.cutandslice.me>
-- <http://lumens.se/tychpanel/>
-- Enigma64 <http://getenigma64.com>
-- <http://blog.kam88.com/en/expanding-smart-objects-script.html>
-- <http://blog.kam88.com/en/lighten-darken-color-script.html>
-- <http://blog.kam88.com/en/transform-each-beta-script.html>
-
-Photoshop Lightroom Preferences
-
-```bash
-General: Disable Show splash screen during startup
-General: Disable Show import dialog when a memory card is detected
-Presets: Disable Store presets with this catalog
-External Editing: Edit in Adobe Photoshop – change Color Space to AdobeRGB
-```
-
-Photoshop Lightroom Presets
-
-- [Trey's Lightroom 5 Presets](http://store.stuckincustoms.com/lightroom-5-presets)
-
-```bash
-rm -rf "$HOME/Library/Application Support/Adobe/Lightroom"
-ln -s "$HOME/Dropbox/Sync/apps/Lightroom Settings" "$HOME/Library/Application Support/Adobe/Lightroom"
-```
-
-Plug-ins `⌥⌘⇧,` to open Plug-in Manager, add:
-
-- [Dev Preset Lab](http://www.robcole.com/Rob/ProductsAndServices/DevPresetLabLrPlugin/)
-- [The Fader](http://www.capturemonkey.com/thefader)
-- [Preset Ripper](http://www.capturemonkey.com/presetripper)
-- [Excessor](http://www.capturemonkey.com/excessor)
-- [Focus Mask](http://www.capturemonkey.com/focusmask)
-
-## Dev
-
-### Databases
-
-#### Postgres
-
-```
-brew cask install postgres
-```
-
-#### Mongo
-
-```
-brew install mongodb
-mongod --config /usr/local/etc/mongod.conf
-```
-
-### Git UI
-
-#### [SourceTree](https://www.sourcetreeapp.com/)
-
-```bash
-brew cask install sourcetree
-```
-
-#### [GitUp](http://gitup.co/)
-
-```bash
-brew cask install gitup
-```
-
-### Hardcore IDE: [Webstorm](https://www.jetbrains.com/webstorm/), [Pycharm](https://jetbrains.com/pycharm/)
-
-```bash
-brew cask install webstorm-eap
-brew cask install pycharm
-```
-
-### Versatile text editor
-[Visual Studio Code](https://code.visualstudio.com/)
+Sync via Gist
 
 ```bash
 ln -s ~/Code/setup/apps/Code/User "$HOME/Library/Application Support/Code/"
 ```
 
-### Database UI: [Navicat](https://www.navicat.com)
+### [iMovie](https://www.apple.com/imovie/)
 
-```bash
-brew cask install navicat-premium
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "iMovie", id: 408981434
 ```
 
-### Virtualization: [VirtualBox](https://www.virtualbox.org/)
+</details>
 
-```bash
-brew cask install virtualBox
+### [Final Cut Pro](https://www.apple.com/final-cut-pro/)
+
+<details><summary> 💾 Installation: Manually</summary>
+
+TODO
+
+</details>
+
+### [DaVinci Resolve](https://www.blackmagicdesign.com/products/davinciresolve)
+
+<details><summary> 💾 Installation: Manual</summary>
+
+TODO
+
+</details>
+
+### [XCode](https://developer.apple.com/xcode/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "Xcode", id: 497799835
 ```
+
+</details>
+
+### [VirtualBox](https://www.virtualbox.org/)
+
+<details><summary>Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "virtualBox"
+```
+
+</details>
 
 Accept terms, check [issue](https://github.com/xdissent/ievms/issues/328)
 
@@ -642,35 +942,66 @@ curl -s https://raw.githubusercontent.com/xdissent/ievms/master/ievms.sh | env I
 
 ### [Charles proxy](https://www.charlesproxy.com/)
 
-```bash
-brew cask install charles
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "charles"
 ```
 
-### Other
-
-```bash
-brew install heroku-toolbelt && heroku login
-```
+</details>
 
 ## Media
+
+### [Movist](http://cocoable.com/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+mas "Movist", id: 461788075
+```
+
+</details>
 
 ### [VLC](http://www.videolan.org/vlc/)
 
 Horrible UI, but haven't found better free video player.
 
-```bash
-brew cask install vlc
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "vlc"
 ```
 
-### Subtitles: Caption
+</details>
 
-```bash
-brew cask install caption
+### [Caption](https://getcaption.co/)
+
+<details><summary>💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "caption"
 ```
 
---------------------------------------------------------------------------------
+</details>
 
-## Default apps
+## Fun
+
+### Boxer
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "boxer"
+```
+
+</details>
+
+
+
+## Other preferences
+
+### Default apps
+
 ```bash
 # https://superuser.com/a/1092184
 duti -s $(osascript -e 'id of app "Preview"') .pdf all
@@ -688,34 +1019,38 @@ duti -s $(osascript -e 'id of app "Visual Studio Code"') .srt all
 duti -s $(osascript -e 'id of app "Table Tool"') .csv all
 ```
 
-## Customize Dock
+### Customize Dock
 
 ```bash
 defaults write com.apple.dock persistent-apps -array
 for app in \
-  "/Applications/Finder.app" \
+  "/System/Library/CoreServices/Finder.app" \
   "/Applications/Calendar.app" \
+  "spacer" \
+  "/Applications/Google Chrome.app" \
   "/Applications/Safari.app" \
-  "/Applications/Mail.app" \
+  "spacer" \
+  "/Applications/Things3.app" \
   "/Applications/Reminders.app" \
-  "/Applications/Preview.app" \
-  "/Applications/Things.app" \
+  "spacer" \
   "/Applications/iTunes.app" \
   "spacer" \
-  "/Applications/Sketch.app" \
-  "/Applications/Adobe Lightroom/Adobe Lightroom.app" \
-  "/Applications/Adobe Photoshop CC 2017/Adobe Photoshop CC 2017.app" \
+  "/Applications/Slack.app" \
+  "/Applications/Caprine.app" \
   "spacer" \
-  "/Applications/Atom.app" \
+  "/Applications/Sketch.app" \
+  "spacer" \
+  "/Applications/WebStorm.app" \
+  "/Applications/PyCharm.app" \
   "/Applications/SourceTree.app" \
-  "/Applications/Utilities/Terminal.app" \
+  "/Applications/Hyper.app" \
   "spacer" \
   "/Applications/App Store.app" \
   "/Applications/System Preferences.app" \
   "spacer" \
   ; do
-  if [ "$app" == "spacer" ]; then
-    defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
+  if [ "$app" "==" "spacer" ]; then
+    defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="small-spacer-tile";}'
   else
     defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
   fi
@@ -724,7 +1059,7 @@ done
 killall Dock
 ```
 
-## MacOS Preferences
+### MacOS Preferences
 
 ```bash
  # Use column view in all Finder windows by default
@@ -777,7 +1112,7 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write com.apple.dashboard mcx-disabled -boolean true
 ```
 
-### Automate:
+TODO:
 
 - Dock: Lock Dock Content
 - Dock: Lock icon size
@@ -785,15 +1120,64 @@ defaults write com.apple.dashboard mcx-disabled -boolean true
 - Tap to click
 
 
+---
+---
+---
+
 # Inbox
 
 ```
 ln -s $HOME/Code/setup/snippets "$HOME/Library/Application Support/Code/User/"
+
+TODO
+# Vill Q
+# TeamViewer
+# Paparazzi!
+# zoom.us
+# Marked 2
+# Insomnia
 ```
 
-# Run regularly
+---
+---
+---
 
-### Weekly
+Run regularly
+
+`brewup`
+
+Clone all my repos
+
 ```
-brewup
-``` 
+curl -u strajk -s https://api.github.com/users/strajk/repos?per_page=200 | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each { |repo| %x[git clone #{repo["ssh_url"]} ]}'
+```
+
+---
+---
+---
+
+## Fonts
+
+#### Sans-serif
+
+- [Open Sans](https://fonts.google.com/specimen/Open+Sans)
+- [Roboto](https://fonts.google.com/specimen/Roboto)
+
+#### Monospace
+
+- [Hack](https://sourcefoundry.org/hack/)
+- [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono)
+- [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)
+
+<details><summary> 💾 Installation</summary>
+
+```bash <!-- >home/Brewfile#fonts -->
+cask "caskroom/fonts/font-open-sans"
+cask "caskroom/fonts/font-roboto"
+
+cask "caskroom/fonts/font-hack"
+cask "caskroom/fonts/font-roboto-mono"
+cask "caskroom/fonts/font-source-code-pro"
+```
+
+</details>

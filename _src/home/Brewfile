@@ -6,19 +6,6 @@ tap "caskroom/fonts"
 tap "caskroom/versions"
 tap "caskroom/cask"
 
-# TODO
-# ===
-# DaVinci Resolve
-# Final Cut Pro
-# LRTimelapse 5
-# Mouseposé
-# ScreenFlow
-# YubiKey Manager
-# Folding text
-# ShortcutDetective
-cask "postman"
-
-
 # Essentials
 # ===
 brew "git-extras"
@@ -29,8 +16,6 @@ brew "mongodb"
 brew "redis"
 brew "mtr"
 brew "nmap"
-brew "node"
-brew "node@8"
 brew "nvm"
 brew "python3"
 brew "watchman"
@@ -55,150 +40,6 @@ brew "quicklookase" # Adobe ASE Color Swatches
 brew "qlvideo"
 # TODO: https://github.com/jaketmp/ePub-quicklook
 
-# Utils
-# ===
-
-# HandBrake
-# Vill Q
-# TeamViewer
-# Paparazzi!
-# Notion
-# zoom.us
-# Marked 2
-# Clear
-# Insomnia
-
-cask "forticlient"
-
-cask "karabiner-elements"
-# Preferences: CapsLock -> f19
-# Preferences: Quit application by pressing command-q twice
-
-cask "java"
-# Preferences:
-
-cask "1password"
-# Preferences: iCloud
-
-cask "alfred"
-# Preferences:
-
-cask "appcleaner"
-# Preferences:
-
-cask "caprine"
-# Preferences:
-
-cask "boxer"
-# Preferences:
-
-cask "docker"
-# Preferences:
-
-cask "kitematic"
-# Preferences:
-
-cask "skype"
-# Preferences:
-
-cask "visual-studio-code"
-# Preferences: Sync via Gist
-
-# cask "jetbrains-toolbox" # nope nope nope, lost patience with this piece of crap
-cask "webstorm"
-cask "pycharm"
-cask "datagrip"
-# Preferences: TODO
-
-cask "atom"
-# Preferences:
-
-cask "gitup"
-# Preferences:
-
-cask "caption"
-# Preferences:
-
-cask "charles"
-# Preferences:
-
-cask "dropbox"
-# Preferences:
-
-cask "evernote"
-# Preferences:
-
-cask "adapter"
-# Preferences: Defaults
-
-cask "imageoptim"
-# Preferences:
-
-# Browsers
-# ===
-cask "google-chrome"
-cask "caskroom/versions/google-chrome-canary"
-cask "firefox"
-cask "opera"
-cask "opera-neon"
-cask "brave"
-cask "torbrowser"
-
-cask "aerial"
-
-cask "google-backup-and-sync"
-cask "graphiql"
-cask "hyper"
-cask "hyperswitch"
-cask "keybase"
-cask "keyboard-maestro"
-cask "ngrok"
-cask "postgres"
-
-cask "sketch"
-cask "abstract"
-cask "astropad"
-
-cask "slack"
-cask "sourcetree"
-cask "transmission"
-cask "virtualbox"
-cask "vlc"
-
 {{{ apps }}}
 
 {{{ fonts }}}
-
-cask "caskroom/versions/dash3"
-
-mas "iMovie", id: 408981434
-
-mas "Keynote", id: 409183694
-
-mas "Monosnap", id: 540348655
-
-mas "Moom", id: 419330170
-
-mas "Movist", id: 461788075
-
-mas "Numbers", id: 409203825
-
-mas "Pages", id: 409201541
-
-mas "PopClip", id: 445189367
-
-mas "Table Tool", id: 1122008420
-
-mas "Xcode", id: 497799835
-
-mas "Apple Configurator 2", id: 1037126344
-
-mas "Amphetamine", id: 937984704
-# Preferences: Cannot find plist file :(
-# Menu Bar Image Click: Primary: Start/end session | Secondary: Show menu
-# Launch Amphetamine at login: yes
-# Appearance: Menu Bar image: Coffee Carafe
-# Appearance: Lower icon opacity when there is no active session
-
-
-mas "NordVPN", id: 1116599239

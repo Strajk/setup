@@ -7,6 +7,8 @@ module.exports = {
     cursorShape: 'BEAM',
     cursorBlink: true,
     padding: '8px 10px',
+    // https://github.com/zeit/hyper/issues/81#issuecomment-322085862
+    shell: '/bin/zsh',
     shellArgs: ['--login'],
     env: {},
     bell: 'SOUND',
