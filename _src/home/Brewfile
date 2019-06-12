@@ -8,24 +8,39 @@ tap "caskroom/cask"
 
 # Essentials
 # ===
+
+brew "mas"
+brew "duti"
+
+# brew "git" # Git shipped with MacOS is good and modern enough
 brew "git-extras"
 brew "hh"
-brew "imagemagick"
-brew "mas"
-brew "mongodb"
-brew "redis"
+brew "htop"
+brew "thefuck"
 brew "mtr"
 brew "nmap"
-brew "nvm"
-brew "python3"
 brew "watchman"
 brew "wget"
 brew "wireshark", link: false
-brew "yarn"
-brew "awscli"
 brew "vault"
-brew "duti"
 brew "direnv"
+
+brew "imagemagick"
+brew "imageoptim-cli"
+
+brwe "terraform"
+brew "kubectl" # TODO: Check if already installed by Docker
+brew "kubernetes-helm"
+cask "google-cloud-sdk"
+
+brew "mongodb"
+brew "redis"
+
+# brew "node" # I manage node via nvm
+brew "nvm"
+brew "python3"
+brew "yarn"
+
 
 # Quicklook plugins
 # ===
