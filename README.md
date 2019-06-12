@@ -819,6 +819,21 @@ mas "Keynote", id: 409183694
 
 </details>
 
+### [Things](https://culturedcode.com/)
+
+<details><summary>Installation: Manual</summary>
+
+</details>
+
+<details><summary> ⚙️ Preferences</summary>
+
+* Enable `General: Enable Things URLs`
+* Enable `Things Cloud` 
+* Set shortcut for Quick Entry to `ctrl + n`
+* Enable Calendar Events
+
+</details>
+
 ## Create
 
 ### [Sketch](https://www.sketch.com/)
