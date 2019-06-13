@@ -42,6 +42,7 @@ brew "python3"
 brew "yarn"
 
 cask "swiftdefaultappsprefpane"
+cask "zoomus"
 
 # Quicklook plugins
 # ===
