@@ -1077,54 +1077,120 @@ killall Dock
 ### MacOS Preferences
 
 ```bash
- # Use column view in all Finder windows by default
-defaults write com.apple.Finder FXPreferredViewStyle -string "clmv"
- # Show the ~/Library folder.
-chflags nohidden ~/Library
- # Disable the “Are you sure you want to open this application?” dialog
+# Close any open System Preferences panes, to prevent them from overriding settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Use scroll gesture with the Ctrl (^) modifier key to zoom
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+# Follow the keyboard focus while zoomed in
+defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+
+
+# Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
- # Menu bar: disable transparency
+
+# Menu bar: disable transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
- # Expand save panel by default
+
+# Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
- # Expand print panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+# Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
- # Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
- # Disable Resume system-wide
+
+# Disable Resume system-wide
 defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
- # Disable auto-correct
+
+# Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
- # Allow quitting Finder via ⌘ + Q; doing so will also hide desktop icons
-defaults write com.apple.finder QuitMenuItem -bool true
- # Show status bar in Finder
-defaults write com.apple.finder ShowStatusBar -bool true
- # Enable full keyboard access for all controls
+
+# Enable full keyboard access for all controls
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
- # Save screenshots to the desktop
+
+# Save screenshots to the desktop
 defaults write com.apple.screencapture location -string "$HOME/Desktop"
- # Disable shadow in screenshots
+
+# Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
- # Finder: show hidden files by default
+
+
+# Finder
+# ---
+
+# Default folder to $HOME
+# TODO: strajk -> dynamic
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+
+# Use column view in all Finder windows by default
+defaults write com.apple.Finder FXPreferredViewStyle -string "clmv"
+
+# Show the ~/Library folder.
+chflags nohidden ~/Library
+
+# Allow quitting Finder via ⌘ + Q; doing so will also hide desktop icons
+defaults write com.apple.finder QuitMenuItem -bool true
+
+# Show status bar in Finder
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Show hidden files by default
 defaults write com.apple.Finder AppleShowAllFiles -bool true
- # Finder: show all filename extensions
+
+# Show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
- # Finder: allow text selection in Quick Look
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
- # When performing a search, search the current folder by default
+
+# When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
- # Avoid creating .DS_Store files on network volumes
+
+# Avoid creating .DS_Store files on network & USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
- # Disable the warning before emptying the Trash
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Disable disk image verification
+defaults write com.apple.frameworks.diskimages skip-verify -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+# Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
- # Set the icon size of Dock items to 36 pixels
+
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
+
+
+# Other
+# ---
+
+# Set the icon size of Dock items to 36 pixels
 defaults write com.apple.dock tilesize -int 36
- # Trackpad: enable tap to click for this user and for the login screen
+
+# Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
- # Disable dashboard
+
+# Disable dashboard
 defaults write com.apple.dashboard mcx-disabled -boolean true
+
+# Disable the crash reporter
+defaults write com.apple.CrashReporter DialogType -string "none"
 ```
 
 TODO:
