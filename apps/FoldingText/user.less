@@ -1,0 +1,28 @@
+.generate-lists(@n, @i: 1) when (@i =< @n) {
+  pre.cm-ordered[cm-level="@{i}"],
+  pre.cm-unordered[cm-level="@{i}"] {
+    padding-left: (@i - 1) * 20px !important;
+  }
+  .generate-lists(@n, (@i + 1));
+}
+
+.CodeMirror {
+  .cm-heading[cm-level="1"] {
+    font-size: 1.5em;
+    margin-bottom: 1rem;
+  }
+
+  pre.cm-ordered,
+  pre.cm-unordered {
+    margin-left: 4rem !important;
+    margin-right: 4rem !important;
+    text-indent: 0 !important;
+
+    .cm-tab {
+      display: none;
+    }
+
+  }
+
+  .generate-lists(10)
+}
