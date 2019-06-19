@@ -511,6 +511,38 @@ cask "transmission"
 
 </details>
 
+<details><summary> ⚙️ Preferences</summary>
+
+```bash
+# Use `~/Downloads/_INCOMPLETE` to store incomplete downloads
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/_INCOMPLETE"
+
+# Use `~/Downloads` to autoimport .torrent files
+defaults write org.m0k.transmission AutoImport -bool true
+defaults write org.m0k.transmission AutoImportDirectory -string "${HOME}/Downloads"
+
+# Don’t prompt for confirmation before downloading
+defaults write org.m0k.transmission DownloadAsk -bool false
+defaults write org.m0k.transmission MagnetOpenAsk -bool false
+
+# Trash original torrent files
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+
+# Hide the donate message
+defaults write org.m0k.transmission WarningDonate -bool false
+# Hide the legal disclaimer
+defaults write org.m0k.transmission WarningLegal -bool false
+
+# IP block list.
+# Source: https://giuliomac.wordpress.com/2014/02/19/best-blocklist-for-transmission/
+defaults write org.m0k.transmission BlocklistNew -bool true
+defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
+defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
+```
+
+</details>
+
 ### [ImageOptim](https://imageoptim.com/)
 
 <details><summary> 💾 Installation: Installed via Homebrew</summary>
