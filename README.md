@@ -1058,8 +1058,8 @@ duti -s $(osascript -e 'id of app "Movist"') .flac all
 duti -s $(osascript -e 'id of app "Movist"') .mp4 all
 duti -s $(osascript -e 'id of app "Movist"') .mkv all
 duti -s $(osascript -e 'id of app "Movist"') .avi all
+duti -s $(osascript -e 'id of app "FoldingText"') .md all
 duti -s $(osascript -e 'id of app "Visual Studio Code"') .json all
-duti -s $(osascript -e 'id of app "Visual Studio Code"') .md all
 duti -s $(osascript -e 'id of app "Visual Studio Code"') .nfo all
 duti -s $(osascript -e 'id of app "Visual Studio Code"') .txt all
 duti -s $(osascript -e 'id of app "Visual Studio Code"') .srt all
