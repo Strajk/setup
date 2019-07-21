@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "cp-file": "7.0.0",
-    "eslint": "5.16.0",
+    "eslint": "6.1.0",
     "eslint-config-standard": "12.0.0",
     "eslint-config-strajk": "0.0.4",
     "eslint-plugin-import": "2.17.3",
