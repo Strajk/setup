@@ -1051,6 +1051,8 @@ cask "boxer"
 
 ```bash
 # https://superuser.com/a/1092184
+duti -s $(osascript -e 'id of app "The Unarchiver"') .rar all
+duti -s $(osascript -e 'id of app "The Unarchiver"') .zip all
 duti -s $(osascript -e 'id of app "Preview"') .pdf all
 duti -s $(osascript -e 'id of app "Movist"') .mp3 all
 duti -s $(osascript -e 'id of app "Movist"') .m4b all
