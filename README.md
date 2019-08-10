@@ -1263,6 +1263,32 @@ TODO:
 - Tap to click
 
 
+## Auto-launched items
+
+```
+# launchctl list | egrep -v "com\.apple\."
+```
+
+* 1Password
+* Alfred
+* Amphetamine
+* AppCleaner-SmartDelete
+* Docker
+* Dropbox
+* FortiClient VPN
+* Gifox
+* Google Drive
+* HyperSwitch
+* Karabiner
+* Keybase
+* KeyboardMaestro
+* Monosnap
+* Moom
+* PopClip
+* RescueTime
+* Things
+* WebAlert
+
 ---
 ---
 ---
