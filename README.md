@@ -262,7 +262,7 @@ cask "forticlient"
 
 ### [HyperSwitch](https://bahoom.com/hyperswitch)
 
-<details><summary> 💾 Installation: Installed via Homebrew</summary>
+<details><summary> 💾 Installation: Installed via Homebrew (⚠ requires manual post-install)</summary>
 
 ```bash <!-- >home/Brewfile#apps -->
 cask "hyperswitch"
@@ -912,6 +912,34 @@ cask "datagrip"
 ```
 
 </details>
+
+<details><summary> ⚙️ Preferences</summary>
+
+All preferences sync with Settings Repository to [private GitLab repo](https://gitlab.com/straaajk/intellij-settings-repository).
+
+Some of the main options:
+
+* Appearance
+  * Theme: Darcula
+  * Custom font: San Francisco `.SF NS Text`
+  * Window Options: Allow merging buttons on dialogs: Disable
+* Editor
+  * Font: Hack
+
+</details>
+
+#### Plugins
+
+* AceJump
+* Codota – ⚠️ not working well yet, but like the idea
+* Database Navigator 
+* GitToolBox 
+* Key Promoter X
+* Paste Images into Markdown
+* Presentation Assistant
+* String Manipulation
+* Wallaby
+* (plugins installed by default)
 
 ### [Visual Studio Code](https://code.visualstudio.com/)
 
