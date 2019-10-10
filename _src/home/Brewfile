@@ -5,6 +5,8 @@ tap "homebrew/services"
 tap "caskroom/fonts"
 tap "caskroom/versions"
 tap "caskroom/cask"
+tap "heroku/brew"
+
 
 # Essentials
 # ===
@@ -24,6 +26,7 @@ brew "wget"
 brew "wireshark", link: false
 brew "vault"
 brew "direnv"
+brew "massren"
 
 brew "imagemagick"
 brew "imageoptim-cli"

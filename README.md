@@ -638,7 +638,7 @@ cask "screenflow"
 ### Other
 
 ```bash
-brew install heroku-toolbelt && heroku login
+brew install heroku && heroku login
 ```
 
 ## Communication
