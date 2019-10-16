@@ -31,7 +31,7 @@ brew "massren"
 brew "imagemagick"
 brew "imageoptim-cli"
 
-brwe "terraform"
+brew "terraform"
 brew "kubectl" # TODO: Check if already installed by Docker
 brew "kubernetes-helm"
 cask "google-cloud-sdk"
