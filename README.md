@@ -648,7 +648,7 @@ brew install heroku && heroku login
 <details><summary> 💾 Installation: Installed via Homebrew</summary>
 
 ```bash <!-- >home/Brewfile#apps -->
-cask slack
+cask "slack"
 ```
 
 </details>

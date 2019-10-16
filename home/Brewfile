@@ -89,7 +89,7 @@ cask "keycastr"
 cask "mousepose"
 cask "shortcutdetective"
 cask "screenflow"
-cask slack
+cask "slack"
 cask "caprine"
 cask "google-chrome"
 cask "caskroom/versions/google-chrome-canary"
