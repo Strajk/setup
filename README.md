@@ -776,7 +776,7 @@ cask "opera"
 <details><summary> 💾 Installation: Installed via Homebrew</summary>
 
 ```bash <!-- >home/Brewfile#apps -->
-cask "brave"
+cask "brave-browser"
 ```
 
 </details>
@@ -786,7 +786,7 @@ cask "brave"
 <details><summary> 💾 Installation: Installed via Homebrew</summary>
 
 ```bash <!-- >home/Brewfile#apps -->
-cask "torbrowser"
+cask "tor-browser"
 ```
 
 </details>
