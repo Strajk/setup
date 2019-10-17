@@ -1,10 +1,14 @@
+# Profiling (Part 1/2) - uncomment to profile startup time
+# zmodload zsh/zprof
+
 # Secrets
 # ---
 source $HOME/.secrets
 
 export ZSH=$HOME/.oh-my-zsh
 
-export NVM_DIR=$HOME/.nvm
+### Cowardly disabled all plugins to improve startup time
+# export NVM_DIR=$HOME/.nvm
 
 # hstr
 # https://github.com/dvorka/hstr
@@ -15,13 +19,16 @@ export HH_CONFIG=hicolor
 
 # Plugins
 # ---
-plugins=(git git-flow github brew osx ruby rbenv git-extras)
+### Cowardly disabled all plugins to improve startup time
+# plugins=(git git-flow github brew osx ruby rbenv git-extras)
 
 
 # Action!
 # ---
 source $ZSH/oh-my-zsh.sh
-source $(brew --prefix nvm)/nvm.sh
+
+### Cowardly disabled all plugins to improve startup time
+# source $(brew --prefix nvm)/nvm.sh
 
 
 # Aliases
@@ -68,3 +75,6 @@ autoload -U promptinit; promptinit
 eval "$(direnv hook zsh)"
 
 prompt spaceship
+
+# Profiling (Part 2/2) - uncomment to profile startup time
+# zprof
