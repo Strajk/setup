@@ -457,34 +457,7 @@ General: Global search shortcut
 General: Disable show dock icon
 Integration: Alfred, PopClip, TextMate
 
-Cheat: Axios
-Cheat: Chrome Developer Tools
-Cheat: Docker
-Cheat: Dockerfile
-Cheat: Git
-Cheat: You Might Not Need jQuery
-StackOverflow: JavaScript
-StackOverflow: TypeScript
-User: date-fns
-Docset: Bash
-Docset: Bootstrap 4
-Docset: CSS
-Docset: Chai
-Docset: Express
-Docset: Font Awesome
-Docset: HTML
-Docset: JavaScript
-Docset: Less
-Docset: Lo-Dash
-Docset: Markdown
-Docset: Mocha
-Docset: MomentJS
-Docset: NodeJS
-Docset: Sinon
-Docset: Stylus
-Docset: TypeScript
-Docset: VueJS
-Docset: jQuery
+{{{ dash-prefs }}}
 ```
 
 </details>
