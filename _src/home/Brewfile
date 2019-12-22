@@ -41,6 +41,7 @@ brew "redis"
 
 # brew "node" # I manage node via nvm
 brew "nvm"
+cask "java"
 brew "python3"
 brew "yarn"
 
