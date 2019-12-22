@@ -7,8 +7,8 @@ source $HOME/.secrets
 
 export ZSH=$HOME/.oh-my-zsh
 
-### Cowardly disabled all plugins to improve startup time
-# export NVM_DIR=$HOME/.nvm
+### TODO: Inspect effect on shell startup time
+export NVM_DIR=$HOME/.nvm
 
 # hstr
 # https://github.com/dvorka/hstr
@@ -27,8 +27,8 @@ export HH_CONFIG=hicolor
 # ---
 source $ZSH/oh-my-zsh.sh
 
-### Cowardly disabled all plugins to improve startup time
-# source $(brew --prefix nvm)/nvm.sh
+### TODO: Inspect effect on shell startup time
+source $(brew --prefix nvm)/nvm.sh
 
 
 # Aliases
