@@ -1,0 +1,8 @@
+{
+	"alfredsnippet": {
+		"uid": "2ee76899-9980-5d5c-98c8-09933a8e077e",
+		"name": "Datetime: Week",
+		"keyword": "week",
+		"snippet": "{date:w}"
+	}
+}

@@ -1,11 +1,60 @@
 const fs = require("fs")
+
 const marked = require("marked")
 const _ = require("lodash")
 const replace = require("replace-in-file")
 const cpFile = require("cp-file")
 const plist = require("plist")
+const YAML = require("yaml")
+const uuidv5 = require("uuid/v5")
 
 // <SHAME-ON-YOU>
+
+// SNIPPETS
+// ===
+
+const INFO_PLIST_TEMPLATE = _.template(`
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>snippetkeywordprefix</key>
+  <string><%= prefix %></string>
+  <key>snippetkeywordsuffix</key>
+  <string><%= suffix %></string>
+</dict>
+</plist>
+`.trim())
+
+// TODO: Escape `/` with `\/`
+const alfredSnippets = YAML.parse(fs.readFileSync("./snippets/global.yml", "utf8"))
+for (const key in alfredSnippets) {
+  const obj = alfredSnippets[key]
+
+  const [_, collection, prefix, suffix] = key.match(/(.+){(.*)}{(.*)}/)
+  const path = `./apps/Alfred/snippets/${collection}`
+  try {
+    fs.mkdirSync(path)
+  } catch (e) {
+    // already exists
+  }
+
+  fs.writeFileSync(path + "/info.plist", INFO_PLIST_TEMPLATE({ prefix, suffix }))
+
+  for (const subKey in obj) {
+    const subObj = obj[subKey]
+    const [_, name, keyword] = subKey.match(/(.+){(.*)}/)
+    const uuid = uuidv5(subKey, "00000000-0000-0000-0000-000000000000")
+    fs.writeFileSync(`${path}/${uuid}.json`, JSON.stringify({
+      alfredsnippet: {
+        uid: uuid,
+        name,
+        keyword,
+        snippet: subObj,
+      },
+    }, null, "\t"))
+  }
+}
 
 // Dash
 // ===
