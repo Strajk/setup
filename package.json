@@ -10,7 +10,7 @@
     "snippets": "yaml2json --save --pretty --watch snippets/*.yml"
   },
   "devDependencies": {
-    "cp-file": "7.0.0",
+    "cp-file": "9.0.0",
     "eslint": "6.1.0",
     "eslint-config-standard": "13.0.1",
     "eslint-config-strajk": "0.0.4",
