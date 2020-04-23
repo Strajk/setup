@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const fs = require("fs")
 
 const marked = require("marked")
@@ -71,7 +72,7 @@ for (const key in dashPlist) {
 
   if (key === "feeds") {
     for (const subKey in obj.installed) {
-      dashOutput.push(`Docset: ${subKey.replace(/https?\:\/\/kapeli.com\/feeds\/(.+)\.xml/, "$1").replace("_", " ")}`)
+      dashOutput.push(`Docset: ${subKey.replace(/https?:\/\/kapeli.com\/feeds\/(.+)\.xml/, "$1").replace("_", " ")}`)
     }
   }
 }
