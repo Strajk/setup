@@ -1205,6 +1205,9 @@ defaults write com.apple.screencapture location -string "$HOME/Desktop"
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
+# Speedup animations
+# More: https://www.defaults-write.com/increase-the-speed-of-os-x-dialogs-boxes/
+defaults write NSGlobalDomain NSWindowResizeTime .1
 
 # Finder
 # ---
