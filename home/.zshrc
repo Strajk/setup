@@ -30,6 +30,9 @@ export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
 source $ZSH/oh-my-zsh.sh
 
 ### TODO: Inspect effect on shell startup time
+
+# Create default symlink by default github.com/nvm-sh/nvm
+export NVM_SYMLINK_CURRENT=true
 source $(brew --prefix nvm)/nvm.sh
 
 
