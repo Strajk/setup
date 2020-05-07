@@ -16,6 +16,8 @@ export NVM_DIR=$HOME/.nvm
 export HISTFILE=$HOME/.zsh_history
 export HH_CONFIG=hicolor
 
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
+
 
 # Plugins
 # ---
