@@ -1,0 +1,18 @@
+.notion-help-button {
+  display: none;
+}
+div.notion-frame > div.notion-scroller > div:nth-of-type(1) > div {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+div.notion-frame > div.notion-scroller > div:nth-of-type(1) .notion-page-controls {
+  margin-top: 0 !important;
+}
+div.notion-frame > div.notion-scroller .notion-page-content {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+div.notion-frame > div.notion-scroller .notion-page-content > div {
+  max-width: initial !important;
+}
+/*# sourceMappingURL=notion.so.css.map */

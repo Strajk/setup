@@ -1,0 +1,30 @@
+.notion-help-button {
+  display: none;
+}
+
+@paddingOriginal: 96px;
+@paddingCondensed: (@paddingOriginal / 4 );
+
+div.notion-frame {
+  > div.notion-scroller {
+    > div:nth-of-type(1) { // Header, sadly no proper selector
+      > div { // Wrapper with padding
+        padding-left: @paddingCondensed !important;
+        padding-right: @paddingCondensed !important;
+      }
+
+      .notion-page-controls {
+        margin-top: 0 !important;
+      }
+    }
+
+    .notion-page-content {
+      padding-left: @paddingCondensed !important;
+      padding-right: @paddingCondensed !important;
+
+      > div {
+        max-width: initial !important;
+      }
+    }
+  }
+}
