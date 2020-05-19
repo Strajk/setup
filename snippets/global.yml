@@ -20,6 +20,11 @@
   "Symbol: Tick{tick}": ✔
   "Symbol: Cross{cross}": ✗
 
+  "Symbol: Pro{pro}": 🟢
+  "Symbol: Con{con}": 🔴
+  "Symbol: Neutral{neu}": 🟡
+  # 🟡 🟠 🟣 ⚫ 🔵 🟤 ⚪ 🟢 🔴
+
   "Flag: CZ{cz}": 🇨🇿
   "Flag: CZ{us}": 🇺🇸
 
@@ -28,9 +33,9 @@
   "Datetime: Today long{tol}": "{date:yyyy-MM-dd EEEEEE}"
   "Datetime: Week{week}": "{date:w}"
 
-  "Emoji: Confused{conf}": ¯\_(⊙︿⊙)_/¯
-  "Emoji: Shrug{shrug}": ¯\_(ツ)_/¯
-  "Emoji: Table{table}": ❨╯°□°❩╯︵┻━┻
-  "Emoji: Point{point}": (☞ ͡° ͜ʖ ͡°ˋ)☞
-  "Emoji: Hug{hug}": (つ❛‿❛)つ
-  "Emoji: Mad{mad}": 😒🤔😄😅😂😱😭😭😥😵💀
+  "Emoji: Confused{:conf}": ¯\_(⊙︿⊙)_/¯
+  "Emoji: Shrug{:shrug}": ¯\_(ツ)_/¯
+  "Emoji: Table{:table}": ❨╯°□°❩╯︵┻━┻
+  "Emoji: Point{:point}": (☞ ͡° ͜ʖ ͡°ˋ)☞
+  "Emoji: Hug{:hug}": (つ❛‿❛)つ
+  "Emoji: Mad{:mad}": 😒🤔😄😅😂😱😭😭😥😵💀
