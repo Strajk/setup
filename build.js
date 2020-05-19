@@ -35,6 +35,7 @@ for (const key in alfredSnippets) {
   const [_, collection, prefix, suffix] = key.match(/(.+){(.*)}{(.*)}/)
   const path = `./apps/Alfred/snippets/${collection}`
   try {
+    fs.rmdirSync(path, { recursive: true })
     fs.mkdirSync(path)
   } catch (e) {
     // already exists
@@ -42,9 +43,11 @@ for (const key in alfredSnippets) {
 
   fs.writeFileSync(path + "/info.plist", INFO_PLIST_TEMPLATE({ prefix, suffix }))
 
+  const keywords = []
   for (const subKey in obj) {
     const subObj = obj[subKey]
     const [_, name, keyword] = subKey.match(/(.+){(.*)}/)
+    keywords.push(keyword)
     const uuid = uuidv5(subKey, "00000000-0000-0000-0000-000000000000")
     fs.writeFileSync(`${path}/${uuid}.json`, JSON.stringify({
       alfredsnippet: {
@@ -55,6 +58,20 @@ for (const key in alfredSnippets) {
       },
     }, null, "\t"))
   }
+
+  keywords
+    .sort((a, b) => a.length - b.length) // Sort by length
+    .reduce((acc, keyword, currI, all) => {
+      if (acc.has(keyword)) {
+        console.error(`🚫 Snippets check: ${keyword} duplicate`)
+      } else {
+        for (let i = keyword.length - 1; i > 0; i--) {
+          const part = keyword.substr(0, i)
+          if (acc.has(part)) console.error(`🚫 Snippets check: "${keyword}" conflict with "${part}"`)
+        }
+      }
+      return acc.add(keyword)
+    }, new Set())
 }
 
 // Dash
