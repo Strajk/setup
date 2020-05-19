@@ -6,6 +6,7 @@
   "author": "Strajk <strajk@me.com>",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint .",
     "build": "node build.js",
     "snippets": "yaml2json --save --pretty --watch snippets/*.yml"
   },

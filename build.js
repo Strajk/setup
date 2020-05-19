@@ -77,7 +77,7 @@ for (const key in alfredSnippets) {
 // Dash
 // ===
 const dashPlist = plist.parse(fs.readFileSync("/Users/strajk/Dropbox/Sync/Dash.dashsync/Preferences.plist", "utf8"))
-let dashOutput = []
+const dashOutput = []
 for (const key in dashPlist) {
   const obj = dashPlist[key]
   if (key.endsWith("Repo")) {
