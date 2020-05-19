@@ -1,3 +1,8 @@
+// ===
+// DEPRECATED
+// Switched back to iTerm
+// ===
+
 module.exports = {
   config: {
     updateChannel: 'stable',

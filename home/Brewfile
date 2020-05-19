@@ -61,7 +61,7 @@ brew "quicklookase" # Adobe ASE Color Swatches
 brew "qlvideo"
 # TODO: https://github.com/jaketmp/ePub-quicklook
 
-cask "hyper"
+cask "iterm2"
 cask "dropbox"
 cask "keyboard-maestro"
 cask "docker"
