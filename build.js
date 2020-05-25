@@ -93,7 +93,7 @@ for (const key in dashPlist) {
     }
   }
 }
-cpFile.sync("_src/README.md", "README.md")
+cpFile.sync("README.src.md", "README.md")
 replace.sync({
   files: "README.md",
   from: "{{{ dash-prefs }}}",
@@ -104,10 +104,7 @@ replace.sync({
 
 const readme = fs.readFileSync("./README.md", "utf-8")
 const tokens = marked.lexer(readme)
-const codeblocks = tokens.filter(x =>
-  x.type === "code" &&
-    x.lang.includes("<!-- >"),
-)
+const codeblocks = tokens.filter(x => x.type === "code" && x.lang.includes("<!-- >"))
 
 const COLLECTION = {}
 
@@ -126,7 +123,7 @@ codeblocks.forEach(codeblock => {
 
 _.forEach(COLLECTION, (sections, file) => {
   // TODO: Check if source file exists
-  cpFile.sync(`_src/${file}`, file)
+  cpFile.sync(`${file}.src`, file) // TODO: Handle ext name, eg: `file.src.js`
   _.forEach(sections, (content, section) => {
     try {
       const results = replace.sync({

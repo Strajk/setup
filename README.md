@@ -160,7 +160,7 @@ cask "keyboard-maestro"
 <details><summary> ⚙️ Preferences: `~/Dropbox/Sync/apps/Keyboard Maestro Macros.kmsync`</summary>
 
 * Enable Launch at login
-* Enable "Include Conflict Palette in Touch Bar" 
+* Enable "Include Conflict Palette in Touch Bar"
 
 </details>
 
@@ -277,7 +277,7 @@ cask "hyperswitch"
 - Use Include windows from other screens
 - Use shift to cycle backwards
 
-</details> 
+</details>
 
 ### [Alfred](https://www.alfredapp.com/)
 
@@ -439,7 +439,7 @@ mas "Monosnap", id: 540348655
 - Sey `Hotkeys: Capture area` to `control + m`
 - Sey `Hotkeys: Record video` to `control + alt + m`
 - Sey `Hotkeys: Capture previous area` to `control + shift + m`
-- Login to Monosnap account  
+- Login to Monosnap account
 
 </details>
 
@@ -897,7 +897,7 @@ mas "Keynote", id: 409183694
 <details><summary> ⚙️ Preferences</summary>
 
 * Enable `General: Enable Things URLs`
-* Enable `Things Cloud` 
+* Enable `Things Cloud`
 * Set shortcut for Quick Entry to `ctrl + n`
 * Enable Calendar Events
 
@@ -969,8 +969,8 @@ Some of the main options:
 
 * AceJump
 * Codota – ⚠️ not working well yet, but like the idea
-* Database Navigator 
-* GitToolBox 
+* Database Navigator
+* GitToolBox
 * Key Promoter X
 * Paste Images into Markdown
 * Presentation Assistant
@@ -986,12 +986,12 @@ Some of the main options:
 cask "visual-studio-code"
 ```
 
-</details> 
+</details>
 
 Sync via Gist
 
 ```bash
-ln -s ~/Code/setup/apps/Code/User "$HOME/Library/Application Support/Code/"
+ln -s ~/Code/setup/apps/VSCode/settings.json "$HOME/Library/Application Support/Code/User/"
 ```
 
 ### [iMovie](https://www.apple.com/imovie/)
@@ -1186,7 +1186,7 @@ killall Dock
     * Remap `Show Spotlight search` -> `⌃⌥⌘Space`
     * Disable `Show Finder search window`
   * Accessibility: Disable everything
-   
+
 #### Programmatic
 
 ```bash
