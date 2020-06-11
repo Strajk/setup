@@ -1,0 +1,7 @@
+{
+	"alfredsnippet": {
+		"uid": "4cd8ebc4-3783-5b5c-814a-b14b5ae90039",
+		"name": "browser: non-standard properties on window",
+		"snippet": "document.body.appendChild(document.createElement(\"div\")).innerHTML = \"<iframe id='_INJECTED_' style='display:none'></iframe>\"\nObject.keys(window).filter(a => !(a in window.frames[window.frames.length - 1])).sort().forEach((a, i) => console.log(i, a, window[a]))\ndocument.body.removeChild($$(\"#_INJECTED_\")[0].parentNode)\n"
+	}
+}

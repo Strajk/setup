@@ -1,0 +1,7 @@
+{
+	"alfredsnippet": {
+		"uid": "8ab1e162-e68c-5d96-87d9-19331ca48969",
+		"name": "dom: inject script",
+		"snippet": "function injectScript (url) {\n  return new Promise(function (resolve, reject) {\n    const s = document.createElement(\"script\")\n    s.src = url\n    s.async = true\n    s.type = \"text/javascript\"\n    s.onerror = reject\n    s.onload = resolve\n    document.body.appendChild(s)\n  })\n}\n"
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"alfredsnippet": {
+		"uid": "15e15528-546f-5172-8f10-d54cb4373130",
+		"name": "generic: Ignore error",
+		"snippet": "function ignoreError(promise) {\n  return new Promise(resolve => {\n    promise.then(resolve, resolve)\n  })\n}\n"
+	}
+}

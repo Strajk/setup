@@ -1,0 +1,10 @@
+{
+  "globals": {
+    "$": false,
+    "$$": false,
+    "chrome": false
+  },
+  "rules": {
+    "no-unused-vars": "off"
+  }
+}

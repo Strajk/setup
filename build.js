@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 const fs = require("fs")
+const path = require("path")
 
+const globby = require("globby")
 const marked = require("marked")
 const _ = require("lodash")
 const replace = require("replace-in-file")
@@ -27,6 +29,8 @@ const INFO_PLIST_TEMPLATE = _.template(`
 </plist>
 `.trim())
 
+// SNIPPETS: From YML
+// ---
 // TODO: Escape `/` with `\/`
 const alfredSnippets = YAML.parse(fs.readFileSync("./snippets/global.yml", "utf8"))
 for (const key in alfredSnippets) {
@@ -73,6 +77,21 @@ for (const key in alfredSnippets) {
       return acc.add(keyword)
     }, new Set())
 }
+
+// SNIPPETS: From raw files
+// ---
+const files = globby.sync(["./snippets/raw/**/*"])
+files.forEach(file => {
+  const name = path.basename(file, path.extname(file))
+  const uuid = uuidv5(name, "00000000-0000-0000-0000-000000000000")
+  fs.writeFileSync(`./apps/Alfred/snippets/raw/${uuid}.json`, JSON.stringify({
+    alfredsnippet: {
+      uid: uuid,
+      name,
+      snippet: fs.readFileSync(file, "utf8"),
+    },
+  }, null, "\t"))
+})
 
 // Dash
 // ===

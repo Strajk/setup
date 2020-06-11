@@ -1,0 +1,7 @@
+{
+	"alfredsnippet": {
+		"uid": "c405500d-15a3-5464-a434-5957715b534f",
+		"name": "css: scale on hover",
+		"snippet": ".TODO:hover {\n  transition: all .2s ease-in-out;\n  transform: scale(2);\n}\n"
+	}
+}

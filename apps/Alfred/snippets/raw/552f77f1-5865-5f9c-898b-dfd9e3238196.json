@@ -1,0 +1,7 @@
+{
+	"alfredsnippet": {
+		"uid": "552f77f1-5865-5f9c-898b-dfd9e3238196",
+		"name": "dataminer: clean results",
+		"snippet": "const cleanup = function (results) {\n  $.each(results, function () {\n    this.values[1] = \"xxxx -\" + this.values[0]\n  })\n  return results\n}\n"
+	}
+}

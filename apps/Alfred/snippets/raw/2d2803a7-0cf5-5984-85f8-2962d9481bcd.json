@@ -1,0 +1,7 @@
+{
+	"alfredsnippet": {
+		"uid": "2d2803a7-0cf5-5984-85f8-2962d9481bcd",
+		"name": "webext: Inject",
+		"snippet": "const s = document.createElement(\"script\")\ns.src = chrome.runtime.getURL(\"load.js\")\ns.type = \"text/javascript\"\ndocument.body.appendChild(s)\n"
+	}
+}
