@@ -1,0 +1,64 @@
+// BEWARE: Very much WIP, just few basic ones to make VSCode at least little bit usable for me
+[
+    {
+        "key": "cmd+o",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+o",
+        "command": "-workbench.action.files.openFileFolder"
+    },
+    {
+        "key": "cmd+o",
+        "command": "-workbench.action.files.openLocalFileFolder",
+        "when": "remoteFileDialogVisible"
+    },
+    {
+        "key": "alt+cmd+l",
+        "command": "-toggleFindInSelection",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+cmd+l",
+        "command": "-toggleSearchEditorContextLines",
+        "when": "inSearchEditor"
+    },
+    {
+        "key": "alt+cmd+l",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.gotoLine"
+    },
+]

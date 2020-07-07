@@ -1,0 +1,20 @@
+{
+  "ponicode.token": "REPLACE-WITH-SECRET",
+  "workbench.startupEditor": "newUntitledFile",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true
+  },
+  "workbench.activityBar.visible": false,
+  "workbench.colorCustomizations": {
+    "statusBar.background" : "#303030"
+  },
+  "pasteImage": {
+    "defaultName": "Y-MM-DD-HH-mm-ss",
+    "path": "${currentFileDir}/assets"
+  },
+  "editor.minimap.enabled": false,
+  "breadcrumbs.enabled": false,
+  "git.autofetch": true,
+  "ponicode.watchMode": false
+}
