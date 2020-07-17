@@ -21,7 +21,7 @@
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-standard": "4.0.0",
     "eslint-plugin-vue": "5.2.3",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "marked": "0.7.0",
     "plist": "3.0.1",
     "replace-in-file": "4.1.3",
