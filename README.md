@@ -909,6 +909,26 @@ mas "Keynote", id: 409183694
 
 Versatile design app
 
+#### Plugins
+
+`~/Library/Application Support/com.bohemiancoding.sketch3/Plugins`
+[github.com/sketchplugins/plugin-directory](https://github.com/sketchplugins/plugin-directory)
+
+- Material Design Color Palette – Google material design color palette.
+- [PaletteStripes](https://github.com/sureskumar/palette-stripes) – generate palette stripes
+- Quick Color – Apply colors from color palettes to a selection of objects.
+- [Quick Export](https://github.com/richardgazdik/sketch-quickexport) - Exports selected layers as pngs, to file or clipboard.
+- [Sketch Palettes](http://github.com/andrewfiorillo/sketch-palettes) – exporting and importing fill presets. It supports colors, gradients, and pattern fills.
+- [Syntax highlighter](https://github.com/danielguillan/sketch-syntax-highlighter)
+- [Align](https://github.com/richardgazdik/sketch-align) – Group and align your symbols and artboards by name
+- [Artboard layout settings](https://github.com/FrancisVega/sketch-copy-paste-layout-settings)
+- Bootstrap grid
+- Icon Drop
+- [SVG Insert](https://github.com/tankxu/svg-insert)
+- [Sketch Connection Flow Arrows](https://github.com/faridsabitov/Sketch-Connection-Flow-Arrows)
+- [RenameIt](https://github.com/rodi01/RenameIt)
+- https://github.com/timuric/content-generator-sketch-plugin – dummy data such as avatars, names, geo location data
+
 <details><summary> 💾 Installation: Installed via Homebrew</summary>
 
 ```bash <!-- >home/Brewfile#apps -->
@@ -987,6 +1007,11 @@ cask "visual-studio-code"
 ```
 
 </details>
+
+
+#### Extensions
+
+TODO Export from Notion
 
 Sync via Gist
 

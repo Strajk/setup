@@ -120,6 +120,7 @@ mas "Movist", id: 461788075
 cask "vlc"
 cask "caption"
 cask "boxer"
+cask "finicky"
 
 cask "caskroom/fonts/font-open-sans"
 cask "caskroom/fonts/font-roboto"
