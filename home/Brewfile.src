@@ -62,5 +62,6 @@ brew "qlvideo"
 # TODO: https://github.com/jaketmp/ePub-quicklook
 
 {{{ apps }}}
+cask "finicky"
 
 {{{ fonts }}}
