@@ -1,0 +1,21 @@
+/* Display actions inline: https://take.ms/lcUN9 */
+
+.ItemList .DropDown .menu {
+    visibility: visible !important; /* from hidden */
+    transform: none !important; /* from scaleY(0) */
+}
+
+.ItemList .DropDown .menu .menu-item {
+    opacity: 1 !important; /* from 0 */
+    display: none !important; /* hide all by default */
+}
+
+.ItemList .DropDown .menu .menu-item:nth-child(1) { /* "edit" */
+    display: inline !important;
+    margin-right: 8px !important;
+}
+
+.ItemList .DropDown .menu .menu-item:nth-child(2) { /* "delete" */
+    display: inline !important;
+    color: crimson !important;
+}
