@@ -1,13 +1,6 @@
 {
-  "scripts": {
-    "lint": "eslint ."
-  },
   "dependencies": {
     "get-stdin": "~8.0.0",
     "minimist": "~1.2.5"
-  },
-  "devDependencies": {
-    "eslint": "~7.4.0",
-    "eslint-config-strajk": "~0.0.6"
   }
 }
