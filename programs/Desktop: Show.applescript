@@ -1,0 +1,1 @@
+do shell script "defaults delete com.apple.finder CreateDesktop;killall Finder"
