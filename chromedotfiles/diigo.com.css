@@ -1,21 +1,24 @@
 /* Display actions inline: https://take.ms/lcUN9 */
-
-.ItemList .DropDown .menu {
-    visibility: visible !important; /* from hidden */
-    transform: none !important; /* from scaleY(0) */
+.ItemList .actionArea .actions .DropDown > label {
+  display: none;
+}
+.ItemList .actionArea .actions .DropDown .menu {
+  padding: 0 !important;
+  visibility: visible !important;
+  transform: none !important;
+  position: relative !important;
+}
+.ItemList .actionArea .actions .DropDown .menu .menu-item {
+  opacity: 1 !important;
+  display: none !important;
+}
+.ItemList .actionArea .actions .DropDown .menu .menu-item:nth-child(1) {
+  display: inline !important;
+  margin-right: 8px !important;
+}
+.ItemList .actionArea .actions .DropDown .menu .menu-item:nth-child(2) {
+  display: inline !important;
+  color: crimson !important;
 }
 
-.ItemList .DropDown .menu .menu-item {
-    opacity: 1 !important; /* from 0 */
-    display: none !important; /* hide all by default */
-}
-
-.ItemList .DropDown .menu .menu-item:nth-child(1) { /* "edit" */
-    display: inline !important;
-    margin-right: 8px !important;
-}
-
-.ItemList .DropDown .menu .menu-item:nth-child(2) { /* "delete" */
-    display: inline !important;
-    color: crimson !important;
-}
+/*# sourceMappingURL=diigo.com.css.map */
