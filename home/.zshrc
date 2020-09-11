@@ -49,6 +49,11 @@ alias brewup="brew update; brew upgrade; brew prune; brew cleanup; brew doctor"
 
 alias ws="webstorm ."
 
+alias g-unpushed="git --no-pager log --branches --not --remotes=origin --no-walk --decorate --oneline"
+
+function runInSubs() {
+  for d in ./*/ ; do /bin/zsh -c "(cd "$d" && echo "$d" && echo '===' && "$@")"; done
+}
 
 # Commands
 # ---
