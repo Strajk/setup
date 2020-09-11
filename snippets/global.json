@@ -1,0 +1,39 @@
+{
+  "Personal{Æ}{}": {
+    "Email{em}": "strajk@me.com",
+    "Facebook{fb}": "https://www.facebook.com/Strajk",
+    "Github{gh}": "https://github.com/strajk",
+    "Twitter{tw}": "https://twitter.com/Straaajk",
+    "Website{ww}": "https://strajk.me"
+  },
+  "General{æ}{}": {
+    "Stars: 1{s1}": "✭✩✩✩✩",
+    "Stars: 2{s2}": "✭✭✩✩✩",
+    "Stars: 3{s3}": "✭✭✭✩✩",
+    "Stars: 4{s4}": "✭✭✭✭✩",
+    "Stars: 5{s5}": "✭✭✭✭✭",
+    "Symbol: Command{cmd}": "⌘",
+    "Symbol: Option{opt}": "⌥",
+    "Symbol: Shift{shi}": "⇧",
+    "Symbol: Control{ctrl}": "⌃",
+    "Symbol: Tick{tick}": "✔",
+    "Symbol: Cross{cross}": "✗",
+    "Symbol: Pro{pro}": "🟢",
+    "Symbol: Con{con}": "🔴",
+    "Symbol: Neutral{neu}": "🟡",
+    "Flag: CZ{cz}": "🇨🇿",
+    "Flag: CZ{us}": "🇺🇸",
+    "Datetime: Now{now}": "{date:yyyy-MM-dd HH:mm}",
+    "Datetime: Today{tod}": "{date:yyyy-MM-dd}",
+    "Datetime: Today long{tol}": "{date:yyyy-MM-dd EEEEEE}",
+    "Datetime: Week{week}": "{date:w}",
+    "Emoji: Confused{:conf}": "¯\\_(⊙︿⊙)_/¯",
+    "Emoji: Shrug{:shrug}": "¯\\_(ツ)_/¯",
+    "Emoji: Table{:table}": "❨╯°□°❩╯︵┻━┻",
+    "Emoji: Point{:point}": "(☞ ͡° ͜ʖ ͡°ˋ)☞",
+    "Emoji: Hug{:hug}": "(つ❛‿❛)つ",
+    "Emoji: Mad{:mad}": "😒🤔😄😅😂😱😭😭😥😵💀",
+    "RSS: HackerNews User's Comments{rss:hnu}": "https://hnrss.org/threads?id={clipboard}",
+    "RSS: Twitter User's Likes{rss:twl}": "https://rsshub.app/twitter/likes/{clipboard}"
+  }
+}

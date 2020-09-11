@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint .",
     "build": "node build.js",
-    "snippets": "yaml2json --save --pretty --watch snippets/*.yml"
+    "snippets": "yaml2json snippets/*.yml --save --pretty && npm run build"
   },
   "devDependencies": {
     "cp-file": "7.0.0",

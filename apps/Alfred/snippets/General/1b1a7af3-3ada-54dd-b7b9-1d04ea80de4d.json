@@ -1,0 +1,8 @@
+{
+	"alfredsnippet": {
+		"uid": "1b1a7af3-3ada-54dd-b7b9-1d04ea80de4d",
+		"name": "RSS: Twitter User's Likes",
+		"keyword": "rss:twl",
+		"snippet": "https://rsshub.app/twitter/likes/{clipboard}"
+	}
+}

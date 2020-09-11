@@ -1,3 +1,8 @@
+# This file is used for snippets generation to
+# /apps/Alfred/snippets
+# by running
+# npm run snippets
+
 "Personal{Æ}{}":
   "Email{em}": strajk@me.com
   "Facebook{fb}": https://www.facebook.com/Strajk
@@ -39,3 +44,7 @@
   "Emoji: Point{:point}": (☞ ͡° ͜ʖ ͡°ˋ)☞
   "Emoji: Hug{:hug}": (つ❛‿❛)つ
   "Emoji: Mad{:mad}": 😒🤔😄😅😂😱😭😭😥😵💀
+
+  "RSS: HackerNews User's Comments{rss:hnu}": "https://hnrss.org/threads?id={clipboard}"
+  "RSS: Twitter User's Likes{rss:twl}": "https://rsshub.app/twitter/likes/{clipboard}"
+

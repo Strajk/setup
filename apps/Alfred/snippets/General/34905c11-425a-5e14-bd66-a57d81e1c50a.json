@@ -1,0 +1,8 @@
+{
+	"alfredsnippet": {
+		"uid": "34905c11-425a-5e14-bd66-a57d81e1c50a",
+		"name": "RSS: HackerNews User's Comments",
+		"keyword": "rss:hnu",
+		"snippet": "https://hnrss.org/threads?id={clipboard}"
+	}
+}
