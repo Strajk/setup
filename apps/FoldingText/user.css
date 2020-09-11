@@ -1,0 +1,55 @@
+.CodeMirror .cm-heading[cm-level="1"] {
+  font-size: 2.5em;
+  margin-bottom: 1rem;
+}
+.CodeMirror pre.cm-ordered,
+.CodeMirror pre.cm-unordered {
+  margin-left: 4rem !important;
+  margin-right: 4rem !important;
+  text-indent: 0 !important;
+}
+.CodeMirror pre.cm-ordered .cm-tab,
+.CodeMirror pre.cm-unordered .cm-tab {
+  display: none;
+}
+.CodeMirror pre.cm-ordered[cm-level="1"],
+.CodeMirror pre.cm-unordered[cm-level="1"] {
+  padding-left: 0px !important;
+}
+.CodeMirror pre.cm-ordered[cm-level="2"],
+.CodeMirror pre.cm-unordered[cm-level="2"] {
+  padding-left: 20px !important;
+}
+.CodeMirror pre.cm-ordered[cm-level="3"],
+.CodeMirror pre.cm-unordered[cm-level="3"] {
+  padding-left: 40px !important;
+}
+.CodeMirror pre.cm-ordered[cm-level="4"],
+.CodeMirror pre.cm-unordered[cm-level="4"] {
+  padding-left: 60px !important;
+}
+.CodeMirror pre.cm-ordered[cm-level="5"],
+.CodeMirror pre.cm-unordered[cm-level="5"] {
+  padding-left: 80px !important;
+}
+.CodeMirror pre.cm-ordered[cm-level="6"],
+.CodeMirror pre.cm-unordered[cm-level="6"] {
+  padding-left: 100px !important;
+}
+.CodeMirror pre.cm-ordered[cm-level="7"],
+.CodeMirror pre.cm-unordered[cm-level="7"] {
+  padding-left: 120px !important;
+}
+.CodeMirror pre.cm-ordered[cm-level="8"],
+.CodeMirror pre.cm-unordered[cm-level="8"] {
+  padding-left: 140px !important;
+}
+.CodeMirror pre.cm-ordered[cm-level="9"],
+.CodeMirror pre.cm-unordered[cm-level="9"] {
+  padding-left: 160px !important;
+}
+.CodeMirror pre.cm-ordered[cm-level="10"],
+.CodeMirror pre.cm-unordered[cm-level="10"] {
+  padding-left: 180px !important;
+}
+/*# sourceMappingURL=user.css.map */
