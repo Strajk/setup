@@ -41,7 +41,7 @@ brew "redis"
 
 # brew "node" # I manage node via nvm
 brew "nvm"
-cask "java"
+brew "java" # Moved from Cask to Homebrew https://github.com/Homebrew/homebrew-cask/pull/72284
 brew "python3"
 brew "yarn"
 
@@ -50,15 +50,16 @@ cask "zoomus"
 
 # Quicklook plugins
 # ===
-brew "qlcolorcode" # Source code with syntax highlighting
-brew "qlstephen" # Plain text without or with unknown file extension
-brew "qlmarkdown"
-brew "quicklook-json"
-brew "qlimagesize"
-brew "webpquicklook"
-brew "suspicious-package" # Contents of a standard Apple installer package
-brew "quicklookase" # Adobe ASE Color Swatches
-brew "qlvideo"
+# TODO: Consider [Glance](https://github.com/samuelmeuli/glance), but not yet, seems that there are lot of issues still
+cask "qlcolorcode" # Source code with syntax highlighting
+cask "qlstephen" # Plain text without or with unknown file extension
+cask "qlmarkdown"
+cask "quicklook-json"
+cask "qlimagesize"
+cask "webpquicklook"
+cask "suspicious-package" # Contents of a standard Apple installer package
+cask "quicklookase" # Adobe ASE Color Swatches
+cask "qlvideo"
 # TODO: https://github.com/jaketmp/ePub-quicklook
 
 cask "hyper"
