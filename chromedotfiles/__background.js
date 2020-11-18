@@ -1,5 +1,7 @@
 /* eslint-env webextensions */
 
+// Loaded with https://github.com/Strajk/chromedotfilez
+
 chrome.webRequest.onBeforeRequest.addListener(
   page => {
     if (page.type === "main_frame") { // don't block api requests
