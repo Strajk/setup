@@ -28,8 +28,9 @@ function shouldBlock (url) {
   }
 
   if (url.hostname === "twitter.com") {
-    if (url.pathname === "/") return true
-    if (url.pathname === "/home") return true
+    // Allow Twitter for now, block just specific keywords
+    // if (url.pathname === "/") return true
+    // if (url.pathname === "/home") return true
     return false
   }
 
