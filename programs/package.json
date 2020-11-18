@@ -1,6 +1,15 @@
 {
   "dependencies": {
+    "colors": "~1.4.0",
+    "diff": "~4.0.2",
+    "file-size": "~1.0.0",
+    "filesize": "~6.1.0",
+    "get-repository-url": "~2.0.0",
     "get-stdin": "~8.0.0",
-    "minimist": "~1.2.5"
+    "mdast-util-to-string": "~1.1.0",
+    "minimist": "~1.2.5",
+    "remark": "~12.0.1",
+    "repo-url": "~1.0.1",
+    "unist-util-visit": "~2.0.3"
   }
 }

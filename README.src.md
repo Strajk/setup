@@ -73,6 +73,8 @@ nvm current
 
 Global packages
 
+// TODO: Update regularly
+
 ```bash
 npm i -g node-inspector
 npm i -g browser-sync
@@ -83,6 +85,7 @@ npm i -g jest
 npm i -g yo
 npm i -g generator-express
 npm i -g spaceship-prompt
+npm i -g degit
 ```
 
 ### Ruby
@@ -1367,6 +1370,8 @@ TODO
 Run regularly
 
 `brewup`
+
+`nvm install node --reinstall-packages-from=node`
 
 Clone all my repos
 
