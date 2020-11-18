@@ -51,6 +51,8 @@ alias ws="webstorm ."
 
 alias g-unpushed="git --no-pager log --branches --not --remotes=origin --no-walk --decorate --oneline"
 
+alias mm=~/Code/meteor/meteor
+
 function runInSubs() {
   for d in ./*/ ; do /bin/zsh -c "(cd "$d" && echo "$d" && echo '===' && "$@")"; done
 }
