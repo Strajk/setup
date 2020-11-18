@@ -16,5 +16,7 @@
   "editor.minimap.enabled": false,
   "breadcrumbs.enabled": false,
   "git.autofetch": true,
-  "ponicode.watchMode": false
+  "ponicode.watchMode": false,
+  "pasteImage.path": "${currentFileDir}/${currentFileNameWithoutExt}.assets",
+  "window.zoomLevel": 1
 }
