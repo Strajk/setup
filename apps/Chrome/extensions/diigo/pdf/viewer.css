@@ -833,10 +833,12 @@ html[dir='ltr'] .dropdownToolbarButton {
     opacity: 0.8;
     cursor: pointer;
 }
+
 #toolbarViewer .toolbarButton:hover {
-   opacity: 1;
+    opacity: 1;
 }
-#toolbarViewer .toolbarButton b{
+
+#toolbarViewer .toolbarButton b {
     content: "";
     height: 24px;
     width: 24px;
@@ -844,10 +846,11 @@ html[dir='ltr'] .dropdownToolbarButton {
     background-image: url(images/pdf_icon.png);
 }
 
-#sidebarToggle b{
+#sidebarToggle b {
     background-position: -96px 0;
 }
-#viewFind b{
+
+#viewFind b {
     background-position: -72px 0;
 }
 
@@ -873,7 +876,7 @@ html[dir='ltr'] .dropdownToolbarButton {
 }
 
 @media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
-    #toolbarViewer .toolbarButton b{
+    #toolbarViewer .toolbarButton b {
         background-image: url(images/pdf_icon@2x.png);
         background-size: 168px auto;
     }
@@ -2688,7 +2691,7 @@ button.submit {
     top: 70px;
 }
 
-#upload-status p{
+#upload-status p {
     margin-bottom: 10px;
 }
 
@@ -3197,7 +3200,7 @@ span#scaleSelectContainer {
     right: 20px;
     top: 66px;
     padding: 20px;
-    background: rgba(0,0,0,.7);
+    background: rgba(0, 0, 0, .7);
     color: white;
     margin: 20px;
     font-weight: bold;

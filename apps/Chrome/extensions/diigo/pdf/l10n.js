@@ -30,7 +30,7 @@
 /*jshint browser: true, devel: true, es5: true, globalstrict: true */
 'use strict';
 
-document.webL10n = (function(window, document, undefined) {
+document.webL10n = (function (window, document, undefined) {
   var gL10nData = {};
   var gTextData = '';
   var gTextProp = 'textContent';
@@ -89,7 +89,7 @@ document.webL10n = (function(window, document, undefined) {
         console.warn('could not parse arguments for #' + l10nId);
       }
     }
-    return { id: l10nId, args: args };
+    return {id: l10nId, args: args};
   }
 
   function fireL10nReadyEvent(lang) {
@@ -100,7 +100,8 @@ document.webL10n = (function(window, document, undefined) {
   }
 
   function xhrLoadText(url, onSuccess, onFailure) {
-    onSuccess = onSuccess || function _onSuccess(data) {};
+    onSuccess = onSuccess || function _onSuccess(data) {
+    };
     onFailure = onFailure || function _onFailure() {
       console.warn(url + ' not found.');
     };
@@ -110,7 +111,7 @@ document.webL10n = (function(window, document, undefined) {
     if (xhr.overrideMimeType) {
       xhr.overrideMimeType('text/plain; charset=utf-8');
     }
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
       if (xhr.readyState == 4) {
         if (xhr.status == 200 || xhr.status === 0) {
           onSuccess(xhr.responseText);
@@ -163,15 +164,15 @@ document.webL10n = (function(window, document, undefined) {
       if (text.lastIndexOf('\\') < 0)
         return text;
       return text.replace(/\\\\/g, '\\')
-                 .replace(/\\n/g, '\n')
-                 .replace(/\\r/g, '\r')
-                 .replace(/\\t/g, '\t')
-                 .replace(/\\b/g, '\b')
-                 .replace(/\\f/g, '\f')
-                 .replace(/\\{/g, '{')
-                 .replace(/\\}/g, '}')
-                 .replace(/\\"/g, '"')
-                 .replace(/\\'/g, "'");
+        .replace(/\\n/g, '\n')
+        .replace(/\\r/g, '\r')
+        .replace(/\\t/g, '\t')
+        .replace(/\\b/g, '\b')
+        .replace(/\\f/g, '\f')
+        .replace(/\\{/g, '{')
+        .replace(/\\}/g, '}')
+        .replace(/\\"/g, '"')
+        .replace(/\\'/g, "'");
     }
 
     // parse *.properties text data into an l10n dictionary
@@ -218,7 +219,7 @@ document.webL10n = (function(window, document, undefined) {
 
                 currentLang = match[1].toLowerCase();
                 skipLang = (currentLang !== '*') &&
-                    (currentLang !== lang) && (currentLang !== genericLang);
+                  (currentLang !== lang) && (currentLang !== genericLang);
                 continue;
               } else if (skipLang) {
                 continue;
@@ -237,28 +238,29 @@ document.webL10n = (function(window, document, undefined) {
             }
           }
         }
+
         nextEntry();
       }
 
       // import another *.properties file
       function loadImport(url, callback) {
-        xhrLoadText(url, function(content) {
+        xhrLoadText(url, function (content) {
           parseRawLines(content, false, callback); // don't allow recursive imports
         }, null);
       }
 
       // fill the dictionary
-      parseRawLines(text, true, function() {
+      parseRawLines(text, true, function () {
         parsedPropertiesCallback(dictionary);
       });
     }
 
     // load and parse l10n data (warning: global variables are used here)
-    xhrLoadText(href, function(response) {
+    xhrLoadText(href, function (response) {
       gTextData += response; // mostly for debug
 
       // parse *.properties text data into an l10n dictionary
-      parseProperties(response, function(data) {
+      parseProperties(response, function (data) {
 
         // find attribute descriptions, if any
         for (var key in data) {
@@ -292,7 +294,8 @@ document.webL10n = (function(window, document, undefined) {
       lang = lang.toLowerCase();
     }
 
-    callback = callback || function _callback() {};
+    callback = callback || function _callback() {
+    };
 
     clear();
     gLanguage = lang;
@@ -332,7 +335,7 @@ document.webL10n = (function(window, document, undefined) {
     // start the callback when all resources are loaded
     var onResourceLoaded = null;
     var gResourceCount = 0;
-    onResourceLoaded = function() {
+    onResourceLoaded = function () {
       gResourceCount++;
       if (gResourceCount >= langCount) {
         callback();
@@ -346,8 +349,8 @@ document.webL10n = (function(window, document, undefined) {
       var href = link.href;
       // Note: If |gAsyncResourceLoading| is false, then the following callbacks
       // are synchronously called.
-      this.load = function(lang, callback) {
-        parseResource(href, lang, callback, function() {
+      this.load = function (lang, callback) {
+        parseResource(href, lang, callback, function () {
           console.warn(href + ' not found.');
           // lang not found, used default resource instead
           console.warn('"' + lang + '" resource not found');
@@ -568,6 +571,7 @@ document.webL10n = (function(window, document, undefined) {
     function isIn(n, list) {
       return list.indexOf(n) !== -1;
     }
+
     function isBetween(n, start, end) {
       return start <= n && n <= end;
     }
@@ -575,10 +579,10 @@ document.webL10n = (function(window, document, undefined) {
     // list of all plural rules methods:
     // map an integer to the plural form name to use
     var pluralRules = {
-      '0': function(n) {
+      '0': function (n) {
         return 'other';
       },
-      '1': function(n) {
+      '1': function (n) {
         if ((isBetween((n % 100), 3, 10)))
           return 'few';
         if (n === 0)
@@ -591,7 +595,7 @@ document.webL10n = (function(window, document, undefined) {
           return 'one';
         return 'other';
       },
-      '2': function(n) {
+      '2': function (n) {
         if (n !== 0 && (n % 10) === 0)
           return 'many';
         if (n == 2)
@@ -600,36 +604,36 @@ document.webL10n = (function(window, document, undefined) {
           return 'one';
         return 'other';
       },
-      '3': function(n) {
+      '3': function (n) {
         if (n == 1)
           return 'one';
         return 'other';
       },
-      '4': function(n) {
+      '4': function (n) {
         if ((isBetween(n, 0, 1)))
           return 'one';
         return 'other';
       },
-      '5': function(n) {
+      '5': function (n) {
         if ((isBetween(n, 0, 2)) && n != 2)
           return 'one';
         return 'other';
       },
-      '6': function(n) {
+      '6': function (n) {
         if (n === 0)
           return 'zero';
         if ((n % 10) == 1 && (n % 100) != 11)
           return 'one';
         return 'other';
       },
-      '7': function(n) {
+      '7': function (n) {
         if (n == 2)
           return 'two';
         if (n == 1)
           return 'one';
         return 'other';
       },
-      '8': function(n) {
+      '8': function (n) {
         if ((isBetween(n, 3, 6)))
           return 'few';
         if ((isBetween(n, 7, 10)))
@@ -640,50 +644,50 @@ document.webL10n = (function(window, document, undefined) {
           return 'one';
         return 'other';
       },
-      '9': function(n) {
+      '9': function (n) {
         if (n === 0 || n != 1 && (isBetween((n % 100), 1, 19)))
           return 'few';
         if (n == 1)
           return 'one';
         return 'other';
       },
-      '10': function(n) {
+      '10': function (n) {
         if ((isBetween((n % 10), 2, 9)) && !(isBetween((n % 100), 11, 19)))
           return 'few';
         if ((n % 10) == 1 && !(isBetween((n % 100), 11, 19)))
           return 'one';
         return 'other';
       },
-      '11': function(n) {
+      '11': function (n) {
         if ((isBetween((n % 10), 2, 4)) && !(isBetween((n % 100), 12, 14)))
           return 'few';
         if ((n % 10) === 0 ||
-            (isBetween((n % 10), 5, 9)) ||
-            (isBetween((n % 100), 11, 14)))
+          (isBetween((n % 10), 5, 9)) ||
+          (isBetween((n % 100), 11, 14)))
           return 'many';
         if ((n % 10) == 1 && (n % 100) != 11)
           return 'one';
         return 'other';
       },
-      '12': function(n) {
+      '12': function (n) {
         if ((isBetween(n, 2, 4)))
           return 'few';
         if (n == 1)
           return 'one';
         return 'other';
       },
-      '13': function(n) {
+      '13': function (n) {
         if ((isBetween((n % 10), 2, 4)) && !(isBetween((n % 100), 12, 14)))
           return 'few';
         if (n != 1 && (isBetween((n % 10), 0, 1)) ||
-            (isBetween((n % 10), 5, 9)) ||
-            (isBetween((n % 100), 12, 14)))
+          (isBetween((n % 10), 5, 9)) ||
+          (isBetween((n % 100), 12, 14)))
           return 'many';
         if (n == 1)
           return 'one';
         return 'other';
       },
-      '14': function(n) {
+      '14': function (n) {
         if ((isBetween((n % 100), 3, 4)))
           return 'few';
         if ((n % 100) == 2)
@@ -692,7 +696,7 @@ document.webL10n = (function(window, document, undefined) {
           return 'one';
         return 'other';
       },
-      '15': function(n) {
+      '15': function (n) {
         if (n === 0 || (isBetween((n % 100), 2, 10)))
           return 'few';
         if ((isBetween((n % 100), 11, 19)))
@@ -701,12 +705,12 @@ document.webL10n = (function(window, document, undefined) {
           return 'one';
         return 'other';
       },
-      '16': function(n) {
+      '16': function (n) {
         if ((n % 10) == 1 && n != 11)
           return 'one';
         return 'other';
       },
-      '17': function(n) {
+      '17': function (n) {
         if (n == 3)
           return 'few';
         if (n === 0)
@@ -719,26 +723,26 @@ document.webL10n = (function(window, document, undefined) {
           return 'one';
         return 'other';
       },
-      '18': function(n) {
+      '18': function (n) {
         if (n === 0)
           return 'zero';
         if ((isBetween(n, 0, 2)) && n !== 0 && n != 2)
           return 'one';
         return 'other';
       },
-      '19': function(n) {
+      '19': function (n) {
         if ((isBetween(n, 2, 10)))
           return 'few';
         if ((isBetween(n, 0, 1)))
           return 'one';
         return 'other';
       },
-      '20': function(n) {
+      '20': function (n) {
         if ((isBetween((n % 10), 3, 4) || ((n % 10) == 9)) && !(
-            isBetween((n % 100), 10, 19) ||
-            isBetween((n % 100), 70, 79) ||
-            isBetween((n % 100), 90, 99)
-            ))
+          isBetween((n % 100), 10, 19) ||
+          isBetween((n % 100), 70, 79) ||
+          isBetween((n % 100), 90, 99)
+        ))
           return 'few';
         if ((n % 1000000) === 0 && n !== 0)
           return 'many';
@@ -748,24 +752,24 @@ document.webL10n = (function(window, document, undefined) {
           return 'one';
         return 'other';
       },
-      '21': function(n) {
+      '21': function (n) {
         if (n === 0)
           return 'zero';
         if (n == 1)
           return 'one';
         return 'other';
       },
-      '22': function(n) {
+      '22': function (n) {
         if ((isBetween(n, 0, 1)) || (isBetween(n, 11, 99)))
           return 'one';
         return 'other';
       },
-      '23': function(n) {
+      '23': function (n) {
         if ((isBetween((n % 10), 1, 2)) || (n % 20) === 0)
           return 'one';
         return 'other';
       },
-      '24': function(n) {
+      '24': function (n) {
         if ((isBetween(n, 3, 10) || isBetween(n, 13, 19)))
           return 'few';
         if (isIn(n, [2, 12]))
@@ -780,13 +784,15 @@ document.webL10n = (function(window, document, undefined) {
     var index = locales2rules[lang.replace(/-.*$/, '')];
     if (!(index in pluralRules)) {
       console.warn('plural form unknown for [' + lang + ']');
-      return function() { return 'other'; };
+      return function () {
+        return 'other';
+      };
     }
     return pluralRules[index];
   }
 
   // pre-defined 'plural' macro
-  gMacros.plural = function(str, param, key, prop) {
+  gMacros.plural = function (str, param, key, prop) {
     var n = parseFloat(param);
     if (isNaN(n))
       return str;
@@ -834,10 +840,10 @@ document.webL10n = (function(window, document, undefined) {
     }
 
     /** This is where l10n expressions should be processed.
-      * The plan is to support C-style expressions from the l20n project;
-      * until then, only two kinds of simple expressions are supported:
-      *   {[ index ]} and {{ arguments }}.
-      */
+     * The plan is to support C-style expressions from the l20n project;
+     * until then, only two kinds of simple expressions are supported:
+     *   {[ index ]} and {{ arguments }}.
+     */
     var rv = {};
     for (var prop in data) {
       var str = data[prop];
@@ -877,7 +883,7 @@ document.webL10n = (function(window, document, undefined) {
   // replace {{arguments}} with their values
   function substArguments(str, args, key) {
     var reArgs = /\{\{\s*(.+?)\s*\}\}/g;
-    return str.replace(reArgs, function(matched_text, arg) {
+    return str.replace(reArgs, function (matched_text, arg) {
       if (args && arg in args) {
         return args[arg];
       }
@@ -968,7 +974,7 @@ document.webL10n = (function(window, document, undefined) {
 
   return {
     // get a localized string
-    get: function(key, args, fallbackString) {
+    get: function (key, args, fallbackString) {
       var index = key.lastIndexOf('.');
       var prop = gTextProp;
       if (index > 0) { // An attribute has been specified
@@ -988,13 +994,19 @@ document.webL10n = (function(window, document, undefined) {
     },
 
     // debug
-    getData: function() { return gL10nData; },
-    getText: function() { return gTextData; },
+    getData: function () {
+      return gL10nData;
+    },
+    getText: function () {
+      return gTextData;
+    },
 
     // get|set the document language
-    getLanguage: function() { return gLanguage; },
-    setLanguage: function(lang, callback) {
-      loadLocale(lang, function() {
+    getLanguage: function () {
+      return gLanguage;
+    },
+    setLanguage: function (lang, callback) {
+      loadLocale(lang, function () {
         if (callback)
           callback();
         translateFragment();
@@ -1002,7 +1014,7 @@ document.webL10n = (function(window, document, undefined) {
     },
 
     // get the direction (ltr|rtl) of the current language
-    getDirection: function() {
+    getDirection: function () {
       // http://www.w3.org/International/questions/qa-scripts
       // Arabic, Hebrew, Farsi, Pashto, Urdu
       var rtlList = ['ar', 'he', 'fa', 'ps', 'ur'];
@@ -1014,12 +1026,14 @@ document.webL10n = (function(window, document, undefined) {
     translate: translateFragment,
 
     // this can be used to prevent race conditions
-    getReadyState: function() { return gReadyState; },
-    ready: function(callback) {
+    getReadyState: function () {
+      return gReadyState;
+    },
+    ready: function (callback) {
       if (!callback) {
-        return;
+
       } else if (gReadyState == 'complete' || gReadyState == 'interactive') {
-        window.setTimeout(function() {
+        window.setTimeout(function () {
           callback();
         });
       } else if (document.addEventListener) {
@@ -1030,4 +1044,4 @@ document.webL10n = (function(window, document, undefined) {
       }
     }
   };
-}) (window, document);
+})(window, document);

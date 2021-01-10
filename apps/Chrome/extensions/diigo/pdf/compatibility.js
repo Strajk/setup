@@ -30,12 +30,12 @@ if (typeof PDFJS === 'undefined') {
   if (typeof Uint8Array !== 'undefined') {
     // Support: iOS<6.0
     if (typeof Uint8Array.prototype.subarray === 'undefined') {
-        Uint8Array.prototype.subarray = function subarray(start, end) {
-          return new Uint8Array(this.slice(start, end));
-        };
-        Float32Array.prototype.subarray = function subarray(start, end) {
-          return new Float32Array(this.slice(start, end));
-        };
+      Uint8Array.prototype.subarray = function subarray(start, end) {
+        return new Uint8Array(this.slice(start, end));
+      };
+      Float32Array.prototype.subarray = function subarray(start, end) {
+        return new Float32Array(this.slice(start, end));
+      };
     }
 
     // Support: Android<4.1
@@ -113,12 +113,16 @@ if (typeof PDFJS === 'undefined') {
     try {
       // some browsers (e.g. safari) cannot use defineProperty() on DOM objects
       // and thus the native version is not sufficient
-      Object.defineProperty(new Image(), 'id', { value: 'test' });
+      Object.defineProperty(new Image(), 'id', {value: 'test'});
       // ... another test for android gb browser for non-DOM objects
-      var Test = function Test() {};
-      Test.prototype = { get id() { } };
+      var Test = function Test() {
+      };
+      Test.prototype = {
+        get id() {
+        }
+      };
       Object.defineProperty(new Test(), 'id',
-        { value: '', configurable: true, enumerable: true, writable: false });
+        {value: '', configurable: true, enumerable: true, writable: false});
     } catch (e) {
       definePropertyPossible = false;
     }
@@ -157,7 +161,8 @@ if (typeof PDFJS === 'undefined') {
     // IE10 might have response, but not overrideMimeType
     // Support: IE10
     Object.defineProperty(xhrPrototype, 'overrideMimeType', {
-      value: function xmlHttpRequestOverrideMimeType(mimeType) {}
+      value: function xmlHttpRequestOverrideMimeType(mimeType) {
+      }
     });
   }
   if ('responseType' in xhr) {
@@ -175,7 +180,7 @@ if (typeof PDFJS === 'undefined') {
       if (value === 'text' || value === 'arraybuffer') {
         this._responseType = value;
         if (value === 'arraybuffer' &&
-            typeof this.overrideMimeType === 'function') {
+          typeof this.overrideMimeType === 'function') {
           this.overrideMimeType('text/plain; charset=x-user-defined');
         }
       }
@@ -233,7 +238,7 @@ if (typeof PDFJS === 'undefined') {
       var d3 = i + 1 < n ? ((b2 & 0xF) << 2) | (b3 >> 6) : 64;
       var d4 = i + 2 < n ? (b3 & 0x3F) : 64;
       buffer += (digits.charAt(d1) + digits.charAt(d2) +
-                 digits.charAt(d3) + digits.charAt(d4));
+        digits.charAt(d3) + digits.charAt(d4));
     }
     return buffer;
   };
@@ -264,7 +269,7 @@ if (typeof PDFJS === 'undefined') {
       ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer,
         // and if not first of each 4 characters,
         // convert the first 8 bits to one ascii character
-        bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0
+      bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0
     ) {
       // try to find character in table (0-63, not found => -1)
       buffer = digits.indexOf(buffer);
@@ -299,7 +304,7 @@ if (typeof PDFJS === 'undefined') {
   }
 
   Object.defineProperty(HTMLElement.prototype, 'dataset', {
-    get: function() {
+    get: function () {
       if (this._dataset) {
         return this._dataset;
       }
@@ -311,7 +316,7 @@ if (typeof PDFJS === 'undefined') {
           continue;
         }
         var key = attribute.name.substring(5).replace(/\-([a-z])/g,
-          function(all, ch) {
+          function (all, ch) {
             return ch.toUpperCase();
           });
         dataset[key] = attribute.value;
@@ -354,22 +359,22 @@ if (typeof PDFJS === 'undefined') {
   }
 
   var classListPrototype = {
-    add: function(name) {
+    add: function (name) {
       changeList(this.element, name, true, false);
     },
-    contains: function(name) {
+    contains: function (name) {
       return changeList(this.element, name, false, false);
     },
-    remove: function(name) {
+    remove: function (name) {
       changeList(this.element, name, false, true);
     },
-    toggle: function(name) {
+    toggle: function (name) {
       changeList(this.element, name, true, true);
     }
   };
 
   Object.defineProperty(HTMLElement.prototype, 'classList', {
-    get: function() {
+    get: function () {
       if (this._classList) {
         return this._classList;
       }
@@ -399,20 +404,29 @@ if (typeof PDFJS === 'undefined') {
 (function checkConsoleCompatibility() {
   if (!('console' in window)) {
     window.console = {
-      log: function() {},
-      error: function() {},
-      warn: function() {}
+      log: function () {
+      },
+      error: function () {
+      },
+      warn: function () {
+      }
     };
   } else if (!('bind' in console.log)) {
     // native functions in IE9 might not have bind
-    console.log = (function(fn) {
-      return function(msg) { return fn(msg); };
+    console.log = (function (fn) {
+      return function (msg) {
+        return fn(msg);
+      };
     })(console.log);
-    console.error = (function(fn) {
-      return function(msg) { return fn(msg); };
+    console.error = (function (fn) {
+      return function (msg) {
+        return fn(msg);
+      };
     })(console.error);
-    console.warn = (function(fn) {
-      return function(msg) { return fn(msg); };
+    console.warn = (function (fn) {
+      return function (msg) {
+        return fn(msg);
+      };
     })(console.warn);
   }
 })();
@@ -427,9 +441,11 @@ if (typeof PDFJS === 'undefined') {
       event.stopPropagation();
     }
   }
+
   function isDisabled(node) {
     return node.disabled || (node.parentNode && isDisabled(node.parentNode));
   }
+
   if (navigator.userAgent.indexOf('Opera') !== -1) {
     // use browser detection since we cannot feature-check this bug
     document.addEventListener('click', ignoreIfTargetDisabled, true);
@@ -459,7 +475,7 @@ if (typeof PDFJS === 'undefined') {
   // Last tested with version 6.0.4.
   // Support: Safari 6.0+
   var isSafari = Object.prototype.toString.call(
-                  window.HTMLElement).indexOf('Constructor') > 0;
+    window.HTMLElement).indexOf('Constructor') > 0;
 
   // Older versions of Android (pre 3.0) has issues with range requests, see:
   // https://github.com/mozilla/pdf.js/issues/3381.
@@ -494,7 +510,7 @@ if (typeof PDFJS === 'undefined') {
   // IE < 11 will use window.CanvasPixelArray which lacks set function.
   if (window.CanvasPixelArray) {
     if (typeof window.CanvasPixelArray.prototype.set !== 'function') {
-      window.CanvasPixelArray.prototype.set = function(arr) {
+      window.CanvasPixelArray.prototype.set = function (arr) {
         for (var i = 0, ii = this.length; i < ii; i++) {
           this[i] = arr[i];
         }
@@ -514,8 +530,7 @@ if (typeof PDFJS === 'undefined') {
       // thus pass the Chrome check above and not reach this block.
       polyfill = /Android\s[0-4][^\d]/g.test(navigator.userAgent);
     } else if (navigator.userAgent.indexOf('Safari') >= 0) {
-      versionMatch = navigator.userAgent.
-        match(/Version\/([0-9]+)\.([0-9]+)\.([0-9]+) Safari\//);
+      versionMatch = navigator.userAgent.match(/Version\/([0-9]+)\.([0-9]+)\.([0-9]+) Safari\//);
       // Safari < 6 lacks the set function.
       polyfill = versionMatch && parseInt(versionMatch[1]) < 6;
     }
@@ -523,9 +538,9 @@ if (typeof PDFJS === 'undefined') {
     if (polyfill) {
       var contextPrototype = window.CanvasRenderingContext2D.prototype;
       contextPrototype._createImageData = contextPrototype.createImageData;
-      contextPrototype.createImageData = function(w, h) {
+      contextPrototype.createImageData = function (w, h) {
         var imageData = this._createImageData(w, h);
-        imageData.data.set = function(arr) {
+        imageData.data.set = function (arr) {
           for (var i = 0, ii = this.length; i < ii; i++) {
             this[i] = arr[i];
           }
@@ -570,7 +585,7 @@ if (typeof PDFJS === 'undefined') {
 // Support: IE11+ (when embedded).
 (function checkFullscreenSupport() {
   var isEmbeddedIE = (navigator.userAgent.indexOf('Trident') >= 0 &&
-                      window.parent !== window);
+    window.parent !== window);
   if (isEmbeddedIE) {
     PDFJS.disableFullscreen = true;
   }

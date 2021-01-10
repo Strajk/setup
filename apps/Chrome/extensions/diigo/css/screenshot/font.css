@@ -4,24 +4,28 @@
     font-weight: 400;
     src: local('Anton'), url(../../../../editor-fonts/anton.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Changa One';
     font-style: normal;
     font-weight: 400;
     src: local('Changa One'), local('ChangaOne'), url(../../editor-fonts/changeaone.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Chewy';
     font-style: normal;
     font-weight: 400;
     src: local('Chewy'), url(../../editor-fonts/chewy.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Crafty Girls';
     font-style: normal;
     font-weight: 400;
     src: local('Crafty Girls'), local('CraftyGirls'), url(../../editor-fonts/craftygirls.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Dancing Script';
     font-style: normal;
@@ -35,6 +39,7 @@
     font-weight: 400;
     src: local('Frijole'), url(../../editor-fonts/frijole.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Griffy';
     font-style: normal;
@@ -48,6 +53,7 @@
     font-weight: 400;
     src: local('Limelight'), url(../../editor-fonts/limelight.woff) format('woff');
 }
+
 @font-face {
     font-family: 'Lobster';
     font-style: normal;

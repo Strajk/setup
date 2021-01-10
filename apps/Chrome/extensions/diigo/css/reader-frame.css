@@ -29,21 +29,23 @@
     height: 100%;
     width: 100%;
 }
+
 #diigo-reader #diigo-process-frame {
-  display: none;
+    display: none;
     /*position: absolute;*/
     /*left: 0;*/
     /*top: 0;*/
     /*height: 100%;*/
     /*width: 100%;*/
 }
+
 #diigo-reader.show {
     transform: translate3d(0, 0, 0);
 }
 
-#diigo-reader #diigo-showannotationList{
+#diigo-reader #diigo-showannotationList {
     position: absolute;
-    top:8px;
+    top: 8px;
     right: 70px;
     height: 36px;
     width: 36px;
@@ -58,17 +60,17 @@
     background: url("chrome-extension://__MSG_@@extension_id__/diigolet/chrome-panel-images/toolbar-icon.png") -419px -1px no-repeat;
 }
 
-#diigo-reader #diigo-showannotationList:hover{
+#diigo-reader #diigo-showannotationList:hover {
     background-color: #E7F0FF;
 }
 
-#diigo-reader #diigo-showannotationList:active{
+#diigo-reader #diigo-showannotationList:active {
     -webkit-transform: scale(.9);
 }
 
 #diigo-reader #diigo-reader-close {
     position: absolute;
-    top:8px;
+    top: 8px;
     right: 20px;
     height: 40px;
     width: 40px;
@@ -86,7 +88,7 @@
 }
 
 #diigo-reader #diigo-reader-close::after {
-   content: '';
+    content: '';
     position: absolute;
     height: 2px;
     width: 30px;
@@ -122,7 +124,7 @@
     width: 60px;
     position: absolute;
     margin: auto;
-    top:0;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -141,6 +143,7 @@
     -webkit-animation: diigo-bounce 2.0s infinite ease-in-out;
     animation: diigo-bounce 2.0s infinite ease-in-out;
 }
+
 #diigo-reader-loading .double-bounce2 {
     -webkit-animation-delay: -1.0s;
     animation-delay: -1.0s;
@@ -157,13 +160,13 @@
 }
 
 /*@keyframes bounce {*/
-    /*0%, 100% {*/
-        /*transform: scale(0);*/
-        /*-webkit-transform: scale(0)*/
-    /*}*/
+/*0%, 100% {*/
+/*transform: scale(0);*/
+/*-webkit-transform: scale(0)*/
+/*}*/
 
-    /*50% {*/
-        /*transform: scale(1);*/
-        /*-webkit-transform: scale(1)*/
-    /*}*/
+/*50% {*/
+/*transform: scale(1);*/
+/*-webkit-transform: scale(1)*/
+/*}*/
 /*}*/

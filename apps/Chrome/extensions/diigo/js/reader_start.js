@@ -1,1 +1,1 @@
-window.diigoletLaunchMode=7;
+window.diigoletLaunchMode = 7;

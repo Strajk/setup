@@ -22,6 +22,7 @@ var FontInspector = (function FontInspectorClosure() {
   var fonts;
   var active = false;
   var fontAttribute = 'data-font-name';
+
   function removeSelection() {
     var divs = document.querySelectorAll('div[' + fontAttribute + ']');
     for (var i = 0, ii = divs.length; i < ii; ++i) {
@@ -29,6 +30,7 @@ var FontInspector = (function FontInspectorClosure() {
       div.className = '';
     }
   }
+
   function resetSelection() {
     var divs = document.querySelectorAll('div[' + fontAttribute + ']');
     for (var i = 0, ii = divs.length; i < ii; ++i) {
@@ -36,17 +38,19 @@ var FontInspector = (function FontInspectorClosure() {
       div.className = 'debuggerHideText';
     }
   }
+
   function selectFont(fontName, show) {
     var divs = document.querySelectorAll('div[' + fontAttribute + '=' +
-                                         fontName + ']');
+      fontName + ']');
     for (var i = 0, ii = divs.length; i < ii; ++i) {
       var div = divs[i];
       div.className = show ? 'debuggerShowText' : 'debuggerHideText';
     }
   }
+
   function textLayerClick(e) {
     if (!e.target.dataset.fontName ||
-        e.target.tagName.toUpperCase() !== 'DIV') {
+      e.target.tagName.toUpperCase() !== 'DIV') {
       return;
     }
     var fontName = e.target.dataset.fontName;
@@ -61,6 +65,7 @@ var FontInspector = (function FontInspectorClosure() {
       select.scrollIntoView();
     }
   }
+
   return {
     // Properties/functions needed by PDFBug.
     id: 'FontInspector',
@@ -111,6 +116,7 @@ var FontInspector = (function FontInspectorClosure() {
         }
         return moreInfo;
       }
+
       var moreInfo = properties(fontObj, ['name', 'type']);
       var m = /url\(['"]?([^\)"']+)/.exec(url);
       var fontName = fontObj.loadedName;
@@ -123,16 +129,16 @@ var FontInspector = (function FontInspectorClosure() {
       var logIt = document.createElement('a');
       logIt.href = '';
       logIt.textContent = 'Log';
-      logIt.addEventListener('click', function(event) {
+      logIt.addEventListener('click', function (event) {
         event.preventDefault();
         console.log(fontObj);
       });
       var select = document.createElement('input');
       select.setAttribute('type', 'checkbox');
       select.dataset.fontName = fontName;
-      select.addEventListener('click', (function(select, fontName) {
-        return (function() {
-           selectFont(fontName, select.checked);
+      select.addEventListener('click', (function (select, fontName) {
+        return (function () {
+          selectFont(fontName, select.checked);
         });
       })(select, fontName));
       font.appendChild(select);
@@ -145,7 +151,7 @@ var FontInspector = (function FontInspectorClosure() {
       fonts.appendChild(font);
       // Somewhat of a hack, should probably add a hook for when the text layer
       // is done rendering.
-      setTimeout(function() {
+      setTimeout(function () {
         if (this.active) {
           resetSelection();
         }
@@ -172,7 +178,7 @@ var StepperManager = (function StepperManagerClosure() {
       this.panel.setAttribute('style', 'padding: 5px;');
       stepperControls = document.createElement('div');
       stepperChooser = document.createElement('select');
-      stepperChooser.addEventListener('change', function(event) {
+      stepperChooser.addEventListener('change', function (event) {
         self.selectStepper(this.value);
       });
       stepperControls.appendChild(stepperChooser);
@@ -303,6 +309,7 @@ var Stepper = (function StepperClosure() {
     this.currentIdx = -1;
     this.operatorListIdx = 0;
   }
+
   Stepper.prototype = {
     init: function init() {
       var panel = this.panel;
@@ -345,7 +352,7 @@ var Stepper = (function StepperClosure() {
 
       var chunk = document.createDocumentFragment();
       var operatorsToDisplay = Math.min(MAX_OPERATORS_COUNT,
-                                        operatorList.fnArray.length);
+        operatorList.fnArray.length);
       for (var i = this.operatorListIdx; i < operatorsToDisplay; i++) {
         var line = c('tr');
         line.className = 'line';
@@ -399,7 +406,9 @@ var Stepper = (function StepperClosure() {
       this.table.appendChild(chunk);
     },
     getNextBreakPoint: function getNextBreakPoint() {
-      this.breakPoints.sort(function(a, b) { return a - b; });
+      this.breakPoints.sort(function (a, b) {
+        return a - b;
+      });
       for (var i = 0; i < this.breakPoints.length; i++) {
         if (this.breakPoints[i] > this.currentIdx) {
           return this.breakPoints[i];
@@ -412,7 +421,7 @@ var Stepper = (function StepperClosure() {
       var self = this;
       var dom = document;
       self.currentIdx = idx;
-      var listener = function(e) {
+      var listener = function (e) {
         switch (e.keyCode) {
           case 83: // step
             dom.removeEventListener('keydown', listener, false);
@@ -450,11 +459,13 @@ var Stepper = (function StepperClosure() {
 
 var Stats = (function Stats() {
   var stats = [];
+
   function clear(node) {
     while (node.hasChildNodes()) {
       node.removeChild(node.lastChild);
     }
   }
+
   function getStatIndex(pageNumber) {
     for (var i = 0, ii = stats.length; i < ii; ++i) {
       if (stats[i].pageNumber === pageNumber) {
@@ -463,6 +474,7 @@ var Stats = (function Stats() {
     }
     return false;
   }
+
   return {
     // Properties/functions needed by PDFBug.
     id: 'Stats',
@@ -476,7 +488,7 @@ var Stats = (function Stats() {
     enabled: false,
     active: false,
     // Stats specific functions.
-    add: function(pageNumber, stat) {
+    add: function (pageNumber, stat) {
       if (!stat) {
         return;
       }
@@ -495,8 +507,10 @@ var Stats = (function Stats() {
       statsDiv.textContent = stat.toString();
       wrapper.appendChild(title);
       wrapper.appendChild(statsDiv);
-      stats.push({ pageNumber: pageNumber, div: wrapper });
-      stats.sort(function(a, b) { return a.pageNumber - b.pageNumber; });
+      stats.push({pageNumber: pageNumber, div: wrapper});
+      stats.sort(function (a, b) {
+        return a.pageNumber - b.pageNumber;
+      });
       clear(this.panel);
       for (var i = 0, ii = stats.length; i < ii; ++i) {
         this.panel.appendChild(stats[i].div);
@@ -521,7 +535,7 @@ var PDFBug = (function PDFBugClosure() {
       StepperManager,
       Stats
     ],
-    enable: function(ids) {
+    enable: function (ids) {
       var all = false, tools = this.tools;
       if (ids.length === 1 && ids[0] === 'all') {
         all = true;
@@ -534,7 +548,7 @@ var PDFBug = (function PDFBugClosure() {
       }
       if (!all) {
         // Sort the tools by the order they are enabled.
-        tools.sort(function(a, b) {
+        tools.sort(function (a, b) {
           var indexA = ids.indexOf(a.id);
           indexA = indexA < 0 ? tools.length : indexA;
           var indexB = ids.indexOf(b.id);
@@ -576,8 +590,8 @@ var PDFBug = (function PDFBugClosure() {
         var panel = document.createElement('div');
         var panelButton = document.createElement('button');
         panelButton.textContent = tool.name;
-        panelButton.addEventListener('click', (function(selected) {
-          return function(event) {
+        panelButton.addEventListener('click', (function (selected) {
+          return function (event) {
             event.preventDefault();
             self.selectPanel(selected);
           };
@@ -590,8 +604,8 @@ var PDFBug = (function PDFBugClosure() {
           tool.init();
         } else {
           panel.textContent = tool.name + ' is disabled. To enable add ' +
-                              ' "' + tool.id + '" to the pdfBug parameter ' +
-                              'and refresh (seperate multiple by commas).';
+            ' "' + tool.id + '" to the pdfBug parameter ' +
+            'and refresh (seperate multiple by commas).';
         }
         buttons.push(panelButton);
       }

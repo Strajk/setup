@@ -7,7 +7,7 @@
     border-radius: 50%;
     background: #6fd27a;
     cursor: pointer;
-    box-shadow: rgba(0,0,0,.137255) 0 0 4px 0, rgba(0,0,0,.278431) 0 4px 8px 0;
+    box-shadow: rgba(0, 0, 0, .137255) 0 0 4px 0, rgba(0, 0, 0, .278431) 0 4px 8px 0;
     z-index: 2147483645;
 }
 
@@ -25,7 +25,7 @@
 }
 
 
-#diigo-outliner-toggle-btn .expand{
+#diigo-outliner-toggle-btn .expand {
     height: 30px;
     width: 30px;
     border-radius: 3px 0 0 3px;
@@ -35,21 +35,22 @@
 }
 
 
-@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),only screen and (-moz-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:3/2),only screen and (min-device-pixel-ratio:1.5) {
-    #diigo-outliner-toggle-btn .expand{
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
+    #diigo-outliner-toggle-btn .expand {
         background-image: url("chrome-extension://__MSG_@@extension_id__/img/outliner-icon@2x.png");
         background-size: 30px;
     }
 }
 
-#diigo-outliner-toggle-btn .collapse{
-   height: 30px;
+#diigo-outliner-toggle-btn .collapse {
+    height: 30px;
     width: 30px;
     position: relative;
     display: none;
 }
-#diigo-outliner-toggle-btn .collapse::before{
-   content: '';
+
+#diigo-outliner-toggle-btn .collapse::before {
+    content: '';
     width: 10px;
     height: 2px;
     background: white;
@@ -59,7 +60,7 @@
     top: 18px;
 }
 
-#diigo-outliner-toggle-btn .collapse::after{
+#diigo-outliner-toggle-btn .collapse::after {
     content: '';
     width: 10px;
     height: 2px;
@@ -69,11 +70,12 @@
     left: 10px;
     top: 12px;
 }
-#diigo-outliner-frame.show  #diigo-outliner-toggle-btn .expand{
-   display: none;
+
+#diigo-outliner-frame.show #diigo-outliner-toggle-btn .expand {
+    display: none;
 }
 
-#diigo-outliner-frame.show  #diigo-outliner-toggle-btn .collapse{
+#diigo-outliner-frame.show #diigo-outliner-toggle-btn .collapse {
     display: block;
 }
 
@@ -86,16 +88,17 @@
     right: 0;
     transition: transform 500ms ease-in-out;
     transform: translate3d(100%, 0, 0);
-    box-shadow: 0 3px 7px rgba(0,0,0,.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
     background: white;
 
 }
 
-#diigo-outliner-frame input{
+#diigo-outliner-frame input {
     width: 100%;
     height: 100%;
     opacity: 0.01;
 }
+
 body.diigo-outliner-mode {
     width: 60%;
     float: left;
@@ -118,6 +121,7 @@ body.diigo-outliner-mode {
     height: 100%;
     width: 100%;
 }
+
 #diigo-outliner-frame #diigo-process-frame {
     display: none;
     /*position: absolute;*/
@@ -126,13 +130,14 @@ body.diigo-outliner-mode {
     /*height: 100%;*/
     /*width: 100%;*/
 }
+
 #diigo-outliner-frame.show {
     transform: translate3d(0, 0, 0);
 }
 
 #diigo-outliner-frame #diigo-outliner-frame-close {
     position: absolute;
-    top:8px;
+    top: 8px;
     right: 20px;
     height: 40px;
     width: 40px;

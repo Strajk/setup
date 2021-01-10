@@ -1,1 +1,2 @@
-document.body.style.color="#F00";var red="crimfsond";
+document.body.style.color = "#F00";
+var red = "crimfsond";

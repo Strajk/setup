@@ -1,388 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Options</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" type="text/css" href="css/common.css">
-    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="js/utils.js"></script>
-    <script type="text/javascript" src="js/utils2.js"></script>
-    <script type="text/javascript" src="js/Form.js"></script>
-    <script type="text/javascript" src="js/parseTags.js"></script>
+  <meta charset="UTF-8">
+  <title>Options</title>
+  <link href="css/base.css" rel="stylesheet" type="text/css">
+  <link href="css/common.css" rel="stylesheet" type="text/css">
+  <script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>
+  <script src="js/utils.js" type="text/javascript"></script>
+  <script src="js/utils2.js" type="text/javascript"></script>
+  <script src="js/Form.js" type="text/javascript"></script>
+  <script src="js/parseTags.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="header">
-    <div class="logo-area">
-        <div class="logo"></div>
-    </div>
+  <div class="logo-area">
+    <div class="logo"></div>
+  </div>
 </div>
 <div class="main">
-    <div class="title">
-        Extension Options
+  <div class="title">
+    Extension Options
+  </div>
+  <div class="op-section">
+    <div class="section-title">
+      Bookmarking
     </div>
-    <div class="op-section">
-        <div class="section-title">
-            Bookmarking
-        </div>
-        <label for="check-bmPrivateAsDefault" class="form-checkbox">
-            <input id="check-bmPrivateAsDefault" type="checkbox" data-pref="prefs.bookmark.privateByDefault">
-            Private by default while saving
-            <b></b>
-        </label>
-        <label for="check-bmUnreadAsDefault" class="form-checkbox">
-            <input id="check-bmUnreadAsDefault" type="checkbox" data-pref="prefs.bookmark.unreadByDefault">
-            Read later by default while saving
-            <b></b>
-        </label>
-        <label for="check-autoCloseReadLater" class="form-checkbox">
-            <input id="check-autoCloseReadLater" type="checkbox" data-pref="prefs.autoCloseReadLater">
-            Automatically close a page when saved by clicking “Read Later”
-            <b></b>
-        </label>
-        <label for="check-autoloadBookmarkStatus" class="form-checkbox">
-            <input id="check-autoloadBookmarkStatus" type="checkbox" data-pref="prefs.autoloadBookmarkStatus">
-            Show bookmarking status automatically
-            <b></b>
-        </label>
+    <label class="form-checkbox" for="check-bmPrivateAsDefault">
+      <input data-pref="prefs.bookmark.privateByDefault" id="check-bmPrivateAsDefault" type="checkbox">
+      Private by default while saving
+      <b></b>
+    </label>
+    <label class="form-checkbox" for="check-bmUnreadAsDefault">
+      <input data-pref="prefs.bookmark.unreadByDefault" id="check-bmUnreadAsDefault" type="checkbox">
+      Read later by default while saving
+      <b></b>
+    </label>
+    <label class="form-checkbox" for="check-autoCloseReadLater">
+      <input data-pref="prefs.autoCloseReadLater" id="check-autoCloseReadLater" type="checkbox">
+      Automatically close a page when saved by clicking “Read Later”
+      <b></b>
+    </label>
+    <label class="form-checkbox" for="check-autoloadBookmarkStatus">
+      <input data-pref="prefs.autoloadBookmarkStatus" id="check-autoloadBookmarkStatus" type="checkbox">
+      Show bookmarking status automatically
+      <b></b>
+    </label>
 
-        <label for="check-autoload" class="sub form-checkbox">
-            <input id="check-autoload" type="checkbox" data-pref="prefs.autoload">
-            Show annotations automatically
-            <b></b>
-        </label>
+    <label class="sub form-checkbox" for="check-autoload">
+      <input data-pref="prefs.autoload" id="check-autoload" type="checkbox">
+      Show annotations automatically
+      <b></b>
+    </label>
+  </div>
+
+  <div class="op-section">
+    <div class="section-title">
+      Seamless Annotation
     </div>
+    <label class="form-checkbox" for="check-autoImageClipper">
+      <input data-pref="prefs.autoImageClipper" id="check-autoImageClipper" type="checkbox">
+      Show ‘collect image’ icon when cursor enters an image
+      <b></b>
+    </label>
+    <label class="form-checkbox" for="check-autoshowicon">
+      <input data-pref="prefs.autoShowHighlightIcon" id="check-autoshowicon" type="checkbox">
+      Upon text selection, show mini search/highlight popup
+      <b></b>
+    </label>
+    <label class="form-checkbox" for="check-showPdfButton">
+      <input data-pref="prefs.showPdfButton" id="check-showPdfButton" type="checkbox">
+      Show ‘Annotate’ button in PDF pages
+      <b></b>
+    </label>
+    <label class="form-checkbox" for="check-showVideoButton">
+      <input data-pref="prefs.showVideoCapture" id="check-showVideoButton" type="checkbox">
+      Show "Capture" button when cursor enters a video window
+      <b></b>
+    </label>
+  </div>
 
-    <div class="op-section">
-        <div class="section-title">
-            Seamless Annotation
-        </div>
-        <label for="check-autoImageClipper" class="form-checkbox">
-            <input id="check-autoImageClipper" type="checkbox" data-pref="prefs.autoImageClipper">
-            Show ‘collect image’ icon when cursor enters an image
-            <b></b>
-        </label>
-        <label for="check-autoshowicon" class="form-checkbox">
-            <input id="check-autoshowicon" type="checkbox" data-pref="prefs.autoShowHighlightIcon">
-            Upon text selection, show mini search/highlight popup
-            <b></b>
-        </label>
-        <label for="check-showPdfButton" class="form-checkbox">
-            <input id="check-showPdfButton" type="checkbox" data-pref="prefs.showPdfButton">
-            Show ‘Annotate’ button in PDF pages
-            <b></b>
-        </label>
-        <label for="check-showVideoButton" class="form-checkbox">
-            <input id="check-showVideoButton" type="checkbox" data-pref="prefs.showVideoCapture">
-            Show "Capture" button when cursor enters a video window
-            <b></b>
-        </label>
-    </div>
-
-    <div class="op-section">
-        <div class="section-title">
-            Search
-        </div>
-
-        <label for="check-comboSearch" class="form-checkbox">
-            <input id="check-comboSearch" type="checkbox" data-pref="prefs.comboSearch">
-            Search your Diigo library when searching Google
-            <b></b>
-        </label>
-
-        <label for="check-showSearchResultDirectly" class="sub form-checkbox">
-            <input id="check-showSearchResultDirectly" type="checkbox" data-pref="prefs.directlyShowSearchResults">
-            Show diigo search results directly in search page (Premium feature)
-            <b></b>
-        </label>
+  <div class="op-section">
+    <div class="section-title">
+      Search
     </div>
 
-    <!--<div class="op-section">-->
-        <!--<div class="section-title">-->
-            <!--Focused Research-->
-        <!--</div>-->
-        <!--<label for="check-focusResearch" class="form-checkbox">-->
-            <!--<input id="check-focusResearch" type="checkbox">-->
-            <!--Enable Focused Research-->
-            <!--<b></b>-->
-        <!--</label>-->
-        <!--<div class="focus-research-options clearfix" id="focus-research-options">-->
-            <!--<div class="label">Tags:</div>-->
-            <!--<div class="tag-input">-->
-                <!--<input type="text" id="r-tag-input">-->
-            <!--</div>-->
-            <!--<div class="focus-options">-->
-                <!--<label for="f-private" class="form-checkbox">-->
-                    <!--<input id="f-private" type="checkbox">-->
-                    <!--Private-->
-                    <!--<b></b>-->
-                <!--</label>-->
-                <!--<label for="f-read-later" class="form-checkbox">-->
-                    <!--<input id="f-read-later" type="checkbox">-->
-                    <!--Read later-->
-                    <!--<b></b>-->
-                <!--</label>-->
-                <!--<label for="f-cache" class="form-checkbox">-->
-                    <!--<input id="f-cache" type="checkbox">-->
-                    <!--Cache-->
-                    <!--<b></b>-->
-                <!--</label>-->
-            <!--</div>-->
+    <label class="form-checkbox" for="check-comboSearch">
+      <input data-pref="prefs.comboSearch" id="check-comboSearch" type="checkbox">
+      Search your Diigo library when searching Google
+      <b></b>
+    </label>
 
-            <!--<div id="list-group">-->
-                <!--<div id="diigobm-list" class="form-select" data-position="bottom" tabindex="0">-->
-                    <!--<div class="remove-select" tabindex="-1">Remove</div>-->
-                    <!--<label for="">Add to an outliner</label>-->
-                    <!--<div class="content"></div>-->
-                    <!--&lt;!&ndash;<select></select>&ndash;&gt;-->
-                    <!--<div class="select-menu">-->
-                        <!--<div class="select-action-area">-->
-                            <!--<div class="search-box">-->
-                                <!--<input type="text" placeholder="Search..." tabindex="-1">-->
-                                <!--<div class="refresh-btn action-btn" title="Refresh outliners"-->
-                                     <!--id="refresh-outliner"></div>-->
-                                <!--<div class="add-btn action-btn" title="Create a outliner"></div>-->
-                            <!--</div>-->
-                            <!--<div class="add-box">-->
-                                <!--<input type="text" id="diigobm-list-addInput" placeholder="Create an outliner...">-->
-                                <!--<div class="add-action">-->
-                                    <!--<div class="add-action-btn confirm" id="diigobm-list-addBtn" title="Create"></div>-->
-                                    <!--<div class="add-action-btn cancel" title="Cancel"></div>-->
-                                    <!--<div class="spinner"></div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="item-container">-->
-                            <!--<div class="no-item">No outliners</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div id="diigobm-group" class="form-select" data-position="bottom" tabindex="0">-->
-                    <!--<div class="remove-select" tabindex="-1">Remove</div>-->
-                    <!--<label for="">Share to a group</label>-->
-                    <!--<div class="content"></div>-->
-                    <!--<div class="select-menu">-->
-                        <!--<div class="select-action-area">-->
-                            <!--<div class="search-box">-->
-                                <!--<input type="text" placeholder="Search..." tabindex="-1">-->
-                                <!--<div class="action-btn refresh-btn" title="Refresh groups" id="refresh-group"></div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="item-container">-->
-                            <!--<div class="no-item">No groups</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--&lt;!&ndash;<select></select>&ndash;&gt;-->
-                <!--</div>-->
+    <label class="sub form-checkbox" for="check-showSearchResultDirectly">
+      <input data-pref="prefs.directlyShowSearchResults" id="check-showSearchResultDirectly" type="checkbox">
+      Show diigo search results directly in search page (Premium feature)
+      <b></b>
+    </label>
+  </div>
 
-                <!--&lt;!&ndash;<div id="Diigo-Bookmark-checkShareExisting">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="op-checkbox-container checked">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="op-checkbox"></div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="op-label">Share my existing annotations</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--</div>-->
+  <!--<div class="op-section">-->
+  <!--<div class="section-title">-->
+  <!--Focused Research-->
+  <!--</div>-->
+  <!--<label for="check-focusResearch" class="form-checkbox">-->
+  <!--<input id="check-focusResearch" type="checkbox">-->
+  <!--Enable Focused Research-->
+  <!--<b></b>-->
+  <!--</label>-->
+  <!--<div class="focus-research-options clearfix" id="focus-research-options">-->
+  <!--<div class="label">Tags:</div>-->
+  <!--<div class="tag-input">-->
+  <!--<input type="text" id="r-tag-input">-->
+  <!--</div>-->
+  <!--<div class="focus-options">-->
+  <!--<label for="f-private" class="form-checkbox">-->
+  <!--<input id="f-private" type="checkbox">-->
+  <!--Private-->
+  <!--<b></b>-->
+  <!--</label>-->
+  <!--<label for="f-read-later" class="form-checkbox">-->
+  <!--<input id="f-read-later" type="checkbox">-->
+  <!--Read later-->
+  <!--<b></b>-->
+  <!--</label>-->
+  <!--<label for="f-cache" class="form-checkbox">-->
+  <!--<input id="f-cache" type="checkbox">-->
+  <!--Cache-->
+  <!--<b></b>-->
+  <!--</label>-->
+  <!--</div>-->
 
-        <!--</div>-->
-    <!--</div>-->
+  <!--<div id="list-group">-->
+  <!--<div id="diigobm-list" class="form-select" data-position="bottom" tabindex="0">-->
+  <!--<div class="remove-select" tabindex="-1">Remove</div>-->
+  <!--<label for="">Add to an outliner</label>-->
+  <!--<div class="content"></div>-->
+  <!--&lt;!&ndash;<select></select>&ndash;&gt;-->
+  <!--<div class="select-menu">-->
+  <!--<div class="select-action-area">-->
+  <!--<div class="search-box">-->
+  <!--<input type="text" placeholder="Search..." tabindex="-1">-->
+  <!--<div class="refresh-btn action-btn" title="Refresh outliners"-->
+  <!--id="refresh-outliner"></div>-->
+  <!--<div class="add-btn action-btn" title="Create a outliner"></div>-->
+  <!--</div>-->
+  <!--<div class="add-box">-->
+  <!--<input type="text" id="diigobm-list-addInput" placeholder="Create an outliner...">-->
+  <!--<div class="add-action">-->
+  <!--<div class="add-action-btn confirm" id="diigobm-list-addBtn" title="Create"></div>-->
+  <!--<div class="add-action-btn cancel" title="Cancel"></div>-->
+  <!--<div class="spinner"></div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="item-container">-->
+  <!--<div class="no-item">No outliners</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div id="diigobm-group" class="form-select" data-position="bottom" tabindex="0">-->
+  <!--<div class="remove-select" tabindex="-1">Remove</div>-->
+  <!--<label for="">Share to a group</label>-->
+  <!--<div class="content"></div>-->
+  <!--<div class="select-menu">-->
+  <!--<div class="select-action-area">-->
+  <!--<div class="search-box">-->
+  <!--<input type="text" placeholder="Search..." tabindex="-1">-->
+  <!--<div class="action-btn refresh-btn" title="Refresh groups" id="refresh-group"></div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="item-container">-->
+  <!--<div class="no-item">No groups</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--&lt;!&ndash;<select></select>&ndash;&gt;-->
+  <!--</div>-->
 
-    <div class="op-section">
-        <div class="section-title">
-            Keyboard Shortcuts
-        </div>
-        <div class="shortcuts">
-            <div class="shortcut clearfix" data-type="Bookmark">
-                <div class="s-title">
-                    <label for="check-shortcut-bookmark" class="form-checkbox">
-                        <input type="checkbox" id="check-shortcut-bookmark" data-pref="prefs.shortcutBookmark">
-                        Save Bookmark
-                        <b></b>
-                    </label>
-                </div>
+  <!--&lt;!&ndash;<div id="Diigo-Bookmark-checkShareExisting">&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="op-checkbox-container checked">&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="op-checkbox"></div>&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="op-label">Share my existing annotations</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</div>-->
 
-                <label for="check-shortcut-bookmark-ctrl" class="shortcut-ctrl form-checkbox">
-                    <input type="checkbox" id="check-shortcut-bookmark-ctrl" data-pref="prefs.shortcutBookmarkCtrl">
-                    Ctrl +
-                    <b></b>
-                </label>
-                <label for="check-shortcut-bookmark-alt" class="shortcut-alt form-checkbox">
-                    <input type="checkbox" id="check-shortcut-bookmark-alt" data-pref="prefs.shortcutBookmarkAlt">
-                    Alt +
-                    <b></b>
-                </label>
+  <!--</div>-->
+  <!--</div>-->
 
-            </div>
-
-            <div class="shortcut clearfix" data-type="AnnotateArticle">
-                <div class="s-title">
-                    <label for="check-shortcut-a-article" class="form-checkbox">
-                        <input type="checkbox" id="check-shortcut-a-article" data-pref="prefs.shortcutAnnotateArticle">
-                        Annotate Article
-                        <b></b>
-                    </label>
-                </div>
-
-                <label for="check-shortcut-a-article-ctrl" class="shortcut-ctrl form-checkbox">
-                    <input type="checkbox" id="check-shortcut-a-article-ctrl"
-                           data-pref="prefs.shortcutAnnotateArticleCtrl">
-                    Ctrl +
-                    <b></b>
-                </label>
-                <label for="check-shortcut-a-article-alt" class="shortcut-alt form-checkbox">
-                    <input type="checkbox" id="check-shortcut-a-article-alt"
-                           data-pref="prefs.shortcutAnnotateArticleAlt">
-                    Alt +
-                    <b></b>
-                </label>
-
-            </div>
-
-            <div class="shortcut clearfix" data-type="AnnotatePDF">
-                <div class="s-title">
-                    <label for="check-shortcut-a-pdf" class="form-checkbox">
-                        <input type="checkbox" id="check-shortcut-a-pdf" data-pref="prefs.shortcutAnnotatePDF">
-                        Annotate PDF
-                        <b></b>
-                    </label>
-                </div>
-
-                <label for="check-shortcut-a-pdf-ctrl" class="shortcut-ctrl form-checkbox">
-                    <input type="checkbox" id="check-shortcut-a-pdf-ctrl" data-pref="prefs.shortcutAnnotatePDFCtrl">
-                    Ctrl +
-                    <b></b>
-                </label>
-                <label for="check-shortcut-a-pdf-alt" class="shortcut-alt form-checkbox">
-                    <input type="checkbox" id="check-shortcut-a-pdf-alt" data-pref="prefs.shortcutAnnotatePDFAlt">
-                    Alt +
-                    <b></b>
-                </label>
-
-            </div>
-
-            <div class="shortcut clearfix" data-type="AnnotateScreenshot">
-                <div class="s-title">
-                    <label for="check-shortcut-a-screenshot" class="form-checkbox">
-                        <input type="checkbox" id="check-shortcut-a-screenshot"
-                               data-pref="prefs.shortcutAnnotateScreenshot">
-                        Annotate Screenshot
-                        <b></b>
-                    </label>
-                </div>
-
-                <label for="check-shortcut-a-screenshot-ctrl" class="shortcut-ctrl form-checkbox">
-                    <input type="checkbox" id="check-shortcut-a-screenshot-ctrl"
-                           data-pref="prefs.shortcutAnnotateScreenshotCtrl">
-                    Ctrl +
-                    <b></b>
-                </label>
-                <label for="check-shortcut-a-screenshot-alt" class="shortcut-alt form-checkbox">
-                    <input type="checkbox" id="check-shortcut-a-screenshot-alt"
-                           data-pref="prefs.shortcutAnnotateScreenshotAlt">
-                    Alt +
-                    <b></b>
-                </label>
-
-            </div>
-
-
-            <div class="shortcut clearfix" data-type="Annotate">
-                <div class="s-title">
-                    <label for="check-shortcut-annotate" class="form-checkbox">
-                        <input type="checkbox" id="check-shortcut-annotate" data-pref="prefs.shortcutAnnotate">
-                        Enable side menu for annotation
-                        <b></b>
-                    </label>
-                </div>
-
-                <label for="check-shortcut-annotate-ctrl" class="shortcut-ctrl form-checkbox">
-                    <input type="checkbox" id="check-shortcut-annotate-ctrl" data-pref="prefs.shortcutAnnotateCtrl">
-                    Ctrl +
-                    <b></b>
-                </label>
-                <label for="check-shortcut-annotate-alt" class="shortcut-alt form-checkbox">
-                    <input type="checkbox" id="check-shortcut-annotate-alt" data-pref="prefs.shortcutAnnotateAlt">
-                    Alt +
-                    <b></b>
-                </label>
-
-            </div>
-
-
-            <div class="shortcut clearfix" data-type="Readlater">
-                <div class="s-title">
-                    <label for="check-shortcut-readlater" class="form-checkbox">
-                        <input type="checkbox" id="check-shortcut-readlater" data-pref="prefs.shortcutReadlater">
-                        Read Later
-                        <b></b>
-                    </label>
-                </div>
-
-                <label for="check-shortcut-readlater-ctrl" class="shortcut-ctrl form-checkbox"
-                       data-pref="prefs.shortcutReadlaterCtrl">
-                    <input type="checkbox" id="check-shortcut-readlater-ctrl" data-pref="prefs.shortcutReadlaterCtrl">
-                    Ctrl +
-                    <b></b>
-                </label>
-                <label for="check-shortcut-readlater-alt" class="shortcut-alt form-checkbox">
-                    <input type="checkbox" id="check-shortcut-readlater-alt" data-pref="prefs.shortcutReadlaterAlt">
-                    Alt +
-                    <b></b>
-                </label>
-
-
-            </div>
-
-
-            <div class="shortcut clearfix" data-type="OpenOutlinerSidebar">
-                <div class="s-title">
-                    <label for="check-shortcut-openOutlinerSidebar" class="form-checkbox">
-                        <input type="checkbox" id="check-shortcut-openOutlinerSidebar" data-pref="prefs.shortcutOpenOutlinerSidebar">
-                        Open outliner sidebar
-                        <b></b>
-                    </label>
-                </div>
-
-                <label for="check-shortcut-openOutlinerSidebar-ctrl" class="shortcut-ctrl form-checkbox"
-                       data-pref="prefs.shortcutOpenOutlinerSidebarCtrl">
-                    <input type="checkbox" id="check-shortcut-openOutlinerSidebar-ctrl" data-pref="prefs.shortcutOpenOutlinerSidebarCtrl">
-                    Ctrl +
-                    <b></b>
-                </label>
-                <label for="check-shortcut-openOutlinerSidebar-alt" class="shortcut-alt form-checkbox">
-                    <input type="checkbox" id="check-shortcut-openOutlinerSidebar-alt" data-pref="prefs.shortcutOpenOutlinerSidebarAlt">
-                    Alt +
-                    <b></b>
-                </label>
-
-
-            </div>
-        </div>
+  <div class="op-section">
+    <div class="section-title">
+      Keyboard Shortcuts
     </div>
+    <div class="shortcuts">
+      <div class="shortcut clearfix" data-type="Bookmark">
+        <div class="s-title">
+          <label class="form-checkbox" for="check-shortcut-bookmark">
+            <input data-pref="prefs.shortcutBookmark" id="check-shortcut-bookmark" type="checkbox">
+            Save Bookmark
+            <b></b>
+          </label>
+        </div>
+
+        <label class="shortcut-ctrl form-checkbox" for="check-shortcut-bookmark-ctrl">
+          <input data-pref="prefs.shortcutBookmarkCtrl" id="check-shortcut-bookmark-ctrl" type="checkbox">
+          Ctrl +
+          <b></b>
+        </label>
+        <label class="shortcut-alt form-checkbox" for="check-shortcut-bookmark-alt">
+          <input data-pref="prefs.shortcutBookmarkAlt" id="check-shortcut-bookmark-alt" type="checkbox">
+          Alt +
+          <b></b>
+        </label>
+
+      </div>
+
+      <div class="shortcut clearfix" data-type="AnnotateArticle">
+        <div class="s-title">
+          <label class="form-checkbox" for="check-shortcut-a-article">
+            <input data-pref="prefs.shortcutAnnotateArticle" id="check-shortcut-a-article" type="checkbox">
+            Annotate Article
+            <b></b>
+          </label>
+        </div>
+
+        <label class="shortcut-ctrl form-checkbox" for="check-shortcut-a-article-ctrl">
+          <input data-pref="prefs.shortcutAnnotateArticleCtrl" id="check-shortcut-a-article-ctrl"
+                 type="checkbox">
+          Ctrl +
+          <b></b>
+        </label>
+        <label class="shortcut-alt form-checkbox" for="check-shortcut-a-article-alt">
+          <input data-pref="prefs.shortcutAnnotateArticleAlt" id="check-shortcut-a-article-alt"
+                 type="checkbox">
+          Alt +
+          <b></b>
+        </label>
+
+      </div>
+
+      <div class="shortcut clearfix" data-type="AnnotatePDF">
+        <div class="s-title">
+          <label class="form-checkbox" for="check-shortcut-a-pdf">
+            <input data-pref="prefs.shortcutAnnotatePDF" id="check-shortcut-a-pdf" type="checkbox">
+            Annotate PDF
+            <b></b>
+          </label>
+        </div>
+
+        <label class="shortcut-ctrl form-checkbox" for="check-shortcut-a-pdf-ctrl">
+          <input data-pref="prefs.shortcutAnnotatePDFCtrl" id="check-shortcut-a-pdf-ctrl" type="checkbox">
+          Ctrl +
+          <b></b>
+        </label>
+        <label class="shortcut-alt form-checkbox" for="check-shortcut-a-pdf-alt">
+          <input data-pref="prefs.shortcutAnnotatePDFAlt" id="check-shortcut-a-pdf-alt" type="checkbox">
+          Alt +
+          <b></b>
+        </label>
+
+      </div>
+
+      <div class="shortcut clearfix" data-type="AnnotateScreenshot">
+        <div class="s-title">
+          <label class="form-checkbox" for="check-shortcut-a-screenshot">
+            <input data-pref="prefs.shortcutAnnotateScreenshot" id="check-shortcut-a-screenshot"
+                   type="checkbox">
+            Annotate Screenshot
+            <b></b>
+          </label>
+        </div>
+
+        <label class="shortcut-ctrl form-checkbox" for="check-shortcut-a-screenshot-ctrl">
+          <input data-pref="prefs.shortcutAnnotateScreenshotCtrl" id="check-shortcut-a-screenshot-ctrl"
+                 type="checkbox">
+          Ctrl +
+          <b></b>
+        </label>
+        <label class="shortcut-alt form-checkbox" for="check-shortcut-a-screenshot-alt">
+          <input data-pref="prefs.shortcutAnnotateScreenshotAlt" id="check-shortcut-a-screenshot-alt"
+                 type="checkbox">
+          Alt +
+          <b></b>
+        </label>
+
+      </div>
+
+
+      <div class="shortcut clearfix" data-type="Annotate">
+        <div class="s-title">
+          <label class="form-checkbox" for="check-shortcut-annotate">
+            <input data-pref="prefs.shortcutAnnotate" id="check-shortcut-annotate" type="checkbox">
+            Enable side menu for annotation
+            <b></b>
+          </label>
+        </div>
+
+        <label class="shortcut-ctrl form-checkbox" for="check-shortcut-annotate-ctrl">
+          <input data-pref="prefs.shortcutAnnotateCtrl" id="check-shortcut-annotate-ctrl" type="checkbox">
+          Ctrl +
+          <b></b>
+        </label>
+        <label class="shortcut-alt form-checkbox" for="check-shortcut-annotate-alt">
+          <input data-pref="prefs.shortcutAnnotateAlt" id="check-shortcut-annotate-alt" type="checkbox">
+          Alt +
+          <b></b>
+        </label>
+
+      </div>
+
+
+      <div class="shortcut clearfix" data-type="Readlater">
+        <div class="s-title">
+          <label class="form-checkbox" for="check-shortcut-readlater">
+            <input data-pref="prefs.shortcutReadlater" id="check-shortcut-readlater" type="checkbox">
+            Read Later
+            <b></b>
+          </label>
+        </div>
+
+        <label class="shortcut-ctrl form-checkbox" data-pref="prefs.shortcutReadlaterCtrl"
+               for="check-shortcut-readlater-ctrl">
+          <input data-pref="prefs.shortcutReadlaterCtrl" id="check-shortcut-readlater-ctrl" type="checkbox">
+          Ctrl +
+          <b></b>
+        </label>
+        <label class="shortcut-alt form-checkbox" for="check-shortcut-readlater-alt">
+          <input data-pref="prefs.shortcutReadlaterAlt" id="check-shortcut-readlater-alt" type="checkbox">
+          Alt +
+          <b></b>
+        </label>
+
+
+      </div>
+
+
+      <div class="shortcut clearfix" data-type="OpenOutlinerSidebar">
+        <div class="s-title">
+          <label class="form-checkbox" for="check-shortcut-openOutlinerSidebar">
+            <input data-pref="prefs.shortcutOpenOutlinerSidebar" id="check-shortcut-openOutlinerSidebar" type="checkbox">
+            Open outliner sidebar
+            <b></b>
+          </label>
+        </div>
+
+        <label class="shortcut-ctrl form-checkbox" data-pref="prefs.shortcutOpenOutlinerSidebarCtrl"
+               for="check-shortcut-openOutlinerSidebar-ctrl">
+          <input data-pref="prefs.shortcutOpenOutlinerSidebarCtrl" id="check-shortcut-openOutlinerSidebar-ctrl" type="checkbox">
+          Ctrl +
+          <b></b>
+        </label>
+        <label class="shortcut-alt form-checkbox" for="check-shortcut-openOutlinerSidebar-alt">
+          <input data-pref="prefs.shortcutOpenOutlinerSidebarAlt" id="check-shortcut-openOutlinerSidebar-alt" type="checkbox">
+          Alt +
+          <b></b>
+        </label>
+
+
+      </div>
+    </div>
+  </div>
 </div>
 <div class="modelWin-wrapper">
-    <div class="modelWin" id="comboSearch-tip">
-        <div class="modelWin-close"></div>
-        <p>
-            Check the image to see how it will work on your google page:
-        </p>
-        <div class="diigolet-option-tip-image-container">
-            <img src="./img/result.png" alt=""/>
-        </div>
-        <p>
-            Go premium to enable this feature.
-        </p>
-
-        <div class="modelWin-action">
-            <a href="https://www.diigo.com/premium" class="modelWin-primary-btn">Go premium</a>
-        </div>
+  <div class="modelWin" id="comboSearch-tip">
+    <div class="modelWin-close"></div>
+    <p>
+      Check the image to see how it will work on your google page:
+    </p>
+    <div class="diigolet-option-tip-image-container">
+      <img alt="" src="./img/result.png"/>
     </div>
+    <p>
+      Go premium to enable this feature.
+    </p>
+
+    <div class="modelWin-action">
+      <a class="modelWin-primary-btn" href="https://www.diigo.com/premium">Go premium</a>
+    </div>
+  </div>
 </div>
 
 <div class="upgrade-info" id="upgrade-info">
-    <div class="close" id="close-upgrade-info"></div>
-    <div class="wording">Your outliner number is over quota. You can only create 5 outliners now.</div>
-    <div class="btn" id="btn-upgrade-info">Upgrade Now!</div>
+  <div class="close" id="close-upgrade-info"></div>
+  <div class="wording">Your outliner number is over quota. You can only create 5 outliners now.</div>
+  <div class="btn" id="btn-upgrade-info">Upgrade Now!</div>
 </div>
-<script type="text/javascript" src="js/options2.js"></script>
+<script src="js/options2.js" type="text/javascript"></script>
 </body>
 </html>
