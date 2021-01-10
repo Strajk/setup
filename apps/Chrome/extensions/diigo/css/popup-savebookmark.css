@@ -1,0 +1,173 @@
+@charset "utf-8";
+/* CSS Document */
+
+#bm-main{
+	height:377px;
+	width:428px;
+	font-family:Arial, Helvetica, sans-serif;
+	border-radius:3px;
+}
+#top{
+	height:40px;
+	background-image:url(../img/popup-image/topbar.png);
+	color:#4173CF;
+	font-size:14px;
+	font-weight:bold;
+	line-height:40px;
+	vertical-align:middle;
+	
+}
+#icon{
+	display:inline-block;
+	height:19px;
+	width:19px;
+	background-image:url(../img/popup-image/icon.png);
+	float:left;
+	margin-left:8px;
+	margin-top:9px;
+	margin-right:142px;
+}
+#middle{
+	width:400px;
+	margin-left:13px;
+}
+#title-url{
+	height:61px;
+	border-bottom:1px solid #CCCCCC;
+}
+#Diigo-Bookmark-Title{
+	height:30px;
+	line-height:30px;
+	margin-top:10px;
+	font-size:18px;
+	outline-style:none;
+}
+#Diigo-Bookmark-Url{
+	height:30px;
+}
+#url-input{
+	display:inline-block;
+	height:20px;
+	width:290px;
+	line-height:20px;
+	font-size:14px;
+	color:#CDCDCD;
+	outline-style:none;
+}
+#option{
+	float:right;
+	display:inline-block;
+	height:22px;
+	
+}
+.option-item{
+	display:inline-block;
+	height:22px;
+	width:22px;
+	cursor:pointer;
+	
+}
+.option-item:hover{
+	background-position:0 44px;
+}
+.option-item:active{
+	background-position:0 22px;
+}
+#permission{
+	background-image:url(../img/popup-image/private.png);
+}
+#readlater{
+	background-image:url(../img/popup-image/readlater-icon.png);
+}
+#cache{
+	background-image:url(../img/popup-image/cache.png);
+}
+#description{
+	font-size:14px;
+	border-bottom:1px solid #CCCCCC;
+	outline-style:none;
+	color:#CDCDCD;
+    padding:11px 0px;
+	
+}
+#tags{
+	height:96px;
+	border-bottom:1px solid #CCCCCC;
+	padding:11px 0px;
+}
+#tag-container{
+	height:30px;
+	outline:1px solid #CCCCCC;
+	color:#CDCDCD;
+	font-size:14px;
+	line-height:30px;
+}
+#last-used-tag{
+	width:400px;
+	min-height:30px;
+	
+}
+#recommanded-tag{
+	width:400px;
+	min-height:30px;
+}
+.tagListHeader{
+	clear:both;
+	color:#3369C9;
+	font-size:12px;
+	width:100px;
+	float:left;
+	margin-top:16px;
+	cursor:pointer;
+}
+.tagListHeader:hover{
+	text-decoration:underline;
+}
+
+#list-and-group{
+	height:40px;
+	margin-top:15px;
+	
+}
+
+.select-box{
+	display:inline-block;
+	height:26px;
+	width:192px;
+	outline:1px solid #CCCCCC;
+}
+#list{
+	margin-right:10px;
+}
+#bottom{
+	height:40px;
+	background-color:#F4F4F4;
+	padding-top:15px;
+}
+#bm-saveBtn{
+	display:inline-block;
+	height:30px;
+	width:77px;
+	background-image:url(../img/scrennshot-editpanel/save-button.png);
+	margin-right:15px;
+	float:right;
+	cursor:pointer;
+}
+#bm-saveBtn:hover{
+	background-position:0 60px;
+}
+#bm-saveBtn:active{
+	background-position:0 30px;
+}
+#bm-cancelBtn{
+	display:inline-block;
+	float:right;
+	font-size:14px;
+	color:#999999;
+	height:12px;
+	cursor:pointer;
+	margin-top:5px;
+	margin-right:19px;
+	
+}
+

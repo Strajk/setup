@@ -1,0 +1,38 @@
+/* 
+Document   : basic
+Created on : 2009-3-5, 11:11:30
+Author     : AD
+Description:
+A basic stylesheet, can be linked by all Diigo projects.
+Include css reset section and font-family, size and line-height etc of basic elements.
+*/
+
+
+
+/*-------------------------------------------------------------------
+* Basic Elements
+* Define styles for basic elements: body, h1-h6, ul, ol, a, p, etc.
+--------------------------------------------------------------------*/
+body{
+    font: normal 81.25% Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+}
+select, input, textarea{font-family:Helvetica, Arial, sans-serif;}
+a{
+    color:#04c;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+h1{font-size: 1.5em;}
+h2{font-size: 1.4em;}
+h3{font-size: 1.3em;}
+h4{font-size: 1.2em;}
+h1, h2, h3{font-weight:700; line-height:1.5;}
+em{
+    font-style:italic;
+}
+strong{
+    font-weight:bold;
+}

@@ -1,0 +1,107 @@
+{
+    "extName": {
+        "message": "Diigo Web Collector - Capture and Annotate",
+        "description": "The name of the extension"
+    },
+    
+    "extDesc": {
+        "message": "Bookmark, Archive, Screenshot & Markup - All-In-One Web Collector, must-have research tool",
+        "description": "The description for the extension"
+    },
+    
+    "browserActionDefaultTitle": {
+        "message": "Annotate & Capture the Web",
+        "description": "The default_title of browser_action"
+    },
+    
+    "alertGallery": {
+        "message": "Extension contents are not allowed on webpages within the Chrome Extensions Gallery / Web Store.",
+        "description": "Shown when the user clicks the browser action at a Google extension gallery / Web Store page."
+    },
+    
+    "alertUnsupportedPage": {
+        "message": "Sorry, the extension is not designed to run in this page.",
+        "description": "Shown when the user clicks the browser action on an unsupported page."
+    },
+    
+    "pageStillLoading": {
+        "message": "Page still loading. Please wait...",
+        "description": "Shown when the user clicks the browser action but the page hasn't finished loading"
+    },
+    
+    "refreshAfterUpdate": {
+        "message": "The extension \"$extName$\" has been updated. Please reload this page ($reloadShortcut$) and try again.",
+        "description": "Tells the user to reload the tab after an extension update",
+        "placeholders": {
+            "extName": {"content": "$1"},
+            "reloadShortcut": {"content": "$2"}
+        }
+    },
+    
+    "refreshAfterInstallation": {
+        "message": "The tab is opened before installing/updating the extension. Please reload this page ($reloadShortcut$) and try again.",
+        "description": "Tells the user to reload the tab after installing the extension",
+        "placeholders": {
+            "reloadShortcut": {"content": "$1"}
+        }
+    },
+    
+    "share_loadingAnnotatedLink": {
+        "message": "Loading...",
+        "description": "Shown in the Annotated Link tab of the share dialog"
+    },
+    
+    "upload_uploading": {
+        "message": "Uploading this page to Diigo. You can continue with your browsing.",
+        "description": ""
+    },
+    "uploadimage_uploading": {
+        "message": "Uploading... You can continue with your browsing.",
+        "description": ""
+    },
+    
+    "upload_success": {
+        "message": "Upload succeeded!",
+        "description": ""
+    },
+    "uploadimage_error": {
+        "message": "Error uploading capture. Please try again later",
+        "description": ""
+    },
+    "network_error": {
+        "message": "Network error!",
+        "description": ""
+    },
+    "bookmark_network_error": {
+        "message": "Save bookmark failed. Network error! <a id='retry' href='#'>retry</a>",
+        "description": ""
+    },
+    "bookmark_server_error": {
+        "message": "Save bookmark failed. Server error! <a id='retry' href='#'>retry</a>",
+        "description": ""
+    },
+    "server_error": {
+        "message": "Server error!",
+        "description": ""
+    },
+
+    "upload_error": {
+        "message": "Error uploading page. Please try again later.",
+        "description": ""
+    },
+
+    "saveBookmark_sucess": {
+        "message": "Save succeeded!",
+        "description": ""
+
+    },
+    
+    "keyName": {
+        "message": "",
+        "description": ""
+    },
+    "keyName2": {
+        "message": "",
+        "description": ""
+    }
+}

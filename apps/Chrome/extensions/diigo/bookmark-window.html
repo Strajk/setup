@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/tooltip.css">
+    <link rel="stylesheet" href="css/bookmark-window.css">
+
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <!--<script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery-gtooltip.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/utils2.js"></script>
+    <script type="text/javascript" src="js/parseTags.js"></script>
+    <script type="text/javascript" src="js/autocomplete.js"></script>
+    <script type="text/javascript" src="js/Form.js"></script>
+    <script type="text/javascript" src="js/autoTextarea.js"></script>
+</head>
+<body>
+<div id="bm-main">
+    <div class="upgrade-info" id="upgrade-info">
+        <div class="close" id="close-upgrade-info"></div>
+        <div class="wording">Your outliner number is over quota. You can only create 5 outliners now.</div>
+        <div class="btn">Upgrade Now!</div>
+    </div>
+    <div id="notification">You are now in the research mode.</div>
+    <div class="top-area">
+        <div id="top-bar">
+            <span class="top-bar-title">Save to Diigo</span>
+            <!--<span class="focus-research-tip">(focused research)</span>-->
+            <div id="onload"></div>
+            <div id="close" data-gtooltip="Close"></div>
+            <div id="remove" data-gtooltip="Saved on April 24,2013"><span></span></div>
+        </div>
+        <div class="title-des">
+            <div class="" id="show-url" data-gtooltip="Edit url"></div>
+            <textarea class="title-textarea" id="diigobm-title-input"></textarea>
+            <textarea class="title-textarea" id="diigobm-des-input" placeholder="Add a description..."></textarea>
+            <input type="text" id="diigobm-url-input" class="title-textarea"/>
+        </div>
+    </div>
+    <div class="more-info-area">
+        <div id="form">
+            <div class="outliner-section">
+                <!--<div id="diigobm-list-add">-->
+                <!--<div class="diigo-alert-tip"><span>Name existed !</span>-->
+                <!--<div class="diigo-alert-tip-arrow"></div>-->
+                <!--</div>-->
+                <!--<input type="text" id="diigobm-list-addInput">-->
+                <!--<div id="diigobm-list-addBtn">-->
+                <!--<span class='label'>Create</span>-->
+                <!--<span class="spinner"></span>-->
+                <!--</div>-->
+                <!--<a id="diigobm-list-addCancel">Cancel</a>-->
+                <!--</div>-->
+                <div id="diigobm-list-add-tip">
+                    You have reach the limit of outliner. <a href="" id="w-cancel">Cancel</a><a href="" id="w-upgrade">Upgrade</a>
+                </div>
+            </div>
+            <div id="input-container">
+                <div id="research-mode-notification">
+        <span>
+             Focused Research is a premium feature that lets you re-use your saving preferences with minimal effort.  Once you are in the research mode, the same set of tags, lists and group are automatically applied to every item you save or annotate.  This can be a big time saver when you are doing research on a particular topic.
+        </span>
+                    <div class="closeIcon" id="research-mode-close-notify"></div>
+                </div>
+                <!--<div class="title-des">-->
+                <!--<div class="" id="show-url" data-gtooltip="Edit url"></div>-->
+                <!--<textarea class="title-textarea" id="diigobm-title-input"></textarea>-->
+                <!--<textarea class="title-textarea" id="diigobm-des-input" placeholder="Description"></textarea>-->
+                <!--<input type="text" class="title-textarea"/>-->
+                <!--</div>-->
+                <!--<div class="form-input">-->
+                <!--<label for="">Title</label>-->
+                <!--<input type="text" id="diigobm-title-input">-->
+                <!--<div class="action">-->
+                <!--<div class="icon-action" id="show-url" data-gtooltip="Edit url"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="input-action-area">-->
+                <!--<input type="text" class="url-input" id="diigobm-url-input">-->
+                <!--</div>-->
+
+
+                <!--<div id="diigobm-des" class="form-textarea">-->
+                <!--<label for="">Description</label>-->
+                <!--<textarea id="diigobm-des-input"></textarea>-->
+                <!--</div>-->
+            </div>
+            <div id="diigobm-tags-new">
+                <img src="./img/tag.png" alt="" id="tag-cloud-icon" data-gtooltip="Open tag cloud">
+                <input type="text" placeholder="Add tags..." id="diigobm-tag-input">
+            </div>
+            <!--<div id="diigobm-tag" class="form-input">-->
+                <!--&lt;!&ndash;<span id="diigobm-tag-dropdown"></span>&ndash;&gt;-->
+                <!--<label for="">Tags</label>-->
+                <!--<input type="text" id="diigobm-tag-input">-->
+                <!--<div class="action">-->
+                    <!--<div class="text-action" id="open-tag-cloud">Tag cloud</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="input-action-area">-->
+                <!--<div id="tag-cloud">-->
+                    <!--<div>-->
+                        <!--Select from your top 100 tags:-->
+                        <!--<a href="#" id="tag-edit">Edit tags &gt;&gt;</a>-->
+                    <!--</div>-->
+                    <!--<div id="tag-cloud-container">-->
+                        <!--&lt;!&ndash; put tag cloud items here&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div id="tag-cloud">
+                <div>
+                    Select from your top 100 tags:
+                    <a href="#" id="tag-edit">Edit tags</a>
+                </div>
+               <div id="tag-cloud-container">
+
+               </div>
+            </div>
+            <div id="tag-suggestion">
+                <!--<div id="diigobm-recent-tag" class="su-tag">-->
+                    <!--<a href="#" title="Select to add all">Recent Tags:</a>-->
+                    <!--&lt;!&ndash;put recent tags here&ndash;&gt;-->
+                <!--</div>-->
+                <div id="diigobm-recommend-tag" class="su-tag">
+                    <a href="#" id="recommend-tag" tabindex="-1">Recommended:</a>
+                    <!--<div class="loading"></div>-->
+                    <!--put recommended tags here-->
+                </div>
+                <div id="diigobm-group-tag" class="su-tag">
+                    <a href="#">Group dictionary:</a>
+                    <div class="loading"></div>
+                    <!--put group tags here-->
+                </div>
+            </div>
+            <div id="list-group">
+                <div id="diigobm-list" class="form-select" data-position="bottom" tabindex="0">
+                    <div class="remove-select" tabindex="-1">Remove</div>
+                    <label for="">Add to an outliner</label>
+                    <div class="content"></div>
+                    <!--<select></select>-->
+                    <div class="select-menu">
+                        <div class="select-action-area">
+                            <div class="search-box">
+                                <input type="text" placeholder="Search..." tabindex="-1">
+                                <div class="refresh-btn action-btn" title="Refresh outliners" id="refresh-outliner"></div>
+                                <div class="add-btn action-btn" title="Create a outliner"></div>
+                            </div>
+                            <div class="add-box">
+                                <input type="text" id="diigobm-list-addInput" placeholder="Create an outliner...">
+                                <div class="add-action">
+                                    <div class="add-action-btn confirm" id="diigobm-list-addBtn" title="Create"></div>
+                                    <div class="add-action-btn cancel" title="Cancel"></div>
+                                    <div class="spinner"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-container">
+                            <div class="no-item">No outliners</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="diigobm-group" class="form-select" data-position="bottom" tabindex="0">
+                    <div class="remove-select" tabindex="-1">Remove</div>
+                    <label for="">Share to a group</label>
+                    <div class="content"></div>
+                    <div class="select-menu">
+                        <div class="select-action-area">
+                            <div class="search-box">
+                                <input type="text" placeholder="Search..." tabindex="-1">
+                                <div class="action-btn refresh-btn" title="Refresh groups" id="refresh-group"></div>
+                            </div>
+                        </div>
+                        <div class="item-container">
+                            <div class="no-item">No groups</div>
+                        </div>
+                    </div>
+                    <!--<select></select>-->
+                </div>
+
+                <div id="Diigo-Bookmark-checkShareExisting">
+                    <div class="op-checkbox-container checked">
+                        <div class="op-checkbox"></div>
+                        <div class="op-label">Share my existing annotations</div>
+                    </div>
+                </div>
+                <div id="diigo-acache-field">
+                    <a id="diigo-acache" data-link="diigo-acache" href="javascript:void(0)">
+                        <b></b>
+                        Unlock  the worry-free “Advanced Cache” feature
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div id="bottom">
+            <div id="diigobm-options">
+                <label for="op-private" class="form-checkbox">
+                    <input type="checkbox" id="op-private">
+                    Private
+                    <b></b>
+                </label>
+                <label for="op-readlater" class="form-checkbox">
+                    <input type="checkbox" id="op-readlater">
+                    Read Later
+                    <b></b>
+                </label>
+                <label for="op-cache" class="form-checkbox">
+                    <input type="checkbox" id="op-cache">
+                    Cache
+                    <b></b>
+                </label>
+                <!--<label for="op-focus" class="form-checkbox" title="Keep saving items in the same place until unchecked">-->
+                    <!--<input type="checkbox" id="op-focus">-->
+                    <!--Focus Research-->
+                    <!--<b></b>-->
+                <!--</label>-->
+                <!--<div id="op-private" class="option" data-gtooltip="private">-->
+                    <!--<div class="op-checkbox-container" title="Make this book private">-->
+                        <!--<div class="op-checkbox"></div>-->
+                        <!--<div class="op-label">Private</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div id="op-readlater" class="option" data-gtooltip="readlater">-->
+                    <!--<div class="op-checkbox-container" title="Mark this book as unread">-->
+                        <!--<div class="op-checkbox"></div>-->
+                        <!--<div class="op-label">Read later</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div id="op-cache" class="option" data-gtooltip="cache">-->
+                    <!--<div class="op-checkbox-container" title="Upload a copy of the page">-->
+                        <!--<div class="op-checkbox"></div>-->
+                        <!--<div class="op-label">Save a copy</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <!--<a id="diigobm-cancelBtn">cancel</a>-->
+        </div>
+
+        <div class="btn-area">
+
+            <div class="focus-research-area" title="Keep saving items in the same place until unchecked.">
+                Remember saving preferences
+                <label class="switch">
+                    <input type="checkbox" id="op-focus">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div id="diigobm-saveBtn">Save</div>
+        </div>
+    </div>
+</div><!--end #bm-main-->
+<script type="text/javascript" src="js/bookmark-window.js"></script>
+</body>
+</html>

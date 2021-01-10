@@ -1,0 +1,447 @@
+.pdf-area {
+    height: 100%;
+    width: 100%;
+}
+/****************upload area*************/
+.wrapper.active {
+    visibility: visible;
+    opacity: 1;
+}
+.wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 100000;
+    -webkit-transition: all 200ms ease;
+    visibility: hidden;
+    opacity: 0;
+}
+.drag-hover-wrapper {
+    color: #ffffff;
+    font-weight: bold;
+}
+.drag-hover-wrapper::before {
+    content: 'Drop to open your file';
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    font-size: 36px;
+    padding: 10px 20px;
+    line-height: 100px;
+    left: 50%;
+    top: 50%;
+    min-width: 600px;
+    -webkit-transform: translate(-50%, -50%);
+    border: 3px dashed #ffffff;
+}
+.wrapper-close {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    opacity: 0.8;
+    background: url("images/reader-images/close.svg") 50% 50% no-repeat;
+    background-color: #ffffff;
+    display: none;
+}
+.wrapper-close:hover {
+    opacity: 1;
+}
+.center {
+    position: absolute;
+    left: 0;
+    height: 435px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 806px;
+}
+.dropZone {
+    color: #ffffff;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+    border: 3px dashed #ffffff;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 340px;
+    width: 800px;
+    text-align: center;
+    border-radius: 13px;
+    position: relative;
+    -webkit-transition: all 200ms ease;
+}
+.dropZone .upload-icon {
+    height: 110px;
+    width: 120px;
+    background-image: url("images/reader-images/pdf-icon.png");
+    margin: 90px 0 30px 329px;
+    opacity: 0.8;
+}
+.dropZone.hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.dropZone:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.dropZone p {
+    font-size: 18px;
+    margin: 10px 0px;
+}
+.dropZone input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.external-file {
+    margin-top: 45px;
+    width: 100%;
+    color: #ffffff;
+}
+.external-file > div {
+    float: left;
+    height: 44px;
+    margin-right: 6px;
+    line-height: 44px;
+}
+.external-file > div:nth-child(2) {
+    /*width: 67px;*/
+    line-height: 44px;
+    text-align: center;
+}
+.external-file .drive-btn {
+    width: 76px;
+    /*background-image: url("images/reader-images/drive.png");*/
+    background-color: #00AAF1;
+    height: 44px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-right: 6px;
+}
+.external-file .drive-btn:hover {
+    /*background-position: 0 -44px;*/
+    background-color: #0083D0;
+}
+.external-file #open-file-picker b{
+    background-image: url("images/reader-images/googledrive.png");
+    display: block;
+    width: 32px;
+    height: 28px;
+    margin-top: 8px;
+    margin-left: 21px;
+}
+.external-file #open-box_file-picker b{
+    background-image: url("images/reader-images/Box.png");
+    display: block;
+    width: 50px;
+    height: 26px;
+    margin-top: 9px;
+    margin-left: 13px;
+}
+.external-file #open-dropbox_file-picker b{
+    background-image: url("images/reader-images/dropbox.png");
+    display: block;
+    width: 33px;
+    height: 30px;
+    margin-top: 7px;
+    margin-left: 21.5px;
+}
+.external-file .external-url input {
+    width: 412px;
+    height: 32px;
+    line-height: 32px;
+    padding: 6px 0 6px 8px;
+    border-radius: 2px;
+    margin-right: 12px;
+    border: none !important;
+    outline: none !important;
+    float: left;
+}
+.external-file .external-url .light-btn {
+    float: left;
+    width: 80px;
+    height: 44px;
+    color: #666666;
+    background-color: #eeeeee;
+    font-size: 20px;
+    border-radius: 2px;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer;
+}
+.external-file .external-url .light-btn:hover {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/*****************file picker********************/
+.wrapper.file-picker-wrapper {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.wrapper.file-picker-wrapper .file-picker-win {
+    height: 572px;
+    width: 950px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #fafafa;
+    border: 1px solid #888;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 4px 16px;
+    z-index: 10;
+}
+.wrapper.file-picker-wrapper .file-picker-win .loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 10;
+}
+.wrapper.file-picker-wrapper .file-picker-win .loading img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 24px;
+    width: 24px;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-topbar {
+    height: 55px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    line-height: 55px;
+    text-indent: 20px;
+    position: relative;
+    background-color: #ffffff;
+    z-index: 1;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-presentation {
+    height: 35px;
+    line-height: 35px;
+    background-color: #fafafa;
+    border-bottom: 1px solid #eee;
+    color: #bbb;
+    font-size: 13px;
+    font-weight: bold;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-presentation .left {
+    float: left;
+    margin-left: 26px;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-presentation .right {
+    float: right;
+    margin-right: 24px;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-innerContainer {
+    margin: 0 auto;
+    min-height: 409px;
+    background-color: #ffffff;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer {
+    height: 409px;
+    overflow: auto;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer .no-pdf-gdrive {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #999;
+    display: none;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer::-webkit-scrollbar {
+    overflow: visible;
+    width: 14px;
+    height: 14px;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer::-webkit-scrollbar-track:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer::-webkit-scrollbar-track:active {
+    box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.14), inset -1px 0 0 rgba(0, 0, 0, 0.07);
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 2px;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.25);
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer::-webkit-scrollbar-thumb:active {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.35);
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-outerContainer::-webkit-scrollbar-corner {
+    background-clip: padding-box;
+    background-color: #f5f5f5;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.14);
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action {
+    height: 70px;
+    background-color: #ffffff;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .user-info {
+    float: left;
+    position: relative;
+    top: 19px;
+    left: 20px;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .user-info > div {
+    float: left;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .user-info > div img {
+    border-radius: 50%;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .user-info .user-name {
+    margin-left: 10px;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .user-info .user-name .g-username {
+    font: bold 14px/18px arial, Helvetica;
+    color: #333333;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .user-info .user-name .g-email {
+    font: normal 12px/16px arial, Helvetica;
+    color: #666666;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .action-btn-group {
+    /*width: 180px;*/
+    float: right;
+    position: relative;
+    top: 19px;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .action-btn-group .btn {
+    display: inline-block;
+    padding: 0 8px;
+    height: 27px;
+    line-height: 27px;
+    min-width: 54px;
+    cursor: default;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    margin-right: 16px;
+    border-radius: 2px;
+    -webkit-user-select: none;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .action-btn-group .select-btn {
+    background-image: -webkit-linear-gradient(top, #4d90fe, #357ae8);
+    border: 1px solid #3079ed;
+    color: #fff;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .action-btn-group .select-btn:hover {
+    box-shadow: none;
+    background-color: #357ae8;
+    background-image: -webkit-linear-gradient(top, #4d90fe, #357ae8);
+    border: 1px solid #2f5bb7;
+    border-bottom-color: #2f5bb7;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .action-btn-group .select-btn:active {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+    background: #357ae8;
+    border: 1px solid #2f5bb7;
+    border-top: 1px solid #2f5bb7;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .action-btn-group .select-btn.disabled {
+    background: #4d90fe;
+    opacity: .5;
+    box-shadow: none;
+    border: 1px solid #3079ed;
+    color: #fff;
+    pointer-events: none;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .action-btn-group .cancel-btn {
+    box-shadow: none;
+    background-color: #f5f5f5;
+    background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .action-btn-group .cancel-btn:hover {
+    box-shadow: none;
+    background-color: #f8f8f8;
+    background-image: -webkit-linear-gradient(top, #f8f8f8, #f1f1f1);
+    border: 1px solid #c6c6c6;
+    color: #333;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-action .action-btn-group .cancel-btn:active {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    background: #f8f8f8;
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.wrapper.file-picker-wrapper .file-picker-win .google-item {
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    color: #222;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-top: -1px;
+}
+.wrapper.file-picker-wrapper .file-picker-win .google-item .google-item-icon {
+    float: left;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    margin: 6px 10px 0 20px;
+    background-image: url("images/reader-images/pdf-icon-small.png");
+}
+.wrapper.file-picker-wrapper .file-picker-win .google-item .google-item-name {
+    float: left;
+}
+.wrapper.file-picker-wrapper .file-picker-win .google-item .google-item-time {
+    float: right;
+    margin-right: 26px;
+}
+.wrapper.file-picker-wrapper .file-picker-win .google-item.active {
+    background-color: #4285f4;
+    border-color: #4285f4;
+    color: #ffffff;
+}
+.wrapper.file-picker-wrapper .file-picker-win .google-item.active .google-item-icon {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-close {
+    height: 20px;
+    width: 20px;
+    background-image: url("images/reader-images/close.svg");
+    position: absolute;
+    right: 15px;
+    top: 18px;
+    opacity: 0.6;
+    cursor: pointer;
+    z-index: 11;
+}
+.wrapper.file-picker-wrapper .file-picker-win .file-picker-close:hover {
+    opacity: 1;
+}
+.wrapper.setting-wrapper {
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-transition: opacity 300ms ease-in-out;
+}

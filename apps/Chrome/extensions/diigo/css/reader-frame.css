@@ -1,0 +1,169 @@
+/************************Reader*********************/
+
+#diigo-reader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2147483644;
+    left: 0;
+    transition: transform 500ms ease-in-out;
+    transform: translate3d(-100%, 0, 0);
+
+}
+
+#diigo-reader #diigo-ghost {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+
+#diigo-reader #diigo-reader-frame {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+#diigo-reader #diigo-process-frame {
+  display: none;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+}
+#diigo-reader.show {
+    transform: translate3d(0, 0, 0);
+}
+
+#diigo-reader #diigo-showannotationList{
+    position: absolute;
+    top:8px;
+    right: 70px;
+    height: 36px;
+    width: 36px;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 0.6;
+    -webkit-transition: background-color 200ms ease;
+
+}
+
+#diigo-reader #diigo-showannotationList {
+    background: url("chrome-extension://__MSG_@@extension_id__/diigolet/chrome-panel-images/toolbar-icon.png") -419px -1px no-repeat;
+}
+
+#diigo-reader #diigo-showannotationList:hover{
+    background-color: #E7F0FF;
+}
+
+#diigo-reader #diigo-showannotationList:active{
+    -webkit-transform: scale(.9);
+}
+
+#diigo-reader #diigo-reader-close {
+    position: absolute;
+    top:8px;
+    right: 20px;
+    height: 40px;
+    width: 40px;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+#diigo-reader #diigo-reader-close:hover {
+    opacity: 1;
+}
+
+#diigo-reader #diigo-reader-close:active {
+    transform: scale(0.9);
+}
+
+#diigo-reader #diigo-reader-close::after {
+   content: '';
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    top: 20px;
+    left: 10px;
+    background: #666;
+    transform: rotate(-45deg);
+}
+
+#diigo-reader #diigo-reader-close::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    top: 20px;
+    left: 10px;
+    background: #666;
+    transform: rotate(45deg);
+}
+
+#diigo-reader #diigo-reader-loading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: white;
+
+}
+
+#diigo-reader .loader {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    margin: auto;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#diigo-reader-loading .double-bounce1,
+#diigo-reader-loading .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #3f98e5;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: diigo-bounce 2.0s infinite ease-in-out;
+    animation: diigo-bounce 2.0s infinite ease-in-out;
+}
+#diigo-reader-loading .double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes diigo-bounce {
+    0%, 100% {
+        -webkit-transform: scale(0)
+    }
+
+    50% {
+        -webkit-transform: scale(1)
+    }
+}
+
+/*@keyframes bounce {*/
+    /*0%, 100% {*/
+        /*transform: scale(0);*/
+        /*-webkit-transform: scale(0)*/
+    /*}*/
+
+    /*50% {*/
+        /*transform: scale(1);*/
+        /*-webkit-transform: scale(1)*/
+    /*}*/
+/*}*/

@@ -1,0 +1,656 @@
+/*********Form select**********/
+
+.select-group:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.select-group{zoom:1}
+
+.form-select {
+    height: 40px;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    margin-bottom: 24px;
+}
+
+.form-select:focus, .form-select.focused {
+    outline: none;
+    border-color: #999;
+    box-shadow: 0px 1px #999;
+}
+
+.form-select.small {
+    width: 45%;
+    margin-right: 20px;
+    float: left;
+}
+
+.form-select .content {
+    height: 30px;
+    width: 100%;
+    color: #6c6c6c;
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    top: 9px;
+    font-size: 14px;
+    line-height: 30px;
+    background: transparent;
+}
+
+.form-select label {
+    position: absolute;
+    top: 13px;
+    left: 0;
+    font-size: 14px;
+    color: #6c6c6c;
+    font-weight: 400;
+    transition: all 200ms ease;
+}
+
+.form-select.inputed label {
+    transform: translate3d(0, -20px, 0);
+    font-size: 12px;
+    color: #CCCCCC;
+    font-weight: 400;
+}
+
+.form-select select {
+    -webkit-appearance: none !important;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+
+.form-select::before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 23px;
+    border-style: solid;
+    border-width: 5px;
+    height: 0;
+    width: 0;
+    border-color: #848484 transparent transparent transparent;
+}
+
+.form-select::after {
+    content: "";
+    display: block;
+    height: 2px;
+    transform: scaleX(0);
+    background: #9198A0;
+    transform-origin: 0 0;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    transition: all 200ms ease;
+}
+.form-select.focused::after {
+    /*transform: scaleX(1);*/
+}
+
+
+.form-select .remove-select {
+    position: absolute;
+    right: 25px;
+    top: 13px;
+    color: #999;
+    display: none;
+    z-index: 3;
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0.8;
+    font-size: 12px;
+}
+
+.form-select .remove-select:hover {
+    opacity: 1;
+}
+
+.form-select.inputed:not(.focused) .remove-select {
+    display: block;
+}
+
+.form-select .select-menu {
+    position: absolute;
+    left: 0;
+    cursor: default;
+    padding: 5px 0;
+    transform: scaleY(0);
+    background: white;
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+
+    z-index: 9999;
+    opacity: 0;
+    min-width: 200px;
+    width: 100%;
+    color: #2b2e38;
+}
+
+.form-select[data-position=top] .select-menu{
+    top: 14px;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.form-select[data-position=bottom] .select-menu{
+    bottom: 0px;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+
+.form-select[data-position=bottom] .select-menu .item-container{
+    height: 172px;
+}
+
+.form-select .select-menu .select-action-area{
+   height: 30px;
+    padding: 0 10px 3px 10px;
+    border-bottom: 1px solid rgba(0,0,0,.14);
+}
+.form-select .select-menu .search-box{
+   height: 30px;
+}
+
+.form-select .select-menu .search-box .action-btn{
+    height: 24px;
+    width: 24px;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    background-image: url("../img/popup-image/extension.png");
+    opacity: 0.6;
+    margin: 3px 5px;
+}
+
+
+.form-select .select-menu .search-box .action-btn:hover{
+    opacity: .8;
+}
+.form-select .select-menu .search-box .action-btn:active{
+    transform: scale(0.9);
+}
+.form-select .select-menu .search-box .add-btn{
+    background-position: -288px 0;
+}
+.form-select .select-menu .search-box .refresh-btn{
+    background-position: -312px 0;
+}
+
+.form-select .select-menu .search-box .refresh-btn.processing{
+    animation: spin 1s linear infinite;
+}
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),only screen and (-moz-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:3/2),only screen and (min-device-pixel-ratio:1.5) {
+    .form-select .select-menu .search-box .action-btn{
+        background-image: url("../img/popup-image/extension@2x.png") no-repeat;
+        background-size: 400px auto
+    }
+}
+
+.form-select .select-menu .search-box input{
+   height: 28px;
+    width: calc(100% - 80px);
+    line-height: 30px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+}
+.form-select .select-menu .add-box{
+    display: none;
+   height: 30px;
+}
+.form-select .select-menu .add-box input{
+    height: 28px;
+    line-height: 30px;
+    font-size: 14px;
+    width: calc(100% - 80px);
+    border: none;
+}
+
+
+.form-select .select-menu .add-box .add-action{
+    width: 70px;
+    float: right;
+}
+.form-select .select-menu .add-box .add-action.processing .spinner {
+    display: block;
+}
+.form-select .select-menu .add-box .add-action.processing .add-action-btn {
+    display: none;
+}
+.form-select .select-menu .add-box .add-action .spinner{
+    position: relative;
+    vertical-align: middle;
+    margin: 0;
+    left: 20px;
+    top: 4px;
+    -webkit-transform: none;
+    transform: none;
+    width: 30px;
+    display: none;
+}
+.form-select .select-menu .add-box .add-action .spinner::before{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 50%;
+    border-radius: 500rem;
+    border: .2em solid rgba(0,0,0,.1);
+    height: 20px;
+    width: 20px;
+}
+.form-select .select-menu .add-box .add-action .spinner::after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 50%;
+    -webkit-animation: loader .6s linear;
+    animation: loader .6s linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    border-radius: 500rem;
+    border-color: #767676 transparent transparent;
+    border-style: solid;
+    border-width: .2em;
+    box-shadow: 0 0 0 1px transparent;
+    height: 20px;
+    width: 20px;
+}
+.form-select .select-menu .add-box .add-action-btn{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    float: left;
+    margin: 3px 5px;
+    background-image: url("../img/popup-image/extension.png");
+    opacity: 0.6;
+}
+
+.form-select .select-menu .add-box .add-action-btn:hover {
+    opacity: 0.8;
+}
+
+.form-select .select-menu .add-box .add-action-btn:active {
+    transform: scale(0.9);
+}
+.form-select .select-menu .add-box .confirm{
+    background-position: -336px 0;
+}
+
+.form-select .select-menu .add-box .cancel{
+    background-position: -360px 0;
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),only screen and (-moz-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:3/2),only screen and (min-device-pixel-ratio:1.5) {
+    .form-select .select-menu .add-box .add-action-btn{
+        background-image: url("../img/popup-image/extension@2x.png");
+        background-size: 400px auto
+    }
+}
+.form-select .select-menu .no-item {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #CCCCCC;
+    font-size: 16px;
+}
+.form-select .select-menu .item-container {
+    max-height: 300px;
+    overflow: auto;
+}
+.form-select.focused .select-menu {
+    transform: scaleY(1);
+    visibility: visible;
+    opacity: 1;
+    box-shadow: 0 0 1px rgba(76, 86, 103, 0.25), 0 2px 18px rgba(31, 37, 50, 0.32);
+}
+.form-select .select-menu .menu-title {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+    line-height: normal;
+    color: rgba(0,0,0,.8);
+    color: #6c6c6c;
+}
+.form-select .select-menu .menu-item {
+    font-size: 14px;
+    text-indent: 5px;
+    font-weight: 400;
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: 30px;
+    padding: 0 10px;
+    color: rgba(0,0,0,.8);
+    color: #6c6c6c;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*.form-select .select-menu .menu-item:hover {*/
+    /*background: #eee;*/
+/*}*/
+.form-select .select-menu .menu-item.selected {
+    background: #eee;
+}
+.form-select .select-menu .menu-item.active {
+    background: #eee;
+}
+.form-select .select-menu .add-channel {
+    font-size: 14px;
+    font-weight: 400;
+    color: #3aa3e3;
+    padding: 0 10px;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 30px;
+    color: rgba(0,0,0,.8);
+}
+
+/***************Form input**********************/
+.form-input {
+    height: 40px;
+    text-align: left;
+    position: relative;
+    border-bottom: 1px solid #e5e5e6;
+    margin-bottom: 24px;
+}
+
+.form-input.action {
+    margin-bottom: 0;
+}
+
+.form-input .action {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    z-index: 2;
+}
+
+.form-input+.input-action-area {
+    display: none;
+    margin-bottom: 24px;
+}
+.form-input .action .icon-action {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+.form-input .action .text-action {
+    line-height: 24px;
+    position: relative;
+    top: 4px;
+    /*text-decoration: underline;*/
+    cursor: pointer;
+    color: #848484;
+}
+
+.form-input.error {
+    border-color: red;
+}
+.form-input.error label {
+    color: red;
+}
+.form-input.error .error-msg {
+    visibility: visible;
+    opacity: 1;
+}
+.form-input.inline {
+    display: inline-block;
+}
+.form-input label {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    transition: all 200ms ease;
+    transform: translate3d(0, -20px, 0);
+    font-size: 12px;
+    color: #CCCCCC;
+    font-weight: 400;
+}
+.form-input.inputed label {
+    /*transform: translate3d(0, -20px, 0);*/
+    /*font-size: 12px;*/
+    /*color: #CCCCCC;*/
+    /*font-weight: 400;*/
+}
+.form-input input {
+    height: 30px;
+    width: calc(100% - 30px);
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin-top: 8px;
+    background: transparent !important;
+    color: #6c6c6c;
+    position: relative;
+    z-index: 1;
+}
+.form-input .error-msg {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    color: red;
+    font-size: 12px;
+    transition: all 200ms ease;
+    visibility: hidden;
+    opacity: 0;
+}
+.form-input::after {
+    content: "";
+    display: block;
+    height: 2px;
+    transform: scaleX(0);
+    background: #9198A0;
+    transform-origin: 0 0;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    transition: all 200ms ease;
+}
+.form-input.focused::after {
+    transform: scaleX(1);
+}
+
+/***********From textarea************/
+.form-textarea {
+    text-align: left;
+    position: relative;
+    border-bottom: 1px solid #e5e5e6;
+    margin-bottom: 30px;
+}
+.form-textarea.inline {
+    display: inline-block;
+}
+.form-textarea.error {
+    border-color: red;
+}
+.form-textarea.error label {
+    color: red;
+}
+.form-textarea.error .error-msg {
+    visibility: visible;
+    opacity: 1;
+}
+.form-textarea label {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    transform: translate3d(0, -20px, 0);
+    font-size: 12px;
+    color: #CCCCCC;
+    font-weight: 400;
+    transition: all 200ms ease;
+}
+.form-textarea textarea {
+    height: 40px;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin-top: 14px;
+    background: transparent;
+    color: #6c6c6c;
+    font-family: Arial !important;
+}
+.form-textarea.inputed label {
+    /*transform: translate3d(0, -20px, 0);*/
+    /*font-size: 12px;*/
+    /*color: #CCCCCC;*/
+    /*font-weight: 400;*/
+    /*transition: all 200ms ease;*/
+}
+.form-textarea .error-msg {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    color: red;
+    font-size: 12px;
+    transition: all 200ms ease;
+    visibility: hidden;
+    opacity: 0;
+}
+.form-textarea::after {
+    content: "";
+    display: block;
+    height: 2px;
+    transform: scaleX(0);
+    background: #9198A0;
+    transform-origin: 0 0;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    transition: all 200ms ease;
+}
+.form-textarea.focused::after {
+    transform: scaleX(1);
+}
+
+
+
+/******************form checkbox*************************/
+label.form-checkbox {
+    font-size: 13px;
+    display: block;
+    line-height: 30px;
+    position: relative;
+    color: #626669;
+
+}
+
+label input[type=checkbox] {
+    opacity: 0;
+    margin-right: 3px;
+}
+
+.form-checkbox b {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -1px;
+    top: 6px;
+    height: 12px;
+    width: 12px;
+    border: 2px solid #9c9c9c;
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+.form-checkbox:hover b {
+    opacity: 1;
+}
+
+.form-checkbox:active b {
+    transform: scale(0.95);
+}
+.form-checkbox input[type=checkbox]:checked + b {
+   background: #33b5ff;
+    border-color: #33b5ff;
+    opacity: 1;
+}
+.form-checkbox b::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 7px;
+    height: 2px;
+    width: 6px;
+    background: white;
+    transform: rotate(45deg);
+    display: none;
+}
+
+.form-checkbox b::after{
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 5px;
+    height: 2px;
+    width: 10px;
+    background: white;
+    transform: rotate(-45deg);
+    display: none;
+}
+
+
+.form-checkbox input[type=checkbox]:checked + b::after {
+    display: block;
+}
+.form-checkbox input[type=checkbox]:checked + b::before {
+    display: block;
+}
+
+
+.form-checkbox input[type=checkbox]:focus + b {
+    opacity: 1;
+
+}
+.form-checkbox input[type=checkbox]:checked:focus + b {
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+
+
+@-webkit-keyframes loader {
+    from {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes loader {
+    from {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+
+@-webkit-keyframes spin {
+    0%{-webkit-transform:rotate(0deg);}
+    50%{-webkit-transform:rotate(180deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+
+@keyframes spin {
+    0%{-webkit-transform:rotate(0deg);}
+    50%{-webkit-transform:rotate(180deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}

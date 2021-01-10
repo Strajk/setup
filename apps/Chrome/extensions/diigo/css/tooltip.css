@@ -1,0 +1,45 @@
+@charset "utf-8";
+#gtooltip{
+	background-color: #2a2a2a;
+	border: 1px solid #fff;
+	color: #fff;
+	display: block;
+	font-size: 12px;
+	font-weight:bold;
+	opacity: 0;
+    left: 0px;
+    top:0px;
+	padding: 4px 6px;
+	pointer-events: none;
+	position: absolute;
+	-webkit-transition: visibility .13s,opacity .13s ease-out,left 0 linear .13s,top 0 linear .13s;
+	-moz-transition:visibility .13s,opacity .13s ease-out,left 0 linear .13s,top 0 linear .13s;
+	-o-transition: visibility .13s,opacity .13s ease-out,left 0 linear .13s,top 0 linear .13s;
+	transition: visibility .13s,opacity .13s ease-out,left 0 linear .13s,top 0 linear .13s;
+	visibility:hidden;
+	font-family: arial, sans-serif;
+
+}
+
+#gtooltip.show{
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition:visibility 0,opacity .13s ease-in;
+}
+#gtooltip #gtooltip-arrow{
+	position:absolute;
+	border:5px solid;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: rgb(42, 42, 42);
+	border-left-color: transparent;
+	top:-10px;
+	height:0;
+	width:0;
+	line-height:0px;
+	display: none
+	
+}
+#gtooltip #gtooltip-content{
+    white-space:nowrap;
+}

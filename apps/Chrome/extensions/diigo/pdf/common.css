@@ -1,0 +1,248 @@
+.diigoModal {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 7vh 2rem 2rem;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, .5);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 200ms ease;
+}
+
+.diigoModal.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.diigoModal.show .modalWrapper {
+    display: block;
+}
+
+.diigoModal .modalWrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2016;
+    padding: 7vh 2rem 2rem;
+    overflow: auto;
+    display: none;
+}
+
+#diigo-download-window {
+    display: block;
+}
+
+.diigoModal .modalHeader {
+    font-size: 24px;
+    line-height: 24px;
+    color: #323232;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 20px 30px;
+    position: relative;
+    border-bottom: 1px solid #ececec;
+}
+
+.diigoModal .modalWindow {
+    border-radius: 2px;
+    margin: auto;
+    vertical-align: middle;
+    background: #fff;
+    width: 650px;
+    box-shadow: 1px 3px 15px rgba(0, 0, 0, .3);
+    transform: translate3d(0, 50px, 0);
+    transition: all 100ms ease;
+    position: absolute;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.diigoModal .modalCloseButton {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.diigoModal .modalCloseButton:hover {
+    opacity: 0.8;
+}
+
+.diigoModal .modalCloseButton::before {
+    content: "";
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    left: 5px;
+    top: 14px;
+    background: black;
+    transform: rotate(-45deg);
+}
+
+.diigoModal .modalCloseButton::after {
+    content: "";
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    left: 5px;
+    top: 14px;
+    background: black;
+    transform: rotate(45deg);
+}
+
+.diigoModal .modalWindow.show {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+    opacity: 1;
+}
+
+.modalWindow .modalBody {
+    padding: 30px 30px 50px;
+    text-align: left;
+}
+
+.modalWindow .modalBody .buttonArea {
+    text-align: center;
+    margin-top: 24px;
+}
+.modalWindow .modalBody .buttonArea .btn {
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 2px;
+    background: #3eaceb;
+    text-decoration: none;
+}
+
+.modalBottom {
+    height: 40px;
+}
+
+.submit-btn {
+    display: inline-block;
+    height: 40px;
+    width: 90px;
+    line-height: 40px;
+    float: right;
+    background: #3995e8;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    border-radius: 2px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: #218ae5;
+}
+
+.social-share {
+
+}
+
+.social-share .social-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 2px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #3995e8;
+    cursor: pointer;
+    background-image: url("./images/social.png");
+    opacity: 0.8;
+}
+
+
+
+.social-share .social-btn:hover {
+    opacity: 1;
+}
+.social-btn.twitter {
+    background-position: 0 0;
+}
+
+.social-btn.facebook {
+    background-position: -40px 0;
+}
+
+.social-btn.g-plus {
+    background-position: -80px 0;
+}
+
+#list-group {
+    /*display: none;*/
+    margin-top: 36px;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 2px;
+    margin-right: 10px;
+    cursor: pointer;
+    background: #3995e8;
+    color: white;
+
+}
+
+.download-btn:hover {
+    background: #218ae5;
+}
+
+
+
+/*=========== autocomplete ============*/
+.ac_input {
+}
+.ac_results {
+    background:#ffffff none repeat scroll 0%;
+    cursor:pointer !important;
+    font-size:12px !important;
+    left:0pt;
+    position:absolute;
+    width:428px;
+    z-index:2147483647;
+    border-radius: 1px;
+    color: #6c6c6c;
+    /*box-shadow: 0 2px 5px rgba(0,0,0,.25);*/
+    border: 1px solid #DEE3E9;
+}
+
+.ac_results.ac_search{
+    width: 588px;
+    border-radius: 0px;
+}
+.ac_results ul {
+    margin:0;
+    padding:0;
+}
+.ac_results li {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    padding:5px 5px;
+    border-radius: 1px;
+}
+.ac_results a {
+    width:100%;
+}
+.ac_results li.over {
+    background: rgb(238,238,238);
+    /*color:white;*/
+    /*background:#09f  none repeat scroll 0%;*/
+}
+

@@ -1,0 +1,1 @@
+diigoletLaunchMode=0;

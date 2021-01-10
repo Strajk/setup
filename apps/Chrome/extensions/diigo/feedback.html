@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback & Help</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+</head>
+<body>
+<div class="header">
+    <div class="logo-area">
+        <div class="logo"></div>
+    </div>
+</div>
+<div class="main">
+    <div class="title">
+        Extension Feedback
+    </div>
+    <div class="main-content">
+        <div class="sub-title">
+            Send us a message
+
+            <div class="tip">
+
+            </div>
+        </div>
+        <div class="form-part">
+            <input type="text" id="subject" placeholder="Subject">
+        </div>
+
+        <div class="form-part">
+            <textarea name="content" id="content" cols="30" rows="10"
+                      placeholder="Give feedback or ask for help"></textarea>
+        </div>
+
+        <div class="form-part">
+            <div class="btn" id="send-btn">SEND</div>
+        </div>
+    </div>
+    <div class="success-area">
+        <h2>Message sent!</h2>
+        <p>We'll be in touch through</p>
+        <p id="user-email"></p>
+        <div class="send-again" id="send-again">Send us another message</div>
+    </div>
+</div>
+<script type="text/javascript" src="js/feedback.js"></script>
+</body>
+</html>

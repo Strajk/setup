@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/text-view.css">
+    <link href="css/save-area.css" type="text/css" rel="stylesheet" />
+    <link href="css/guide.css" type="text/css" rel="stylesheet" />
+    <script src="js/highlight.pack.js"></script>
+    <script src="js/reader_start.js"></script>
+    <script src="js/jquery-1.8.0.min.js"></script>
+    <script src="js/zeroclipboard/ZeroClipboard.min.js"></script>
+    <script src="js/clipboard/clipboard.min.js"></script>
+    <script src="js/diigolet-c.js"></script>
+    <script src="js/web.js"></script>
+    <script src="js/guide.js"></script>
+    <script src="js/jquery-simulate.js"></script>
+    <script src="js/reader.js"></script>
+</head>
+<body>
+<div class="reader-area">
+
+    <iframe id="process-frame" src="/process.html">diigo-reader-close</iframe>
+    <div class="reader">
+        <div class="top-bar">
+            <div class="title-container">
+                <span class="title">The Real Value of $100 in Each State | Tax Foundation</span>
+            </div>
+            <div class="actions">
+                <!--<div class="action-item print" id="done" title="Done">Done</div>-->
+            </div>
+        </div>
+        <div class="main">
+            <div id="readability-content">
+                <div class="readability-article">
+                    <article id="readable-article">
+                        <header>
+                            <h2 class="title" id="title"></h2>
+                            <div class="meta clearfix">
+                                <span class="caption">Original:</span>
+                                <span class="original_link" id="article_original_link">
+                    <a href="" target="_blank"></a>
+                </span>
+                            </div>
+                        </header>
+                        <div class="entry-content" id="entry-content">
+
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="save-area">
+    <div class="save-panel clearfix">
+        <div class="left">
+            <div class="save-image-wrapper">
+                <img src="" id="saveImage" alt="">
+            </div>
+        </div>
+        <div class="right">
+            <ul class="action-list">
+                <li><a data-action="reEdit" href="">Re-edit</a></li>
+                <li><a data-action="saveToDiigo" href="">Save to Diigo</a></li>
+                <li><a data-action="download" href="">Download</a></li>
+                <li><a data-action="share" href="">Generate a sharable link</a></li>
+                <li><a data-action="print" href="">Print</a></li>
+            </ul>
+            <div class="promo clearfix">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="guide" id="guide">
+    <div class="guide-wrapper">
+        <div class="guide-win">
+            <div class="guide-slider">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="./img/guide/guide_text_view.jpg" alt="">
+                    </div>
+                </div>
+                <div class="next"></div>
+                <div class="pre"></div>
+            </div>
+
+            <div class="guide-skip">Skip >></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

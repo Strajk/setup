@@ -1,0 +1,730 @@
+﻿<!DOCTYPE html>
+<!--
+Copyright 2012 Mozilla Foundation
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Adobe CMap resources are covered by their own copyright and license:
+http://sourceforge.net/adobe/cmap/wiki/License/
+-->
+<html dir="ltr" mozdisallowselectionprint moznomarginboxes>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="google" content="notranslate">
+    <title>Diigo PDF Reader</title>
+
+    <link rel="stylesheet" href="/pdf/viewer.css"/>
+    <link rel="stylesheet" href="/pdf/viewer_patch.css"/>
+    <link rel="stylesheet" href="../css/screenshot.css">
+
+
+    <link href="../css/save-area.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="/pdf/common.css"/>
+
+
+    <script src="/pdf/compatibility.js"></script>
+    <link rel="resource" type="application/l10n" href="/pdf/locale/locale.properties"/>
+    <script type="text/javascript" src="/pdf/l10n.js"></script>
+    <script type="text/javascript" src="/pdf/pdf.js"></script>
+
+
+    <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="/pdf/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/pdf/diigoUtils.js"></script>
+    <script type="text/javascript" src="../js/web.js"></script>
+    <script type="text/javascript" src="/pdf/diigoNetwork.js"></script>
+
+    <!--<script type="text/javascript" src="../js/utils.js"></script>-->
+    <script type="text/javascript" src="../js/utils2.js"></script>
+    <script type="text/javascript" src="../js/parseTags.js"></script>
+    <script type="text/javascript" src="../js/autocomplete.js"></script>
+    <script type="text/javascript" src="/pdf/annotations.js"></script>
+    <script type="text/javascript" src="../js/BoxOAuth.js"></script>
+    <script type="text/javascript" src="/pdf/viewer.js"></script>
+    <script src="/js/zeroclipboard/ZeroClipboard.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="../js/content/main.js"></script>
+    <script type="text/javascript" src="../js/content/dragresize.js"></script>
+    <script type="text/javascript" src="../js/content/diigolet.js"></script>
+
+
+
+    <script type="text/template" id="google-item-template">
+        <div class="google-item" data-url="#{URL}" data-title="#{NAME}">
+            <div class="google-item-icon"></div>
+            <div class="google-item-name">#{NAME}</div>
+            <div class="google-item-time">#{TIME}</div>
+        </div>
+    </script>
+</head>
+
+<body class="<%=@body_class%>">
+<div class="pdf-area">
+    <div class="loading-area" id="loading-area">
+        <div class="la-pacman">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="drag-hover-wrapper wrapper" id="drag-hover-wrapper"></div>
+
+    <!--upload view-->
+    <div id="upload-view" class="upload-wrapper wrapper active">
+        <div class="wrapper-close" id="upload-view-close"></div>
+        <div class="center">
+            <div class="dropZone">
+                <div class="upload-icon"></div>
+                <p>Drag &amp; drop an PDF here or click to pick manually </p>
+                <input type="file" id="pdf-file" accept=".pdf"/>
+            </div>
+            <div class="external-file">
+                <div class="drive-btn" id="open-file-picker" title="Open from Google Drive">
+                    <b></b>
+                </div>
+                <div class="drive-btn" id="open-box_file-picker" title="Open from Box">
+                    <b></b>
+                </div>
+                <div class="drive-btn" id="open-dropbox_file-picker" title="Open from Dropbox">
+                    <b></b>
+                </div>
+                <div>OR</div>
+                <div class="external-url">
+                    <input type="text" placeholder="Input a pdf url" id="external-url-input"/>
+                    <button id="open-external-url" class="light-btn">Open</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end upload view-->
+    <!--google drive file picker-->
+    <div id="file-picker-view" class="file-picker-wrapper wrapper">
+
+        <div class="file-picker-win">
+            <div class="loading" id="file-picker-loading"><img src="images/reader-images/spinner_64.gif" alt=""/></div>
+            <div class="file-picker-close" id="file-picker-close" title="close"></div>
+            <div class="file-picker-topbar">Select a file</div>
+            <div class="file-picker-presentation">
+                <div class="left">NAME</div>
+                <div class="right">LAST MODIFIED</div>
+            </div>
+            <div class="file-picker-outerContainer">
+                <div class="no-pdf-gdrive" id="no-pdf-gdrive">No pdf in your google drive.</div>
+                <div id="file-picker-container" class="file-picker-innerContainer"></div>
+            </div>
+            <div class="file-picker-action">
+                <div class="user-info">
+                    <div class="user-photo">
+                        <img id="user-photo" width="32" height="32" src="" alt=""/>
+                    </div>
+                    <div class="user-name">
+                        <div id="file-picker-username" class="g-username"></div>
+                        <div id="file-picker-email" class="g-email"></div>
+                    </div>
+                </div>
+                <div class="action-btn-group">
+                    <div class="select-btn btn disabled" id="google-select">Select</div>
+                    <div class="cancel-btn btn" id="google-cancel">Cancel</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end google drive file picker-->
+    <div id="outerContainer" class="loadingInProgress">
+        <div id="mainContainer">
+            <div id="findbar">
+                <input id="findInput" placeholder="Search..">
+                <div class="findMsg">0 of 0</div>
+                <button class="toolbarButton findPrevious" id="findPrevious"><b></b></button>
+                <button class="toolbarButton findNext" id="findNext"><b></b></button>
+                <div class="findOption">
+                    <label for="findHighlightAll">
+                        <input type="checkbox" id="findHighlightAll">
+                        <b></b>
+                        Highlight all
+                    </label>
+                    <label for="findMatchCase">
+                        <input type="checkbox" id="findMatchCase">
+                        <b></b>
+                        Match case
+                    </label>
+                    <span id="findMsg"></span>
+                </div>
+                <button class="toolbarButton closeFind" id="closeFind"><b></b></button>
+            </div>
+
+            <div class="toolbar">
+                <div id="toolbarContainer">
+                    <div id="toolbarViewer">
+                        <div id="toolbarViewerLeft">
+                            <button id="sidebarToggle" class="toolbarButton" title="Toggle Sidebar" tabindex="5"
+                                    data-l10n-id="toggle_sidebar">
+                                <b></b>
+                                <span data-l10n-id="toggle_sidebar_label">Toggle Sidebar</span>
+                            </button>
+                            <button id="viewFind" class="toolbarButton hiddenSmallView" title="Find in Document"
+                                    tabindex="6" data-l10n-id="findbar">
+                                <b></b>
+                                <span data-l10n-id="findbar_label">Find</span>
+                            </button>
+                            <button id="screenshot" class="toolbarButton" title="Make a screenshot" tabindex="7"
+                                    data-l10n-id="screenshot">
+                                <b></b>
+                                <span data-l10n-id="screenshot_label">Make a screenshot</span>
+                            </button>
+                        </div>
+
+                        <div class="title">
+                        </div>
+
+                        <!--<div id="diigoTools">-->
+                        <!--<button id="add_highlight" class="toolbarButton" title="Add highlight">-->
+                        <!--<span>Add highlight</span>-->
+                        <!--</button>-->
+                        <!--<button id="selectPen" class="toolbarButton" title="Select color">-->
+                        <!--<span>Select Color</span>-->
+                        <!--</button>-->
+                        <!--<ul id="penlist" class="dropdown hidden">-->
+                        <!--<li diigocolor="yellow" class="yellow selected"><span><b></b></span>Yellow</li>-->
+                        <!--<li diigocolor="blue" class="blue"><span><b></b></span>Blue</li>-->
+                        <!--<li diigocolor="green" class="green"><span><b></b></span>Green</li>-->
+                        <!--<li diigocolor="pink" class="pink"><span><b></b></span>Pink</li>-->
+                        <!--</ul>-->
+                        <!--<button id="add_note" class="toolbarButton" title="Add floatnote">-->
+                        <!--<span>Add floatnote</span>-->
+                        <!--</button>-->
+                        <!--<button id="screenshot" class="toolbarButton" title="Make a screenshot">-->
+                        <!--<span>Make a screenshot</span>-->
+                        <!--</button>-->
+
+                        <!--</div>-->
+
+                        <div id="toolbarViewerRight">
+                            <a class="upgrade-btn" id="updrade-btn" target="_blank" href="https://www.diigo.com/premium?f=chrome_ext_oq_pdf">Upgrade</a>
+                            <button id="save" class="toolbarButton" title="Save this pdf to diigo.">
+                                <b></b>
+                                <span>Save to diigo.</span>
+                            </button>
+                            <button id="edit" class="toolbarButton" title="Edit">
+                                <b></b>
+                                <span>Edit</span>
+                            </button>
+                            <button id="download" class="toolbarButton download" title="Download Original PDF">
+                                <b></b>
+                                <span>Download Original PDF</span>
+                            </button>
+                            <!--<button id="download_ann" disabled="disabled" class="toolbarButton" title="Download this file with diigo annotations.">-->
+                            <!--<span>Download with annotations.</span>-->
+                            <!--</button>-->
+                            <button id="share" class="toolbarButton" title="Share this pdf with others.">
+                                <b></b>
+                                <span>Share this pdf.</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="loadingBar">
+                        <div class="progress">
+                            <div class="glimmer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bottomBar">
+                <div class="left">
+                    <button class="toolbarButton pageUp" title="Previous Page" id="previous" tabindex="7"
+                            data-l10n-id="previous">
+                        <b></b>
+                        <span data-l10n-id="previous_label">Previous</span>
+                    </button>
+                    <!--<label id="pageNumberLabel" class="toolbarLabel" for="pageNumber" data-l10n-id="page_label"></label>-->
+                    <input type="number" id="pageNumber" class="toolbarField pageNumber" value="1" size="4" min="1"
+                           tabindex="9">
+                    <span id="numPages" class="toolbarLabel"></span>
+                    <button class="toolbarButton pageDown" title="Next Page" id="next" tabindex="8" data-l10n-id="next">
+                        <b></b>
+                        <span data-l10n-id="next_label">Next</span>
+                    </button>
+                </div>
+                <div class="right">
+                    <button id="zoomOut" class="toolbarButton zoomOut" title="Zoom Out" tabindex="10"
+                            data-l10n-id="zoom_out">
+                        <b></b>
+                        <span data-l10n-id="zoom_out_label">Zoom Out</span>
+                    </button>
+                    <span id="scaleSelectContainer" class="dropdownToolbarButton">
+          <select id="scaleSelect" title="Zoom" tabindex="12" data-l10n-id="zoom">
+            <option id="pageAutoOption" title="" value="auto" selected="selected" data-l10n-id="page_scale_auto">Automatic Zoom</option>
+            <option id="pageActualOption" title="" value="page-actual"
+                    data-l10n-id="page_scale_actual">Actual Size</option>
+            <option id="pageFitOption" title="" value="page-fit" data-l10n-id="page_scale_fit">Fit Page</option>
+            <option id="pageWidthOption" title="" value="page-width" data-l10n-id="page_scale_width">Full Width</option>
+            <option id="customScaleOption" title="" value="custom"></option>
+            <option title="" value="0.5">50%</option>
+            <option title="" value="0.75">75%</option>
+            <option title="" value="1">100%</option>
+            <option title="" value="1.25">125%</option>
+            <option title="" value="1.5">150%</option>
+            <option title="" value="2">200%</option>
+          </select>
+        </span>
+                    <button id="zoomIn" class="toolbarButton zoomIn" title="Zoom In" tabindex="11"
+                            data-l10n-id="zoom_in">
+                        <b></b>
+                        <span data-l10n-id="zoom_in_label">Zoom In</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="sidebarContent">
+                <div id="sidebarHeader">
+                    <button id="viewDiigoAnnotation" class="toggled" title="View diigo annotations">
+                        <b></b>
+                        <span>View annotations</span>
+                    </button>
+                    <button id="viewThumbnail" title="Show Thumbnails" tabindex="2" data-l10n-id="thumbs">
+                        <b></b>
+                        <span data-l10n-id="thumbs_label">Thumbnails</span>
+                    </button>
+                    <button id="viewOutline" title="Show Document Outline" tabindex="3" data-l10n-id="outline">
+                        <b></b>
+                        <span data-l10n-id="outline_label">Document Outline</span>
+                    </button>
+                </div>
+                <div id="annotationView" class="view"></div>
+                <div id="thumbnailView" class="hidden view"></div>
+                <div id="outlineView" class="hidden view"></div>
+            </div>
+
+            <div id="viewerContainer" tabindex="0">
+                <div id="viewer"></div>
+            </div>
+
+            <div id="errorWrapper" hidden='true'>
+                <div id="errorMessageLeft">
+                    <span id="errorMessage"></span>
+                    <button id="errorShowMore" data-l10n-id="error_more_info">
+                        More Information
+                    </button>
+                    <button id="errorShowLess" data-l10n-id="error_less_info" hidden='true'>
+                        Less Information
+                    </button>
+                </div>
+                <div id="errorMessageRight">
+                    <button id="errorClose" data-l10n-id="error_close">
+                        Close
+                    </button>
+                </div>
+                <div class="clearBoth"></div>
+                <textarea id="errorMoreInfo" hidden='true' readonly="readonly"></textarea>
+            </div>
+        </div> <!-- mainContainer -->
+
+        <div id="overlayContainer" class="hidden">
+            <div id="passwordOverlay" class="container hidden">
+                <div class="dialog">
+                    <div class="row">
+                        <p id="passwordText" data-l10n-id="password_label">Enter the password to open this PDF file:</p>
+                    </div>
+                    <div class="row">
+                        <input type="password" id="password" class="toolbarField"/>
+                    </div>
+                    <div class="buttonRow">
+                        <button id="passwordCancel" class="overlayButton"><span
+                                data-l10n-id="password_cancel">Cancel</span></button>
+                        <button id="passwordSubmit" class="overlayButton"><span data-l10n-id="password_ok">OK</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="documentPropertiesOverlay" class="container hidden">
+                <div class="dialog">
+                    <div class="row">
+                        <span data-l10n-id="document_properties_file_name">File name:</span>
+                        <p id="fileNameField">-</p>
+                    </div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_file_size">File size:</span>
+                        <p id="fileSizeField">-</p>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_title">Title:</span>
+                        <p id="titleField">-</p>
+                    </div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_author">Author:</span>
+                        <p id="authorField">-</p>
+                    </div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_subject">Subject:</span>
+                        <p id="subjectField">-</p>
+                    </div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_keywords">Keywords:</span>
+                        <p id="keywordsField">-</p>
+                    </div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_creation_date">Creation Date:</span>
+                        <p id="creationDateField">-</p>
+                    </div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_modification_date">Modification Date:</span>
+                        <p id="modificationDateField">-</p>
+                    </div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_creator">Creator:</span>
+                        <p id="creatorField">-</p>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_producer">PDF Producer:</span>
+                        <p id="producerField">-</p>
+                    </div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_version">PDF Version:</span>
+                        <p id="versionField">-</p>
+                    </div>
+                    <div class="row">
+                        <span data-l10n-id="document_properties_page_count">Page Count:</span>
+                        <p id="pageCountField">-</p>
+                    </div>
+                    <div class="buttonRow">
+                        <button id="documentPropertiesClose" class="overlayButton"><span
+                                data-l10n-id="document_properties_close">Close</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>  <!-- overlayContainer -->
+
+    </div> <!-- outerContainer -->
+
+    <!-- Diigo ann menu -->
+    <div id="diigolet-annMenu" class="diigoletContexMenu">
+        <div id="diigolet-annMenu-color" class="diigolet-annMenu-item">
+            <b id="diigolet-annMenu-currentColor" title="change color" class="pink"><b></b></b>
+            <div id="diigolet-annMenu-colorPicker-pdf" class="hidden">
+                <b id="diigolet-context-yellow" color="yellow" class="ann-colorItem"><b></b></b>
+                <b id="diigolet-context-blue" color="blue" class="ann-colorItem"><b></b></b>
+                <b id="diigolet-context-green" color="green" class="ann-colorItem"><b></b></b>
+                <b id="diigolet-context-pink" color="pink" class="ann-colorItem"><b></b></b>
+            </div>
+        </div>
+        <div id="diigolet-annMenu-add" class="diigolet-annMenu-item" title="Add sticky note"><b></b></div>
+        <div id="diigolet-annMenu-share" class="diigolet-annMenu-item" title="Share"><b></b></div>
+        <div id="diigolet-annMenu-copy" data-clipboard-text="" class="diigolet-annMenu-item" title="Copy"><b></b></div>
+        <div id="diigolet-annMenu-del" class="diigolet-annMenu-item " title="Remove highlight"><b></b></div>
+    </div>
+    <!--End diigo ann menu -->
+
+    <!-- Diigo context menu -->
+    <div class="diigolet-csm">
+        <div class="diigolet-csm-highlight-wrapper csm-btn">
+            <a class="diigolet-csm-highlight csm-action" href="javascript:void(0);" data-color="yellow">
+                <b></b>
+            </a>
+            <div class="diigolet-csm-color">
+                <a class="diigolet-csm-coloritem blue" data-color="blue"></a>
+                <a class="diigolet-csm-coloritem green" data-color="green"></a>
+                <a class="diigolet-csm-coloritem pink" data-color="pink"></a>
+            </div>
+        </div>
+        <div class="diigolet-csm-highlightAndComment-wrapper csm-btn">
+            <a class="diigolet-csm-highlightAndComment csm-action" href="javascript:void(0);">
+            </a>
+            <div class="diigolet-csm-color small hidden" style="display: none;">
+                <a class="diigolet-csm-coloritem yellow" data-color="yellow"></a>
+                <a class="diigolet-csm-coloritem blue" data-color="blue"></a>
+                <a class="diigolet-csm-coloritem green" data-color="green"></a>
+                <a class="diigolet-csm-coloritem pink" data-color="pink"></a>
+            </div>
+        </div>
+        <div class="diigolet-csm-copy-wrapper csm-btn">
+            <a class="diigolet-csm-copy csm-action" data-clipboard-text="" href="javascript:void(0);" title="Copy"></a>
+        </div>
+    </div>
+
+    <!--Begin diigo note -->
+    <div class="diigo-note">
+        <div class="diigo-note-header">
+            <span class="diigo-note-title"></span>
+            <span class="diigo-note-color">
+            <div class="diigo-note-currentColor" title="change color">
+            </div>
+            <div class="diigo-note-colorPicker hidden dropdown">
+                <b color="yellow" class="diigo-note-yellow dlg-colorItem">
+                    <b>
+                    </b>
+                </b>
+                <b color="blue" class="diigo-note-blue dlg-colorItem">
+                    <b>
+                    </b>
+                </b>
+                <b color="green" class="diigo-note-green dlg-colorItem">
+                    <b>
+                    </b>
+                </b>
+                <b color="pink" class="diigo-note-pink dlg-colorItem">
+                    <b>
+                    </b>
+                </b>
+            </div>
+        </span>
+        </div>
+        <div class="diigo-note-content">
+            <textarea class="diigo-note-input"></textarea>
+            <div class="diigo-note-footer">
+                <a class="diigo-note-delete" href="#"></a>
+                <a class="diigo-note-save" href="#">Save</a>
+                <a class="diigo-note-cancel-edit" href="#">Cancel</a>
+            </div>
+        </div>
+    </div>
+    <!--End diigo note -->
+
+    <div id="upload-status" class="hidden">
+        <p>Uploading your pdf, you can continue your reading.</p>
+        <div id="upload-progress">
+            <div id="progress-bar"></div>
+        </div>
+    </div>
+    <div class="diigoModal">
+
+        <!--begin upgrade window -->
+        <div class="modalWindow" id="diigo-upgrade-window">
+            <div class="modalHeader">
+                Upgrade
+                <div class="modalCloseButton"></div>
+            </div>
+            <div class="modalBody">
+                Annotating PDF files is a premium feature available on Pro. Pro plan allows you to store unlimited PDF files and annotations. You need to upgrade to access this feature.
+                <div class="buttonArea">
+                    <a class="btn" href="https://www.diigo.com/premium?f=chrome_ext_oq_pdf" target="_blank">Upgrade now</a>
+                </div>
+            </div>
+        </div>
+
+            <!--begin download window -->
+            <div class="modalWindow" id="diigo-download-window">
+                <div class="modalHeader">
+                    Download
+                    <div class="modalCloseButton"></div>
+                </div>
+                <div class="modalBody">
+                    <div class="download-btn" id="download-original">
+                        Download Original
+                    </div>
+                    <div class="download-btn" id="download-ann">
+                        Download With Annotations
+                    </div>
+                </div>
+            </div>
+
+            <!--begin share window -->
+
+            <div class="modalWindow" id="diigo-share-window">
+                <div class="modalHeader">
+                    Share
+                    <div class="modalCloseButton"></div>
+                </div>
+                <div class="modalBody">
+                    <div class="form-input">
+                        <label for="title">Copy to share</label>
+                        <input type="text" id="share-url">
+                    </div>
+
+                    <div class="social-share">
+                        <div class="social-btn twitter"></div>
+                        <div class="social-btn facebook"></div>
+                        <div class="social-btn g-plus"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!--begin edit window -->
+            <div class="modalWindow"  id="diigo-edit-window">
+                <div class="modalHeader">
+                    <span class="modalHeaderTitle">Edit</span>
+                    <div class="modalCloseButton"></div>
+                </div>
+                <div class="modalBody">
+                    <div class="form-input">
+                        <label for="title">Title</label>
+                        <input type="text" id="bm-title">
+                    </div>
+                    <div class="form-textarea">
+                        <label for="desc">Description</label>
+                        <textarea id="bm-desc"></textarea>
+                    </div>
+                    <div class="form-input">
+                        <label for="tags">Tags</label>
+                        <input type="text" id="bm-tags">
+                    </div>
+
+                    <div id="list-group" class="select-group">
+                        <div id="diigobm-list" class="form-select small" data-position="bottom">
+                            <div class="remove-select">Remove</div>
+                            <label for="">Add to an outliner</label>
+                            <div class="content"></div>
+                            <!--<select></select>-->
+                            <div class="select-menu">
+                                <div class="select-action-area">
+                                    <div class="search-box">
+                                        <input type="text" placeholder="Search...">
+                                        <div class="refresh-btn action-btn" title="Refresh outliners"
+                                             id="refresh-outliner"></div>
+                                        <div class="add-btn action-btn" title="Create a outliner"></div>
+                                    </div>
+                                    <div class="add-box">
+                                        <input type="text" id="diigobm-list-addInput"
+                                               placeholder="Create an outliner...">
+                                        <div class="add-action">
+                                            <div class="add-action-btn confirm" id="diigobm-list-addBtn"
+                                                 title="Create"></div>
+                                            <div class="add-action-btn cancel" title="Cancel"></div>
+                                            <div class="spinner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-container">
+                                    <div class="no-item">No outliners</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="diigobm-group" class="form-select small" data-position="bottom">
+                            <div class="remove-select">Remove</div>
+                            <label for="">Share to a group</label>
+                            <div class="content"></div>
+                            <div class="select-menu">
+                                <div class="select-action-area">
+                                    <div class="search-box">
+                                        <input type="text" placeholder="Search...">
+                                        <div class="action-btn refresh-btn" title="Refresh groups"
+                                             id="refresh-group"></div>
+                                    </div>
+                                </div>
+                                <div class="item-container">
+                                    <div class="no-item">No groups</div>
+                                </div>
+                            </div>
+                            <!--<select></select>-->
+                        </div>
+                    </div>
+                    <div class="modalBottom">
+                        <div class="submit-btn" id="save-pdf">Save</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="edit_window" class="hidden">
+            <div id="edit_inner">
+                <div class="edit_header">
+                    <a id="wCloseLink" href="#" title="Close Window"></a>
+                    <h2 class="window_title">Save PDF</h2>
+                </div>
+                <div id="wContent" class="clearfix">
+                    <table class="editBTable">
+                        <tbody>
+                        <tr>
+                            <td><input type="text" placeholder="Title" id="bTxtTitle" style="width:430px;"
+                                       class="inputTxt2" name="title" maxlength="255"></td>
+                        </tr>
+                        <tr>
+                            <td><textarea id="bTxtDesc" placeholder="Add a description" style="width:430px;height:60px;"
+                                          class="inputTxt2" name="description"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="inputTxt2" placeholder="Add Tags" style="width:430px;"
+                                       id="bTxtTags" autocomplete="off" name="tags" maxlength="255">
+                                <p style="font-size:12px;color:#999;">space separated. Use " " for tag with multiple
+                                    words.</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="addToHolder" id="addToListHolder" style="">
+                                    <select id="addToListSelector-pdf">
+                                        <option value="">Add to a list</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div id="saveButtonHolder">
+                        <a href="javascript:void(0)" id="cancel_save">Cancel</a>
+                        <button id="save_pdf" class="btn blue submit">Save</button>
+                    </div>
+                </div>
+        </div>
+        <!--End bookmark edit window-->
+
+        <div id="popups">
+            <div id="popup-message" class="dropdown hidden"></div>
+            <div id="share-window" class="hidden">
+                <div class="edit_header">
+                    <a id="shareCloseLink" href="#" title="Close Window"></a>
+                    <h2 class="window_title">Share PDF</h2>
+                </div>
+                <div id="share_window_content">
+                    <span>Share Link:</span>
+                    <input type="text" id="share-link" readonly="readonly"/>
+                    <span>Share via:</span>
+                    <div id="share-chooser">
+                        <a class="s_twitter" data-share-type="twitter" href="#">Twitter</a>
+                        <a class="s_facebook" data-share-type="facebook" href="#">Facebook</a>
+                        <a class="s_email" data-share-type="email" href="#">Email</a>
+                    </div>
+                </div>
+            </div>
+            <!--<div id="upload-status" class="hidden">-->
+                <!--<div id="upload-progress">-->
+                    <!--<div id="progress-bar"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div id="copied">Highlight copied</div>-->
+        </div>
+    </div>
+    <div class="save-area">
+        <div class="save-panel clearfix">
+            <div class="left">
+                <div class="save-image-wrapper">
+                    <img src="" id="saveImage" alt="">
+                </div>
+            </div>
+            <div class="right">
+                <ul class="action-list">
+                    <li><a data-action="reEdit" href="">Re-edit</a></li>
+                    <li><a data-action="saveToDiigo" href="">Save to Diigo</a></li>
+                    <li><a data-action="download" href="">Download</a></li>
+                    <li><a data-action="share" href="">Generate a sharable link</a></li>
+                    <li><a data-action="print" href="">Print</a></li>
+                </ul>
+                <div class="promo clearfix">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="copied">Copied!</div>
+    <script src="../js/Form.js"></script>
+    <script src="common.js"></script>
+</body>
+</html>
+

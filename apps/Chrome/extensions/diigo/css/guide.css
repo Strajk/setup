@@ -1,0 +1,76 @@
+.guide {
+
+}
+
+.guide-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1999;
+    opacity: 0;
+    visibility: hidden;
+    background: rgba(0,0,0,.5);
+    transition: all 200ms ease;
+}
+
+.guide.show .guide-wrapper {
+    opacity: 1;
+    visibility: visible;
+}
+
+.guide .guide-skip {
+    position: absolute;
+    right: 0px;
+    bottom: 30px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.guide-win {
+    height: 520px;
+    max-height: 520px;
+    width: 980px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: auto;
+    left: 0;
+    bottom: 0;
+    z-index: 1999;
+}
+
+.guide-slider {
+    width: 980px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.guide .slides {
+    position: relative;
+    width: 7840px;
+    height: 100%;
+    -webkit-transition: -webkit-transform .3s cubic-bezier(.51,.92,.24,1);
+    transition: -webkit-transform .3s cubic-bezier(.51,.92,.24,1);
+    transition: transform .3s cubic-bezier(.51,.92,.24,1);
+    transition: transform .3s cubic-bezier(.51,.92,.24,1),-webkit-transform .3s cubic-bezier(.51,.92,.24,1);
+    will-change: transform;
+}
+.guide .slides .slide{
+    float: left;
+    width: 980px;
+    height: 100%;
+    color: #fff;
+}
+
+.guide .slides .slide img{
+    width: 980px;
+}
+
+.guide .slides .slide .content{
+    height: 60px;
+    text-align: center;
+}
+

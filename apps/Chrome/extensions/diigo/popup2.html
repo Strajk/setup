@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/tooltip.css">
+   <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">-->
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery-tag3.js"></script>
+    <script type="text/javascript" src="js/jquery-gtooltip.js"></script>
+</head>
+<body>
+<div id="bm-main">
+    <div id="top-bar">
+        <span>Save this link</span>
+        <div id="remove" data-gtooltip="Saved on April 24,2013">Remove</div>
+    </div>
+    <div id="form">
+        <div id="diigobm-title">
+            <div id="link-icon" data-gtooltip="Edit url"></div>
+            <input type="text" id="diigobm-title-input" value="DISQUS - Elevating the discussion">
+            <div id="diigobm-options">
+                <div id="op-private" class="option" data-gtooltip = "private"></div>
+                <div id="op-readlater" class="option" data-gtooltip = "readlater"></div>
+                <div id="op-cache" class="option" data-gtooltip = "cache"></div>
+            </div>
+        </div>
+        <div id="diigobm-url">
+            <input type="text" id="diigobm-url-input" value="http://disqus.com">
+            <div></div>
+        </div>
+        <div id="diigobm-des">
+            <textarea id="diigobm-des-input" placeholder="Add a description"></textarea>
+        </div>
+        <div id="diigobm-tag">
+            <div id="diigobm-tag-wrapper">
+                <!--<input type="text" id="diigobm-tag-input" placeholder="Press enter to add tags">-->
+                <div id="diigobm-tag-dropdown"></div>
+            </div>
+        </div>
+        <div id="tag-suggestion">
+        <div id="diigobm-recent-tag" class="su-tag">
+            <a href="#">Recent Used:</a>
+            <div class="diigo-tag">sport</div>
+            <div class="diigo-tag">news</div>
+            <div class="diigo-tag">UI</div>
+            <div class="diigo-tag">web</div>
+            <div class="diigo-tag">exellent</div>
+            <div class="diigo-tag">Google</div>
+        </div>
+        <div id="diigobm-recommend-tag" class="su-tag">
+            <a href="#">Recommended:</a>
+            <div class="diigo-tag">UI</div>
+            <div class="diigo-tag">dribbble</div>
+            <div class="diigo-tag">Design</div>
+            <div class="diigo-tag">community</div>
+            <div class="diigo-tag">Gallery</div>
+            <div class="diigo-tag">Google</div>
+        </div>
+        </div>
+        <div id="tag-cloud">
+            <div>
+                Select from your top 100 tags:
+                <a href="" target="_blank">Edit tags &gt;&gt;</a>
+            </div>
+            <div class="tag-cloud-container">
+                <a class="Diigo-Bookmark-Tag-item" href="#">234</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px;">baidu</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 18px; font-weight: bold;">book</a><a class="Diigo-Bookmark-Tag-item selected" href="#" style="font-size: 18px; font-weight: bold;">bookmark</a><a class="Diigo-Bookmark-Tag-item" href="#">books</a><a class="Diigo-Bookmark-Tag-item" href="#">clips</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px;">cnbeta</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px;">desire</a><a class="Diigo-Bookmark-Tag-item" href="#">dfsd</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px;">diigo</a><a class="Diigo-Bookmark-Tag-item" href="#">ecmscript</a><a class="Diigo-Bookmark-Tag-item" href="#">ere</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px; font-weight: bold;">extension</a><a class="Diigo-Bookmark-Tag-item" href="#">f</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px;">fff</a><a class="Diigo-Bookmark-Tag-item" href="#">fsdfsd</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 18px; font-weight: bold;">haha</a><a class="Diigo-Bookmark-Tag-item selected" href="#" style="font-size: 20px; font-weight: bold;">hello</a><a class="Diigo-Bookmark-Tag-item" href="#">hellp</a><a class="Diigo-Bookmark-Tag-item" href="#">hh</a><a class="Diigo-Bookmark-Tag-item" href="#">htc</a><a class="Diigo-Bookmark-Tag-item" href="#">ios</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px; font-weight: bold;">javascript</a><a class="Diigo-Bookmark-Tag-item" href="#">jk</a><a class="Diigo-Bookmark-Tag-item" href="#">l;skfd</a><a class="Diigo-Bookmark-Tag-item" href="#">lk</a><a class="Diigo-Bookmark-Tag-item" href="#">pdf</a><a class="Diigo-Bookmark-Tag-item" href="#">pk</a><a class="Diigo-Bookmark-Tag-item" href="#">powered</a><a class="Diigo-Bookmark-Tag-item" href="#">sdf</a><a class="Diigo-Bookmark-Tag-item" href="#">sdklfj</a><a class="Diigo-Bookmark-Tag-item" href="#">seajs</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px;">search</a><a class="Diigo-Bookmark-Tag-item selected" href="#" style="font-size: 16px;">search engine</a><a class="Diigo-Bookmark-Tag-item" href="#">slkdj</a><a class="Diigo-Bookmark-Tag-item" href="#">techcrunch</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px; font-weight: bold;">test</a><a class="Diigo-Bookmark-Tag-item" href="#">优化</a><a class="Diigo-Bookmark-Tag-item" href="#">图片</a><a class="Diigo-Bookmark-Tag-item" href="#">导航网站</a><a class="Diigo-Bookmark-Tag-item" href="#">性能</a><a class="Diigo-Bookmark-Tag-item" href="#">我的</a><a class="Diigo-Bookmark-Tag-item" href="#">技巧</a><a class="Diigo-Bookmark-Tag-item" href="#">搜索</a><a class="Diigo-Bookmark-Tag-item" href="#" style="font-size: 16px;">搜索引擎</a><a class="Diigo-Bookmark-Tag-item" href="#">斯蒂芬</a><a class="Diigo-Bookmark-Tag-item" href="#">渴望</a><a class="Diigo-Bookmark-Tag-item" href="#">游戏</a><a class="Diigo-Bookmark-Tag-item" href="#">精品</a><a class="Diigo-Bookmark-Tag-item" href="#">编程</a><a class="Diigo-Bookmark-Tag-item" href="#">网址</a><a class="Diigo-Bookmark-Tag-item" href="#">论坛</a>
+            </div>
+        </div>
+        <div id="list-group">
+            <div id="diigobm-list"><select>
+                <option>Add to List</option>
+                <option>sdkjf</option>
+                <option>sdkjf</option>
+                <option>sdkjf</option>
+                <option>sdkjf</option>
+                <option>sdkjf</option>
+            </select></div>
+            <div id="diigobm-group"><select>
+                <option>Share to Group</option>
+                <option>sdkjf</option>
+                <option>sdkjf</option>
+                <option>sdkjf</option>
+                <option>sdkjf</option>
+                <option>sdkjf</option>
+            </select></div>
+        </div>
+    </div>
+    <div id="bottom">
+        <div id="diigobm-saveBtn"></div>
+        <a id="diigobm-cancelBtn">cancel</a>
+    </div>
+</div>
+<script>
+    var a = document.getElementById('link-icon');
+    $(a).Gtooltip({position:'top'});
+    a.addEventListener('click',function(){
+        $(this).toggleClass('unfold');
+       var b = document.getElementById('diigobm-url');
+        if(!$(b).hasClass('unfold')){
+            $(b).addClass('unfold').removeClass('fold');
+        }
+        else{
+            $(b).addClass('fold').removeClass('unfold');
+        }
+
+
+
+
+    });
+    $('#diigobm-tag-dropdown').on('click',function(){
+       $('#tag-suggestion').hide();
+        $('#tag-cloud').show();
+    });
+
+    $('#diigobm-des-input').on('focus',function(){
+        $(this).css('height',46+'px');
+    })
+            .on('blur',function(){
+                if($(this).val() == ''){
+                    $(this).css('height',30+'px');
+                }
+            });
+
+    $('#diigobm-options').find('div').on('click',function(){
+        $(this).toggleClass('active');
+    }).Gtooltip({position:'top'});
+
+    $('#diigobm-tag-wrapper').diigoTagInput({placeHolderText:'Press enter to add tags'});
+    $("#diigobm-tag-wrapper").diigoTagInput('createTag','test');
+    $('#diigobm-saveBtn').click(function(){
+        console.log($('#diigobm-tag-wrapper').diigoTagInput('getAllTags'));
+    });
+    $('.diigo-tag').click(function(){
+        $('#diigobm-tag-wrapper').diigoTagInput('createTag',$(this).text());
+    });
+
+</script>
+</body>
+</html>

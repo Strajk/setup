@@ -1,0 +1,538 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>popup</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/tooltip.css">
+    <!--<link rel="stylesheet" href="css/tagit-stylish-yellow.css">-->
+
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <!--<script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery-gtooltip.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/utils2.js"></script>
+    <script type="text/javascript" src="js/parseTags.js"></script>
+    <script type="text/javascript" src="js/autocomplete.js"></script>
+    <script type="text/javascript" src="js/Form.js"></script>
+    <script type="text/javascript" src="js/autoTextarea.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+
+</head>
+<body>
+<div id="sign-in">
+    Already have a Diigo account?
+    <div class="button" id="sign-in-btn"></div>
+    New to Diigo? Connect to Diigo.com via
+    <div class="button" id="sign-up-btn"></div>
+</div>
+<!--<div id="sign-in">-->
+    <!--<div class="logo">-->
+        <!--<img src="icon32.png" alt="">-->
+        <!--Diigo Extension for Chrome-->
+    <!--</div>-->
+    <!--<p>One more step to active the key features</p>-->
+    <!--<ul>-->
+        <!--<li>xxx</li>-->
+        <!--<li>xxx</li>-->
+        <!--<li>xxx</li>-->
+    <!--</ul>-->
+    <!--New to Diigo? Connect to Diigo.com via-->
+    <!--<div class="button" id="sign-up-btn"></div>-->
+    <!--Already have a Diigo account? <a href="">Sign in</a>-->
+<!--</div>-->
+<!--<div id="ad-area">-->
+    <!--<div class="ad-container">-->
+        <!--&lt;!&ndash;<div class="ad-title">Thanksgiving Deal</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="ad-discount"><span>50%</span> OFF</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="ad-desc">Diigo Professional Subscription</div>&ndash;&gt;-->
+        <!--<div class="skip-btn" id="ad-skip-btn">Skip >></div>-->
+        <!--<div class="go-premium-btn" id="ad-go-premium-btn">Go Premium Now!</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div id="main">
+    <ul>
+        <li id="save-bookmark" class="s">
+            <b></b>
+            <span>Save Bookmark</span>
+        </li>
+        <!--<li id="save-bookmark">
+            <b class="icon"></b><span>Save</span>
+        </li>-->
+        <!--<li id="bookmark">-->
+        <!--<div id="bookmark-annotate">Annotate</div>-->
+        <!--<div id="sep1"></div>-->
+        <!--<div id="bookmark-save">Save</div>-->
+        <!--</li>-->
+        <li id="annotate-article">
+            <b></b>
+            Read & Annotate
+        </li>
+
+        <li id="annotate-pdf">
+            <b></b>
+            Annotate PDF
+        </li>
+        <!--<li id="read-later">-->
+        <!--Read Later-->
+        <!--</li>-->
+        <li id="annotate-image">
+            <b></b>
+            Annotate Screenshot
+        </li>
+
+        <!--<li id="share">-->
+        <!--<b></b>Share This Page-->
+        <!--</li>-->
+        <!--<li id="research-mode">-->
+        <!--<b class="icon"></b>Focused Research-->
+        <!--<div>-->
+        <!--<input type="checkbox" id="research-mode-checkbox" class="icheck-input">-->
+        <!--<label for="research-mode-checkbox" class="icheck-label"></label>-->
+        <!--</div>-->
+        <!--</li>-->
+        <!--<li id="search" class="s">-->
+            <!--<b></b>-->
+            <!--Search in Diigo-->
+        <!--</li>-->
+        <!--<li id="cached">-->
+        <!--<b class="icon"></b>Cached version-->
+        <!--</li>-->
+        <div class="menu-sep"></div>
+        <li id="toggle-outliner">
+            <b></b>
+            <span class="content">Open outliner sidebar</span>
+            <span class="shortcut-tip"></span>
+        </li>
+    </ul>
+    <div class="menu-sep"></div>
+    <div class="btn-group">
+        <div class="g-btn search" id="search" title="Search in Diigo"><b></b></div>
+        <div class="g-btn share" id="share" title="Share this page"><b></b></div>
+        <div class="g-btn read-later" id="read-later" title="Read Later"><b></b></div>
+    </div>
+    <!--<div id="sep" class="s"></div>-->
+    <!--<div class="signIn-area">-->
+        <!--<a href="https://www.diigo.com/index">Sign in for more!</a>-->
+    <!--</div>-->
+    <!--<div id="action" class="s">-->
+
+        <!--<a id="home" data-link="home" href="javascript:void(0)">-->
+            <!--<b></b>-->
+            <!--My Library-->
+        <!--</a>-->
+        <!--<a id="option" data-link="option" href="javascript:void(0)">-->
+            <!--<b></b>-->
+            <!--Options-->
+        <!--</a>-->
+        <!--<a id="more" data-link="more" title="more diigo links" href="javascript:void(0)"></a>-->
+        <!--<div id="more-link">-->
+            <!--<table id="more-link-table">-->
+                <!--<tr>-->
+                    <!--<td>-->
+                        <!--<a id="my-outliner" data-link="my-outliner" href="javascript:void(0)">-->
+                            <!--<b></b>-->
+                            <!--My Outliner-->
+                        <!--</a>-->
+                    <!--</td>-->
+                    <!--<td><a id="my-groups" data-link="my-groups" href="javascript:void(0)">-->
+                        <!--<b></b>My Groups-->
+                    <!--</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td><a id="unread" data-link="unread" href="javascript:void(0)"><b></b>Unread</a></td>-->
+                    <!--<td><a id="changelog" data-link="changelog" href="javascript:void(0)"><b></b>Changelog</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>-->
+                        <!--<a id="tutorial" data-link="tutorial" href="javascript:void(0)"><b></b>Tutorial</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td id="last" colspan="2"><a id="sign-out-btn" data-link="sign-out-btn"-->
+                                                 <!--href="javascript:void(0)"><b></b>-->
+                        <!--<span>Sign Out</span></a></td>-->
+                <!--</tr>-->
+            <!--</table>-->
+        <!--</div>-->
+    <!--</div>-->
+ <div id="action">
+    <div class="bottom-area">
+        <div id="userInfo">
+            <span class="username" data-link="home"></span>
+            <div class="upgrade-area">
+                <a class="upgrade" data-link="upgrade">Upgrade</a>
+            </div>
+            <div class="actions">
+                <a id="my-library" title="Go to My Library" data-link="home" href="javascript:void(0)"><b></b></a>
+                <a id="feedback" title="Feedback & Help" data-link="feedback" href="javascript:void(0)"><b></b></a>
+                <a id="option" title="Options" data-link="option" href="javascript:void(0)">
+            <b></b>
+        </a>
+        <a id="more" data-link="more" title="more diigo links" href="javascript:void(0)"></a>
+            </div>
+
+        </div>
+        <div class="sep"></div>
+<div id="more-link">
+
+                <table id="more-link-table">
+                    <tr>
+                        <td>
+                            <a id="my-library" data-link="home" href="javascript:void(0)">
+                                <b></b>
+                                My Library
+                            </a>
+                        </td>
+                        <td>
+
+                            <a id="my-outliner" data-link="my-outliner" href="javascript:void(0)">
+                                <b></b>
+                                My Outliner
+                            </a>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td><a id="changelog" data-link="changelog" href="javascript:void(0)"><b></b>Changelog</a></td>
+                        <td>
+                            <a id="tutorial" data-link="tutorial" href="javascript:void(0)"><b></b>Tutorial</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="last" colspan="2"><a id="sign-out-btn" data-link="sign-out-btn"
+                                                     href="javascript:void(0)"><b></b>
+                            <span>Sign Out</span></a></td>
+                    </tr>
+                </table>
+            </div>
+        <div class="promotion-area" id="rating" data-link="rating">
+            Like it? Please give us a 5-star rating!
+        </div>
+        <!--<div class="thanksgiving-area" id="thanksgiving-small">-->
+            <!--<img src="./img/popup-image/gift.png" alt=""><span>50% Off Professional Subscription</span>-->
+        <!--</div>-->
+    </div>
+ </div>
+
+    <!-- <div id="search-action">
+    <div id="sep"></div>
+    <div id="search">
+    <input id="search-inp" placeholder="Search in my library"><span id="search-btn"><div class="searchIcon"></div></span>
+    </div>
+    </div> -->
+</div><!--end #main-->
+<div id="screenshot-main">
+    <div class="top-bar">
+        <b class="back"></b>
+        Annotate Screenshot
+    </div>
+    <ul>
+        <li id="screenshot-visible">
+            <b class="icon"></b> Visible part
+        </li>
+        <li id="screenshot-selected">
+            <b class="icon"></b> Selected area
+        </li>
+        <li id="screenshot-entire">
+            <b class="icon"></b> Entire page
+        </li>
+        <li id="screenshot-local">
+            <b class="icon"></b> Local Image
+        </li>
+    </ul>
+</div>
+<div id="bm-main">
+    <div class="upgrade-info" id="upgrade-info">
+        <div class="close" id="close-upgrade-info"></div>
+        <div class="wording">Your outliner number is over quota. You can only create 5 outliners now.</div>
+        <div class="btn" id="btn-upgrade-info">Upgrade Now!</div>
+    </div>
+    <div id="notification">You are now in the research mode.</div>
+    <div class="top-area">
+        <div id="top-bar">
+            <span class="top-bar-title">Save to Diigo</span>
+            <!--<span class="focus-research-tip">(focused research)</span>-->
+            <div id="onload"></div>
+            <div id="remove" data-gtooltip="Saved on April 24,2013"><span></span></div>
+        </div>
+        <div class="title-des">
+            <div class="" id="show-url" data-gtooltip="Edit url"></div>
+            <textarea class="title-textarea" id="diigobm-title-input"></textarea>
+            <textarea class="title-textarea" id="diigobm-des-input" placeholder="Add a description..."></textarea>
+            <input type="text" id="diigobm-url-input" class="title-textarea"/>
+        </div>
+    </div>
+    <div class="more-info-area">
+        <div id="form">
+            <div class="outliner-section">
+                <!--<div id="diigobm-list-add">-->
+                <!--<div class="diigo-alert-tip"><span>Name existed !</span>-->
+                <!--<div class="diigo-alert-tip-arrow"></div>-->
+                <!--</div>-->
+                <!--<input type="text" id="diigobm-list-addInput">-->
+                <!--<div id="diigobm-list-addBtn">-->
+                <!--<span class='label'>Create</span>-->
+                <!--<span class="spinner"></span>-->
+                <!--</div>-->
+                <!--<a id="diigobm-list-addCancel">Cancel</a>-->
+                <!--</div>-->
+                <div id="diigobm-list-add-tip">
+                    You have reach the limit of outliner. <a href="" id="w-cancel">Cancel</a><a href="" id="w-upgrade">Upgrade</a>
+                </div>
+            </div>
+            <div id="input-container">
+                <div id="research-mode-notification">
+        <span>
+             Focused Research is a premium feature that lets you re-use your saving preferences with minimal effort.  Once you are in the research mode, the same set of tags, lists and group are automatically applied to every item you save or annotate.  This can be a big time saver when you are doing research on a particular topic.
+        </span>
+                    <div class="closeIcon" id="research-mode-close-notify"></div>
+                </div>
+                <!--<div class="title-des">-->
+                <!--<div class="" id="show-url" data-gtooltip="Edit url"></div>-->
+                <!--<textarea class="title-textarea" id="diigobm-title-input"></textarea>-->
+                <!--<textarea class="title-textarea" id="diigobm-des-input" placeholder="Description"></textarea>-->
+                <!--<input type="text" class="title-textarea"/>-->
+                <!--</div>-->
+                <!--<div class="form-input">-->
+                <!--<label for="">Title</label>-->
+                <!--<input type="text" id="diigobm-title-input">-->
+                <!--<div class="action">-->
+                <!--<div class="icon-action" id="show-url" data-gtooltip="Edit url"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="input-action-area">-->
+                <!--<input type="text" class="url-input" id="diigobm-url-input">-->
+                <!--</div>-->
+
+
+                <!--<div id="diigobm-des" class="form-textarea">-->
+                <!--<label for="">Description</label>-->
+                <!--<textarea id="diigobm-des-input"></textarea>-->
+                <!--</div>-->
+            </div>
+            <div id="diigobm-tags-new">
+                <img src="./img/tag.png" alt="" id="tag-cloud-icon">
+                <input type="text" placeholder="Add tags..." id="diigobm-tag-input">
+            </div>
+            <!--<div id="diigobm-tag" class="form-input">-->
+                <!--&lt;!&ndash;<span id="diigobm-tag-dropdown"></span>&ndash;&gt;-->
+                <!--<label for="">Tags</label>-->
+                <!--<input type="text" id="diigobm-tag-input">-->
+                <!--<div class="action">-->
+                    <!--<div class="text-action" id="open-tag-cloud">Tag cloud</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="input-action-area">-->
+                <!--<div id="tag-cloud">-->
+                    <!--<div>-->
+                        <!--Select from your top 100 tags:-->
+                        <!--<a href="#" id="tag-edit">Edit tags &gt;&gt;</a>-->
+                    <!--</div>-->
+                    <!--<div id="tag-cloud-container">-->
+                        <!--&lt;!&ndash; put tag cloud items here&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div id="tag-cloud">
+                <div>
+                    Select from your top 100 tags:
+                    <a href="#" id="tag-edit">Edit tags</a>
+                </div>
+               <div id="tag-cloud-container">
+
+               </div>
+            </div>
+            <div id="tag-suggestion">
+                <!--<div id="diigobm-recent-tag" class="su-tag">-->
+                    <!--<a href="#" title="Select to add all">Recent Tags:</a>-->
+                    <!--&lt;!&ndash;put recent tags here&ndash;&gt;-->
+                <!--</div>-->
+                <div id="diigobm-recommend-tag" class="su-tag">
+                    <a href="#" id="recommend-tag" tabindex="-1">Recommended:</a>
+                    <!--<div class="loading"></div>-->
+                    <!--put recommended tags here-->
+                </div>
+                <div id="diigobm-group-tag" class="su-tag">
+                    <a href="#">Group dictionary:</a>
+                    <div class="loading"></div>
+                    <!--put group tags here-->
+                </div>
+            </div>
+            <div id="list-group">
+                <div id="diigobm-list" class="form-select" data-position="bottom" tabindex="0">
+                    <div class="remove-select" tabindex="-1">Remove</div>
+                    <label for="">Add to an outliner</label>
+                    <div class="content"></div>
+                    <!--<select></select>-->
+                    <div class="select-menu">
+                        <div class="select-action-area">
+                            <div class="search-box">
+                                <input type="text" placeholder="Search..." tabindex="-1">
+                                <div class="refresh-btn action-btn" title="Refresh outliners" id="refresh-outliner"></div>
+                                <div class="add-btn action-btn" title="Create a outliner"></div>
+                            </div>
+                            <div class="add-box">
+                                <input type="text" id="diigobm-list-addInput" placeholder="Create an outliner...">
+                                <div class="add-action">
+                                    <div class="add-action-btn confirm" id="diigobm-list-addBtn" title="Create"></div>
+                                    <div class="add-action-btn cancel" title="Cancel"></div>
+                                    <div class="spinner"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-container">
+                            <div class="no-item">No outliners</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="diigobm-group" class="form-select" data-position="bottom" tabindex="0">
+                    <div class="remove-select" tabindex="-1">Remove</div>
+                    <label for="">Share to a group</label>
+                    <div class="content"></div>
+                    <div class="select-menu">
+                        <div class="select-action-area">
+                            <div class="search-box">
+                                <input type="text" placeholder="Search..." tabindex="-1">
+                                <div class="action-btn refresh-btn" title="Refresh groups" id="refresh-group"></div>
+                            </div>
+                        </div>
+                        <div class="item-container">
+                            <div class="no-item">No groups</div>
+                        </div>
+                    </div>
+                    <!--<select></select>-->
+                </div>
+
+                <div id="Diigo-Bookmark-checkShareExisting">
+                    <div class="op-checkbox-container checked">
+                        <div class="op-checkbox"></div>
+                        <div class="op-label">Share my existing annotations</div>
+                    </div>
+                </div>
+                <div id="diigo-acache-field">
+                    <a id="diigo-acache" data-link="diigo-acache" href="javascript:void(0)">
+                        <b></b>
+                        Unlock  the worry-free “Advanced Cache” feature
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div id="bottom">
+            <div id="diigobm-options">
+                <label for="op-private" class="form-checkbox">
+                    <input type="checkbox" id="op-private">
+                    Private
+                    <b></b>
+                </label>
+                <label for="op-readlater" class="form-checkbox">
+                    <input type="checkbox" id="op-readlater">
+                    Read Later
+                    <b></b>
+                </label>
+                <label for="op-cache" class="form-checkbox">
+                    <input type="checkbox" id="op-cache">
+                    Cache
+                    <b></b>
+                </label>
+                <!--<label for="op-focus" class="form-checkbox" title="Keep saving items in the same place until unchecked">-->
+                    <!--<input type="checkbox" id="op-focus">-->
+                    <!--Focus Research-->
+                    <!--<b></b>-->
+                <!--</label>-->
+                <!--<div id="op-private" class="option" data-gtooltip="private">-->
+                    <!--<div class="op-checkbox-container" title="Make this book private">-->
+                        <!--<div class="op-checkbox"></div>-->
+                        <!--<div class="op-label">Private</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div id="op-readlater" class="option" data-gtooltip="readlater">-->
+                    <!--<div class="op-checkbox-container" title="Mark this book as unread">-->
+                        <!--<div class="op-checkbox"></div>-->
+                        <!--<div class="op-label">Read later</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div id="op-cache" class="option" data-gtooltip="cache">-->
+                    <!--<div class="op-checkbox-container" title="Upload a copy of the page">-->
+                        <!--<div class="op-checkbox"></div>-->
+                        <!--<div class="op-label">Save a copy</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <!--<a id="diigobm-cancelBtn">cancel</a>-->
+        </div>
+        <div class="btn-area">
+
+            <div class="focus-research-area" title="Keep saving items in the same place until unchecked.">
+                Remember saving preferences
+                <label class="switch">
+                    <input type="checkbox" id="op-focus">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div id="diigobm-saveBtn">Save</div>
+        </div>
+    </div>
+</div><!--end #bm-main-->
+
+<div id="search-main">
+    <div id="search-box">
+        <div class="search-type meta" id="search-type">
+            <b class="current-search-type"></b>
+        </div>
+        <input type="search" id="search-input" placeholder="Search in Title, URL, Annotations & Tags">
+        <div id="search-btn"><b></b></div>
+        <ul class="search-type-switcher" id="search-type-switcher">
+            <li class="meta"><a href="#"><b></b>Meta Search</a></li>
+            <li class="full"><a href="#"><b></b>Full Text Search</a></li>
+        </ul>
+    </div>
+    <div id="search-result-container">
+        <div id="recent-result" class="tab current">
+            <div id="recent-result-bar">
+                <div id="recent-result-tab">
+                    <span id="recentTab" class="result-link current">Recent</span>
+                    <span id="unreadTab" class="result-link" href="">Unread</span>
+                </div>
+
+            </div>
+            <div id="recent-result-tab-loading">
+                <div class="loading-div">Loading...</div>
+            </div>
+            <iframe id="recent-result-iframe" src=""></iframe>
+        </div>
+        <div id="search-result" class="tab">
+            <div id="search-result-loading">
+                <div class="loading-div">Searching...</div>
+            </div>
+            <div id="search-result-main">
+                <div id="result-top">
+                    <span>Search results</span>
+
+                </div>
+                <!--<div id="result-box">-->
+                <!--<div id="result-items">-->
+                <iframe id="search-result-iframe" src=""></iframe>
+                <!--<div class="result-item">
+                    <div class="result-item-top"><span class="result-item-title">Google - About Google</span></div>
+                    <div class="result-item-bottom">
+                        <span class="result-item-url">www.google.com</span>
+                        <div class="diigo-tag">about</div>
+                        <div class="diigo-tag">Google</div>
+                    </div>
+                </div>-->
+
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div id="result-footer">
+                <a href="javascript:void(0)" id="backLink">Back</a>
+                <a href="javascript:void(0)" id="viewAllLink">View in website</a>
+            </div>
+        </div>
+    </div>
+
+</div><!--end #search-main-->
+</body>
+</html>

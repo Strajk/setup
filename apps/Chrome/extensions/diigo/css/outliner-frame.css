@@ -1,0 +1,172 @@
+#diigo-outliner-icon {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #6fd27a;
+    cursor: pointer;
+    box-shadow: rgba(0,0,0,.137255) 0 0 4px 0, rgba(0,0,0,.278431) 0 4px 8px 0;
+    z-index: 2147483645;
+}
+
+#diigo-outliner-toggle-btn {
+    position: absolute;
+    bottom: 0;
+    left: -30px;
+    height: 30px;
+    width: 30px;
+    background: #3f98e5;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px 0 0 3px;
+    display: none;
+}
+
+
+#diigo-outliner-toggle-btn .expand{
+    height: 30px;
+    width: 30px;
+    border-radius: 3px 0 0 3px;
+    background-image: url("chrome-extension://__MSG_@@extension_id__/img/outliner-icon.png");
+    background-size: 30px;
+    float: right;
+}
+
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),only screen and (-moz-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:3/2),only screen and (min-device-pixel-ratio:1.5) {
+    #diigo-outliner-toggle-btn .expand{
+        background-image: url("chrome-extension://__MSG_@@extension_id__/img/outliner-icon@2x.png");
+        background-size: 30px;
+    }
+}
+
+#diigo-outliner-toggle-btn .collapse{
+   height: 30px;
+    width: 30px;
+    position: relative;
+    display: none;
+}
+#diigo-outliner-toggle-btn .collapse::before{
+   content: '';
+    width: 10px;
+    height: 2px;
+    background: white;
+    transform: rotate(-45deg);
+    position: absolute;
+    left: 10px;
+    top: 18px;
+}
+
+#diigo-outliner-toggle-btn .collapse::after{
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: white;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 10px;
+    top: 12px;
+}
+#diigo-outliner-frame.show  #diigo-outliner-toggle-btn .expand{
+   display: none;
+}
+
+#diigo-outliner-frame.show  #diigo-outliner-toggle-btn .collapse{
+    display: block;
+}
+
+#diigo-outliner-frame {
+    position: fixed;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    z-index: 2147483644;
+    right: 0;
+    transition: transform 500ms ease-in-out;
+    transform: translate3d(100%, 0, 0);
+    box-shadow: 0 3px 7px rgba(0,0,0,.3);
+    background: white;
+
+}
+
+#diigo-outliner-frame input{
+    width: 100%;
+    height: 100%;
+    opacity: 0.01;
+}
+body.diigo-outliner-mode {
+    width: 60%;
+    float: left;
+}
+
+#diigo-outliner-frame #diigo-ghost {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+
+#diigo-outliner-frame #diigo-outliner-iframe {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+#diigo-outliner-frame #diigo-process-frame {
+    display: none;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+}
+#diigo-outliner-frame.show {
+    transform: translate3d(0, 0, 0);
+}
+
+#diigo-outliner-frame #diigo-outliner-frame-close {
+    position: absolute;
+    top:8px;
+    right: 20px;
+    height: 40px;
+    width: 40px;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+#diigo-outliner-frame #diigo-outliner-frame-close:hover {
+    opacity: 1;
+}
+
+#diigo-outliner-frame #diigo-outliner-frame-close:active {
+    transform: scale(0.9);
+}
+
+#diigo-outliner-frame #diigo-outliner-frame-close::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    top: 20px;
+    left: 10px;
+    background: #666;
+    transform: rotate(-45deg);
+}
+
+#diigo-outliner-frame #diigo-outliner-frame-close::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    top: 20px;
+    left: 10px;
+    background: #666;
+    transform: rotate(45deg);
+}

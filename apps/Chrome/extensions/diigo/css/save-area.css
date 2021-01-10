@@ -1,0 +1,73 @@
+.save-area {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: #f7f7f7;
+}
+
+.save-area .left {
+    width: 650px;
+    height: 600px;
+    background: white;
+    overflow-y: auto;
+    float: left;
+}
+
+.save-area .right{
+    width: 350px;
+    height: 600px;
+    float: left;
+    position: relative;
+}
+
+.save-panel {
+    width: 1000px;
+    margin: 60px auto 0 auto;
+
+}
+
+.save-panel .save-image-wrapper {
+    width: 100%;
+}
+.save-area .right .action-list {
+    list-style: none;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+.save-area .right .action-list li {
+    font-size: 14px;
+    line-height: 40px;
+    list-style: none;
+}
+
+.save-area .right .action-list li a{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+.save-area .right .promo {
+    position: absolute;
+    bottom: 0px;
+}
+
+.save-area #readability-content {
+    -webkit-user-select: none;
+    pointer-events: none;
+}
+
+/***************Clear float**********************/
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+.clearfix {
+    zoom: 1;
+}

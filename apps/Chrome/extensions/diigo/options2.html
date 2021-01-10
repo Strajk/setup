@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Options</title>
+        <link type="text/css" rel="stylesheet" href="css/basic.css">
+        <link type="text/css" rel="stylesheet" href="css/options.css">
+        <!--<link type="text/css" rel="stylesheet" href="css/searchAll/options.css">-->
+        <script src="js/jquery.js"></script>
+        <script src="js/utils2.js"></script>
+        <script src="js/options.js"></script>
+
+        <!--<script src="js/searchAll/process.js"></script>-->
+        <!--<script src="js/searchAll/jquery-ui-1.8.17.custom.min.js"></script>-->
+        <!--<script src="js/searchAll/jquery.textchange.js"></script>-->
+        <!--<script src="js/searchAll/db.js"></script>-->
+        <!--<script src="js/searchAll/options.js"></script>-->
+
+	
+    </head>
+    <body>
+        <!--# begin "HTML_NOTICE" #-->
+        <div class="diigolet notice" id="diigolet-notice" style="display:none;">
+            <span><b>&nbsp;</b><span>Ok, done!</span></span>
+            <span class="info"><b>&nbsp;</b><span>Information</span></span>
+            <span class="alert"><b>&nbsp;</b><span>Error!!!</span></span>
+        </div>
+        <!--# end "HTML_NOTICE" #-->
+    <div id="main">
+	<header>
+    	<h1>Extension Options</h1>
+    </header>
+    <div id="content">
+	<fieldset>
+		<legend><b>Bookmarking</b></legend>
+		<input id="check-bmPrivateAsDefault" type="checkbox"><label for="check-bmPrivateAsDefault">Private as default while saving</label>
+        <div class="tip">.<div><span>best if you want to be anti-social!</span></div></div>
+        <br/><input id="check-autoCloseReadLater" type="checkbox"><label for="check-autoCloseReadLater">Automatically close a page when saved by clicking “Read Later”</label>
+        <br/><input id="check-autoloadBookmarkStatus" type="checkbox"><label for="check-autoloadBookmarkStatus">Show bookmarking status automatically</label>
+        <div class="tip">.<div><span>Remind you if the page you visit was bookmarked</span></div></div>
+        <br/>&nbsp;&nbsp;&nbsp;&nbsp;<input id="check-autoload" type="checkbox"><label for="check-autoload">Show annotations automatically </label>
+        <span class="premium">
+        <!--<span>(Premium feature available as free trial)</span>-->
+            <b class="diigolet-option-tip" id="highlight-tip">
+                <b class="diigolet-option-tip-btn"></b>
+                <div class="diigolet-option-tip-container">
+                    <div class="tp-close"></div>
+                    <div class="diigolet-option-tip-arrow"></div>
+                    <div class="diigolet-option-tip-box">
+                        When you visit a page to which you have previously added highlights and sticky notes, they will appear automatically.
+                        <!--<div class="op-tip tip-no-premium">-->
+                            <!--This is a premium feature and currently you are not a premium user. Go premium to enable this feature, and help us provide you with even more great features!-->
+                            <!--<div class="premium-field-action">-->
+                                <!--<a class="go-premium-btn" class="premium-field-action-btn" href="https://www.diigo.com/premium" target="_blank">Go premium</a>-->
+                                <!--&lt;!&ndash;<a class="cancel-go-premium-btn" class="premium-field-action-btn">No,thanks</a>&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="op-tip tip-premium">-->
+                            <!--Currently you are already a premium user and you can enable it.-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </b>
+        </span>
+        <!--<div class="tip">.<div><span>Automatically load the annotation bar for every page</span></div></div>-->
+        <div class="premium-field" id="auto-show-annotation-premium">
+            <div class="premium-field-top"><div class="premium-field-alert-icon"></div>Currently you are not a premium user. <a href="https://www.diigo.com/premium" target="_blank">Go premium</a>, and help us provide you with even more great features!</div>
+            <div class="premium-field-action clearfloat">
+                <a class="go-premium-btn" class="premium-field-action-btn" href="https://www.diigo.com/premium" target="_blank">Go premium</a>
+                <a class="cancel-go-premium-btn" class="premium-field-action-btn">No,thanks</a>
+            </div>
+        </div>
+	</fieldset>
+    <fieldset>
+        <legend><b>Seamless Annotation</b><div class="tip">.<div><span>Pages need to be reloaded  to see the effect</span></div></div></legend>
+        <input id="check-autoImageClipper" type="checkbox"><label for="check-autoImageClipper">Show ‘collect image’ icon when cursor enters an image</label>
+        <div class="tip">.<div><span>Make it super easy to save images</span></div></div>
+        <br/><input id="check-autoshowicon" type="checkbox"><label for="check-autoshowicon">Upon text selection, show mini search/highlight popup</label>
+        <div class="tip">.<div><span>Make it super easy to highlight and search</span></div></div>
+        <br/>
+        <input id="check-showPdfButton" type="checkbox"><label for="check-showPdfButton">Show ‘Annotate’ button in PDF pages</label>
+    </fieldset>
+    <fieldset>
+        <legend><b>Search</b></legend>
+        <!--<input id="check-contextMenu" type="checkbox" style="display: none"><label for="check-contextMenu" style="display: none">Enable Diigo+Google search in right click menu items</label>
+        <div class="tip">.<div><span>Make it easy to simultaneously search Diigo and Google</span></div></div>-->
+        <input id="check-comboSearch" type="checkbox"><label for="check-comboSearch">Search your Diigo library when searching Google</label>
+        <div class="tip">.<div><span>Let you know if you have already saved anything related to your google search</span></div></div>
+        <br/>&nbsp;&nbsp;&nbsp;&nbsp;<input id="check-showSearchResultDirectly" type="checkbox"><label for="check-showSearchResultDirectly">Show diigo search results directly in search page </label><span class="premium">
+        (Premium feature)
+        <b class="diigolet-option-tip" id="search-tip">
+            <b class="diigolet-option-tip-btn"></b>
+            <div class="diigolet-option-tip-container">
+                <div class="tp-close"></div>
+                <div class="diigolet-option-tip-arrow"></div>
+                <div class="diigolet-option-tip-box">
+                    Check the image to see how it will work on your google page:
+                    <div class="diigolet-option-tip-image-container">
+                        <img src="./img/result.png" height="100%" width="100%" alt=""/>
+                    </div>
+                    <div id="search-tip-premium">
+                        Go premium to enable this feature.
+                        <div class="premium-field-action">
+                            <a class="go-premium-btn" class="premium-field-action-btn" href="https://www.diigo.com/premium" target="_blank">Go premium</a>
+                            <!--<a class="cancel-go-premium-btn" class="premium-field-action-btn">No,thanks</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </b>
+        </span>
+        <div class="premium-field" id="show-search-result-premium">
+            <div class="premium-field-top"><div class="premium-field-alert-icon"></div>Currently you are not a premium user. <a href="https://www.diigo.com/premium" target="_blank">Go premium</a>, and help us provide you with even more great features!</div>
+            <div class="premium-field-action clearfloat">
+                <a class="go-premium-btn" class="premium-field-action-btn" href="https://www.diigo.com/premium" target="_blank">Go premium</a>
+                <a class="cancel-go-premium-btn" class="premium-field-action-btn">No,thanks</a>
+            </div>
+        </div>
+	<!-- <br/><input id="check-searcho" type="checkbox"><label for="check-searcho">Try other search engines</label>
+        <div class="tip">.<div><span>Enable you to try different search engines easily in search result page.</span></div></div> -->
+
+
+    </fieldset>
+         <!-- search All -->
+        <!--<fieldset>-->
+                <!--<legend><b>SearchAll settings</b></legend>-->
+            <!--<input type="checkbox" name="switchbar" id="switchbar" /><label for="switchbar">Enable horizontal bar on top of search engines for easy switch</label><br>-->
+            <!--<input type="checkbox" name="searchselection" id="searchselection" /><label for="searchselection">Enable pop-up on text-selection</label><br>-->
+            <!--<input type="checkbox" name="bookmarks" id="bookmarks" /><label for="bookmarks">Also search your bookmarks when searching Google </label><br>-->
+            <!--<input type="checkbox" name="histroy" id="history" /><label for="history">Also search your browing history when searching Google </label>-->
+                <!--<div id="tip">It will take effect in new pages.</div>-->
+
+            <!--&lt;!&ndash;<fieldset>-->
+                <!--<legend>International</legend>-->
+                <!--<table id="International_table">-->
+                        <!--<tbody id="International_setting">-->
+                        <!--<tr>-->
+                                <!--<td><input type="checkbox" name="googlelocal" id="googlelocal" /><label for="googlelocal">Enable for use google local</label></td>-->
+                                <!--<td class="select"></td>-->
+                        <!--</tr>-->
+
+                        <!--</tbody>-->
+                <!--</table>-->
+            <!--</fieldset>&ndash;&gt;-->
+
+                <!--<div id="Customize_Search">-->
+                    <!--<div class="sub-title">Search Engines</div>-->
+                    <!--<div class="tips">-->
+                        <!--1. Drag  and Drop to reorder search engines in "Search engine list" <br />-->
+                        <!--2.  Click Add buttons<img src="../style/add-16x16.png" class="tipsimg"/> in "Recommended search engines" to add them in "Search engine list".<br />-->
+                    <!--</div>-->
+                    <!--<div id="action_list">-->
+
+                        <!--<div class="list_left">-->
+                            <!--<p>Search engine list</p>-->
+                            <!--<ul id="list_sortable">-->
+                                <!--&lt;!&ndash;<li>Google<span>edit | remove</span></li>&ndash;&gt;-->
+
+                            <!--</ul>-->
+                        <!--</div>-->
+                        <!--<div class="list_right">-->
+                            <!--<p>Recommended search engines </p>-->
+                            <!--<div id="list_ecommod">-->
+                                <!--<h3>General Search</h3>-->
+                                <!--<div id="generalsearch_section">-->
+                                    <!--<ul>-->
+
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<h3>Social Network</h3>-->
+                                <!--<div id="SocialNetwork_section">-->
+                                    <!--<ul>-->
+
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<h3>Reference</h3>-->
+                                <!--<div id="Reference_section">-->
+                                    <!--<ul>-->
+
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<h3>Documents</h3>-->
+                                <!--<div id="Documents_section">-->
+                                    <!--<ul>-->
+
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<h3>Shopping</h3>-->
+                                <!--<div id="Shopping_section">-->
+                                    <!--<ul>-->
+
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<h3>Images</h3>-->
+                                <!--<div id="Images_section">-->
+                                    <!--<ul>-->
+
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<h3>Video & Movie</h3>-->
+                                <!--<div id="VideoMovie_section">-->
+                                    <!--<ul>-->
+
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<h3>Recipes</h3>-->
+                                <!--<div id="Recipes_section">-->
+                                    <!--<ul>-->
+
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<h3>Answers</h3>-->
+                                <!--<div id="Answers_section">-->
+                                    <!--<ul>-->
+
+                                    <!--</ul>-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div style="clear: both;"></div>-->
+                    <!--<div class="customize_more">-->
+                        <!--<div class="sub-title">Add more custom search engines</div>-->
+                        <!--<div  class="inputbox">-->
+                            <!--<input type="text"  placeholder="Search engine name" id="searchname"/>-->
+                            <!--<input type="text" placeholder="Custom URL  (Check the instructions below)" id="searchurl"/>-->
+                            <!--<button id="addnewsearch">Add</button>-->
+                        <!--</div>-->
+                        <!--<div style="clear: both"></div>-->
+                        <!--<div id="tip2">The  Custom URL is not valid. Please follow the instructions below and input the right one.</div>-->
+                        <!--<div class="customize_tips">-->
+                            <!--<h3> How to get the Custom URL of a search engine</h3>-->
+                            <!--<br />-->
+                            <!--<p>Method 1: (1-click to add search engines )</p>-->
+                            <!--<ul>-->
+                                <!--<li>Add a search engine when you discover the plus on the Search All icon.<span></span>.The extension will autofill search parameters for search engines supporting opensearch.-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                            <!--<br />-->
+                            <!--<p>Method 2: (For fresh user)</p>-->
+                            <!--<ol>-->
+                                <!--<li>Visit the search engine pages you want to add.</li>-->
+                                <!--<li>Input "<b>searcho</b>" as the search query in the search box and conduct a search</li>-->
+                                <!--<li>Copy the URL of the search result page</li>-->
+                                <!--<li>Paste the URL in the "Custom URL field" above</li>-->
+                                <!--<li>Click Add button to add the custom search engine.</li>-->
+                            <!--</ol>-->
+                            <!--<br />-->
+                            <!--<p>Method 3: (For advanced user. If method 2 doesn't work, you can try this one)</p>-->
+                            <!--<ol>-->
+                                <!--<li>Search any search term in the search engine you want to add.</li>-->
+                                <!--<li>Copy the URL of the search result page</li>-->
+                                <!--<li>Paste the URL in the "Custom URL" field above</li>-->
+                                <!--<li>Remove the search term and insert <b>{%s}</b> in the URL where the search terms should appear.</li>-->
+                                <!--<li>Click add button to add the custom search engines.</li>-->
+                            <!--</ol>-->
+                            <!--<p> If you  still experience problems, please shoot us an email at developer@diigo.com and let us know the search engines you want to add.</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+<!--&lt;!&ndash; end searchALl &ndash;&gt;-->
+    <fieldset>
+
+        <legend><b>Keyboard Shortcuts</b></legend>
+        <!--<div id="shortcut-quicksave" class="shortcut"><input id="check-shortcut-quicksave" type="checkbox"><label for="check-shortcut-quicksave">Quick Bookmark(one click)</label>
+        <input id="check-shortcut-quicksave-ctrl" type="checkbox"><label for="check-shortcut-quicksave-ctrl">Ctrl+</label>
+        <input id="check-shortcut-quicksave-alt" type="checkbox"><label for="check-shortcut-quicksave-alt">Alt+</label>
+        &lt;!&ndash; <select id="shortcut-quicksave-key"></select> &ndash;&gt;
+        </div>-->
+
+        <div id="shortcut-bookmark" class="shortcut"><input id="check-shortcut-bookmark" type="checkbox"><label for="check-shortcut-bookmark">Save</label>
+            <input id="check-shortcut-bookmark-ctrl" type="checkbox"><label for="check-shortcut-bookmark-ctrl">Ctrl+</label>
+            <input id="check-shortcut-bookmark-alt" type="checkbox"><label for="check-shortcut-bookmark-alt">Alt+</label>
+        </div>
+
+        <div id="shortcut-annotate" class="shortcut"><input id="check-shortcut-annotate" type="checkbox"><label for="check-shortcut-annotate">Annotate</label>
+            <input id="check-shortcut-annotate-ctrl" type="checkbox"><label for="check-shortcut-annotate-ctrl">Ctrl+</label>
+            <input id="check-shortcut-annotate-alt" type="checkbox"><label for="check-shortcut-annotate-alt">Alt+</label>
+        </div>
+
+        <div id="shortcut-readlater" class="shortcut"><input id="check-shortcut-readlater" type="checkbox"><label for="check-shortcut-readlater">Read later</label>
+            <input id="check-shortcut-readlater-ctrl" type="checkbox"><label for="check-shortcut-readlater-ctrl">Ctrl+</label>
+            <input id="check-shortcut-readlater-alt" type="checkbox"><label for="check-shortcut-readlater-alt">Alt+</label>
+        </div>
+
+        
+    </fieldset>
+    </div>
+    <div id="buttonRow">
+        <b id="noticeSaved" style="display:none">Saved!</b>
+        <input id="btnSave" type="submit" value="Save" />
+        <input id="btnCancel" type="button" value="Cancel" />
+    </div>
+    </div><!--main-->
+
+
+
+    </body>
+</html>

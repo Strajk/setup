@@ -1,0 +1,183 @@
+#diigoComboSearch{width:455px;margin-left:0px;margin-bottom:10px; border-radius:2px;border: 1px solid rgb(229, 229, 229);box-shadow: 0 10x 3px rgba(0,0,0,.15); font: normal 16px arial;}
+#diigoComboSearch strong{}
+/*#diigoComboSearch a span{display:none;}*/
+#diigoComboSearch a.searcho a{color:blue;}
+#diigoComboSearch a.searcho a:hover{text-decoration:underline}
+#diigoComboSearch a strong{font-weight:normal; color:#0044cc;}
+#diigoComboSearch a.searcho{float:right;margin-right:10px;}
+#diigoComboSearchSettings{float:right; width:16px; height:16px; background:left top no-repeat; cursor:pointer; margin:9px 5px 0 0;}
+#diigoComboSearchSettings:hover{background-position:-16px 0;}
+
+#diigoComboSearch-top{
+    height: 40px;
+    line-height: 40px;
+    background-color: #f7f7f7;
+    border-bottom:1px solid #e5e5e5;
+    color: #666;
+    font-size: 14px;
+    position: relative;
+
+}
+
+#go-to-option{
+    cursor: pointer;
+}
+
+#diigoComboSearch-top img{
+    margin-top: 9px;
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#diigoComboSearch-top a{
+    text-decoration: none;
+    color: #666;
+}
+
+#diigoComboSearch-close{
+    background-image: url("chrome-extension://__MSG_@@extension_id__/img/close.png");
+    height: 12px;
+    width: 12px;
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    opacity: 0.5;
+    -webkit-transition: opacity 400ms ease;
+}
+
+#diigoComboSearch-close:hover{
+    opacity: 1;
+}
+
+.diigoComboSearch-close-action{
+    list-style: none;
+    width: 191px;
+    box-shadow: 0px 1px 3px rgba(0,0,0,.3);
+    background-color: white;
+    -webkit-animation: diigo-dropdown .15s ease-in 1;
+    position: absolute;
+    left: 262px;
+    top: 31px;
+    display: none;
+    z-index: 1;
+}
+
+.diigoComboSearch-close-action li{
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: left;
+    cursor: pointer;
+    padding-left: 10px;
+    color: #333;
+}
+
+.diigoComboSearch-close-action li:first-child{
+    margin-top: 3px;
+}
+
+.diigoComboSearch-close-action li:last-child{
+    border-top: 1px solid #ddd;
+    margin-top: 3px;
+    font-size: 12px;
+    color: #999;
+    cursor: default;
+
+}
+
+.diigoComboSearch-close-action li:last-child:hover{
+    background-color: #ffffff;
+}
+
+.diigoComboSearch-close-action li:hover{
+    background-color: #e9e9e9;
+}
+
+.diigoComboSearch-close:hover{
+    opacity: 1;
+}
+
+#diigoComboSearch .result-item{
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+    /*cursor: pointer;*/
+    overflow: hidden;
+}
+
+#diigoComboSearch .result-item .diigo-tag{
+    margin-top: 3px;
+}
+
+#diigoComboSearch .result-item:hover{
+    background-color: #f3f3f3;
+}
+
+#diigoComboSearch .result-item .result-item-title{
+    color: #0072d6;
+    max-width: 409px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    display: block;
+}
+
+#diigoComboSearch .result-item .result-item-url{
+    color: #999;
+    margin-right: 5px;
+}
+
+#diigoComboSearch .result-item .result-item-bottom{
+    max-height: 46px;
+    overflow: hidden;
+}
+
+#diigoComboSearch-footer{
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    position: relative;
+}
+
+#diigoComboSearch-viewAllLink  {
+    color: #0072D6;
+    text-decoration: none;
+    float: right;
+    margin-right: 7px;
+}
+
+#diigoComboSearch-footer a:hover{
+    text-decoration: underline;
+    color: #0072D6;
+}
+
+#diigoComboSearch-simple{
+    height: 30px;
+    font: normal 14px/30px arial, Helvetica;
+    padding-left: 10px;
+}
+
+#diigoComboSearch-simple a {
+    text-decoration: none;
+    color: #0072d6;
+}
+
+#diigoComboSearch-goPremium{
+    position: absolute;
+    right: 10px;
+    top:0px;
+    font: normal 11px/20px arial, Helvetica;
+
+    color: #666;
+
+}
+
+#diigoComboSearch-goPremium a{
+    text-decoration: none;
+    color: #0072d6;
+}
+
+#diigoComboSearch a:hover{
+    text-decoration: underline;
+}

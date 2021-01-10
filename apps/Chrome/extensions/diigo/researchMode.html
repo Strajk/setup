@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            font:normal 14px /18px arial, Helvetica;
+        }
+
+        #main-box {
+            padding: 20px;
+            width: 770px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        #no-premium img {
+            border: 5px solid #FFF;
+            box-shadow: 0px 1px 3px rgba(0,0,0,.3);
+        }
+
+        .go-premium-btn {
+            color: #ffffff;
+            padding: 8px 22px;
+            background-color: #35B3ED;
+            border-radius: 2px;
+            margin-right: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-left: 336px;
+            font-size: 14px;
+            position: relative;
+            top: 20px;
+        }
+
+        .go-premium-btn:hover {
+            background-color: #20AAE9;
+            text-decoration: none;
+        }
+
+        #diigo-refresh-warning-wrapper{
+            position: absolute;
+            top:0; left:0;
+            z-index:2147483644; /* MAX:2147483647 */
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        #diigo-refresh-warning{
+            z-index:2147483645;
+            position:absolute;
+            margin-top:50px;
+            height:108px;
+            width:386px;
+            padding:7px;
+            border-radius:3px;
+            background-image:url(chrome-extension://__MSG_@@extension_id__/img/scrennshot-editpanel/alpha-bg.png);
+            font-family:Arial, Helvetica, sans-serif;
+
+        }
+        #diigo-refresh-warning-content{
+            height:108px;
+            width:386px;
+            background-color:#FFFFFF;
+
+        }
+        #diigo-refresh-warning-top{
+            height:30px;
+            background-image:url(./img/scrennshot-editpanel/bar3.png);
+            line-height:30px;
+            font-size:14px;
+            font-weight:500;
+            cursor: move !important;
+            -webkit-user-select:none;
+        }
+        #diigo-refresh-warning-icon{
+            float: left;
+            height:33px;
+            width:38px;
+            background-image:url(./img/scrennshot-editpanel/warning.png);
+        }
+        #diigo-refresh-warning-close{
+            height:16px;
+            width:16px;
+            float:right;
+            vertical-align:middle;
+            margin-top:7px;
+            margin-right:7px;
+            cursor:pointer;
+        }
+        #diigo-refresh-warning-main{
+            font-size:14px;
+            padding:14px 20px 0px 20px;
+        }
+        #diigo-refresh-warning-text{
+            margin-left:48px;
+        }
+        #diigo-refresh-warning-text p a{
+            text-decoration: none !important;
+            color:#04c !important;
+            font-weight: normal !important;
+        }
+        #diigo-refresh-warning-main p{
+            margin-top:0px !important;
+            margin-bottom:7px !important;
+            padding: 0px !important;
+
+        }
+        #diigo-refresh-warning-bottom{
+            margin-left:108px;
+        }
+        #diigo-refresh{
+            margin-right:10px;
+            background-color: #35B3ED;
+
+
+        }
+
+        #diigo-refresh.disabled{
+            color: #333;
+            background-color: #E6E6E6;
+            opacity: .65;
+        }
+
+        #diigo-refresh.disabled:hover{
+            background-color: #E6E6E6;
+        }
+
+        #diigo-refresh:hover{
+            background-color: #20AAE9;
+        }
+        #diigo-refresh-warning-cancel{
+            text-decoration:none;
+            background-color: #CCCCCC;
+
+        }
+
+        #diigo-refresh-warning-cancel:hover{
+            background-color: #bbbbbb;
+        }
+
+        .diigo-refresh-warning-btn{
+            padding: 5px 20px;
+            float: left;
+            margin-top:8px;
+            cursor:pointer;
+            border-radius: 2px;
+            color: #ffffff;
+            font-size: 12px;
+        }
+
+        #premium {
+            display: none;
+            margin: 0 auto;
+            width: 234px;
+        }
+    </style>
+</head>
+<body>
+<div id="main-box">
+    <div id="no-premium">
+    <img src="diigolet/images/image.png" alt=""/>
+    <p>
+        Focused Research is a premium feature that lets you re-use your saving preferences with minimal effort.  Once you are in the research mode, the same set of tags, lists and group are automatically applied to every item you save or annotate.  This can be a big time saver when you are doing research on a particular topic.     </p>
+    <a class="go-premium-btn" id="go-premium" href="https://www.diigo.com/premium" target="_blank">Upgrade now</a>
+    </div>
+
+    <div id="premium">
+        <img src="diigolet/images/refresh-success.png" alt=""/>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="js/refreshWindow.js"></script>
+<script type="text/javascript" src="js/researchMode.js"></script>
+</body>
+</html>

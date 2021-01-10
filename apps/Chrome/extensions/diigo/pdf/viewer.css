@@ -1,0 +1,3340 @@
+/** Copyright 2012 Mozilla Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    height: 100%;
+    /* Font size is needed to make the activity bar the correct size. */
+    font-size: 10px;
+}
+
+body {
+    height: 100%;
+    /*background-image: url(diigo_icons/background.png);*/
+    background-color: #f5f5f5;
+}
+
+body,
+input,
+button,
+select {
+    font: message-box;
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    height: 16px;
+    overflow: visible;
+    width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .2);
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 1px 1px 1px 6px;
+    min-height: 28px;
+    padding: 100px 0 0;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+}
+
+.hidden {
+    display: none !important;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+#viewerContainer:-webkit-full-screen {
+    top: 0px;
+    border-top: 2px solid transparent;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: none;
+}
+
+#viewerContainer:-moz-full-screen {
+    top: 0px;
+    border-top: 2px solid transparent;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: none;
+}
+
+#viewerContainer:-ms-fullscreen {
+    top: 0px !important;
+    border-top: 2px solid transparent;
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+    cursor: none;
+}
+
+#viewerContainer:-ms-fullscreen::-ms-backdrop {
+    background-color: #000;
+}
+
+#viewerContainer:fullscreen {
+    top: 0px;
+    border-top: 2px solid transparent;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: none;
+}
+
+:-webkit-full-screen .page {
+    margin-bottom: 100%;
+    border: 0;
+}
+
+:-moz-full-screen .page {
+    margin-bottom: 100%;
+    border: 0;
+}
+
+:-ms-fullscreen .page {
+    margin-bottom: 100% !important;
+    border: 0;
+}
+
+:fullscreen .page {
+    margin-bottom: 100%;
+    border: 0;
+}
+
+:-webkit-full-screen a:not(.internalLink) {
+    display: none;
+}
+
+:-moz-full-screen a:not(.internalLink) {
+    display: none;
+}
+
+:-ms-fullscreen a:not(.internalLink) {
+    display: none !important;
+}
+
+:fullscreen a:not(.internalLink) {
+    display: none;
+}
+
+:-webkit-full-screen .textLayer > div {
+    cursor: none;
+}
+
+:-moz-full-screen .textLayer > div {
+    cursor: none;
+}
+
+:fullscreen .textLayer > div {
+    cursor: none;
+}
+
+#viewerContainer.presentationControls,
+#viewerContainer.presentationControls .textLayer > div {
+    cursor: default;
+}
+
+#outerContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#sidebarContent {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    visibility: hidden;
+    -webkit-transition-duration: 200ms;
+    -webkit-transition-timing-function: ease;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+    -webkit-transition-property: left;
+    transition-property: left;
+    left: -250px;
+}
+
+#sidebarContent .view {
+    position: absolute;
+    top: 63px;
+    padding-bottom: 40px;
+}
+
+#outerContainer.sidebarMoving #sidebarContent,
+#outerContainer.sidebarOpen #sidebarContent {
+    visibility: visible;
+}
+
+#outerContainer.sidebarOpen #sidebarContent {
+    left: 0px;
+}
+
+#mainContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 320px;
+}
+
+#outerContainer.sidebarOpen #viewerContainer {
+    -webkit-transition-property: left;
+    transition-property: left;
+    left: 250px;
+}
+
+#sidebarContent {
+    top: 56px;
+    bottom: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    width: 250px;
+    background: #ffffff;
+    border-right: 1px solid #cccccc;
+}
+
+#viewerContainer {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    top: 56px;
+    right: 0;
+    bottom: 40px;
+    left: 0;
+    outline: none;
+    -webkit-transition-duration: 200ms;
+    -webkit-transition-timing-function: ease;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+}
+
+.toolbar {
+    position: relative;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    cursor: default;
+}
+
+#toolbarContainer {
+    width: 100%;
+}
+
+#toolbarSidebar {
+    height: 40px;
+}
+
+#toolbarContainer, .secondaryToolbar {
+    position: relative;
+    height: 56px;
+    background-color: #3f98e5;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#toolbarViewer {
+    height: 56px;
+}
+
+#toolbarViewer .title {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    line-height: 56px;
+}
+
+#loadingBar {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background-color: #ACACAC;
+    border-bottom: 1px solid #999;
+}
+
+#loadingBar .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #00CE8C;
+    overflow: hidden;
+    -webkit-transition: width 200ms;
+    transition: width 200ms;
+}
+
+@-webkit-keyframes progressIndeterminate {
+    0% {
+        left: 0%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes progressIndeterminate {
+    0% {
+        left: 0%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+#loadingBar .progress.indeterminate {
+    background-color: #999;
+    -webkit-transition: none;
+    transition: none;
+}
+
+#loadingBar .indeterminate .glimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50px;
+
+    background-image: linear-gradient(to right, #999 0%, #fff 50%, #999 100%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    -webkit-animation: progressIndeterminate 2s linear infinite;
+    animation: progressIndeterminate 2s linear infinite;
+}
+
+.secondaryToolbar {
+    top: 40px;
+    position: absolute;
+    z-index: 10000;
+    height: 32px;
+
+    min-width: 16px;
+    padding: 0px 6px 0px 6px;
+    margin: 4px 2px 4px 2px;
+    color: #303030;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+    cursor: default;
+}
+
+#findInput[data-status="pending"] {
+    background-image: url(images/loading-small.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.secondaryToolbar {
+    padding: 5px 5px 10px 10px;
+    height: auto;
+    z-index: 30000;
+}
+
+.secondaryToolbar {
+    right: 4px;
+}
+
+#secondaryToolbarToggle {
+    background: url('diigo_icons/ann-more.png') no-repeat 50% 50%;
+}
+
+#secondaryToolbarButtonContainer {
+    max-width: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: -4px;
+}
+
+.doorHanger,
+.doorHangerRight {
+    border: 1px solid hsla(0, 0%, 49%, 0.5);
+    border-radius: 2px;
+    box-shadow: 0 1px 6px rgba(82, 82, 82, 0.3);
+}
+
+.doorHanger:after, .doorHanger:before,
+.doorHangerRight:after, .doorHangerRight:before {
+    bottom: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.doorHanger:after,
+.doorHangerRight:after {
+    border-bottom-color: rgb(248, 248, 248);
+    border-width: 8px;
+}
+
+.doorHanger:before,
+.doorHangerRight:before {
+    border-bottom-color: hsla(0, 0%, 55%, .5);
+    border-width: 9px;
+}
+
+.doorHanger:after {
+    left: 13px;
+    margin-left: -8px;
+}
+
+.doorHanger:before {
+    left: 13px;
+    margin-left: -9px;
+}
+
+.doorHangerRight:after {
+    right: 13px;
+    margin-right: -8px;
+}
+
+.doorHangerRight:before {
+    right: 13px;
+    margin-right: -9px;
+}
+
+.findMsg {
+    display: inline-block;
+    width: 80px;
+    font-size: 12px;
+    color: #A6B7D0;
+    text-align: center;
+    display: none;
+}
+
+.notFound {
+    background-color: rgb(255, 137, 153);
+}
+
+#toolbarViewerLeft {
+    position: absolute;
+    top: 0;
+}
+
+#toolbarViewerRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#toolbarViewerLeft > *,
+#toolbarViewerMiddle > *,
+#toolbarViewerRight > * {
+    position: relative;
+    float: left;
+}
+
+.splitToolbarButton {
+    margin: 3px 2px 4px 0;
+    display: inline-block;
+}
+
+.splitToolbarButton > .toolbarButton {
+    border-radius: 0;
+    float: left;
+}
+
+.toolbarButton,
+.secondaryToolbarButton {
+    border: 0 none;
+    background-color: rgba(0, 0, 0, 0);
+    width: 36px;
+    height: 28px;
+}
+
+.toolbarButton > span {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.toolbarButton[disabled],
+.secondaryToolbarButton[disabled] {
+    opacity: .5;
+}
+
+.splitToolbarButton.toggled .toolbarButton {
+    margin: 0 2px;
+}
+
+.splitToolbarButton > .toolbarButton {
+    position: relative;
+}
+
+.splitToolbarButton > .toolbarButton:first-child {
+    position: relative;
+    margin: 0;
+    margin-right: -1px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-right-color: transparent;
+}
+
+.splitToolbarButton > .toolbarButton:last-child {
+    position: relative;
+    margin: 0;
+    margin-left: -1px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-left-color: transparent;
+}
+
+.splitToolbarButtonSeparator {
+    padding: 8px 0;
+    width: 1px;
+    background-color: hsla(0, 0%, 0%, .5);
+    z-index: 99;
+    box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .08);
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.splitToolbarButtonSeparator {
+    float: left;
+}
+
+.splitToolbarButton:hover > .splitToolbarButtonSeparator,
+.splitToolbarButton.toggled > .splitToolbarButtonSeparator {
+    padding: 12px 0;
+    margin: 1px 0;
+    box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .03);
+}
+
+.toolbarButton,
+.dropdownToolbarButton,
+.overlayButton,
+.secondaryToolbarButton {
+    min-width: 16px;
+    padding: 2px 6px 0;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+html[dir='ltr'] .toolbarButton,
+html[dir='ltr'] .overlayButton,
+html[dir='ltr'] .dropdownToolbarButton {
+    margin: 6px 2px 4px 2px;
+}
+
+.toolbarButton:hover,
+.overlayButton,
+.secondaryToolbarButton:hover {
+    /*background-color: #e0ecff !important;
+    */
+    opacity: 1;
+}
+
+.toolbarButton:hover:active,
+.overlayButton:hover:active,
+.secondaryToolbarButton:hover:active {
+    /*background-color: #e0ecff !important;*/
+}
+
+.toolbarButton.toggled,
+.splitToolbarButton.toggled > .toolbarButton.toggled,
+.secondaryToolbarButton.toggled {
+    /*background-color: #e0ecff !important;*/
+}
+
+.toolbarButton.toggled:hover:active,
+.splitToolbarButton.toggled > .toolbarButton.toggled:hover:active,
+.secondaryToolbarButton.toggled:hover:active {
+    /*background: #cfe1ff;*/
+}
+
+.overlayButton {
+    margin: 3px 2px 4px 5px !important;
+    line-height: 16px;
+    padding: 2px 6px 3px 6px;
+}
+
+#customScaleOption {
+    display: none;
+}
+
+#pageWidthOption {
+    border-bottom: 1px rgba(255, 255, 255, .5) solid;
+}
+
+.splitToolbarButton:first-child,
+.toolbarButton:first-child {
+    margin-left: 4px;
+}
+
+.splitToolbarButton:last-child,
+.toolbarButton:last-child {
+    margin-right: 4px;
+}
+
+.toolbarButtonSpacer {
+    width: 30px;
+    display: inline-block;
+    height: 1px;
+}
+
+.toolbarButtonFlexibleSpacer {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    min-width: 30px;
+}
+
+#findPrevious {
+    margin-left: 3px;
+}
+
+#findNext {
+    margin-right: 3px;
+}
+
+#sidebarToggle {
+    /*background: url(diigo_icons/sidebarToggle.png) no-repeat 50% 50%;*/
+    /*margin-left: 8px;*/
+}
+
+.toolbarButton b {
+    height: 18px;
+    width: 18px;
+    margin-left: 4px;
+    display: block;
+}
+
+#bottomBar .toolbarButton {
+    display: inline-block;
+}
+
+#bottomBar .toolbarButton {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    vertical-align: middle;
+
+}
+
+#bottomBar .toolbarButton:hover {
+    background: #eaeaea !important;
+}
+
+#bottomBar .toolbarButton:active {
+    background: #CECBCB !important;
+}
+
+#bottomBar .toolbarButton b {
+    position: relative;
+    top: 4px;
+}
+
+#bottomBar #previous {
+    margin-right: 10px;
+}
+
+.toolbarButton.findPrevious b {
+    background: url(diigo_icons/pdf_icon.png) no-repeat 0 -24px;
+}
+
+.toolbarButton.findNext b {
+    background: url(diigo_icons/pdf_icon.png) no-repeat -18px -24px;
+}
+
+.toolbarButton.closeFind b {
+    background: url(diigo_icons/pdf_icon.png) no-repeat -108px -24px;
+}
+
+.toolbarButton.pageUp b {
+    background: url(diigo_icons/pdf_icon.png) no-repeat 0 -24px;
+    margin-right: 10px !important;
+}
+
+.toolbarButton.pageDown b {
+    background: url(diigo_icons/pdf_icon.png) no-repeat -18px -24px;
+}
+
+.toolbarButton.zoomOut b {
+    background: url(diigo_icons/pdf_icon.png) no-repeat -54px -24px;
+}
+
+.toolbarButton.zoomIn b {
+    background: url(diigo_icons/pdf_icon.png) no-repeat -36px -24px;
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
+    #bottomBar .toolbarButton b {
+        background-size: 168px auto;
+    }
+
+    .toolbarButton.findPrevious b {
+        background: url(diigo_icons/pdf_icon@2x.png) no-repeat 0 -24px;
+        background-size: 168px auto;
+    }
+
+    .toolbarButton.findNext b {
+        background: url(diigo_icons/pdf_icon@2x.png) no-repeat -18px -24px;
+        background-size: 168px auto;
+    }
+
+    .toolbarButton.closeFind b {
+        background: url(diigo_icons/pdf_icon@2x.png) no-repeat -108px -24px;
+        background-size: 168px auto;
+    }
+
+    .toolbarButton.pageUp b {
+        background: url(diigo_icons/pdf_icon@2x.png) no-repeat 0 -24px;
+        margin-right: 10px !important;
+        background-size: 168px auto;
+    }
+
+    .toolbarButton.pageDown b {
+        background: url(diigo_icons/pdf_icon@2x.png) no-repeat -18px -24px;
+        background-size: 168px auto;
+    }
+
+    .toolbarButton.zoomOut b {
+        background: url(diigo_icons/pdf_icon@2x.png) no-repeat -54px -24px;
+        background-size: 168px auto;
+    }
+
+    .toolbarButton.zoomIn b {
+        background: url(diigo_icons/pdf_icon@2x.png) no-repeat -36px -24px;
+        background-size: 168px auto;
+    }
+}
+
+.toolbarButton.presentationMode {
+    background: url(images/toolbarButton-presentationMode.png) no-repeat 50% 50%;
+}
+
+.toolbarButton.download {
+    /*background: url(images/toolbarButton-download.png) no-repeat 50% 50%;*/
+}
+
+#sidebarHeader {
+    padding: 15px 0 0 65px;
+    /*background-color: #f8f8f8;*/
+    height: 48px;
+    width: 184px;
+    /*border-bottom:1px solid #e5e5e5;*/
+}
+
+#sidebarHeader button {
+    cursor: pointer;
+    text-indent: -9999px;
+    margin: 0;
+    width: 40px;
+    height: 30px;
+    border: none;
+    background-color: #f5f5f5;
+    float: left;
+}
+
+#sidebarHeader button b {
+    height: 24px;
+    width: 24px;
+    display: block;
+    margin-left: 8px;
+}
+
+#sidebarHeader button span {
+    display: none;
+
+}
+
+#sidebarHeader button:hover,
+#sidebarHeader button.toggled {
+    background-color: #ebebeb;
+}
+
+#viewDiigoAnnotation b {
+    background: url(diigo_icons/pdf_icon.png) -120px 0 no-repeat;
+}
+
+#viewThumbnail b {
+    background: url(diigo_icons/pdf_icon.png) no-repeat -96px 0;
+}
+
+#viewOutline b {
+    background: url(diigo_icons/pdf_icon.png) no-repeat -144px 0;
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
+    #viewDiigoAnnotation b {
+        background: url(diigo_icons/pdf_icon@2x.png) -120px 0 no-repeat;
+        background-size: 168px auto;
+    }
+
+    #viewThumbnail b {
+        background: url(diigo_icons/pdf_icon@2x.png) no-repeat -96px 0;
+        background-size: 168px auto;
+    }
+
+    #viewOutline b {
+        background: url(diigo_icons/pdf_icon@2x.png) no-repeat -144px 0;
+        background-size: 168px auto;
+    }
+}
+
+
+#toolbarViewer .upgrade-btn {
+    display: inline-block;
+    position: relative;
+    top: 19px;
+    margin-right: 10px;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+#toolbarViewer .upgrade-btn:hover {
+    opacity: 1;
+}
+
+#toolbarViewer .toolbarButton {
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    opacity: 0.8;
+    cursor: pointer;
+}
+#toolbarViewer .toolbarButton:hover {
+   opacity: 1;
+}
+#toolbarViewer .toolbarButton b{
+    content: "";
+    height: 24px;
+    width: 24px;
+    margin: 8px 0 0 8px;
+    background-image: url(images/pdf_icon.png);
+}
+
+#sidebarToggle b{
+    background-position: -96px 0;
+}
+#viewFind b{
+    background-position: -72px 0;
+}
+
+#share b {
+    background-position: -24px 0;
+}
+
+#screenshot b {
+    background-position: -120px 0;
+}
+
+#edit b {
+    background-position: -216px 0;
+}
+
+#save b {
+    background-position: -144px 0;
+}
+
+
+#edit, #download, #share {
+    display: none;
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
+    #toolbarViewer .toolbarButton b{
+        background-image: url(images/pdf_icon@2x.png);
+        background-size: 168px auto;
+    }
+
+}
+
+.secondaryToolbarButton {
+    position: relative;
+    min-width: 100%;
+    white-space: normal;
+    position: relative;
+    padding-left: 26px;
+    text-align: left;
+    height: 30px;
+}
+
+.secondaryToolbarButton.bookmark {
+    padding-left: 27px;
+}
+
+.secondaryToolbarButton > span {
+    color: #444;
+    padding-right: 4px;
+}
+
+.secondaryToolbarButton#open-with-default {
+    background: url(diigo_icons/open.png) no-repeat 0 8px;
+}
+
+.secondaryToolbarButton.firstPage {
+    background: url(diigo_icons/home.png) no-repeat 0 8px;
+}
+
+.secondaryToolbarButton.lastPage {
+    background: url(diigo_icons/end.png) no-repeat 0 8px;
+}
+
+.secondaryToolbarButton.rotateCcw {
+    background: url(images/secondaryToolbarButton-rotateCcw.png) no-repeat 0 8px;
+}
+
+.secondaryToolbarButton.rotatecw {
+    background: url(images/secondarytoolbarbutton-rotatecw.png) no-repeat 0 8px;
+}
+
+.secondaryToolbarButton.handTool {
+    background: url(diigo_icons/hand.png) no-repeat 0 8px;
+}
+
+.secondaryToolbarButton.documentProperties {
+    background: url(diigo_icons/info.png) no-repeat 0 8px;
+}
+
+.verticalToolbarSeparator {
+    display: block;
+    padding: 8px 0;
+    margin: 8px 4px;
+    width: 1px;
+    background-color: hsla(0, 0%, 0%, .5);
+    box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .08);
+}
+
+.verticalToolbarSeparator {
+    margin-left: 2px;
+}
+
+.horizontalToolbarSeparator {
+    display: block;
+    margin: 0 0 4px 0;
+    height: 1px;
+    width: 100%;
+}
+
+.toolbarField {
+    padding: 3px 6px;
+    margin: 4px 0 4px 0;
+    border: 1px solid rgba(90, 90, 90, 0.36);;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 19px;
+    outline-style: none;
+}
+
+.toolbarField[type=checkbox] {
+    display: inline-block;
+    margin: 8px 0px;
+}
+
+.toolbarField.pageNumber {
+    -moz-appearance: textfield; /* hides the spinner in moz */
+    min-width: 16px;
+    text-align: right;
+    width: 30px;
+}
+
+.toolbarField.pageNumber::-webkit-inner-spin-button,
+.toolbarField.pageNumber::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.toolbarLabel {
+    min-width: 16px;
+    padding: 3px 6px 3px 2px;
+    margin: 4px 2px 4px 0;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    cursor: default;
+}
+
+#thumbnailView {
+    bottom: 0;
+    padding: 10px 40px 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.thumbnail {
+    float: left;
+    margin-bottom: 10px;
+}
+
+#thumbnailView > a:last-of-type > .thumbnail {
+    margin-bottom: 10px;
+}
+
+.thumbnail:not([data-loaded]) {
+    border: 1px dashed rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+}
+
+.thumbnailImage {
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0.8;
+    z-index: 99;
+}
+
+.thumbnailSelectionRing {
+    border-radius: 2px;
+    padding: 7px;
+    transition-duration: 150ms;
+}
+
+a:focus > .thumbnail > .thumbnailSelectionRing > .thumbnailImage,
+.thumbnail:hover > .thumbnailSelectionRing > .thumbnailImage {
+    opacity: .9;
+}
+
+a:focus > .thumbnail > .thumbnailSelectionRing,
+.thumbnail:hover > .thumbnailSelectionRing {
+    background-color: hsla(0, 0%, 73%, 0.40);
+    color: hsla(0, 0%, 100%, .9);
+}
+
+.thumbnail.selected > .thumbnailSelectionRing > .thumbnailImage {
+    box-shadow: 0 0 0 1px hsla(0, 0%, 0%, .5);
+    opacity: 1;
+}
+
+.thumbnail.selected > .thumbnailSelectionRing {
+    background-color: hsla(0, 0%, 73%, 0.70);
+    color: hsla(0, 0%, 100%, .9);
+}
+
+#outlineView,
+#attachmentsView {
+    width: 242px;
+    bottom: 0;
+    padding: 4px 4px 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.outlineItem > .outlineItems {
+    margin-left: 20px;
+}
+
+.outlineItem > a,
+.attachmentsItem > a {
+    text-decoration: none;
+    display: inline-block;
+    min-width: 95%;
+    height: auto;
+    margin-bottom: 1px;
+    border-radius: 2px;
+    font-size: 13px;
+    line-height: 15px;
+    -moz-user-select: none;
+    white-space: normal;
+    color: #444;
+}
+
+.outlineItem.selected {
+    background-color: hsla(0, 0%, 100%, .08);
+    background-image: linear-gradient(hsla(0, 0%, 100%, .05), hsla(0, 0%, 100%, 0));
+    background-clip: padding-box;
+    box-shadow: 0 1px 0 hsla(0, 0%, 100%, .05) inset,
+    0 0 1px hsla(0, 0%, 100%, .1) inset,
+    0 0 1px hsla(0, 0%, 0%, .2);
+    color: hsla(0, 0%, 100%, 1);
+}
+
+.noResults {
+    font-size: 12px;
+    color: hsla(0, 0%, 100%, .8);
+    font-style: italic;
+    cursor: default;
+}
+
+.canvasWrapper {
+    overflow: hidden;
+}
+
+canvas {
+    margin: 0;
+    display: block;
+}
+
+.page {
+    direction: ltr;
+    width: 816px;
+    height: 1056px;
+    margin: 1px auto -8px auto;
+    position: relative;
+    overflow: visible;
+    margin: 8px auto 8px auto;
+    position: relative;
+    overflow: visible;
+    box-shadow: 0 0 10px #dddddd;
+}
+
+.annotLink > a:hover {
+    opacity: 0.2;
+    background: #ff0;
+    box-shadow: 0px 2px 10px #ff0;
+}
+
+.loadingIcon {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url('images/loading-icon.gif') center no-repeat;
+}
+
+.textLayer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    color: #000;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+.textLayer > div {
+    color: transparent;
+    position: absolute;
+    white-space: pre;
+    cursor: text;
+    -webkit-transform-origin: 0% 0%;
+    -moz-transform-origin: 0% 0%;
+    -o-transform-origin: 0% 0%;
+    -ms-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+}
+
+.textLayer .highlight {
+    margin: 0;
+    padding: 1px 2px;
+
+    background-color: rgba(180, 0, 170, 0.2);
+    border-radius: 1px;
+}
+
+.textLayer .highlight.begin {
+    border-radius: 4px 0px 0px 4px;
+}
+
+.textLayer .highlight.end {
+    border-radius: 0px 4px 4px 0px;
+}
+
+.textLayer .highlight.middle {
+    border-radius: 0px;
+}
+
+.textLayer .highlight.selected {
+    background-color: rgba(255, 247, 29, 0.5);
+}
+
+/* TODO: file FF bug to support ::-moz-selection:window-inactive
+   so we can override the opaque grey background when the window is inactive;
+   see https://bugzilla.mozilla.org/show_bug.cgi?id=706209 */
+::selection {
+    background: rgba(0, 0, 255, 0.3);
+}
+
+::-moz-selection {
+    background: rgba(0, 0, 255, 0.3);
+}
+
+.annotationHighlight {
+    position: absolute;
+    border: 2px #FFFF99 solid;
+}
+
+.annotText > img {
+    position: absolute;
+    cursor: pointer;
+}
+
+.annotTextContentWrapper {
+    position: absolute;
+    width: 20em;
+}
+
+.annotTextContent {
+    z-index: 200;
+    float: left;
+    max-width: 20em;
+    background-color: #FFFF99;
+    box-shadow: 0px 2px 5px #333;
+    border-radius: 2px;
+    padding: 0.6em;
+    cursor: pointer;
+}
+
+.annotTextContent > h1 {
+    font-size: 1em;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 0.2em;
+}
+
+.annotTextContent > p {
+    padding-top: 0.2em;
+}
+
+.annotLink > a {
+    position: absolute;
+    font-size: 1em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#errorWrapper {
+    background: none repeat scroll 0 0 #FF5555;
+    color: white;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+    padding: 3px;
+    font-size: 0.8em;
+}
+
+.loadingInProgress #errorWrapper {
+    top: 49px;
+}
+
+.loadingInProgress #errorWrapper button {
+    border-radius: 2px;
+    font-size: 14px;
+    outline: none;
+    background: whitesmoke;
+    border: none;
+    color: #555;
+    padding: 2px 6px;
+}
+
+#errorMessageLeft {
+    float: left;
+}
+
+#errorMessageRight {
+    float: right;
+}
+
+#errorMoreInfo {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 3px;
+    margin: 3px;
+    width: 98%;
+}
+
+#overlayContainer {
+    display: table;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0, 0%, 0%, .2);
+    z-index: 10000;
+}
+
+#overlayContainer > * {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#promptContainer {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#promptContainer > * {
+    display: inline-block;
+}
+
+.prompt {
+    display: table;
+    padding: 15px;
+    border-spacing: 4px;
+    color: hsl(0, 0%, 85%);
+    line-height: 14px;
+    text-align: center;
+    background-color: #474747; /* fallback */
+    background-image: url(images/texture.png), linear-gradient(hsla(0, 0%, 32%, .99), hsla(0, 0%, 27%, .95));
+    box-shadow: inset 1px 0 0 hsla(0, 0%, 100%, .08),
+    inset 0 1px 1px hsla(0, 0%, 0%, .15),
+    inset 0 -1px 0 hsla(0, 0%, 100%, .05),
+    0 1px 0 hsla(0, 0%, 0%, .15),
+    0 1px 1px hsla(0, 0%, 0%, .1);
+}
+
+.prompt > .row {
+    display: table-row;
+}
+
+.prompt > .row > * {
+    display: table-cell;
+}
+
+.prompt .toolbarField {
+    margin: 5px 0;
+    width: 200px;
+}
+
+.prompt .toolbarField:hover,
+.prompt .toolbarField:focus {
+    border-color: hsla(0, 0%, 0%, .32) hsla(0, 0%, 0%, .38) hsla(0, 0%, 0%, .42);
+}
+
+#documentPropertiesContainer {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#documentPropertiesContainer > * {
+    display: inline-block;
+    padding: 15px;
+    border-spacing: 4px;
+    max-width: 350px;
+    max-height: 350px;
+    color: hsl(0, 0%, 85%);
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+    cursor: default;
+    background-color: #474747; /* fallback */
+    background-image: url(images/texture.png),
+    linear-gradient(hsla(0, 0%, 32%, .99), hsla(0, 0%, 27%, .95));
+    box-shadow: inset 1px 0 0 hsla(0, 0%, 100%, .08),
+    inset 0 1px 1px hsla(0, 0%, 0%, .15),
+    inset 0 -1px 0 hsla(0, 0%, 100%, .05),
+    0 1px 0 hsla(0, 0%, 0%, .15),
+    0 1px 1px hsla(0, 0%, 0%, .1);
+}
+
+#documentPropertiesContainer .separator {
+    display: block;
+    margin: 4px 0 4px 0;
+    height: 1px;
+    width: 100%;
+    background-color: hsla(0, 0%, 0%, .5);
+    box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .08);
+}
+
+#documentPropertiesContainer .row {
+    display: table-row;
+}
+
+#documentPropertiesContainer .row > * {
+    display: table-cell;
+    min-width: 100px;
+}
+
+#documentPropertiesContainer .row span {
+    width: 125px;
+    word-wrap: break-word;
+}
+
+#documentPropertiesContainer .row p {
+    max-width: 225px;
+    word-wrap: break-word;
+}
+
+#documentPropertiesContainer .buttonRow {
+    margin-top: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.clearBoth {
+    clear: both;
+}
+
+.fileInput {
+    background: white;
+    color: black;
+    margin-top: 5px;
+    visibility: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+#PDFBug {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #666666;
+    position: fixed;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    font-size: 10px;
+    padding: 0;
+    width: 300px;
+}
+
+#PDFBug .controls {
+    background: #EEEEEE;
+    border-bottom: 1px solid #666666;
+    padding: 3px;
+}
+
+#PDFBug .panels {
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    right: 0;
+    top: 27px;
+}
+
+#PDFBug button.active {
+    font-weight: bold;
+}
+
+.debuggerShowText {
+    background: none repeat scroll 0 0 yellow;
+    color: blue;
+    opacity: 0.3;
+}
+
+.debuggerHideText:hover {
+    background: none repeat scroll 0 0 yellow;
+    opacity: 0.3;
+}
+
+#PDFBug .stats {
+    font-family: courier;
+    font-size: 10px;
+    white-space: pre;
+}
+
+#PDFBug .stats .title {
+    font-weight: bold;
+}
+
+#PDFBug table {
+    font-size: 10px;
+}
+
+#viewer.textLayer-visible .textLayer > div,
+#viewer.textLayer-hover .textLayer > div:hover {
+    background-color: white;
+    color: black;
+}
+
+#viewer.textLayer-shadow .textLayer > div {
+    background-color: rgba(255, 255, 255, .6);
+    color: black;
+}
+
+.grab-to-pan-grab {
+    cursor: url("images/grab.cur"), move !important;
+    cursor: -webkit-grab !important;
+    cursor: -moz-grab !important;
+    cursor: grab !important;
+}
+
+.grab-to-pan-grab *:not(input):not(textarea):not(button):not(select):not(:link) {
+    cursor: inherit !important;
+}
+
+.grab-to-pan-grab:active,
+.grab-to-pan-grabbing {
+    cursor: url("images/grabbing.cur"), move !important;
+    cursor: -webkit-grabbing !important;
+    cursor: -moz-grabbing !important;
+    cursor: grabbing !important;
+
+    position: fixed;
+    background: transparent;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 50000; /* should be higher than anything else in PDF.js! */
+}
+
+@page {
+    margin: 0;
+}
+
+#printContainer {
+    display: none;
+}
+
+.visibleLargeView,
+.visibleMediumView,
+.visibleSmallView {
+    display: none;
+}
+
+@keyframes pop-upwards {
+    0% {
+        -webkit-transform: matrix(.97, 0, 0, 1, 0, 12);
+        transform: matrix(.97, 0, 0, 1, 0, 12);
+        opacity: 0
+    }
+
+    20% {
+        -webkit-transform: matrix(.99, 0, 0, 1, 0, 2);
+        transform: matrix(.99, 0, 0, 1, 0, 2);
+        opacity: .7
+    }
+
+    40% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, -1);
+        transform: matrix(1, 0, 0, 1, 0, -1);
+        opacity: 1
+    }
+
+    70% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+        transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1
+    }
+
+    100% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+        transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes pop-downwards {
+    0% {
+        -webkit-transform: matrix(.97, 0, 0, 1, 0, -12);
+        transform: matrix(.97, 0, 0, 1, 0, -12);
+        opacity: 0
+    }
+
+    20% {
+        -webkit-transform: matrix(.99, 0, 0, 1, 0, -2);
+        transform: matrix(.99, 0, 0, 1, 0, -2);
+        opacity: .7
+    }
+
+    40% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, 1);
+        transform: matrix(1, 0, 0, 1, 0, 1);
+        opacity: 1
+    }
+
+    70% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+        transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1
+    }
+
+    100% {
+        -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+        transform: matrix(1, 0, 0, 1, 0, 0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes diigo-dropdown {
+    0% {
+        opacity: 0;
+        margin-top: 8px
+    }
+    60% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes diigo-dropdown {
+    0% {
+        opacity: 0;
+        margin-top: 8px
+    }
+    60% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+div.textLayer {
+    z-index: 100;
+}
+
+.diigoAnnotationLayer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.diigoAnnotationLayer .div_highlight,
+.diigoAnnotationLayer .div_floatnote {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.diigoAnnotationLayer div.h_rect,
+.diigoAnnotationLayer a.h_menu {
+    position: absolute;
+}
+
+.diigoAnnotationLayer div.h_rect {
+    z-index: 999;
+}
+
+.diigoAnnotationLayer a.h_menu {
+    background: url('diigo_icons/menu.png') no-repeat left top;
+    width: 18px;
+    height: 18px;
+    z-index: 101;
+}
+
+.diigoAnnotationLayer a.h_menu_with_note {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    z-index: 102;
+    background-image: url(diigo_icons/note-menu.png);
+    background-repeat: no-repeat;
+}
+
+.diigoAnnotationLayer div.yellow a.h_menu_with_note {
+    background-position: 0 0;
+}
+
+.diigoAnnotationLayer div.blue a.h_menu_with_note {
+    background-position: 0 -46px;
+}
+
+.diigoAnnotationLayer div.green a.h_menu_with_note {
+    background-position: 0 -92px;
+}
+
+.diigoAnnotationLayer div.pink a.h_menu_with_note {
+    background-position: 0 -138px;
+}
+
+div.div_highlight.yellow div.h_rect {
+    background-color: rgba(255, 234, 0, 0.3);
+}
+
+div.div_highlight.blue div.h_rect {
+    background-color: rgba(30, 143, 255, 0.3);
+}
+
+div.div_highlight.green div.h_rect {
+    background-color: rgba(51, 204, 0, 0.3);
+}
+
+div.div_highlight.pink div.h_rect {
+    background-color: rgba(255, 51, 51, 0.3);
+}
+
+div.div_floatnote {
+    background-image: url('diigo_icons/float_icon.png');
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+    z-index: 106;
+}
+
+div.div_floatnote.yellow {
+    background-position: 0 0;
+}
+
+div.div_floatnote.blue {
+    background-position: 0 -26px;
+}
+
+div.div_floatnote.green {
+    background-position: 0 -52px;
+}
+
+div.div_floatnote.pink {
+    background-position: 0 -78px;
+}
+
+#diigolet-annMenu {
+    display: none;
+    z-index: 9999;
+    height: 40px;
+    width: 200px;
+    background-color: #2a313a;
+    padding: 1px;
+    position: fixed;
+    -webkit-user-select: none;
+    -webkit-animation: pop-upwards 180ms forwards linear;
+    animation: pop-upwards 180ms forwards linear;
+    box-sizing: content-box !important;
+    border-radius: 2px;
+    transition: top 75ms ease-out, left 75ms ease-out;
+}
+
+#diigolet-annMenu #diigolet-annMenu-currentColor b {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin: 12px auto 0 auto;
+}
+
+#diigolet-annMenu #diigolet-annMenu-currentColor.yellow > b {
+    background-color: #fc6;
+}
+
+#diigolet-annMenu #diigolet-annMenu-currentColor.blue > b {
+    background-color: #7ccce5;
+}
+
+#diigolet-annMenu #diigolet-annMenu-currentColor.green > b {
+    background-color: #b4db66;
+}
+
+#diigolet-annMenu #diigolet-annMenu-currentColor.pink > b {
+    background-color: #f98baf;
+}
+
+#diigolet-annMenu-arrow-pdf {
+    z-index: 107;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    width: 0;
+    height: 0;
+}
+
+#diigolet-annMenu .diigolet-annMenu-item {
+    height: 40px;
+    width: 40px;
+    float: left;
+    position: relative;
+    cursor: pointer;
+    -webkit-transition: background-color 200ms ease;
+    box-sizing: content-box !important;
+    background-image: url('diigo_icons/new_csm.png');
+    opacity: 0.8;
+}
+
+#diigolet-annMenu #diigolet-annMenu-color {
+    background-image: none;
+    opacity: 1;
+}
+
+#diigolet-annMenu #diigolet-annMenu-add {
+    background-position: -40px 0;
+}
+
+#diigolet-annMenu #diigolet-annMenu-share {
+    background-position: -120px 0;
+}
+
+#diigolet-annMenu #diigolet-annMenu-copy {
+    background-position: 0 0;
+}
+
+#diigolet-annMenu #diigolet-annMenu-del {
+    background-position: -160px 0;
+}
+
+#diigolet-annMenu .diigolet-annMenu-item > b {
+    display: block;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 0;
+}
+
+#diigolet-annMenu .diigolet-annMenu-item * {
+    box-sizing: content-box !important;
+}
+
+#diigolet-annMenu-colorPicker-pdf {
+    position: absolute;
+    top: 43px;
+    left: 4px;
+    width: 32px;
+    background-color: #2a313a;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+    line-height: 13px;
+    overflow: hidden;
+    visibility: visible !important;
+    z-index: -1;
+    padding: 7px 0;
+    border-radius: 2px;
+    -webkit-animation: pop-downwards 180ms forwards linear;
+    animation: pop-downwards 180ms forwards linear;
+}
+
+.ann-colorItem#diigolet-context-yellow {
+    background-color: #fc6;
+}
+
+.ann-colorItem#diigolet-context-blue {
+    background-color: #7ccce5;
+}
+
+.ann-colorItem#diigolet-context-green {
+    background-color: #b4db66;
+}
+
+.ann-colorItem#diigolet-context-pink {
+    background-color: #f98baf;
+}
+
+#diigolet-annMenu-colorPicker-pdf .ann-colorItem.colorchecked {
+    border: 2px solid black;
+}
+
+#diigolet-annMenu-colorPicker-pdf .ann-colorItem {
+    display: block;
+    cursor: pointer;
+    padding: 0;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    margin: 0 auto 4px auto;
+}
+
+#diigolet-annMenu .diigolet-annMenu-item:hover {
+    opacity: 1;
+}
+
+.diigo-note {
+    display: none;
+    position: absolute;
+    z-index: 1001;
+    width: 300px;
+}
+
+.diigo-note-header {
+    height: 32px;
+    background: #f1c40f;
+    line-height: 32px;
+    font-size: 14px;
+    color: #FFF;
+    padding: 0 7.5px;
+    cursor: move;
+    -webkit-transition: background-color 200ms ease;
+    transition: background-color 200ms ease;
+}
+
+.diigo-note.yellow .diigo-note-header {
+    background: #f1c40f;
+}
+
+.diigo-note.blue .diigo-note-header {
+    background: #5cc7ff;
+}
+
+.diigo-note.green .diigo-note-header {
+    background: #47bf87;
+}
+
+.diigo-note.pink .diigo-note-header {
+    background: #fe97bc;
+}
+
+.diigo-note-content {
+    background-color: #fcfbf7;
+    border-radius: 0 0 2px 2px;
+    border-width: 0 1px 1px 1px;
+    border-color: rgba(0, 0, 0, .08);
+    border-style: solid;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+    position: relative;
+}
+
+.diigo-note-content textarea {
+    margin: 3px 6px 0 6px;
+    min-height: 100px;
+    width: 282px;
+    background-color: #fcfbf7;
+    border: none;
+    outline: none;
+    overflow-y: visible;
+    resize: none !important;
+    font-size: 13px;
+    line-height: 18px;
+    word-wrap: break-word;
+    white-space: normal !important;
+    padding: 2px !important;
+    -webkit-transition: border linear .2s, box-shadow linear .2s;
+    font-family: "Segoe UI", Helvetica, Arial, "Droid Sans", sans-serif;
+}
+
+.diigo-note-footer {
+    height: 30px;
+}
+
+.diigo-note-footer a {
+    color: #BBB;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+.diigo-note-content .diigo-note-delete {
+    float: left;
+    background: url("diigo_icons/del.png") no-repeat 50% top;
+    width: 20px;
+    height: 12px;
+    margin: 10px 0 0 6px;
+}
+
+.new .diigo-note-color {
+    display: none;
+}
+
+.new .diigo-note-content .diigo-note-delete {
+    display: none;
+}
+
+.diigo-note-content .diigo-note-cancel-edit {
+    float: right;
+}
+
+a.diigo-note-cancel-edit:hover {
+    text-decoration: underline;
+}
+
+.diigo-note-content a.diigo-note-save {
+    height: 20px;
+    width: 50px;
+    border-radius: 2px;
+    border: 1px solid #85a0a6;
+    color: #85a0a6;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+    margin: 4px 4px 4px 10px;
+    float: right;
+}
+
+.diigo-note-content a.diigo-note-save:active {
+    background: #85a0a6;
+    color: #fff;
+}
+
+/** The print feature in pdf.js is not stable. It eats to much cpu and may lead to browser unresponsible.**/
+#print {
+    display: none;
+}
+
+/**TODO: remove this test css
+**/
+body.add_highlight.yellow div.textLayer div {
+    cursor: url('diigo_icons/yelloPen.cur') 3 15, text !important;
+}
+
+body.add_highlight.blue div.textLayer div {
+    cursor: url('diigo_icons/bluePen.cur') 3 15, text !important;
+}
+
+body.add_highlight.green div.textLayer div {
+    cursor: url('diigo_icons/greenPen.cur') 3 15, text !important;
+}
+
+body.add_highlight.pink div.textLayer div {
+    cursor: url('diigo_icons/pinkPen.cur') 3 15, text !important;
+}
+
+body.add_note.yellow div.textLayer,
+body.add_note.yellow div.textLayer div {
+    cursor: url('diigo_icons/stickynote-yellow.png') 0 0, pointer !important;
+}
+
+body.add_note.blue div.textLayer,
+body.add_note.blue div.textLayer div {
+    cursor: url('diigo_icons/stickynote-blue.png') 0 0, pointer !important;
+}
+
+body.add_note.green div.textLayer,
+body.add_note.green div.textLayer div {
+    cursor: url('diigo_icons/stickynote-green.png') 0 0, pointer !important;
+}
+
+body.add_note.pink div.textLayer,
+body.add_note.pink div.textLayer div {
+    cursor: url('diigo_icons/stickynote-pink.png') 0 0, pointer !important;
+}
+
+div.highlight_icon {
+    position: absolute;
+    width: 22px;
+    border: 1px solid #ccc;
+    height: 20px;
+    z-index: 200;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+div.highlight_icon.yellow {
+    background-image: url('diigo_icons/highlight-yellow.png');
+}
+
+div.highlight_icon.blue {
+    background-image: url('diigo_icons/highlight-blue.png');
+}
+
+div.highlight_icon.green {
+    background-image: url('diigo_icons/highlight-green.png');
+}
+
+div.highlight_icon.pink {
+    background-image: url('diigo_icons/highlight-pink.png');
+}
+
+button#pageRotateCw,
+button#pageRotateCcw {
+    display: none;
+}
+
+#toolbarSidebar {
+    float: left;
+}
+
+button#viewAttachments {
+    display: none;
+}
+
+button#openFile {
+    display: none;
+}
+
+div.go-to-page {
+    float: left;
+}
+
+div.go-to-page #pageNumber {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    height: 18px;
+    text-align: right;
+    width: 32px;
+    padding: 1px 5px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    color: #333;
+    font-size: 12px;
+    line-height: 14px;
+    outline-style: none;
+    position: relative;
+    vertical-align: middle;
+    margin: 2px 0 2px 3px;
+}
+
+div.go-to-page #numPages {
+    margin-right: 0;
+    padding-right: 1px;
+}
+
+#diigoTools button:hover {
+    border-radius: 1px;
+    background-color: #e0ecff;
+}
+
+#diigoTools #add_highlight {
+    margin: 0;
+    padding-right: 0;
+    width: 30px;
+    background-image: url(diigo_icons/highlight-yellow.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#diigoTools #add_highlight.toggled,
+#diigoTools #add_highlight:active,
+#diigoTools #add_highlight.toggled:hover,
+#diigoTools #add_note.toggled,
+#diigoTools #add_note:active,
+#diigoTools #add_note.toggled:hover {
+    background-color: #cfe1ff;
+}
+
+#diigoTools #add_highlight.yellow {
+    background-image: url(diigo_icons/highlight-yellow.png);
+}
+
+#diigoTools #add_highlight.blue {
+    background-image: url(diigo_icons/highlight-blue.png);
+}
+
+#diigoTools #add_highlight.green {
+    background-image: url(diigo_icons/highlight-green.png);
+}
+
+#diigoTools #add_highlight.pink {
+    background-image: url(diigo_icons/highlight-pink.png);
+}
+
+#diigoTools #add_note {
+    background-image: url(diigo_icons/stickynote-yellow.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#diigoTools #add_note.yellow {
+    background-image: url(diigo_icons/stickynote-yellow.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#diigoTools #add_note.blue {
+    background-image: url(diigo_icons/stickynote-blue.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#diigoTools #add_note.green {
+    background-image: url(diigo_icons/stickynote-green.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#diigoTools #add_note.pink {
+    background-image: url(diigo_icons/stickynote-pink.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#diigoTools #selectPen {
+    background-image: url(diigo_icons/dropdown.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin-left: 0;
+    width: 10px;
+}
+
+#diigoTools #screenshot {
+    background-image: url(diigo_icons/screenshot.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+ul#penlist {
+    position: absolute;
+    left: 8px;
+    top: 30px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .35);
+    border-radius: 2px;
+    padding: 5px 0;
+    list-style: none;
+    font-size: 11px;
+    -webkit-animation: diigo-dropdown .1s ease-in 1;
+    animation: diigo-dropdown .1s ease-in 1;
+}
+
+#penlist li {
+    font-weight: normal;
+    display: block;
+    padding-right: 5px !important;
+    padding-left: 10px !important;
+    text-decoration: none !important;
+    line-height: 26px;
+    height: 26px;
+    color: #434343;
+    min-width: 60px;
+    width: 71px;
+    background: white;
+    border: none !important;
+    -webkit-transition: background-color 200ms ease;
+    animation: diigo-dropdown .1s ease-in 1;
+}
+
+#penlist li:hover {
+    background-color: #eaeaea;
+}
+
+#penlist li span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 7px;
+    margin-right: 5px;
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+
+#penlist li span b {
+    width: 4px;
+    height: 4px;
+    background: #606060;
+    margin-top: 4px;
+    margin-left: 4px;
+    border-radius: 2px;
+}
+
+#penlist li.selected span b {
+    display: block;
+}
+
+#penlist li.yellow span {
+    background: #fde200;
+    border: 1px solid #b0a224;
+}
+
+#penlist li.blue span {
+    background: #7db3f9;
+    border: 1px solid #63799a;
+}
+
+#penlist li.green span {
+    background: #86ca25;
+    border: 1px solid #718b49;
+}
+
+#penlist li.pink span {
+    background: #ff9b9a;
+    border: 1px solid #ae657a;
+}
+
+span.diigo-note-color {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+div.diigo-note-currentColor {
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    border: 1px solid #fafafa;
+    cursor: pointer;
+}
+
+.diigo-note-colorPicker {
+    height: 62px;
+    width: 13px;
+    padding: 3px 3px 3px 2px;
+    background-color: #fff;
+    position: absolute;
+    top: 122%;
+    left: -1px;
+    -webkit-animation: diigo-dropdown .15s ease-in 1;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    z-index: 107;
+    cursor: pointer;
+}
+
+.diigo-note .dlg-colorItem {
+    height: 12px;
+    width: 12px;
+    border-width: 1px;
+    border-style: solid;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.diigo-note .diigo-note-yellow {
+    background-color: #fc6;
+}
+
+.diigo-note .diigo-note-yellow:hover {
+    border-color: #e9a110;
+}
+
+.diigo-note .diigo-note-blue {
+    background-color: #7ccce5;
+}
+
+.diigo-note .diigo-note-blue:hover {
+    border-color: #33a5c9;
+}
+
+.diigo-note .diigo-note-green {
+    background-color: #b4db66;
+}
+
+.diigo-note .diigo-note-green:hover {
+    border-color: #9ac83b;
+}
+
+.diigo-note .diigo-note-pink {
+    background-color: #f98baf;
+}
+
+.diigo-note .diigo-note-pink:hover {
+    border-color: #da376c;
+}
+
+.outlineItem > a {
+    overflow: hidden;
+    font-family: arial, helvetica, sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    width: 220px;
+    height: 20px;
+    padding: 4px 0 4px 8px;
+    margin-bottom: 1px;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 14px;
+    -moz-user-select: none;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #444;
+    text-overflow: ellipsis;
+}
+
+.outlineItem a:hover {
+    text-decoration: underline;
+}
+
+#annotationView {
+    bottom: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 0 !important;
+}
+
+#annotationView div.page-item {
+    width: 231px;
+    margin: 0 10px;
+    border-bottom: 2px solid #f6f6f6;
+}
+
+#annotationView h3 {
+    color: #3b3b3b;
+    /*border-bottom: 1px solid #eaeaea;*/
+    /*border-top: 1px solid #eaeaea;*/
+    /*background-color: #f9f9f9;*/
+    height: 28px;
+    line-height: 28px;
+    width: auto;
+    padding-left: 6px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.page-item-sep {
+    height: 2px;
+    background: #f6f6f6;
+    width: auto;
+}
+
+#annotationView a {
+    white-space: nowrap;
+    width: 212px;
+    height: 32px;
+    padding-left: 19px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #676767;
+    text-overflow: ellipsis;
+    background-image: url('diigo_icons/sidebar.png');
+    background-repeat: no-repeat;
+    /*font-family:sans;*/
+}
+
+#annotationView a.highlight-link.blue {
+    background-position: 2px -30px;
+}
+
+#annotationView a.floatnote-link.blue {
+    background-position: 3px -150px;
+    padding-left: 23px;
+}
+
+#annotationView a.highlight-link.yellow {
+    background-position: 2px 0;
+}
+
+#annotationView a.floatnote-link.yellow {
+    background-position: 3px -120px;
+    padding-left: 23px;
+}
+
+#annotationView a.highlight-link.green {
+    background-position: 2px -60px;
+}
+
+#annotationView a.floatnote-link.green {
+    background-position: 3px -180px;
+    padding-left: 23px;
+}
+
+#annotationView a.highlight-link.pink {
+    background-position: 2px -90px;
+}
+
+#annotationView a.floatnote-link.pink {
+    background-position: 3px -210px;
+    padding-left: 23px;
+}
+
+#annotationView a.stickynote-link {
+    height: 24px;
+    line-height: 22px;
+    padding-left: 35px;
+    font-size: 12px;
+    width: 196px;
+}
+
+#annotationView a.stickynote-link.blue {
+    background-position: 17px -274px;
+}
+
+#annotationView a.stickynote-link.yellow {
+    background-position: 17px -244px;
+}
+
+#annotationView a.stickynote-link.green {
+    background-position: 17px -303px;
+}
+
+#annotationView a.stickynote-link.pink {
+    background-position: 17px -336px;
+}
+
+@-webkit-keyframes fadeinScale {
+    0% {
+        -webkit-transform: scale(0.7);
+        opacity: 0
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 1
+    }
+}
+
+#edit_window, #share-window {
+    z-index: 10000;
+    top: 50px;
+    right: 50px;
+    width: 500px;
+    font-size: 12px;
+    position: absolute;
+    border-radius: 0;
+    text-align: left;
+    -moz-box-shadow: 0 3px 7px #bbb;
+    -webkit-box-shadow: 0 3px 7px #bbb;
+    border: 1px solid rgba(0, 0, 0, .25);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+    -webkit-user-select: none;
+    background-clip: content-box;
+    -webkit-animation: fadeinScale 200ms ease;
+}
+
+#share-window {
+    top: 0px;
+    right: 0px;
+}
+
+#share-window .edit_header {
+    border-bottom: 1px solid #777;
+}
+
+#edit_window p {
+    line-height: 1.5;
+}
+
+#edit_inner {
+    background-color: #fff;
+}
+
+div.edit_header {
+    background: #f5f5f5;
+    height: 40px;
+}
+
+div.edit_header a#wCloseLink,
+a#shareCloseLink {
+    float: right;
+    margin-right: 15px;
+    margin-top: 8px;
+    background: url('diigo_icons/popWindowClose.png') center center no-repeat;
+    width: 20px;
+    height: 20px;
+    text-indent: -9999px;
+}
+
+h2.window_title {
+    margin: 0;
+    padding: 0;
+    padding-left: 15px;
+    line-height: 40px;
+    color: #333;
+    text-indent: 7px;
+    font-size: 15px;
+    text-shadow: #fff 0 1px 0;
+    font-weight: 400;
+    border-bottom: 1px solid #ddd;
+    cursor: move;
+}
+
+#wContent {
+    padding: 10px 24px;
+
+}
+
+#wContent inputp,
+#wContent textarea {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+table.editBTable {
+    width: 100%;
+    color: #888;
+}
+
+.editBTable td {
+    padding: 7px 0;
+}
+
+.inputTxt2 {
+    border-color: #d5d5d5;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 13px;
+}
+
+#bTxtTags, #bTxtTitle, #bTxtUrl {
+    height: 29px;
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 29px;
+}
+
+#bTxtDesc {
+    padding: 5px 10px;
+}
+
+#addToListHolder {
+    width: 200px;
+    overflow: hidden;
+    background: url("diigo_icons/select-arrow.png") no-repeat right center;
+}
+
+select#addToListSelector-pdf {
+    line-height: 14px;
+    width: 100%;
+    display: block;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    border: 1px solid #d7d7d7;
+    color: #333;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    font-size: 12px;
+    padding-right: 22px;
+    border-radius: 0;
+    font-weight: normal;
+    box-sizing: border-box !important;
+    padding: 4px 0;
+}
+
+button.submit {
+    display: inline-block;
+    width: 100px;
+    font-size: 14px;
+    height: 34px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    outline: 0;
+    border-radius: 2px;
+}
+
+.btn.blue {
+    border: 1px solid #1895fb;
+    background: #46a3ee;
+    background: linear-gradient(#46a3ee, #2894eb);
+    color: #fff;
+}
+
+#saveButtonHolder {
+    margin-bottom: 5px;
+    float: right;
+    margin-top: -35px;
+
+}
+
+#cancel_save {
+    margin-right: 8px;
+    color: #999;
+    text-decoration: none;
+}
+
+#cancel_save:hover {
+    text-decoration: underline;
+}
+
+.toolbarButton#download_ann {
+    /*background: url(diigo_icons/download_ann.png) no-repeat 50% 50%;*/
+}
+
+.toolbarButton#save {
+    /*background: url(diigo_icons/bookmark1.png) no-repeat 50% 50%;*/
+}
+
+.toolbarButton#share {
+    background: url(diigo_icons/share.png) no-repeat 50% 50%;
+}
+
+.toolbarButton#save.saved {
+    /*background: url(diigo_icons/bookmark2.png) no-repeat 50% 50%;*/
+}
+
+#download {
+    /*background: url(diigo_icons/download.png) no-repeat 50% 50%;*/
+}
+
+#outerContainer.sidebarOpen #viewerContainer.fullscreen {
+    left: 0;
+}
+
+#popups {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    z-index: 10000;
+}
+
+#popup-message {
+    min-width: 300px;
+    max-width: 500px;
+    padding: 12px 20px;
+    color: #886719;
+    line-height: 20px;
+    background: #f8f3d6;
+    border: 2px solid #ddd49c;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+#popup-message a {
+    color: rgb(2, 156, 14);
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Times new roman", serif;
+}
+
+#upload-status {
+    padding: 15px 20px 15px 15px;
+    background: white;
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, .3), 0 0 6px 2px rgba(0, 0, 0, .15);
+    position: absolute;
+    right: 14px;
+    top: 70px;
+}
+
+#upload-status p{
+    margin-bottom: 10px;
+}
+
+#upload-progress {
+    width: 100%;
+    height: 10px;
+    background: #dfe5ea;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    background: rgb(63, 152, 229);
+    height: 100%;
+    width: 0%;
+}
+
+#share_window_content {
+    background: white;
+    padding: 10px;
+}
+
+#share_window_content span {
+    height: 30px;
+    display: inline-block;
+    line-height: 30px;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+#share_window_content #share-link {
+    width: 380px;
+    line-height: 16px;
+    height: 20px;
+    padding: 0 2px;
+    font-size: 12px;
+    color: #444;
+}
+
+body.shared #diigoTools,
+body.shared #save,
+body.shared #download_ann,
+body.shared #share,
+body.shared .diigo-note-footer,
+body.shared .diigo-note-color,
+body.shared .h_menu {
+    display: none;
+}
+
+body.shared #viewerContainer {
+    bottom: 36px;
+}
+
+body.shared #bottomBar {
+    bottom: 0;
+}
+
+body.simple div.toolbar,
+body.simple div#bottomBar {
+    display: none;
+}
+
+body.simple #viewerContainer {
+    top: 0;
+    bottom: 0;
+}
+
+#share-chooser {
+    display: inline-block;
+    padding-left: 6px;
+}
+
+#share-chooser a {
+    padding: 0 4px 0 18px;
+    background-image: url('diigo_icons/share-chooser.png');
+    background-repeat: no-repeat;
+    color: #3C3C3C;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 16px;
+}
+
+#share-chooser a:hover {
+    text-decoration: underline;
+}
+
+#share-chooser a.s_twitter {
+    background-position: 0 -1px;
+}
+
+#share-chooser a.s_facebook {
+    background-position: 0 -17px;
+}
+
+#share-chooser a.s_email {
+    background-position: 0 -33px;
+}
+
+#bottomBar {
+    box-shadow: 0 0 4px 1px #cfcfcf;
+    z-index: 999;
+    position: fixed;
+    bottom: 0px;
+    height: 40px;
+    background-color: white;
+    width: 100%;
+}
+
+#bottomBar button {
+    height: 25px;
+}
+
+span#scaleSelectContainer {
+    float: left;
+    padding: 0 0 0 5px;
+    margin: 6px 10px 0 10px;
+    background: url('diigo_icons/zoom.png') no-repeat scroll 0px -1px #FFF;
+    width: 146px;
+    height: 23px;
+    overflow: hidden;
+}
+
+#scaleSelect {
+    -moz-appearance: none;
+    color: #333;
+    margin: 2px 0px 0px;
+    padding: 0px;
+    border: medium none;
+    background: none repeat scroll 0% 0% transparent;
+    outline: medium none;
+    font-size: 13px;
+    overflow: hidden;
+    min-width: 167px;
+    line-height: 16px;
+    height: 20px;
+}
+
+#bottomBar .left {
+    float: left;
+    margin-left: 20%;
+}
+
+#bottomBar .right {
+    float: right;
+    margin-right: 20%;
+}
+
+#bottomBar .right button {
+    float: left;
+}
+
+@media all and (max-width: 1080px) {
+    span#scaleSelectContainer {
+        float: left;
+        margin: 5px 0 0 0;
+        background: whitesmoke;
+        width: 65px;
+        height: 24px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+    }
+
+    #diigoTools {
+        position: absolute;
+        top: 0;
+        margin-left: 200px;
+    }
+
+    #toolbarViewer {
+        padding-left: 225px;
+    }
+
+    .toolbarField.pageNumber {
+        width: 20px;
+    }
+}
+
+@media all and (min-width: 1080px) {
+    #diigoTools {
+        position: absolute;
+        top: 0;
+        left: 45%;
+    }
+}
+
+@media all and (max-width: 900px) {
+    .sidebarOpen .hiddenLargeView {
+        display: none;
+    }
+
+    .sidebarOpen .visibleLargeView {
+        display: inherit;
+    }
+}
+
+@media all and (max-width: 860px) {
+    .sidebarOpen .hiddenMediumView {
+        display: none;
+    }
+
+    .sidebarOpen .visibleMediumView {
+        display: inherit;
+    }
+}
+
+@media all and (max-width: 770px) {
+    #sidebarContent {
+        top: 32px;
+        z-index: 100;
+    }
+
+    .loadingInProgress #sidebarContent {
+        top: 39px;
+    }
+
+    #sidebarContent {
+        top: 32px;
+        background-color: hsla(0, 0%, 0%, .7);
+    }
+
+    #outerContainer.sidebarOpen > #mainContainer {
+        left: 0px;
+    }
+
+    #outerContainer .hiddenLargeView,
+    #outerContainer .hiddenMediumView {
+        display: inherit;
+    }
+
+    #outerContainer .visibleLargeView,
+    #outerContainer .visibleMediumView {
+        display: none;
+    }
+}
+
+@media all and (max-width: 700px) {
+    #outerContainer .hiddenLargeView {
+        display: none;
+    }
+
+    #outerContainer .visibleLargeView {
+        display: inherit;
+    }
+}
+
+@media all and (max-width: 660px) {
+    #outerContainer .hiddenMediumView {
+        display: none;
+    }
+
+    #outerContainer .visibleMediumView {
+        display: inherit;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .hiddenSmallView {
+        display: none;
+    }
+
+    .visibleSmallView {
+        display: inherit;
+    }
+
+    .toolbarButtonSpacer {
+        width: 0;
+    }
+}
+
+@media all and (max-width: 510px) {
+    #scaleSelectContainer, #pageNumberLabel {
+        display: none;
+    }
+}
+
+.diigolet-csm {
+    width: 120px;
+    position: absolute;
+    z-index: 100000;
+    height: 40px !important;
+    background: #2a313a;
+    border-radius: 2px;
+    display: none;
+    transition: top 75ms ease-out, left 75ms ease-out;
+    -webkit-animation: pop-upwards 180ms forwards linear;
+    animation: pop-upwards 180ms forwards linear;
+}
+
+.diigolet-csm > div {
+    float: left;
+    position: relative;
+}
+
+.diigolet-csm .diigolet-csm-highlight {
+    opacity: 1;
+}
+
+.diigolet-csm .csm-action {
+    display: block;
+    height: 40px !important;
+    width: 40px !important;
+    border-radius: 1px 0px 0px 1px;
+    z-index: 100000;
+    float: left;
+    margin: 0px !important;
+    opacity: 0.8;
+}
+
+.diigolet-csm-highlightAndComment-wrapper .diigolet-csm-color {
+    left: 0px;
+}
+
+.diigolet-csm .diigolet-csm-color {
+    position: absolute;
+    top: 42px;
+    left: 4px;
+    width: 32px;
+    /* padding: 1px 1px 1px 1px; */
+    background-color: #2a313a;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+    line-height: 13px;
+    overflow: hidden;
+    visibility: visible !important;
+    z-index: -1;
+    padding: 7px 0;
+    border-radius: 2px;
+    display: none;
+    -webkit-animation: pop-downwards 180ms forwards linear;
+    animation: pop-downwards 180ms forwards linear;
+}
+
+.diigolet-csm .diigolet-csm-highlightAndComment {
+    background-position: -40px 0;
+    background-image: url(diigo_icons/new_csm.png);
+}
+
+.diigolet-csm a:link {
+    padding: 0px !important;
+}
+
+.diigolet-csm a:hover {
+    opacity: 1 !important;
+}
+
+.diigolet-csm .diigolet-csm-copy {
+    outline: none;
+    background-position: 0 0;
+    background-image: url(diigo_icons/new_csm.png);
+}
+
+.diigolet-csm .diigolet-csm-highlight > b {
+    height: 16px;
+    width: 16px;
+    display: block;
+    background: #fc6;
+    margin: 12px auto 0 auto;
+    border-radius: 50%;
+}
+
+.diigolet-csm .diigolet-csm-coloritem.blue {
+    background-color: #7ccce5;
+    border: 1px solid #7ccce5;
+}
+
+.diigolet-csm .diigolet-csm-coloritem.green {
+    background-color: #b4db66;
+    border: 1px solid #b4db66;
+}
+
+.diigolet-csm .diigolet-csm-coloritem.pink {
+    background-color: #f98baf;
+    border: 1px solid #f98baf;
+}
+
+.diigolet-csm .diigolet-csm-coloritem {
+    display: block;
+    cursor: pointer;
+    padding: 0px;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    margin: 0 auto 4px auto;
+}
+
+.diigolet-csm::after {
+    content: '';
+    display: block;
+    height: 10px;
+    width: 10px;
+    background: #2a313a;
+    transform: rotate(-135deg);
+    position: absolute;
+    left: 55px;
+    bottom: -3px;
+}
+
+#findbar {
+    z-index: 9999;
+    bottom: 0;
+    position: absolute;
+    top: 10px;
+    /*width: 615px;*/
+    background: white;
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, .3), 0 0 6px 2px rgba(0, 0, 0, .15);
+    border-right: 1px solid #ddd;
+    padding: 0px 8px;
+    height: 42px;
+    left: 20px;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+    -webkit-transition-duration: 200ms;
+    -webkit-transition-timing-function: ease;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+    -webkit-transition-property: all;
+    transition-property: all;
+}
+
+#findbar.show {
+    transform: translate3d(0, 56px, 0);
+    visibility: visible;
+    opacity: 1;
+}
+
+#findbar input {
+    vertical-align: middle;
+}
+
+#findbar #findInput {
+    font-size: 15px;
+    width: 185px;
+    line-height: 16px;
+    padding: 6px;
+    border-radius: 1px;
+    border: none;
+    color: #666;
+    position: relative;
+    top: -1px;
+}
+
+#findbar .findOption {
+    display: inline-block;
+    line-height: 42px;
+    margin-left: 13px;
+}
+
+#findbar .toolbarButton:hover {
+    background: #eaeaea !important;
+}
+
+#findbar .toolbarButton:active {
+    /*background: #CECBCB !important;*/
+}
+
+#findbar .findOption input[type=checkbox] {
+    display: none;
+}
+
+#findbar .findOption input[type=checkbox]:checked ~ b {
+    background-position: -90px -24px;
+}
+
+#findbar .findOption label b {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    background: url("diigo_icons/pdf_icon.png") -72px -24px no-repeat;
+    position: relative;
+    top: 4px;
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
+    #findbar .findOption label b {
+        background: url("diigo_icons/pdf_icon@2x.png") -72px -24px no-repeat;
+        background-size: 168px auto;
+    }
+}
+
+#findbar #findNext,
+#findbar #findPrevious,
+#findbar #closeFind {
+    width: 28px;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+#findbar #closeFind {
+    margin-left: 4px;
+}
+
+#findbar label {
+    font-size: 13px;
+    color: #555;
+    margin-right: 15px;
+}
+
+#copied {
+    font-size: 14px;
+    color: white;
+    position: fixed;
+    right: 20px;
+    top: 66px;
+    padding: 20px;
+    background: rgba(0,0,0,.7);
+    color: white;
+    margin: 20px;
+    font-weight: bold;
+    display: none;
+}
+
+/*****************preLoader************************/
+.loading-area {
+    display: none;
+}
+
+.la-pacman {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    margin: auto;
+}
+
+.la-pacman > div {
+    position: relative;
+    box-sizing: content-box;
+    color: #4E8DF7;
+    background: #4E8DF7;
+    border-color: #4E8DF7;
+    border-style: solid;
+    border-width: 0;
+}
+
+.la-pacman:after {
+    display: table;
+    line-height: 0;
+    clear: both;
+    content: "";
+}
+
+.la-pacman {
+    width: 100px;
+    height: 100px;
+}
+
+.la-pacman > div:nth-child(3) {
+    animation: pacman-balls 2s .06s infinite linear;
+}
+
+.la-pacman > div:nth-child(4) {
+    animation: pacman-balls 2s .56s infinite linear;
+}
+
+.la-pacman > div:nth-child(5) {
+    animation: pacman-balls 2s 1.06s infinite linear;
+}
+
+.la-pacman > div:nth-child(6) {
+    animation: pacman-balls 2s 1.56s infinite linear;
+}
+
+.la-pacman > div:first-of-type {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-style: solid;
+    border-width: 48px;
+    border-right-color: transparent;
+    border-radius: 100%;
+    animation: pacman-rotate-half-up .5s 0s infinite;
+}
+
+.la-pacman > div:nth-child(2) {
+    width: 0;
+    height: 0;
+    margin-top: -96px;
+    background: transparent;
+    border-style: solid;
+    border-width: 48px;
+    border-right-color: transparent;
+    border-radius: 100%;
+    animation: pacman-rotate-half-down .5s 0s infinite;
+}
+
+.la-pacman > div:nth-child(3), .la-pacman > div:nth-child(4), .la-pacman > div:nth-child(5), .la-pacman > div:nth-child(6) {
+    position: absolute;
+    top: 50%;
+    left: 200%;
+    width: 24px;
+    height: 24px;
+    float: left;
+    border-radius: 100%;
+    opacity: 0;
+}
+
+/*
+ * Animations
+ */
+
+@keyframes pacman-rotate-half-up {
+    0% {
+        transform: rotate(270deg);
+    }
+    50% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+@keyframes pacman-rotate-half-down {
+    0% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes pacman-balls {
+    0% {
+        left: 200%;
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+    5% {
+        opacity: .5;
+    }
+    66% {
+        opacity: 1;
+    }
+    67% {
+        opacity: 0;
+    }
+    100% {
+        left: 0;
+        transform: translateY(-50%);
+    }
+}
