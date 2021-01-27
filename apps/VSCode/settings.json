@@ -18,5 +18,7 @@
   "git.autofetch": true,
   "ponicode.watchMode": false,
   "pasteImage.path": "${currentFileDir}/${currentFileNameWithoutExt}.assets",
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }
