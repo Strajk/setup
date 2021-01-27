@@ -124,7 +124,9 @@ cask "hyper"
 
 ```bash
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-rm -f "$HOME/.zshrc" && ln -s "$HOME/Code/setup/home/.zshrc" $HOME && source $HOME/.zshrc 
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+rm -f "$HOME/.zshrc" && ln -s "$HOME/Code/setup/home/.zshrc" $HOME && source $HOME/.zshrc
 ```
 
 ## Utilities

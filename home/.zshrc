@@ -21,8 +21,7 @@ export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
 
 # Plugins
 # ---
-### Cowardly disabled all plugins to improve startup time
-# plugins=(git git-flow github brew osx ruby rbenv git-extras)
+plugins=(git github brew osx git-extras zsh-autosuggestions zsh-syntax-highlighting)
 
 
 # Action!
