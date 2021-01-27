@@ -2,6 +2,20 @@
 
 // Loaded with https://github.com/Strajk/chromedotfilez
 
+/* Disable links while holding ⌘+⌥ */
+/* === */
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+    if (request.event === "keyDown") {
+      chrome.tabs.insertCSS({ code: "a { pointer-events: none; background: red; } " })
+    } else if (request.event === "keyUp") {
+      chrome.tabs.insertCSS({ code: "a { pointer-events: all } " })
+    }
+  },
+)
+
+/* Blocking */
+/* === */
 chrome.webRequest.onBeforeRequest.addListener(
   page => {
     if (page.type === "main_frame") { // don't block api requests
