@@ -2,7 +2,7 @@ const { execSync } = require("child_process");
 
 // Customize
 // ===
-const DIR = "~/Code" // TODO: Maybe take from args?
+const DIR = process.argv[1]
 const PASSWORD = process.env.SUDO_PASSWORD || "FILL_PASSWORD_HERE_BUT_FFS_DON_NOT_SHARE_IT_ANYWHERE" // TODO: Better security, see note about sudo-prompt
 
 // Keep
@@ -18,7 +18,7 @@ const cleanArray = input => input.toString().split("\n").map(x => x.trim()).filt
 
 // Collect info
 // ===
-const candidates = cleanArray((`find ${DIR} -type d -name 'node_modules' -prune`))
+const candidates = cleanArray(execSync(`find ${DIR} -type d -name 'node_modules' -prune`))
 const existing = cleanArray(execSyncSudo(`${BUDDY} -c "Print :Exclusions" ${PLIST} | sed -e 1d -e '$d'`)) // TODO: Nicer way of getting pure array of results
 const toAdd = candidates.filter(x => !existing.includes(x))
 
