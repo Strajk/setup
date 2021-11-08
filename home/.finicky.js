@@ -20,8 +20,19 @@ module.exports = {
   defaultBrowser: "Browserosaurus", // (☞ ͡° ͜ʖ ͡°ˋ)☞ https://github.com/will-stone/browserosaurus
   options: {
     // See more https://github.com/johnste/finicky/wiki/Configuration
+    // logRequests: true,
     hideIcon: false,
   },
+  rewrite: [
+    {
+      match: ({ url, opener }) => {
+        return url.protocol === "https"
+          && url.host.includes('notion.so')
+          && opener.bundleId === "com.tinyspeck.slackmacgap"
+      },
+      url: ({ url }) => ({ ...url, protocol: "notion" })
+    },
+  ],
   handlers: [
     {
       match: finicky.matchHostnames([
@@ -50,7 +61,12 @@ module.exports = {
     {
       match: () => finicky.getKeys().command && finicky.getKeys().shift,
       browser: 'Brave Browser' // (⌐■_■)
-    }
+    },
+    {
+      // Open any link clicked in Slack in Safari
+      match: ({ opener }) => opener.bundleId === "com.tinyspeck.slackmacgap",
+      browser: "Safari"
+    },
 
     // Other examples
     // {
