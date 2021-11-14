@@ -47,6 +47,10 @@ module.exports = {
       browser: "Google Chrome Canary" // Live dangerously
     },
     {
+      match: ["https://www.google.com/search?*"],
+      browser: "Google Chrome" // I depend ony my Chrome extensions to use Google
+    },
+    {
       match: ["soundcloud.com/*", "mixcloud.com/*"], // No specific reason not to use matchHostnames, just wanted to show off
       browser: "Safari" // Better support for native audio
     },
