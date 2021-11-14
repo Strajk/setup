@@ -1,6 +1,8 @@
 # Profiling (Part 1/2) - uncomment to profile startup time
 # zmodload zsh/zprof
 
+export ZSH_THEME="spaceship"
+
 # Secrets
 # ---
 source $HOME/.secrets
@@ -17,7 +19,6 @@ export HISTFILE=$HOME/.zsh_history
 export HH_CONFIG=hicolor
 
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
-
 
 # Plugins
 # ---
@@ -50,7 +51,7 @@ alias ws="webstorm ."
 
 alias g-unpushed="git --no-pager log --branches --not --remotes=origin --no-walk --decorate --oneline"
 
-alias mm=~/Code/meteor/meteor
+alias mm=~/Projects/meteor/meteor
 
 function runInSubs() {
   for d in ./*/ ; do /bin/zsh -c "(cd "$d" && echo "$d" && echo '===' && "$@")"; done
@@ -79,13 +80,18 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 # Adjust PATH
 # ---
 export PATH="/Users/strajk/bin:/usr/local/sbin:$PATH"
-
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 eval "$(direnv hook zsh)"
 
-prompt spaceship
-
 # Profiling (Part 2/2) - uncomment to profile startup time
 # zprof
+
+
+# https://github.com/VSCodium/vscodium/blob/master/DOCS.md#how-to-use-the-vs-code-marketplace
+# TODO: Validate that this really works
+export VSCODE_GALLERY_SERVICE_URL='https://marketplace.visualstudio.com/_apis/public/gallery'
+export VSCODE_GALLERY_CACHE_URL='https://vscode.blob.core.windows.net/gallery/index'
+export VSCODE_GALLERY_ITEM_URL='https://marketplace.visualstudio.com/items'
+export VSCODE_GALLERY_CONTROL_URL=''
+export VSCODE_GALLERY_RECOMMENDATIONS_URL=''
