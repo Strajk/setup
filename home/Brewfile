@@ -1,4 +1,8 @@
+# TIP: brew install packages to /usr/local/Cellar/
+# TIP: brew cask install apps to directory specified below in `cask_args appdir`
+
 cask_args appdir: "/Applications"
+
 tap "homebrew/core"
 tap "homebrew/bundle"
 tap "homebrew/services"
@@ -6,7 +10,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "heroku/brew"
-
 
 # Essentials
 # ===
@@ -27,6 +30,7 @@ brew "wireshark", link: false
 brew "vault"
 brew "direnv"
 brew "massren"
+brew "act" # Run GitHub Actions locally
 
 brew "imagemagick"
 brew "imageoptim-cli"
@@ -40,13 +44,15 @@ brew "mongodb"
 brew "redis"
 
 # brew "node" # I manage node via nvm
-brew "nvm"
+brew "nvm" Manage multiple Node.js versions
 brew "java" # Moved from Cask to Homebrew https://github.com/Homebrew/homebrew-cask/pull/72284
 brew "python3"
 brew "yarn"
 
 cask "swiftdefaultappsprefpane"
+cask "browserosaurus"
 cask "zoomus"
+cask "tenor"
 
 # Quicklook plugins
 # ===
@@ -81,6 +87,7 @@ mas "Monosnap", id: 540348655
 cask "Marked"
 mas "Apple Configurator 2", id: 1037126344
 mas "Amphetamine", id: 937984704
+cask "bartender"
 cask "transmission"
 cask "imageoptim"
 brew "handbrake"
@@ -129,3 +136,12 @@ cask "caskroom/fonts/font-roboto"
 cask "caskroom/fonts/font-hack"
 cask "caskroom/fonts/font-roboto-mono"
 cask "caskroom/fonts/font-source-code-pro"
+
+# Inbox
+# ===
+brew "webp" # Image format by Google, for web
+brew "sops" # Editor of encrypted files
+brew "pandoc" # Swiss-army knife of markup format conversion
+brew "languagetool"
+brew "helm"
+brew "gh" # GitHub CLI
