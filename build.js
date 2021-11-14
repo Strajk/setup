@@ -10,6 +10,7 @@ const cpFile = require("cp-file")
 const plist = require("plist")
 const YAML = require("yaml")
 const uuidv5 = require("uuid/v5")
+const toc = require("markdown-toc")
 
 // <SHAME-ON-YOU>
 
@@ -122,6 +123,22 @@ replace.sync({
 // </SHAME-ON-YOU>
 
 const readme = fs.readFileSync("./README.md", "utf-8")
+
+fs.writeFileSync(
+  "./README.md",
+  toc.insert(readme, {
+    maxdepth: 2,
+    filter (content, element) {
+      // BEWARE: lvl is different from level (aka depth)
+      // lvl is absolute (h1-h6), level/depth is relative
+      if (element.lvl <= 2) return true
+      return false
+    },
+    bullets: "-",
+    slugify: (text) => text.toLowerCase().replace(/\s+/g, "-"),
+  }),
+)
+
 const tokens = marked.lexer(readme)
 const codeblocks = tokens.filter(x => x.type === "code" && x.lang.includes("<!-- >"))
 

@@ -2,6 +2,27 @@
 <h1>Setup</h1>
 </center>
 
+**Beware:** This is not fully reproducible (intentionally), use only for inspiration.
+
+<!-- toc -->
+
+  - [Preparation](#preparation)
+  - [Dev environment](#dev-environment)
+  - [General utilities](#general-utilities)
+  - [Utilities](#utilities)
+  - [Communication](#communication)
+  - [Browsers](#browsers)
+  - [Productivity](#productivity)
+  - [Create](#create)
+  - [Media](#media)
+  - [Fun](#fun)
+  - [Other preferences](#other-preferences)
+  - [Auto-launched items](#auto-launched-items)
+- [Inbox](#inbox)
+  - [Fonts](#fonts)
+
+<!-- tocstop -->
+
 ## Preparation
 
 #### Clone this repo
@@ -20,10 +41,9 @@
 
 `brew bundle` **Just wait & enter password when prompted.**
 
-
 #### Launch 1Password
 
-Select iCloud as Sync option.
+Let it sync
 
 #### Launch Amphetamine
 
@@ -60,51 +80,15 @@ sudo chmod 0644 ~/.ssh/*.pub
 ### Node
 
 ```bash
-# List latest version of Node
-nvm ls-remote | tail
-
-# Install it (it should use it & set as default automatically)
-nvm install v12.4.0
+nvm install 12
+nvm install 14
+nvm install 16
+nvm install 17
 
 # Make sure
 nvm list
 nvm current
 ```
-
-Global packages
-
-// TODO: Update regularly
-
-```bash
-npm i -g node-inspector
-npm i -g browser-sync
-npm i -g speed-test
-npm i -g eslint
-npm i -g @vue/cli
-npm i -g jest
-npm i -g yo
-npm i -g generator-express
-npm i -g spaceship-prompt
-npm i -g degit
-```
-
-### Ruby
-
-! Do not install rbenv via **homebrew**, didn't work for me and already spent more than a lot time debugging.
-
-```bash
-git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-
-# check if rbenv plugin is enabled in .zshrc
-
-rbenv install --list
-rbenv install 2.4.0 (or newer version)
-rbenv rehash
-rbenv global 2.4.0
-```
-
-if `BUILD FAILED` error occurs, run `xcode-select --install` - installs XCode Command line tools to `/Library/Developer/CommandLineTools/`
 
 ## General utilities
 
