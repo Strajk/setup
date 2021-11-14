@@ -8,49 +8,40 @@
 
 ## Preparation
 
-#### Clone this repo
-
-`git clone https://github.com/Strajk/setup.git $HOME/Projects/setup`
-
-#### Link dotfiles
-
-`ln -s $HOME/Projects/setup/home/* $HOME`
-
-#### Install Homebrew
-
-`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-
-#### Install everything from [`~/Brewfile`](home/Brewfile)
-
-`brew bundle` **Just wait & enter password when prompted.**
-
-#### Launch 1Password
-
-Let it sync
-
-#### Launch Amphetamine
-
-Enable it to prevent Mac from sleeping during syncing Dropbox in the next step.
-
-#### Launch Dropbox
-
-Let it sync completely before continuing to the next steps.
-
-#### Sync Home folder
-
-`ln -s ~/Dropbox/Sync/home/.* $HOME`
-
-#### Repair permission
-
-```bash
-sudo chmod og-rw ~/.netrc
-sudo chmod 0400 ~/.ssh/*
-sudo chmod 0644 ~/.ssh/*.pub
-```
-
-#### Accept XCode License
-
-`sudo xcodebuild -license accept`
+- Clone this repo  
+  `git clone https://github.com/Strajk/setup.git $HOME/Projects/setup`
+- Link dotfiles  
+  `ln -s $HOME/Projects/setup/home/* $HOME`
+- Install Homebrew
+  `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+- Install everything from [`~/Brewfile`](home/Brewfile)
+  `brew bundle` **Just wait & enter password when prompted.**
+- Launch 1Password
+  - Let it sync
+- Launch Amphetamine
+  - Enable it to prevent Mac from sleeping during syncing Dropbox in the next step.
+- Launch Dropbox
+  - Let it sync completely before continuing to the next steps.
+- Sync Home folder
+  `ln -s ~/Dropbox/Sync/home/.* $HOME`
+- Repair permission
+  ```bash
+  sudo chmod og-rw ~/.netrc
+  sudo chmod 0400 ~/.ssh/*
+  sudo chmod 0644 ~/.ssh/*.pub
+  ```
+- Accept XCode License
+  `sudo xcodebuild -license accept`
+- Install Node
+  ```bash
+  nvm install 12
+  nvm install 14
+  nvm install 16
+  nvm install 17
+  # Make sure
+  nvm list
+  nvm current
+  ```
 
 <center>
   <hr />
@@ -58,20 +49,6 @@ sudo chmod 0644 ~/.ssh/*.pub
   <hr />
 </center>
 
-## Dev environment
-
-### Node
-
-```bash
-nvm install 12
-nvm install 14
-nvm install 16
-nvm install 17
-
-# Make sure
-nvm list
-nvm current
-```
 
 ## General utilities
 
@@ -88,7 +65,6 @@ cask "hyper"
 </details>
 
 ⚙️ Preferences: [`~/.hyper.js`](`./home/.hyper.js`)
-
 
 ### [Oh-my-zsh](http://ohmyz.sh)
 
@@ -312,7 +288,6 @@ cask "alfred"
 
 - [SearchLink](https://brettterpstra.com/projects/searchlink/)
 
-
 <details><summary>Script to get workflows</summary>
 
 ```bash
@@ -327,8 +302,8 @@ done
 
 </details>
 
-
 #### Snippets
+
 <https://gist.github.com/Strajk/f4cb72e318c531a3ee247ccc10681f8f>
 
 ### [AppCleaner](https://freemacsoft.net/appcleaner/)
@@ -726,7 +701,6 @@ cask "google-chrome"
 - [Vue.js devtools](https://chrome.google.com/webstore/detail/nhdogjmejiglipccpnnnanhbledajbpd)
 - [Youtube Playback Speed Control](https://chrome.google.com/webstore/detail/hdannnflhlmdablckfkjpleikpphncik)
 
-
 <details><summary>Script to get extensions</summary>
 
 ```bash
@@ -899,7 +873,7 @@ Versatile design app
 - [SVG Insert](https://github.com/tankxu/svg-insert)
 - [Sketch Connection Flow Arrows](https://github.com/faridsabitov/Sketch-Connection-Flow-Arrows)
 - [RenameIt](https://github.com/rodi01/RenameIt)
-- https://github.com/timuric/content-generator-sketch-plugin – dummy data such as avatars, names, geo location data
+- <https://github.com/timuric/content-generator-sketch-plugin> – dummy data such as avatars, names, geo location data
 
 <details><summary> 💾 Installation: Installed via Homebrew</summary>
 
@@ -979,7 +953,6 @@ cask "visual-studio-code"
 ```
 
 </details>
-
 
 #### Extensions
 
@@ -1104,7 +1077,6 @@ cask "boxer"
 ```
 
 </details>
-
 
 ## Other preferences
 
@@ -1312,7 +1284,6 @@ TODO:
 - Dock: Lock icon size
 - Disable CapsLock
 - Tap to click
-
 
 ## Auto-launched items
 
