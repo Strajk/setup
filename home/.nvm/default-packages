@@ -1,0 +1,16 @@
+# https://github.com/nvm-sh/nvm#default-global-packages-from-file-while-installing
+# `npm list -g --depth=0` to see what's already installed
+# these will be installed to `~/.nvm/versions/node/[VERSION]/lib/node_modules`
+
+# speed-test
+btt-toggl
+create-react-app
+degit
+eslint
+nodemon
+pnpm
+serve
+spaceship-prompt
+surge
+vercel
+yo
