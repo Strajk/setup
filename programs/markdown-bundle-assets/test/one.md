@@ -4,5 +4,3 @@
 
 ![Puppy](http://place-puppy.com/public-images/index-page/image4/410x280-lg.jpg)
 
-
-

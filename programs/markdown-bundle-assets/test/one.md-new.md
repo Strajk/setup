@@ -4,5 +4,3 @@
 
 ![Puppy](./one.assets/410x280-lg.jpg)
 
-
-
