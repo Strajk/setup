@@ -6,11 +6,11 @@
 
 #### Clone this repo
 
-`git clone https://github.com/Strajk/setup.git $HOME/Code/setup`
+`git clone https://github.com/Strajk/setup.git $HOME/Projects/setup`
 
 #### Link dotfiles
 
-`ln -s $HOME/Code/setup/home/* $HOME`
+`ln -s $HOME/Projects/setup/home/* $HOME`
 
 #### Install Homebrew
 
@@ -129,7 +129,7 @@ cask "hyper"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-rm -f "$HOME/.zshrc" && ln -s "$HOME/Code/setup/home/.zshrc" $HOME && source $HOME/.zshrc 
+rm -f "$HOME/.zshrc" && ln -s "$HOME/Projects/setup/home/.zshrc" $HOME && source $HOME/.zshrc 
 ```
 
 ## Utilities
@@ -503,6 +503,33 @@ mas "Amphetamine", id: 937984704
 - Launch Amphetamine at login: yes
 - Appearance: Menu Bar image: Coffee Carafe
 - Appearance: Lower icon opacity when there is no active session
+
+</details>
+
+### [Bartender](https://www.macbartender.com/Bartender4/)
+
+<details><summary> 💾 Installation: Installed via Homebrew</summary>
+
+```bash <!-- >home/Brewfile#apps -->
+cask "bartender"
+```
+
+</details>
+
+<details><summary> ⚙️ Preferences</summary>
+
+- Launch at login
+- Menu bar item spacing: small
+- Always show menu bar:
+  - Trailer
+  - Itsycal
+  - Batter
+- Intentionally not showing in menu bar:
+  - Amphetamine – triggered by Alfred
+  - Wi-Fi - it usually just work, no need to see it all the time
+  - Volume – controlled by keyboard
+  - Trip Mode – used occasionally
+- Hotkey to Quick search
 
 </details>
 
@@ -994,7 +1021,7 @@ TODO Export from Notion
 Sync via Gist
 
 ```bash
-ln -s ~/Code/setup/apps/VSCode/settings.json "$HOME/Library/Application Support/Code/User/"
+ln -s ~/Projects/setup/apps/VSCode/settings.json "$HOME/Library/Application Support/Code/User/"
 ```
 
 ### [iMovie](https://www.apple.com/imovie/)
@@ -1353,7 +1380,7 @@ TODO:
 # Inbox
 
 ```bash
-ln -s $HOME/Code/setup/snippets "$HOME/Library/Application Support/Code/User/"
+ln -s $HOME/Projects/setup/snippets "$HOME/Library/Application Support/Code/User/"
 
 TODO
 # Vill Q
