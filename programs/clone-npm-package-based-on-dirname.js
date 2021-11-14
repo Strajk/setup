@@ -6,7 +6,7 @@ const repoUrl = require("get-repository-url")
 const argv = require("minimist")(process.argv.slice(2))
 
 ;(async () => {
-  const file = argv.file // || "/Users/strajk/Code/DefinitelyTyped/types/abs"
+  const file = argv.file // || "/Users/strajk/Projects/DefinitelyTyped/types/abs"
   if (!file) {
     console.error("No file specified")
     process.exit()
