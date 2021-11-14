@@ -1,10 +1,10 @@
 {
-    "name": "Add some custom keyboard shortcuts",
-    "version": "1.0.0",
-    "description": "Various custom keyboard shortcuts",
-    "engines": {
-        "foldingtext": ">=2.0.0",
-        "taskpaper": ">=3.0.0"
-    },
-    "homepage": ""
+  "name": "Add some custom keyboard shortcuts",
+  "version": "1.0.0",
+  "description": "Various custom keyboard shortcuts",
+  "engines": {
+    "foldingtext": ">=2.0.0",
+    "taskpaper": ">=3.0.0"
+  },
+  "homepage": ""
 }

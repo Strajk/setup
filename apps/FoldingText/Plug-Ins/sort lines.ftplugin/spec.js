@@ -1,22 +1,22 @@
 define(function (require) {
-	'use strict';
+  "use strict"
 
-	describe('Sort Lines', function () {
-		var Editor = require('ft/editor/editor').Editor,
-			editor;
+  describe("Sort Lines", function () {
+    var Editor = require("ft/editor/editor").Editor
+    var editor
 
-		beforeEach(function () {
-			editor = new Editor('');
-		});
+    beforeEach(function () {
+      editor = new Editor("")
+    })
 
-		afterEach(function () {
-			editor.removeAndCleanupForCollection();
-		});
+    afterEach(function () {
+      editor.removeAndCleanupForCollection()
+    })
 
-		it('should sort selected text line', function () {
-			editor.replaceSelection('c\na\nb', 'around');
-			editor.performCommand('sort lines');
-			expect(editor.textContent()).toEqual('a\nb\nc');
-		});
-	});
-});
+    it("should sort selected text line", function () {
+      editor.replaceSelection("c\na\nb", "around")
+      editor.performCommand("sort lines")
+      expect(editor.textContent()).toEqual("a\nb\nc")
+    })
+  })
+})

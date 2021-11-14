@@ -1,0 +1,1 @@
+https://github.com/FoldingText/plugins/tree/FoldingText-Dev

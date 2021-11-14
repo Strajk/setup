@@ -1,0 +1,9 @@
+{
+  "name": "Toggle Tags",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "",
+  "engines": {
+    "foldingtext": ">2.0.0"
+  }
+}

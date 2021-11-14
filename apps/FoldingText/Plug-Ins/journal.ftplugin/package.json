@@ -1,0 +1,9 @@
+{
+  "name": "Diary",
+  "version": "0.1",
+  "description": "Treat a document as a semi-structured diary",
+  "homepage": "",
+  "engines": {
+    "foldingtext": ">2.0.0"
+  }
+}
