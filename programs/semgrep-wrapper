@@ -1,0 +1,10 @@
+#!/bin/sh
+# TODO: Explain, this was probably needed for VSCode extension, but I don't remember why
+
+export PATH="/usr/local/Cellar/semgrep/0.48.0/bin/:$PATH" # Specifying version is obviously wrong
+
+if [ "$#" -ne 2 ]; then
+   echo "You must enter exactly 2 command line arguments: the rules file/dir first, and the file to analyze second"
+fi
+
+/usr/local/Cellar/semgrep/0.48.0/bin/semgrep --config $1 $2 --json
