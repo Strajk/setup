@@ -1,1 +1,1 @@
-ln -s $HOME/Code/setup/apps/FoldingText/* "${HOME}/Library/Application Support/FoldingText/"
+ln -s $HOME/Projects/setup/apps/FoldingText/* "${HOME}/Library/Application Support/FoldingText/"

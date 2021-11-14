@@ -7,18 +7,67 @@
   },
   "workbench.activityBar.visible": false,
   "workbench.colorCustomizations": {
-    "statusBar.background" : "#303030"
+    "statusBar.background": "#303030"
   },
   "pasteImage": {
     "defaultName": "Y-MM-DD-HH-mm-ss",
     "path": "${currentFileDir}/assets"
   },
   "editor.minimap.enabled": false,
-  "breadcrumbs.enabled": false,
   "git.autofetch": true,
   "ponicode.watchMode": false,
   "pasteImage.path": "${currentFileDir}/${currentFileNameWithoutExt}.assets",
-  "window.zoomLevel": 1,
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.defaultLanguage": "markdown",
+  "workbench.colorTheme": "Default Light+",
+  "[markdown]": {
+    "editor.fontSize": 12,
+    "editor.wordWrap": "bounded",
+    "editor.lineNumbers": "off",
+    "files.trimTrailingWhitespace": false
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "markup.underline.link.markdown",
+        "settings": {
+          "foreground": "#aaa"
+        }
+      }
+    ]
+  },
+  "typescript.tsserver.log": "verbose",
+  "customizeUI.titleBar": "inline",
+  "customizeUI.stylesheet": {
+    ".editor-actions": "display: none !important;",
+    ".quick-input-widget": "left: 5px !important; right 5px !important; width: 100% !important; margin-left: 0 !important;"
+  },
+  "semgrep.languages": [
+    
+    "generic",
+    "js",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "python",
+    "typescript",
+    "typescriptreact"
+  ],
+  "semgrep.rules": "/Users/strajk/Code/a/apify-core/src/app/.semgrep.yml",
+  "openInExternalApp.openMapper": [
+    {
+      "extensionName": "md",
+      "apps": [
+        {
+          "title": "Typora",
+          "openCommand": "/System/Volumes/Data/Applications/Typora.app"
+        },
+      ]
+    }
+  ],
+  "files.autoSave": "onFocusChange",
+  "window.zoomLevel": 1,
+  "stylelint.configFile": "src/app/.stylelintrc",
+  "stylelint.syntax": "scss",
 }

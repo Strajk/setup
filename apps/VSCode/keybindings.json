@@ -1,12 +1,19 @@
-// BEWARE: Very much WIP, just few basic ones to make VSCode at least little bit usable for me
 [
     {
         "key": "cmd+o",
         "command": "workbench.action.quickOpen"
     },
     {
+        "key": "cmd+e",
+        "command": "workbench.action.quickOpen"
+    },
+    {
         "key": "cmd+p",
         "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "shift+cmd+v",
+        "command": "-markdown-preview-enhanced.openPreview"
     },
     {
         "key": "cmd+o",
@@ -61,4 +68,65 @@
         "key": "ctrl+g",
         "command": "-workbench.action.gotoLine"
     },
+    {
+        "key": "cmd+\\",
+        "command": "-workbench.action.terminal.split",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "cmd+\\",
+        "command": "-workbench.action.splitEditor"
+    },
+    {
+        "key": "cmd+\\",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+1",
+        "command": "md-shortcut.toggleTitleH1"
+    },
+    {
+        "key": "cmd+2",
+        "command": "md-shortcut.toggleTitleH2"
+    },
+    {
+        "key": "cmd+3",
+        "command": "md-shortcut.toggleTitleH3"
+    },
+    {
+        "key": "cmd+4",
+        "command": "md-shortcut.toggleTitleH4"
+    },
+    {
+        "key": "cmd+5",
+        "command": "md-shortcut.toggleTitleH5"
+    },
+    {
+        "key": "cmd+1",
+        "command": "-workbench.action.focusFirstEditorGroup"
+    },
+    {
+        "key": "cmd+2",
+        "command": "-workbench.action.focusSecondEditorGroup"
+    },
+    {
+        "key": "cmd+3",
+        "command": "-workbench.action.focusThirdEditorGroup"
+    },
+    {
+        "key": "cmd+4",
+        "command": "-workbench.action.focusFourthEditorGroup"
+    },
+    {
+        "key": "cmd+5",
+        "command": "-workbench.action.focusFifthEditorGroup"
+    },
+    {
+        "key": "cmd+6",
+        "command": "-workbench.action.focusSixthEditorGroup"
+    }
 ]
