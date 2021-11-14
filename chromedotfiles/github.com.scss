@@ -1,0 +1,54 @@
+.zhc-dependency {
+  padding: 5px 10px !important;
+}
+
+.zhc-pr-issue-connector__info {
+  padding: 5px 10px !important;
+}
+
+.TimelineItem {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.js-resolvable-timeline-thread-form {
+  position: absolute !important;
+  top: -17px !important;
+  right: -35px !important;
+  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+  transform: scale(0.7) !important;
+}
+
+.review-thread-reply {
+  border-bottom: 0 !important;
+}
+
+body > .js-header-wrapper .Header {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  nav {
+    font-size: 12px;
+  }
+}
+
+#js-repo-pjax-container > div:first-child {
+  padding-top: 10px !important;
+  margin-bottom: 15px !important;
+  > div:first-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+.js-merge-pr > p:first-child {
+  display: none;
+}
+
+.branch-action-item.open>.merge-status-list {
+  max-height: initial !important; /*Show all checks!*/
+}
+
+.merge-status-icon {
+  .octicon.color-text-danger {
+    transform: scale(2.5);
+  }
+}
