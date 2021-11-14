@@ -1,14 +1,26 @@
-/* BEWARE: Quick'n'dirty script */
-const fs = require("fs")
-const remark = require("remark")
-const visit = require("unist-util-visit")
-const toString = require("mdast-util-to-string")
+/*BEWARE: Quick'n'dirty script*/
 
-const argv = require("minimist")(process.argv.slice(2))
-const Diff = require("diff")
-require("colors")
+/* NOTES
+   =====
 
-function linksPure (input) {
+Inspiration <https://github.com/vweevers/hallmark>
+
+*/
+
+import fs from "fs"
+import remark from "remark"
+import { visit } from "unist-util-visit"
+import { toString } from "mdast-util-to-string"
+import minimist from "minimist"
+import Diff from "diff"
+
+import remarkLintEmphasisMarker from "remark-lint-emphasis-marker"
+import remarkLintListItemIndent from "remark-lint-list-item-indent"
+import remarkLintListItemBulletIndent from "remark-lint-list-item-bullet-indent"
+
+const argv = minimist(process.argv.slice(2))
+
+function linksPure(input) {
   let match
 
   match = input.match(/reddit\.com(.+?)\/?$/)
@@ -24,8 +36,11 @@ function linksPure (input) {
     .replace(/\.html$/, "")
 }
 
-function main (input) {
+export function main (input) {
   let modified = remark()
+    .use(remarkLintEmphasisMarker, "*")
+    .use(remarkLintListItemIndent, "space")
+    .use(remarkLintListItemBulletIndent, "space")
     .use(options => {
       return ast => {
         visit(ast, "link", node => {
@@ -52,9 +67,9 @@ function main (input) {
   return modified
 }
 
-if (!module.parent) {
+if (!import.meta.url) {
   const file = argv.file
-  // TODO: Allow globs https://www.npmjs.com/package/is-glob
+  // TODO: Allow globs <https://www.npmjs.com/package/is-glob>
   if (!file) {
     console.error("No file specified")
     process.exit()
@@ -70,7 +85,4 @@ if (!module.parent) {
   })
 
   fs.writeFileSync(file, modified)
-} else {
-  // required by another module
-  module.exports = main
 }
