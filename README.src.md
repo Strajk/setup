@@ -146,9 +146,9 @@ cask "dropbox"
 
 <details><summary> ⚙️ Preferences: manual</summary>
 
-* Do not link work account
-* Disable Screenshots
-* Disable Photos
+- Do not link work account
+- Disable Screenshots
+- Disable Photos
 
 </details>
 
@@ -164,8 +164,8 @@ cask "keyboard-maestro"
 
 <details><summary> ⚙️ Preferences: `~/Dropbox/Sync/apps/Keyboard Maestro Macros.kmsync`</summary>
 
-* Enable Launch at login
-* Enable "Include Conflict Palette in Touch Bar"
+- Enable Launch at login
+- Enable "Include Conflict Palette in Touch Bar"
 
 </details>
 
@@ -304,46 +304,46 @@ cask "alfred"
 
 #### Workflows
 
-* [Airport Search](http://www.packal.org/workflow/airport-search), [repo](https://github.com/jeeftor/alfredAirports)
-* Alfred Maestro, [repo](https://github.com/iansinnott/alfred-maestro) – Run Keyboard Maestro macros
-* [Audio Switch](http://www.packal.org/workflow/audio-switch), [repo](https://github.com/sampayo/Alfred-WorkFlows/tree/master/Audio%20Switch) – Switch between audio inputs & outputs
-* Bit.ly Link - Generate Bit.ly shortlinks, auth supported
-* [Call or SMS contact](http://www.packal.org/workflow/call-or-sms-contact), [repo](https://github.com/amoose136/call_or_sms_contact)
-* [Colors](http://www.packal.org/workflow/colors), [repo](https://github.com/TylerEich/Alfred-Extras/tree/master/Workflows) – Color tools
-* [Datetime Format Converter](http://www.packal.org/workflow/datetime-format-converter)
-* [Encode / Decode](https://www.google.cz/search?q=site%3Apackal.org+Encode+/+Decode+(v1.8))
-* [Faker](http://www.packal.org/workflow/alfred-faker)
-* [Flush DNS](http://www.packal.org/workflow/flush-dns)
-* [GitHub](http://www.packal.org/workflow/github), [repo](https://github.com/gharlan/alfred-github-workflow)
-* [GitLab](http://www.packal.org/workflow/gitlab), [repo](https://github.com/lukewaite/alfred-gitlab)
-* [Homebrew & Cask for Alfred](http://www.packal.org/workflow/homebrew-and-cask-alfred), [repo](https://github.com/fniephaus/alfred-homebrew)
-* [HTTP Status Code](http://www.packal.org/workflow/http-status-codes), [repo](https://github.com/ma3574/alfred-http-status-codes)
-* [Install apps](http://www.packal.org/workflow/install-app)
-* [Kill Process](http://www.packal.org/workflow/kill-process), [repo](https://github.com/ngreenstein/alfred-process-killer)
-* [Look up Lyrics of Current Song on Rap Genius](http://www.packal.org/workflow/find-lyrics-current-song-rap-genius)
-* [Lorem Ipsum](http://www.packal.org/workflow/lorem-ipsum)
-* [newdoc](http://www.packal.org/workflow/newdoc)
-* [NewFile](http://www.packal.org/workflow/newfile)
-* [NightShift](http://www.packal.org/workflow/nightshift)
-* [Open in Chrome](http://www.packal.org/workflow/alfred-chrome)
-* [Package Managers](http://www.packal.org/workflow/package-managers)
-* [Packal Updater](http://www.packal.org/workflow/packal-updater)
-* [Pocket for Alfred](http://www.packal.org/workflow/pocket-alfred)
-* [portkiller](http://www.packal.org/workflow/portkiller)
-* Recent Items
-* [RecentDownloads](http://www.packal.org/workflow/recentdownloads)
-* [Relative Dates](http://www.packal.org/workflow/relative-dates)
-* [Resize Image](http://www.packal.org/workflow/resize-image)
-* [Restore Moom snapshot](http://www.packal.org/workflow/restore-moom-snapshot)
-* [Things](http://www.packal.org/workflow/things)
-* [Toggle Wifi](http://www.packal.org/workflow/toggle-wifi)
-* ToggleRetinaResolution
-* [Urban Dictionary](http://www.packal.org/workflow/urban-dictionary)
-* [What's My IP](http://www.packal.org/workflow/whats-my-ip)
+- [Airport Search](http://www.packal.org/workflow/airport-search), [repo](https://github.com/jeeftor/alfredAirports)
+- Alfred Maestro, [repo](https://github.com/iansinnott/alfred-maestro) – Run Keyboard Maestro macros
+- [Audio Switch](http://www.packal.org/workflow/audio-switch), [repo](https://github.com/sampayo/Alfred-WorkFlows/tree/master/Audio%20Switch) – Switch between audio inputs & outputs
+- Bit.ly Link - Generate Bit.ly shortlinks, auth supported
+- [Call or SMS contact](http://www.packal.org/workflow/call-or-sms-contact), [repo](https://github.com/amoose136/call_or_sms_contact)
+- [Colors](http://www.packal.org/workflow/colors), [repo](https://github.com/TylerEich/Alfred-Extras/tree/master/Workflows) – Color tools
+- [Datetime Format Converter](http://www.packal.org/workflow/datetime-format-converter)
+- [Encode / Decode](https://www.google.cz/search?q=site%3Apackal.org+Encode+/+Decode+(v1.8))
+- [Faker](http://www.packal.org/workflow/alfred-faker)
+- [Flush DNS](http://www.packal.org/workflow/flush-dns)
+- [GitHub](http://www.packal.org/workflow/github), [repo](https://github.com/gharlan/alfred-github-workflow)
+- [GitLab](http://www.packal.org/workflow/gitlab), [repo](https://github.com/lukewaite/alfred-gitlab)
+- [Homebrew & Cask for Alfred](http://www.packal.org/workflow/homebrew-and-cask-alfred), [repo](https://github.com/fniephaus/alfred-homebrew)
+- [HTTP Status Code](http://www.packal.org/workflow/http-status-codes), [repo](https://github.com/ma3574/alfred-http-status-codes)
+- [Install apps](http://www.packal.org/workflow/install-app)
+- [Kill Process](http://www.packal.org/workflow/kill-process), [repo](https://github.com/ngreenstein/alfred-process-killer)
+- [Look up Lyrics of Current Song on Rap Genius](http://www.packal.org/workflow/find-lyrics-current-song-rap-genius)
+- [Lorem Ipsum](http://www.packal.org/workflow/lorem-ipsum)
+- [newdoc](http://www.packal.org/workflow/newdoc)
+- [NewFile](http://www.packal.org/workflow/newfile)
+- [NightShift](http://www.packal.org/workflow/nightshift)
+- [Open in Chrome](http://www.packal.org/workflow/alfred-chrome)
+- [Package Managers](http://www.packal.org/workflow/package-managers)
+- [Packal Updater](http://www.packal.org/workflow/packal-updater)
+- [Pocket for Alfred](http://www.packal.org/workflow/pocket-alfred)
+- [portkiller](http://www.packal.org/workflow/portkiller)
+- Recent Items
+- [RecentDownloads](http://www.packal.org/workflow/recentdownloads)
+- [Relative Dates](http://www.packal.org/workflow/relative-dates)
+- [Resize Image](http://www.packal.org/workflow/resize-image)
+- [Restore Moom snapshot](http://www.packal.org/workflow/restore-moom-snapshot)
+- [Things](http://www.packal.org/workflow/things)
+- [Toggle Wifi](http://www.packal.org/workflow/toggle-wifi)
+- ToggleRetinaResolution
+- [Urban Dictionary](http://www.packal.org/workflow/urban-dictionary)
+- [What's My IP](http://www.packal.org/workflow/whats-my-ip)
 
 #### Workflows wanted
 
-* [SearchLink](https://brettterpstra.com/projects/searchlink/)
+- [SearchLink](https://brettterpstra.com/projects/searchlink/)
 
 
 <details><summary>Script to get workflows</summary>
@@ -351,10 +351,10 @@ cask "alfred"
 ```bash
 for f in ~/Dropbox/Sync/apps/Alfred/Alfred.alfredpreferences/workflows/**/info.plist
 do
-	ff=${f%.*}
-	name=$(defaults read "$ff" name)
-	link="https://www.google.cz/search?q=site%3Apackal.org+${name// /+}"
-	echo "– [$name]($link)"
+ ff=${f%.*}
+ name=$(defaults read "$ff" name)
+ link="https://www.google.cz/search?q=site%3Apackal.org+${name// /+}"
+ echo "– [$name]($link)"
 done
 ```
 
@@ -376,7 +376,7 @@ cask "appcleaner"
 
 <details><summary> ⚙️ Preferences</summary>
 
-* Enable SmartDelete
+- Enable SmartDelete
 
 </details>
 
@@ -694,43 +694,43 @@ cask "google-chrome"
 
 #### Extensions
 
-* [1Password](https://chrome.google.com/webstore/detail/aomjjhallfgjeglblehebfpbcfeobpgk) - password manager
-* [AngularJS Batarang](https://chrome.google.com/webstore/detail/ighdmehidhipcmcojjgiloacoafjmpfk) - Angular dev tools
-* [Augury](https://chrome.google.com/webstore/detail/elgalmkoelokbchhkhacckoklkejnhcd) - Angular2 dev tools
-* [Better History](https://chrome.google.com/webstore/detail/obciceimmggglbmelaidpjlmodcebijb)
-* [Check My Links](https://chrome.google.com/webstore/detail/ojkcdipcgfaekbeaelaapakgnjflfglf)
-* [Diigo](https://chrome.google.com/webstore/detail/pnhplgjpclknigjpccbcnmicgcieojbh) - Highlight & annotate
-* [Dropmark](https://chrome.google.com/webstore/detail/foiapgoppijipmmgkaibacckkhbngfhp) - collecting inspiration
-* [Frame by Frame](https://chrome.google.com/webstore/detail/elkadbdicdciddfkdpmaolomehalghio)
-* [Google Dictionary](https://chrome.google.com/webstore/detail/mgijmajocgfcbeboacabfgobmjgjcoja)
-* [Grammarly](https://chrome.google.com/webstore/detail/kbfnbcaeplbcioakkpcpgfkobkghlhen) - Check grammmar
-* [Imagus](https://chrome.google.com/webstore/detail/immpkjjlgappgfkkfieppnmlhakdmaab) - Enlarge thumbnails
-* [Immutable.js Object Formatter](https://chrome.google.com/webstore/detail/hgldghadipiblonfkkicmgcbbijnpeog)
-* [IntelliOcto](https://chrome.google.com/webstore/detail/hbkpjkfdheainjkkebeoofkpgddnnbpk)
-* [JSONView](https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc)
-* [Keyboard Shortcuts to Reorder Tabs](https://chrome.google.com/webstore/detail/moigagbiaanpboaflikhdhgdfiifdodd)
-* [Linkclump](https://chrome.google.com/webstore/detail/lfpjkncokllnfokkgpkobnkbkmelfefj)
-* [Multi-highlight](https://chrome.google.com/webstore/detail/pfgfgjlejbbpfmcfjhdmikihihddeeji)
-* [npmhub](https://chrome.google.com/webstore/detail/kbbbjimdjbjclaebffknlabpogocablj)
-* [OctoLinker](https://chrome.google.com/webstore/detail/jlmafbaeoofdegohdhinkhilhclaklkp)
-* [Octotree](https://chrome.google.com/webstore/detail/bkhaagjahfmjljalopjnoealnfndnagc)
-* [Pesticide for Chrome](https://chrome.google.com/webstore/detail/bblbgcheenepgnnajgfpiicnbbdmmooh)
-* [Pinboard Plus](https://chrome.google.com/webstore/detail/mphdppdgoagghpmmhodmfajjlloijnbd)
-* [Postman Interceptor](https://chrome.google.com/webstore/detail/aicmkgpgakddgnaphhhpliifpcfhicfo)
-* [Project Naptha](https://chrome.google.com/webstore/detail/molncoemjfmpgdkbdlbjmhlcgniigdnf) - OCR
-* [React Developer Tools](https://chrome.google.com/webstore/detail/fmkadmapgofadopljbjfkapdkoienihi)
-* [React Perf](https://chrome.google.com/webstore/detail/hacmcodfllhbnekmghgdlplbdnahmhmm)
-* [Reddit Enhancement Suite](https://chrome.google.com/webstore/detail/kbmfpngjjgdllneeigpgjifpgocmfgmb)
-* [Redux DevTools](https://chrome.google.com/webstore/detail/lmhkpmbekcpmknklioeibfkpmmfibljd)
-* [Refined Trello](https://chrome.google.com/webstore/detail/ehplgncidablicleelajoojipdnclbhm)
-* [SelectorGadget](https://chrome.google.com/webstore/detail/mhjhnkcfbdhnjickkkdbjoemdmbfginb)
-* [Shortkeys](https://chrome.google.com/webstore/detail/logpjaacgmcbpdkdchjiaagddngobkck)
-* [Stylish](https://chrome.google.com/webstore/detail/fjnbnpbmkenffdnngjfgmeleoegfcffe) - Custom CSS
-* [Tampermonkey](https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo) - Custom JS
-* [tlda](https://chrome.google.com/webstore/detail/ogefhmcfhgggggefddkaemfifdcljbml)
-* [uBlock Origin](https://chrome.google.com/webstore/detail/cjpalhdlnbpafiamejdnhcphjbkeiagm)
-* [Vue.js devtools](https://chrome.google.com/webstore/detail/nhdogjmejiglipccpnnnanhbledajbpd)
-* [Youtube Playback Speed Control](https://chrome.google.com/webstore/detail/hdannnflhlmdablckfkjpleikpphncik)
+- [1Password](https://chrome.google.com/webstore/detail/aomjjhallfgjeglblehebfpbcfeobpgk) - password manager
+- [AngularJS Batarang](https://chrome.google.com/webstore/detail/ighdmehidhipcmcojjgiloacoafjmpfk) - Angular dev tools
+- [Augury](https://chrome.google.com/webstore/detail/elgalmkoelokbchhkhacckoklkejnhcd) - Angular2 dev tools
+- [Better History](https://chrome.google.com/webstore/detail/obciceimmggglbmelaidpjlmodcebijb)
+- [Check My Links](https://chrome.google.com/webstore/detail/ojkcdipcgfaekbeaelaapakgnjflfglf)
+- [Diigo](https://chrome.google.com/webstore/detail/pnhplgjpclknigjpccbcnmicgcieojbh) - Highlight & annotate
+- [Dropmark](https://chrome.google.com/webstore/detail/foiapgoppijipmmgkaibacckkhbngfhp) - collecting inspiration
+- [Frame by Frame](https://chrome.google.com/webstore/detail/elkadbdicdciddfkdpmaolomehalghio)
+- [Google Dictionary](https://chrome.google.com/webstore/detail/mgijmajocgfcbeboacabfgobmjgjcoja)
+- [Grammarly](https://chrome.google.com/webstore/detail/kbfnbcaeplbcioakkpcpgfkobkghlhen) - Check grammmar
+- [Imagus](https://chrome.google.com/webstore/detail/immpkjjlgappgfkkfieppnmlhakdmaab) - Enlarge thumbnails
+- [Immutable.js Object Formatter](https://chrome.google.com/webstore/detail/hgldghadipiblonfkkicmgcbbijnpeog)
+- [IntelliOcto](https://chrome.google.com/webstore/detail/hbkpjkfdheainjkkebeoofkpgddnnbpk)
+- [JSONView](https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc)
+- [Keyboard Shortcuts to Reorder Tabs](https://chrome.google.com/webstore/detail/moigagbiaanpboaflikhdhgdfiifdodd)
+- [Linkclump](https://chrome.google.com/webstore/detail/lfpjkncokllnfokkgpkobnkbkmelfefj)
+- [Multi-highlight](https://chrome.google.com/webstore/detail/pfgfgjlejbbpfmcfjhdmikihihddeeji)
+- [npmhub](https://chrome.google.com/webstore/detail/kbbbjimdjbjclaebffknlabpogocablj)
+- [OctoLinker](https://chrome.google.com/webstore/detail/jlmafbaeoofdegohdhinkhilhclaklkp)
+- [Octotree](https://chrome.google.com/webstore/detail/bkhaagjahfmjljalopjnoealnfndnagc)
+- [Pesticide for Chrome](https://chrome.google.com/webstore/detail/bblbgcheenepgnnajgfpiicnbbdmmooh)
+- [Pinboard Plus](https://chrome.google.com/webstore/detail/mphdppdgoagghpmmhodmfajjlloijnbd)
+- [Postman Interceptor](https://chrome.google.com/webstore/detail/aicmkgpgakddgnaphhhpliifpcfhicfo)
+- [Project Naptha](https://chrome.google.com/webstore/detail/molncoemjfmpgdkbdlbjmhlcgniigdnf) - OCR
+- [React Developer Tools](https://chrome.google.com/webstore/detail/fmkadmapgofadopljbjfkapdkoienihi)
+- [React Perf](https://chrome.google.com/webstore/detail/hacmcodfllhbnekmghgdlplbdnahmhmm)
+- [Reddit Enhancement Suite](https://chrome.google.com/webstore/detail/kbmfpngjjgdllneeigpgjifpgocmfgmb)
+- [Redux DevTools](https://chrome.google.com/webstore/detail/lmhkpmbekcpmknklioeibfkpmmfibljd)
+- [Refined Trello](https://chrome.google.com/webstore/detail/ehplgncidablicleelajoojipdnclbhm)
+- [SelectorGadget](https://chrome.google.com/webstore/detail/mhjhnkcfbdhnjickkkdbjoemdmbfginb)
+- [Shortkeys](https://chrome.google.com/webstore/detail/logpjaacgmcbpdkdchjiaagddngobkck)
+- [Stylish](https://chrome.google.com/webstore/detail/fjnbnpbmkenffdnngjfgmeleoegfcffe) - Custom CSS
+- [Tampermonkey](https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo) - Custom JS
+- [tlda](https://chrome.google.com/webstore/detail/ogefhmcfhgggggefddkaemfifdcljbml)
+- [uBlock Origin](https://chrome.google.com/webstore/detail/cjpalhdlnbpafiamejdnhcphjbkeiagm)
+- [Vue.js devtools](https://chrome.google.com/webstore/detail/nhdogjmejiglipccpnnnanhbledajbpd)
+- [Youtube Playback Speed Control](https://chrome.google.com/webstore/detail/hdannnflhlmdablckfkjpleikpphncik)
 
 
 <details><summary>Script to get extensions</summary>
@@ -842,7 +842,7 @@ cask "skype"
 
 <details><summary> ⚙️ Preferences</summary>
 
-* Disable show in menu bar
+- Disable show in menu bar
 
 </details>
 
@@ -874,10 +874,10 @@ mas "Keynote", id: 409183694
 
 <details><summary> ⚙️ Preferences</summary>
 
-* Enable `General: Enable Things URLs`
-* Enable `Things Cloud`
-* Set shortcut for Quick Entry to `ctrl + n`
-* Enable Calendar Events
+- Enable `General: Enable Things URLs`
+- Enable `Things Cloud`
+- Set shortcut for Quick Entry to `ctrl + n`
+- Enable Calendar Events
 
 </details>
 
@@ -954,27 +954,27 @@ All preferences sync with Settings Repository to [private GitLab repo](https://g
 
 Some of the main options:
 
-* Appearance
-  * Theme: Darcula
-  * Custom font: San Francisco `.SF NS Text`
-  * Window Options: Allow merging buttons on dialogs: Disable
-* Editor
-  * Font: Hack
+- Appearance
+  - Theme: Darcula
+  - Custom font: San Francisco `.SF NS Text`
+  - Window Options: Allow merging buttons on dialogs: Disable
+- Editor
+  - Font: Hack
 
 </details>
 
 #### Plugins
 
-* AceJump
-* Codota – ⚠️ not working well yet, but like the idea
-* Database Navigator
-* GitToolBox
-* Key Promoter X
-* Paste Images into Markdown
-* Presentation Assistant
-* String Manipulation
-* Wallaby
-* (plugins installed by default)
+- AceJump
+- Codota – ⚠️ not working well yet, but like the idea
+- Database Navigator
+- GitToolBox
+- Key Promoter X
+- Paste Images into Markdown
+- Presentation Assistant
+- String Manipulation
+- Wallaby
+- (plugins installed by default)
 
 ### [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -1112,7 +1112,6 @@ cask "boxer"
 </details>
 
 
-
 ## Other preferences
 
 ### Default apps
@@ -1180,15 +1179,15 @@ killall Dock
 
 #### Manual
 
-* System Preferences – Keyboard – Shortcuts
-  * Display: Disable both `Decrease & Increase display brightness`
-  * Mission control: Disable `Show Desktop`
-  * Screenshots: Disable everything (as I use Monosnap)
-  * Services: Disable `Open man Page in Terminal` & `Search man Page Index in Terminal`
-  * Spotlight:
-    * Remap `Show Spotlight search` -> `⌃⌥⌘Space`
-    * Disable `Show Finder search window`
-  * Accessibility: Disable everything
+- System Preferences – Keyboard – Shortcuts
+  - Display: Disable both `Decrease & Increase display brightness`
+  - Mission control: Disable `Show Desktop`
+  - Screenshots: Disable everything (as I use Monosnap)
+  - Services: Disable `Open man Page in Terminal` & `Search man Page Index in Terminal`
+  - Spotlight:
+    - Remap `Show Spotlight search` -> `⌃⌥⌘Space`
+    - Disable `Show Finder search window`
+  - Accessibility: Disable everything
 
 #### Programmatic
 
@@ -1290,9 +1289,9 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+ General -bool true \
+ OpenWith -bool true \
+ Privileges -bool true
 
 
 # Other
@@ -1323,29 +1322,29 @@ TODO:
 
 ## Auto-launched items
 
-```
+```bash
 # launchctl list | egrep -v "com\.apple\."
 ```
 
-* 1Password
-* Alfred
-* Amphetamine
-* AppCleaner-SmartDelete
-* Docker
-* Dropbox
-* FortiClient VPN
-* Gifox
-* Google Drive
-* HyperSwitch
-* Karabiner
-* Keybase
-* KeyboardMaestro
-* Monosnap
-* Moom
-* PopClip
-* RescueTime
-* Things
-* WebAlert
+- 1Password
+- Alfred
+- Amphetamine
+- AppCleaner-SmartDelete
+- Docker
+- Dropbox
+- FortiClient VPN
+- Gifox
+- Google Drive
+- HyperSwitch
+- Karabiner
+- Keybase
+- KeyboardMaestro
+- Monosnap
+- Moom
+- PopClip
+- RescueTime
+- Things
+- WebAlert
 
 ---
 ---
@@ -1353,7 +1352,7 @@ TODO:
 
 # Inbox
 
-```
+```bash
 ln -s $HOME/Code/setup/snippets "$HOME/Library/Application Support/Code/User/"
 
 TODO
@@ -1377,7 +1376,7 @@ Run regularly
 
 Clone all my repos
 
-```
+```bash
 curl -u strajk -s https://api.github.com/users/strajk/repos?per_page=200 | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each { |repo| %x[git clone #{repo["ssh_url"]} ]}'
 ```
 

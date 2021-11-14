@@ -24,6 +24,8 @@
     "globby": "11.0.1",
     "jest": "26.4.2",
     "lodash": "4.17.15",
+    "markdownlint": "0.24.0",
+    "markdownlint-cli2": "^0.3.2",
     "marked": "0.7.0",
     "plist": "3.0.1",
     "replace-in-file": "4.1.3",
