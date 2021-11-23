@@ -3,7 +3,7 @@
  */
 
 const ARG_REPO = "apify/apify-core"
-const ARV_MAX = 1000
+const ARG_MAX = 1000
 
 const fs = require("fs")
 const path = require("path")
@@ -26,7 +26,7 @@ const results = [];
       results.push(...response.data.map(pick))
       // eslint-disable-next-line max-len
       console.log(`Scraped: ${results.length} | Rate limit: ${response.headers["x-ratelimit-used"]}/${response.headers["x-ratelimit-limit"]} (refreshes ${new Date(response.headers["x-ratelimit-reset"] * 1000).toISOString()})`)
-      if (results.length >= ARV_MAX) done()
+      if (results.length >= ARG_MAX) done()
     },
   )
 
