@@ -1,11 +1,13 @@
 {
   "dependencies": {
+    "@octokit/rest": "~18.12.0",
     "colors": "~1.4.0",
     "diff": "~4.0.2",
     "file-size": "~1.0.0",
     "filesize": "~6.1.0",
     "get-repository-url": "~2.0.0",
     "get-stdin": "~8.0.0",
+    "image-type": "^4.1.0",
     "json2csv": "~5.0.6",
     "lodash": "~4.17.21",
     "mdast-util-to-string": "~1.1.0",
@@ -14,7 +16,6 @@
     "remark": "~12.0.1",
     "repo-url": "~1.0.1",
     "slack": "~11.0.2",
-    "unist-util-visit": "~2.0.3",
-    "image-type": "^4.1.0"
+    "unist-util-visit": "~2.0.3"
   }
 }
