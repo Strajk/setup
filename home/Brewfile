@@ -44,7 +44,7 @@ brew "mongodb"
 brew "redis"
 
 # brew "node" # I manage node via nvm
-brew "nvm" Manage multiple Node.js versions
+brew "nvm" # Manage multiple Node.js versions
 brew "java" # Moved from Cask to Homebrew https://github.com/Homebrew/homebrew-cask/pull/72284
 brew "python3"
 brew "yarn"
