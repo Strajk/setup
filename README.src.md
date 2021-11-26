@@ -208,22 +208,20 @@ cask "forticlient"
 
 </details>
 
-### [HyperSwitch](https://bahoom.com/hyperswitch)
+### [AltTab](https://github.com/lwouis/alt-tab-macos)
 
 <details><summary> 💾 Installation: Installed via Homebrew (⚠ requires manual post-install)</summary>
 
 ```bash <!-- >home/Brewfile#apps -->
-cask "hyperswitch"
+cask "alt-tab"
 ```
 
 </details>
 
 <details><summary> ⚙️ Preferences</summary>
 
-- Run HyperSwitch in the background
-- Use Include windows from other spaces
-- Use Include windows from other screens
-- Use shift to cycle backwards
+- Disable Menubar icon
+- Hide apps with no open window
 
 </details>
 
