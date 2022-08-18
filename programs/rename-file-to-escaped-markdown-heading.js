@@ -6,7 +6,6 @@ const { execSync } = require("child_process") // TODO: Remove after solving the 
 
 const argv = require("minimist")(process.argv.slice(2))
 const getSlug = require("speakingurl")
-const execa = require("execa")
 
 const file = argv.file
 
@@ -30,7 +29,7 @@ if (Array.isArray(match) && match.length === 2) {
 
   let repo
   try {
-    repo = execa.commandSync("git rev-parse --show-toplevel", { cwd: dirname }).stdout
+    repo = execSync("git rev-parse --show-toplevel", { cwd: dirname }).toString().trim() // trim trailing newline
   } catch (err) {
     if (!err.stderr.includes("not a git repository")) throw err
   }
