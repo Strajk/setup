@@ -1,4 +1,5 @@
-#!/usr/bin/env node
+#!/usr/bin/env /Users/strajk/.nvm/versions/node/v18.4.0/bin/node
+// TODO: Improve shebang
 
 // https://regexr.com/51ael
 // https://regexr.com/51af7 new
