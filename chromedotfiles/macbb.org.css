@@ -1,0 +1,12 @@
+.structItem .structItem-parts li:nth-child(3) a {
+  color: black;
+  font-weight: 700;
+}
+
+.message-signature {
+  opacity: 0.7;
+  max-height: 50px;
+  overflow: scroll;
+}
+
+/*# sourceMappingURL=macbb.org.css.map */
