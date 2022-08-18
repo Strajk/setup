@@ -1,8 +1,8 @@
-const { execSync } = require("child_process");
+const { execSync } = require("child_process")
 
 // Customize
 // ===
-const DIR = "~/Code" // TODO: Maybe take from args?
+const DIR = "~/Projects" // TODO: Maybe take from args?
 const PASSWORD = process.env.SUDO_PASSWORD || "FILL_PASSWORD_HERE_BUT_FFS_DON_NOT_SHARE_IT_ANYWHERE" // TODO: Better security, see note about sudo-prompt
 
 // Keep
@@ -18,7 +18,7 @@ const cleanArray = input => input.toString().split("\n").map(x => x.trim()).filt
 
 // Collect info
 // ===
-const candidates = cleanArray((`find ${DIR} -type d -name 'node_modules' -prune`))
+const candidates = cleanArray(execSync(`find ${DIR} -type d -name 'node_modules' -prune`))
 const existing = cleanArray(execSyncSudo(`${BUDDY} -c "Print :Exclusions" ${PLIST} | sed -e 1d -e '$d'`)) // TODO: Nicer way of getting pure array of results
 const toAdd = candidates.filter(x => !existing.includes(x))
 
@@ -36,13 +36,13 @@ toAdd.forEach(item => {
   execSyncSudo(`${BUDDY} -c "Add :Exclusions: string ${item}" ${PLIST}`)
 })
 // TODO: Check if necessary – according to blog posts, it shouldn't be needed. But it did not work for me without it
-execSyncSudo(`launchctl stop com.apple.metadata.mds && sudo launchctl start com.apple.metadata.mds`)
+execSyncSudo("launchctl stop com.apple.metadata.mds && sudo launchctl start com.apple.metadata.mds")
 
 // Report
 // ===
 console.log("Current content of Exclusions:")
 console.log("===")
-execSyncSudo(`${BUDDY} -c "Print :Exclusions" ${PLIST}`, { stdio: 'inherit' })
+execSyncSudo(`${BUDDY} -c "Print :Exclusions" ${PLIST}`, { stdio: "inherit" })
 
 console.log("")
 console.log("👀 Check and verify at System Preferences > Spotlight > Privacy")
