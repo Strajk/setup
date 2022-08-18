@@ -51,4 +51,9 @@ body > .js-header-wrapper .Header nav {
   transform: scale(2.5);
 }
 
+/* highlight starred repos */
+#user-starred-repos .d-block:has(.starring-container.on) {
+  background: #fffce6;
+}
+
 /*# sourceMappingURL=github.com.css.map */
