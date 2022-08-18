@@ -1,10 +1,14 @@
 {
   "dependencies": {
     "@octokit/rest": "~18.12.0",
+    "apify-client": "~2.3.1",
     "colors": "~1.4.0",
+    "dayjs": "~1.11.1",
     "diff": "~4.0.2",
+    "execa": "~6.0.0",
     "file-size": "~1.0.0",
     "filesize": "~6.1.0",
+    "fs-extra": "~10.1.0",
     "get-repository-url": "~2.0.0",
     "get-stdin": "~8.0.0",
     "image-type": "^4.1.0",
@@ -15,7 +19,10 @@
     "playwright": "^1.14.1",
     "remark": "~12.0.1",
     "repo-url": "~1.0.1",
+    "run-applescript": "~6.0.0",
     "slack": "~11.0.2",
-    "unist-util-visit": "~2.0.3"
+    "speakingurl": "~14.0.1",
+    "unist-util-visit": "~2.0.3",
+    "@apify-packages/mongo-connection": "^1.1.0"
   }
 }
