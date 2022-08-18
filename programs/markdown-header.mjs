@@ -1,5 +1,5 @@
-#!/usr/bin/env /usr/local/opt/node@12/bin/node
-
+#!/usr/bin/env /Users/strajk/.nvm/versions/node/v18.4.0/bin/node
+// TODO: Improve shebang
 // TODO: Make it work general node
 
 import getStdin from "get-stdin"
