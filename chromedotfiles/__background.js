@@ -32,7 +32,11 @@ chrome.webRequest.onBeforeRequest.addListener(
 
 function shouldBlock (url) {
   if (url.hostname === "www.facebook.com") {
-    if (url.pathname) { if (url.pathname === "/groups/503237783037580") return false }
+    // Allow groups
+    if (url.pathname?.startsWith('/groups')) return false
+    // Allow marketplace
+    if (url.pathname?.startsWith('/marketplace')) return false
+    if (url.pathname?.startsWith('/commerce')) return false
     return true
   }
 
@@ -48,15 +52,25 @@ function shouldBlock (url) {
     return false
   }
 
+  // Procrastination
+  if ([
+    "9gag.com",
+  ].includes(url.hostname)) return true
+
   // News – homepage
   if ([
     "www.idnes.cz",
     "ihned.cz",
     "www.seznamzpravy.cz",
+    "www.novinky.cz",
   ].includes(url.hostname) && url.pathname === "/") return true
 
-  // Reddit – whitelist subbredits
-  if (false && url.hostname === "www.reddit.com") { // temp disabled
+  // Reddit – allow just specific subbredits
+  if (url.hostname === "www.reddit.com") {
+    if (url.pathname === "/") return true
+    if (url.pathname === "") return true
+    if (!url.pathname) return true
+
     if (url.pathname.startsWith("/message")) return false
     if (url.pathname.startsWith("/user")) return false
     if ([
@@ -72,12 +86,14 @@ function shouldBlock (url) {
       "/r/webdev/",
       "/r/webscraping/",
     ].some(x => url.pathname.startsWith(x))) return false
-    return true
+
+    // Experiment: by default don't block
+    return false
   }
 }
 
-/*Neat URL*/
-/*===*/
+/* Neat URL */
+/* === */
 // browser.webRequest.onBeforeRequest.addListener(
 //   cleanURL,
 //   { urls: ["<all_urls>"], types: ["main_frame"] },
