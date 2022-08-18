@@ -1,3 +1,4 @@
+/* NOTE: Currently (2022-08-18) not used */
 /*
 * https://github.com/johnste/finicky
 *
@@ -25,6 +26,7 @@ module.exports = {
   },
   rewrite: [
     {
+      // In Slack, open Notion links in the Notion app, not in the browser
       match: ({ url, opener }) => {
         return url.protocol === "https"
           && url.host.includes('notion.so')
@@ -38,13 +40,13 @@ module.exports = {
       match: finicky.matchHostnames([
         "127.0.0.1",
         "localhost",
-        "sentry.io",
-        "gitlab.com",
-        "github.com",
-        "logdna.com",
-        "newrelic.com",
+        // "sentry.io",
+        // "gitlab.com",
+        // "github.com",
+        // "logdna.com",
+        // "newrelic.com",
       ]),
-      browser: "Google Chrome Canary" // Live dangerously
+      browser: "Google Chrome Dev" // Live dangerously
     },
     {
       match: ["https://www.google.com/search?*"],
