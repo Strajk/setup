@@ -52,7 +52,7 @@ let docContentModified = docContent // starts as a copy of a the original, will 
 const imagePaths = getImagesFromMarkdownDoc(docPath)
 const imageUrls = [] // will be populated with URLs of uploaded images
 
-imagePaths.forEach(async (imagePath, i) => {
+for (const imagePath of imagePaths) {
   const imageType = path.extname(imagePath).slice(1) // e.g. `png` or `jpg`
   const imageFullPath = imagePath.startsWith(`/`)
     ? path.join(rootDir, imagePath) // Some apps, like Nota, use absolute paths within rootDir, like `/assets/image.png`
@@ -89,7 +89,7 @@ imagePaths.forEach(async (imagePath, i) => {
   if (uploadRes.status !== 204) {
     console.log("Upload failed!")
     console.log(await uploadRes.text())
-    return
+    continue;
   }
 
   const imageCdnUrl = `https://cdn.hashnode.com/${fields.key}`;
@@ -98,7 +98,7 @@ imagePaths.forEach(async (imagePath, i) => {
 
   // 3. Replace the local image path with the CDN URL
   docContentModified = docContentModified.replace(imagePath, imageCdnUrl)
-})
+}
 
 // Save the modified Markdown file, uncomment for debugging purposes
 // fs.writeFileSync(docPath + `.modified.md`, docContentModified, "utf-8")
@@ -115,9 +115,7 @@ const publishRes = await fetch('https://api.hashnode.com', {
     query: `
       mutation createPublicationStory($input: CreateStoryInput!, $publicationId: String!) {
         createPublicationStory(input: $input, publicationId: $publicationId) {
-          code
           success
-          message
           post {
             cuid,
             slug,
@@ -136,13 +134,7 @@ const publishRes = await fetch('https://api.hashnode.com', {
         title: `${docBasename}`,
         contentMarkdown: docContentModified,
         // Available tags: https://github.com/Hashnode/support/blob/main/misc/tags.json
-        tags: [
-          // {
-          //   _id: '56744723958ef13879b9549b',
-          //   slug: 'testing',
-          //   name: 'Testing',
-          // },
-        ],
+        tags: [],
         coverImageURL: imageUrls[0], // first image as Cover - not great, not terrible
       },
     },
