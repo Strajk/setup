@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test": "jest tests"
+  },
+  "jest": {
+    "testEnvironmentOptions": {
+      "url": "http://localhost"
+    }
+  }
+}

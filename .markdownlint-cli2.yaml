@@ -1,0 +1,37 @@
+customRules:
+  - ./apps/markdownlint/custom-rules/rules/referenced-assets-must-exist.js
+
+config:
+  # Enable custom rules "loaded" above
+  referenced-assets-must-exist: true
+
+  # Let's use default, aka "recommended" in ESLint terms
+  default: true
+
+  # ...and adjust it to my liking
+  line-length: false
+  no-trailing-punctuation: false
+  no-trailing-spaces: false # i use trailing spaces for new lines
+  no-multiple-blanks: false # i like to use multiple blanks on drafts/quick notes for visual hierarchy
+  first-line-h1: false # i still don't know if i prefer titles to be H1 or just filenames
+  blanks-around-lists: false # i prefer more condensed docs
+  no-bare-urls: false # good md parsers should handle links automatically
+  heading-increment: false # i don't like this rule, too strict
+  ul-style: { style: "dash" } # previously I used asterisks, but I dashes are more common so I'm switching
+  blanks-around-fences: false # i like more condensed docs
+  no-alt-text: false # i mainly use this config for personal notes, so I don't care about alt text
+
+  proper-names:
+    names: [
+      "API",
+      "GitHub",
+      "Gmail",
+      "JavaScript",
+      "JSON",
+      "OAuth",
+      "TypeScript",
+      "YAML",
+    ]
+
+outputFormatters:
+  - [ "./apps/markdownlint/outputFormatter.js" ]
