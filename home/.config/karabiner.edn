@@ -1,0 +1,134 @@
+;; Karabiner-Elements configuration in Goku format
+;; https://github.com/yqrashawn/GokuRakuJoudo
+
+;; run `$ goku` to apply, run `$ gokuw` to watch
+;; Inspired by:
+;; https://github.com/babramczyk/dotfiles/blob/master/notes/shawn-karabiner.edn
+;; https://github.com/nikitavoloboev/dotfiles/blob/master/karabiner/karabiner.edn
+;; https://github.com/rgomezcasas/dotfiles/blob/main/os/mac/karabiner-goku/karabiner.edn
+;; https://github.com/yqrashawn/yqdotfiles/blob/master/modules/yqrashawn/home-manager/dotfiles/karabiner.edn
+;; https://github.com/search?q=path%3A*.edn+path%3A**%2Fkarabiner.edn&type=code
+
+{
+  :profiles {
+    :Default { ; TODO: Explain
+      :default true
+    }
+  }
+
+  :simlayer-threshold 3000 ; default seems to be 250
+
+  :templates {
+    :paste "osascript -e '
+      set prev to the clipboard
+      set the clipboard to \"%s\"
+      tell application \"System Events\"
+        keystroke \"v\" using command down
+        delay 0.1
+      end tell
+      set the clipboard to prev
+    '"
+   }
+   :type "osascript -e 'tell application \"System Events\" to keystroke \"%s\" as text'"
+   :keyboard-maestro "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
+   :open "open \"%s\""
+   :opena "open -a \"%s\""
+
+  :simlayers {
+     :emoji-mode { :key :right_option }
+   }
+
+  :tos {
+    :left_paren      {:key :9 :modi [:left_shift] :lazy true}
+    :right_paren     {:key :0 :modi [:left_shift] :lazy true}
+  }
+
+  :applications {
+    :Chrome   ["com.google.Chrome", "com.google.Chrome.beta"]
+    :Finder   ["com.apple.finder"]
+    :IntelliJ ["com.jetbrains.intellij"]
+    :Notion   ["notion.id"]
+    :Slack    ["com.tinyspeck.slackmacgap"]
+  }
+
+  :main [
+    {
+      :des   "caps_lock to F19"
+      :rules [[:##caps_lock :f19]]
+    }
+
+    {
+      :des   "Quit application by pressing command-q twice"
+      :rules [ ; TODO: Explain
+          [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
+          [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["command-q" 0]}}]
+        ]
+    }
+
+    {
+      :des "Emoji mode"
+      :rules [
+         :emoji-mode
+           ;; Note: ⚪️ is just a placeholder where I'm undecided on what emoji to assign
+           ;; In more comprehensive shreadsheet:
+           ;; https://docs.google.com/spreadsheets/d/1ISRO3mPubfjjsOogvOarX9PCb74LZc8K5gh3J7HxHdc
+
+           ;; 1 2 3 4 5 6 7 8 9 0 - =
+           [:1 [:paste "1️⃣"]]
+           [:2 [:paste "2️⃣"]]
+           [:3 [:paste "3️⃣"]]
+           [:4 [:paste "4️⃣"]]
+           [:5 [:paste "5️⃣"]]
+           [:6 [:paste "6️⃣"]]
+           [:7 [:paste "7️⃣"]]
+           [:8 [:paste "8️⃣"]]
+           [:9 [:paste "9️⃣"]]
+           [:0 [:paste "0️⃣"]]
+           [:hyphen [:paste "➖"]]
+           [:equal_sign [:paste "➕"]]
+
+           ;; q w e r t y u i  p [ ]
+           [:q [:paste "❓"]]
+           [:w [:paste "💸"]]
+           [:e [:paste "👀"]]
+           [:r [:paste "🚀"]]
+           [:t [:paste "⚪️"]]
+           [:y [:paste "⚪️"]]
+           [:u [:paste "❤️"]]
+           [:i [:paste "ℹ️"]]
+           [:o [:paste "🌐"]]
+           [:p [:paste "📌"]]
+           [:open_bracket [:paste "👎"]]
+           [:close_bracket [:paste "👍"]]
+
+           ;; a s d f g h j k l ; ' \
+           [:a [:paste "🚨"]]
+           [:s [:paste "⭐️"]]
+           [:d [:paste "☠️"]]
+           [:f [:paste "🔥"]]
+           [:g [:paste "👻"]]
+           [:h [:paste "⬅️"]]
+           [:j [:paste "⬇️"]]
+           [:k [:paste "⬆️"]]
+           [:l [:paste "➡️"]]
+           [:semicolon [:paste "🔴"]]
+           [:quote [:paste "🟡"]]
+           [:backslash [:paste "🟢"]]
+
+           ; ` z x c v b n m , . /
+           [:grave_accent_and_tilde [:paste "💥"]]
+           [:z [:paste "⚪️"]]
+           [:x [:paste "❌"]]
+           [:c [:paste "👏"]]
+           [:v [:paste "⚪️"]]
+           [:b [:paste "💡"]]
+           [:n [:paste "⚪️"]]
+           [:m [:paste "💰"]]
+           [:comma [:paste "🚫"]]
+           [:period [:paste "☑️"]]
+           [:slash [:paste "✅"]]
+       ]
+     }
+  ]
+}
+
