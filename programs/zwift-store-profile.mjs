@@ -8,7 +8,7 @@ import jwtDecode from "jwt-decode";
 import { config } from 'dotenv';
 
 const dataFilePath = process.env.ZWIFT_DATA_FILE_PATH;
-const DATA_FILE_PATH = dataFilePath || `${os.homedir()}/zwift-data.csv` // TODO: Make this configurable
+const DATA_FILE_PATH = dataFilePath || `${os.homedir()}/zwift-data.csv`
 
 config({ path: `${os.homedir()}/.secrets` }) // file containing ZWIFT_USERNAME and ZWIFT_PASSWORD
 const username = process.env.ZWIFT_USERNAME
