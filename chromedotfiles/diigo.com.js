@@ -32,4 +32,20 @@ function main () {
   document.arrive(".ModalWindow .deleteItem button.confirm", (el) => {
     window.$(el).click()
   })
+
+  // Autoconfirm un-read when holding option, this is kinda hacky but works for me
+  document.arrive(".ModalWindow .EditBookmark", (el) => {
+    if (!window.event.altKey) return
+    let diigoId
+    setTimeout(() => {
+      const checkboxEl = el.querySelector(".inline.fields .field.starField .ui.checkbox input[type='checkbox'][value='on']")
+      diigoId = checkboxEl.id.replace("star-", "") // just id number
+      checkboxEl.click()
+      el.querySelector("button.submitButton").click()
+
+      const ghostInput = document.querySelector(`#ghostInput-${diigoId}`)
+      const wrapperEl = ghostInput.closest(".ListItem")
+      wrapperEl.style.opacity = 0.1
+    }, 500)
+  })
 }
