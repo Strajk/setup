@@ -1,0 +1,67 @@
+/* HOME */
+/* === */
+
+footer.blog-footer-area { /* I don't like it */
+    display: none;
+}
+
+.blog-author-container {
+    display: none !important; /* Did not find a setting to do this in dashboard */
+
+}
+
+.blog-header > div > div:last-child { /* pages tabs - I only have one page "Home" */
+    display: none !important; /* did not find a setting for this */
+}
+
+.blog-header {
+    padding-bottom: 10px; /* page tabs previously took care of spacing, now let's do it manually */
+}
+
+footer.blog-footer-area {
+    /* default is 5rem */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* ARTICLES */
+/* === */
+#post-content-wrapper.prose ul {
+    /* li is taking care of spacing */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+#post-content-wrapper.prose ul li {
+    /* half of default 0.6666667em*/
+    margin-top: 0.33333335em !important;
+    margin-bottom: 0.33333335em !important;
+}
+
+#post-content-wrapper.prose img {
+    /* default is 1.7777778em */
+    margin-top: 0.33333335em !important;
+    margin-bottom: 0.33333335em !important;
+}
+
+#post-content-wrapper.prose p {
+    /* default is 1.3333333em */
+    margin-top: 0.33333335em !important;
+    margin-bottom: 0.33333335em !important;
+}
+
+#post-content-wrapper.prose pre {
+    /* default is 2rem */
+    margin-top: 0.33333335em !important;
+    margin-bottom: 0.33333335em !important;
+
+    /* default 2rem for y-axis and 1.5rem for x-axis */
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+footer.blog-footer-area {
+    /* default is 5rem */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
