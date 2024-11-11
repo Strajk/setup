@@ -1,8 +1,8 @@
-// Menu: Super Search
+// Menu: Super Search across multiple websites
 // Description: Search multiple websites, in bulk, in your browser
 // Author: Pavel 'Strajk' Dolecek <www.strajk.me>
 // Twitter: @straaajk
-/// Shortcut: command option ;
+//// Shortcut: command option ;
 // me.strajk:status WIP
 
 // BEWARE: Discord search requires my userscript:
