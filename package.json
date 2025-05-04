@@ -23,7 +23,7 @@
     "eslint-plugin-vue": "5.2.3",
     "globby": "11.0.1",
     "jest": "26.4.2",
-    "lodash": "4.17.15",
+    "lodash": "4.17.21",
     "markdown-toc": "1.2.0",
     "markdownlint": "0.24.0",
     "markdownlint-cli2": "^0.3.2",
