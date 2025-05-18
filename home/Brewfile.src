@@ -11,29 +11,55 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "heroku/brew"
 
+tap "grafana/grafana"
+tap "homebrew/bundle"
+tap "homebrew/services"
+tap "oven-sh/bun"
+tap "tursodatabase/tap"
+
 # Essentials
 # ===
-
 brew "mas"
 brew "duti"
+brew "cliclick"
+brew "cloudflared"
+brew "cmake"
+brew "coreutils"
+brew "deno"
+brew "direnv"
+brew "duckdb"
+brew "flyctl"
+brew "fswatch"
+brew "gh"
+brew "git-lfs"
+brew "go"
+brew "hcloud"
+brew "htop"
+brew "jq"
+brew "llm"
+brew "nixpacks"
+brew "pkgconf"
+brew "rust"
+brew "tree"
+brew "wget"
+brew "xdotool"
 
 # brew "git" # Git shipped with MacOS is good and modern enough
 brew "git-extras"
 brew "hh"
-brew "htop"
 brew "thefuck"
 brew "mtr"
-brew "nmap"
 brew "watchman"
-brew "wget"
 brew "wireshark", link: false
 brew "vault"
-brew "direnv"
 brew "massren"
 brew "act" # Run GitHub Actions locally
 
 brew "imagemagick"
 brew "imageoptim-cli"
+brew "webp"
+brew "ffmpeg"
+brew "poppler"
 
 brew "terraform"
 brew "kubectl" # TODO: Check if already installed by Docker
@@ -41,13 +67,16 @@ brew "kubernetes-helm"
 cask "google-cloud-sdk"
 
 brew "mongodb"
-brew "redis"
+brew "redis", restart_service: :changed
 
 # brew "node" # I manage node via nvm
 brew "nvm" Manage multiple Node.js versions
 brew "java" # Moved from Cask to Homebrew https://github.com/Homebrew/homebrew-cask/pull/72284
-brew "python3"
 brew "yarn"
+
+brew "grafana/grafana/alloy"
+brew "oven-sh/bun/bun"
+brew "yqrashawn/goku/goku"
 
 cask "swiftdefaultappsprefpane"
 cask "browserosaurus"
