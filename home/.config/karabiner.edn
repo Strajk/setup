@@ -9,6 +9,10 @@
 ;; https://github.com/yqrashawn/yqdotfiles/blob/master/modules/yqrashawn/home-manager/dotfiles/karabiner.edn
 ;; https://github.com/search?q=path%3A*.edn+path%3A**%2Fkarabiner.edn&type=code
 
+;; Refs:
+;; https://github.com/yqrashawn/GokuRakuJoudo
+;; https://github.com/edn-format/edn
+
 {
   :profiles {
     :Default { ; TODO: Explain
@@ -16,7 +20,9 @@
     }
   }
 
-  :simlayer-threshold 3000 ; default seems to be 250
+  :devices {:m720-triathlon [{:vendor_id 1133 :product_id 45077}]}
+
+  :simlayer-threshold 1000 ; default seems to be 250
 
   :templates {
     :paste "osascript -e '
@@ -24,25 +30,27 @@
       set the clipboard to \"%s\"
       tell application \"System Events\"
         keystroke \"v\" using command down
-        delay 0.1
+        delay 0.05
       end tell
       set the clipboard to prev
     '"
+    :type "osascript -e 'tell application \"System Events\" to keystroke \"%s\" as text'"
+    :keyboard-maestro "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
+    :open "open \"%s\""
+    :opena "open -a \"%s\"" ;; open using app name, like Google Chrome
+    :openb "open -b \"%s\"" ;; open using bundle identifier, like com.apple.finder
    }
-   :type "osascript -e 'tell application \"System Events\" to keystroke \"%s\" as text'"
-   :keyboard-maestro "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
-   :open "open \"%s\""
-   :opena "open -a \"%s\""
 
-  :simlayers {
+  ; IMPORTANT: Don't use symlayers for these!
+  ; Symlayers "wait" for second key only for some time (about 3s?)
+  :layers {
      :emoji-mode { :key :right_option }
+     :launch-mode { :key :right_command }
+     :snippet-mode { :key :right_shift }
    }
 
-  :tos {
-    :left_paren      {:key :9 :modi [:left_shift] :lazy true}
-    :right_paren     {:key :0 :modi [:left_shift] :lazy true}
-  }
 
+  ; Note: Unused right now
   :applications {
     :Chrome   ["com.google.Chrome", "com.google.Chrome.beta"]
     :Finder   ["com.apple.finder"]
@@ -52,17 +60,89 @@
   }
 
   :main [
-    {
-      :des   "caps_lock to F19"
-      :rules [[:##caps_lock :f19]]
-    }
+    {:des "Button 3 to type hello" :rules [[{:pkey :button2} [:type "hello"]]]}
 
+    {
+      :des "CapsLock to F19 when alone, Hyper in combination"
+      :rules [
+        [:##caps_lock :!CTOleft_shift nil {:alone :f19}]
+        ;; https://github.com/yqrashawn/GokuRakuJoudo/issues/127#issuecomment-1273550276
+      ]
+    }
+    
     {
       :des   "Quit application by pressing command-q twice"
       :rules [ ; TODO: Explain
           [:!C#Pq [:!Cq ["command-q" 0]] ["command-q" 1]]
           [:!C#Pq ["command-q" 1] nil {:delayed {:invoked ["command-q" 0] :canceled ["command-q" 0]}}]
         ]
+    }
+
+    {
+      :des "Snippets mode"
+      :rules [
+        :snippet-mode
+          ;; Prios
+          [:1 [:paste "[[🔥 TOP]]"]]
+          [:2 [:paste "[[🔴 HIGH]]"]]
+          [:3 [:paste "[[🟡 MID]]"]]
+          [:4 [:paste "[[🟢 LOW]]"]]
+          [:5 [:paste "[[⚪️ NOPE]]"]]
+
+
+          [:q                      [:paste "xxx"]]
+          [:a                      [:paste "xxx"]]
+          [:grave_accent_and_tilde [:paste "xxx"]]
+
+          [:w                      [:paste "xxx"]]
+          [:s                      [:paste "xxx"]]
+          [:z                      [:paste "xxx"]]
+
+
+          [:e                      [:paste "# @strajk: "]]
+          [:d                      [:paste "Add console logs to debug this, prefix with file name and fn name, print useful variables"]]
+          [:x                      [:paste ""]]
+
+
+          [:r                      [:paste "xxx"]]
+          [:f                      [:paste "xxx"]]
+          [:c                      [:paste "console.log("]]
+
+          [:t                      [:paste "xxx"]]
+          [:g                      [:paste "xxx"]]
+          [:v                      [:paste "xxx"]]
+
+          [:y                      [:paste "xxx"]]
+          [:h                      [:paste "xxx"]]
+          [:b                      [:paste "xxx"]]
+
+
+          [:u                      [:paste "xxx"]]
+          [:j                      [:paste "xxx"]]
+          [:n                      [:paste "xxx"]]
+
+
+          [:i                      [:paste "xxx"]]
+          [:k                      [:paste "xxx"]]
+          [:m                      [:paste "xxx"]]
+
+
+          [:o                      [:paste "xxx"]]
+          [:l                      [:paste "xxx"]]
+          [:comma                  [:paste "xxx"]]
+
+
+          [:p                      [:paste "Fix & imporve English, make more concise & clear: "]]
+          [:semicolon              [:paste "xxx"]]
+          [:period                 [:paste "xxx"]]
+
+          [:open_bracket           [:paste "xxx"]]
+          [:quote                  [:paste "xxx"]]
+          [:slash                  [:paste "xxx"]]
+
+          [:close_bracket          [:paste "xxx"]]
+          [:backslash              [:paste "xxx"]]
+      ]
     }
 
     {
@@ -92,7 +172,7 @@
            [:w [:paste "💸"]]
            [:e [:paste "👀"]]
            [:r [:paste "🚀"]]
-           [:t [:paste "⚪️"]]
+           [:t [:paste "🤔"]]
            [:y [:paste "⚪️"]]
            [:u [:paste "❤️"]]
            [:i [:paste "ℹ️"]]
@@ -129,6 +209,68 @@
            [:slash [:paste "✅"]]
        ]
      }
+
+     {
+       ;; https://docs.google.com/spreadsheets/d/1ISRO3mPubfjjsOogvOarX9PCb74LZc8K5gh3J7HxHdc/edit?gid=1374605724#gid=1374605724
+       :des "Launch mode"
+       :rules [
+         :launch-mode
+            [:q                      [:opena "/Applications/Google Chrome Dev.app"]]
+            [:a                      [:openb "com.google.Chrome"]]
+            [:grave_accent_and_tilde [:opena "/Applications/Opera.app"]]
+
+            [:2                     [:opena "/Applications/Windsurf.app"]]
+            [:w                     [:openb "com.jetbrains.pycharm"]]
+            [:s                     [:openb "com.microsoft.VSCode"]]
+            [:z                     [:opena "/Applications/Cursor.app"]]
+
+
+            [:e                     [:opena "/Applications/Warp.app"]]
+            [:d                     [:opena "/Applications/iTerm.app"]]
+            [:x                     [:opena ""]]
+
+
+            [:r                     [:opena "/Applications/Messenger.app"]]
+            [:f                     [:opena "/Applications/WhatsApp.localized/WhatsApp.app"]]
+            [:c                     [:opena "/Applications/Discord.app"]]
+
+            [:t                     [:openb "/Applications/Things3.app"]]
+            [:g                     [:opena ""]]
+            [:v                     [:openb ""]]
+
+            [:y                     [:openb ""]]
+            [:h                     [:openb ""]]
+            [:b                     [:openb ""]]
+
+
+            [:u                     [:openb ""]]
+            [:j                     [:openb ""]]
+            [:n                     [:openb ""]]
+
+
+            [:i                     [:openb ""]]
+            [:k                     [:openb ""]]
+            [:m                     [:openb ""]]
+
+
+            [:o                     [:openb ""]]
+            [:l                     [:openb "com.apple.finder"]]
+            [:comma                 [:opena ""]]
+
+
+            [:p                     [:openb ""]]
+            [:semicolon             [:openb ""]]
+            [:period                [:opena "/Applications/Nota.app"]]
+
+            [:open_bracket          [:openb ""]]
+            [:quote                 [:openb ""]]
+            [:slash                 ["open -a /Applications/Setapp/Paper.app /Users/strajk/Documents/Journal.md"]]
+
+            [:close_bracket         [:openb ""]]
+            [:backslash             [:openb ""]]
+       ]
+     }
+     
   ]
 }
 
