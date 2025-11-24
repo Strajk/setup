@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""
+Slack Research Tool
+
+Usage:
+    slack-research "your research query"
+
+Description:
+    Wrapper around Claude Code with Slack MCP configured.
+    All configuration is embedded in this script - no external files needed.
+
+Environment:
+    SLACK_MCP_XOXC_TOKEN, SLACK_MCP_XOXD_TOKEN must be set for the Slack MCP server.
+    See https://github.com/korotovsky/slack-mcp-server/blob/master/docs/01-authentication-setup.md
+
+Examples:
+    slack-research "5 active users discussing Cursor lately"
+"""
+
+import sys
+import shutil
+import subprocess
+import json
+
+# Embedded MCP configuration
+MCP_CONFIG = {
+    "mcpServers": {
+        "slack": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "slack-mcp-server@latest",
+                "--transport",
+                "stdio"
+            ],
+            "env": {
+                "SLACK_MCP_XOXC_TOKEN": "${SLACK_MCP_XOXC_TOKEN}",
+                "SLACK_MCP_XOXD_TOKEN": "${SLACK_MCP_XOXD_TOKEN}"
+            }
+        }
+    }
+}
+
+# Embedded system prompt
+SYSTEM_PROMPT = """You are a Slack Research Agent.
+Use Slack MCP tools! If they are not available, abort, do not try to recover.
+
+- Return concise, high-signal findings. Prefer bullet lists and short explanations.
+- Include channel names and permalinks for cited messages where available.
+- No intro/outro, just the findings.
+- Do not send any messages!
+"""
+
+
+def print_usage():
+    """Print usage information."""
+    print(__doc__)
+
+
+def main():
+    """Main entry point."""
+    # Check for help flag
+    if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help"):
+        print_usage()
+        sys.exit(0)
+
+    # Check if claude CLI is available
+    if not shutil.which("claude"):
+        print("Error: 'claude' CLI not found on PATH.", file=sys.stderr)
+        sys.exit(127)
+
+    # Check if research prompt is provided
+    if len(sys.argv) < 2:
+        print("Error: Missing research prompt.", file=sys.stderr)
+        print(file=sys.stderr)
+        print_usage()
+        sys.exit(2)
+
+    research_prompt = sys.argv[1]
+    additional_args = sys.argv[2:]
+
+    # Convert MCP config to JSON string
+    mcp_config_str = json.dumps(MCP_CONFIG)
+
+    # Build Claude command arguments
+    claude_args = [
+        "claude",
+        "--print",
+        "--output-format", "text",
+        "--permission-mode", "bypassPermissions",
+        "--strict-mcp-config",
+        "--mcp-config", mcp_config_str,
+        "--append-system-prompt", SYSTEM_PROMPT,
+        "--",
+        research_prompt,
+    ] + additional_args
+
+    # Execute Claude with the composed configuration
+    try:
+        result = subprocess.run(claude_args, check=False)
+        sys.exit(result.returncode)
+    except KeyboardInterrupt:
+        sys.exit(130)
+    except Exception as e:
+        print(f"Error executing claude: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
