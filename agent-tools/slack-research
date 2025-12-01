@@ -21,22 +21,25 @@ import sys
 import shutil
 import subprocess
 import json
+import os
+from pathlib import Path
+from urllib.request import Request, urlopen
+from urllib.error import URLError, HTTPError
+
+# Cache directory for slack-mcp-server files
+CACHE_DIR = Path.home() / ".cache" / "slack-research"
 
 # Embedded MCP configuration
 MCP_CONFIG = {
     "mcpServers": {
         "slack": {
             "command": "npx",
-            "args": [
-                "-y",
-                "slack-mcp-server@latest",
-                "--transport",
-                "stdio"
-            ],
+            "args": ["-y", "slack-mcp-server@latest", "--transport", "stdio"],
+            "cwd": str(CACHE_DIR),
             "env": {
                 "SLACK_MCP_XOXC_TOKEN": "${SLACK_MCP_XOXC_TOKEN}",
-                "SLACK_MCP_XOXD_TOKEN": "${SLACK_MCP_XOXD_TOKEN}"
-            }
+                "SLACK_MCP_XOXD_TOKEN": "${SLACK_MCP_XOXD_TOKEN}",
+            },
         }
     }
 }
@@ -57,6 +60,46 @@ def print_usage():
     print(__doc__)
 
 
+def validate_slack_tokens():
+    """Validate Slack tokens via quick API call. Returns True if valid."""
+    xoxc_token = os.environ.get("SLACK_MCP_XOXC_TOKEN")
+    xoxd_token = os.environ.get("SLACK_MCP_XOXD_TOKEN")
+
+    if not xoxc_token or not xoxd_token:
+        print(
+            "Error: SLACK_MCP_XOXC_TOKEN and SLACK_MCP_XOXD_TOKEN must be set.",
+            file=sys.stderr,
+        )
+        return False
+
+    # Validate tokens using Slack's auth.test endpoint
+    url = f"https://slack.com/api/auth.test?token={xoxc_token}"
+    headers = {"Cookie": f"d={xoxd_token}"}
+
+    try:
+        import ssl
+
+        # Use unverified context for local SSL issues
+        ctx = ssl._create_unverified_context()
+        req = Request(url, headers=headers)
+
+        with urlopen(req, timeout=10, context=ctx) as response:
+            data = json.loads(response.read().decode())
+            if data.get("ok"):
+                return True
+
+            error = data.get("error", "unknown")
+            print(f"Error: Slack token validation failed: {error}", file=sys.stderr)
+            return False
+
+    except HTTPError as e:
+        print(f"Error: Slack API returned HTTP {e.code}", file=sys.stderr)
+        return False
+    except Exception as e:
+        print(f"Error: Token validation failed: {e}", file=sys.stderr)
+        return False
+
+
 def main():
     """Main entry point."""
     # Check for help flag
@@ -69,12 +112,19 @@ def main():
         print("Error: 'claude' CLI not found on PATH.", file=sys.stderr)
         sys.exit(127)
 
+    # Validate Slack tokens before proceeding
+    if not validate_slack_tokens():
+        sys.exit(1)
+
     # Check if research prompt is provided
     if len(sys.argv) < 2:
         print("Error: Missing research prompt.", file=sys.stderr)
         print(file=sys.stderr)
         print_usage()
         sys.exit(2)
+
+    # Ensure cache directory exists
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
     research_prompt = sys.argv[1]
     additional_args = sys.argv[2:]
@@ -86,11 +136,15 @@ def main():
     claude_args = [
         "claude",
         "--print",
-        "--output-format", "text",
-        "--permission-mode", "bypassPermissions",
+        "--output-format",
+        "text",
+        "--permission-mode",
+        "bypassPermissions",
         "--strict-mcp-config",
-        "--mcp-config", mcp_config_str,
-        "--append-system-prompt", SYSTEM_PROMPT,
+        "--mcp-config",
+        mcp_config_str,
+        "--append-system-prompt",
+        SYSTEM_PROMPT,
         "--",
         research_prompt,
     ] + additional_args
