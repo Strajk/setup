@@ -20,6 +20,12 @@
 * 
 * Feature requests:
 * * Firefox container support https://github.com/johnste/finicky/issues/211
+*
+* LIMITATIONS:
+* * Finicky runs in a sandboxed JavaScript environment (no Node.js APIs)
+* * Cannot execute shell scripts, AppleScript, or external commands from config
+* * Cannot check if a URL is already open in a browser before opening
+* 
 */
 
 export default {
@@ -74,6 +80,7 @@ export default {
       match: [
         "https://kiwicom.atlassian.net/wiki/*",
         "https://gitlab.skypicker.com/*",
+        "https://claude.ai/oauth/authorize*"
       ],
       browser: "Firefox"
     },

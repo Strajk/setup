@@ -35,10 +35,11 @@ MCP_CONFIG = {
         "slack": {
             "command": "npx",
             "args": ["-y", "slack-mcp-server@latest", "--transport", "stdio"],
-            "cwd": str(CACHE_DIR),
             "env": {
                 "SLACK_MCP_XOXC_TOKEN": "${SLACK_MCP_XOXC_TOKEN}",
                 "SLACK_MCP_XOXD_TOKEN": "${SLACK_MCP_XOXD_TOKEN}",
+                "SLACK_MCP_USERS_CACHE": str(CACHE_DIR / "users.json"),
+                "SLACK_MCP_CHANNELS_CACHE": str(CACHE_DIR / "channels.json")
             },
         }
     }
@@ -55,9 +56,14 @@ Use Slack MCP tools! If they are not available, abort, do not try to recover.
 """
 
 
+SCRIPT_PATH = os.path.realpath(__file__)
+
+
 def print_usage():
     """Print usage information."""
     print(__doc__)
+    print(f"Script location: {SCRIPT_PATH}")
+    print("Feel free to modify it to suit your needs.")
 
 
 def validate_slack_tokens():
